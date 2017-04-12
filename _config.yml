@@ -68,4 +68,6 @@ theme: yilia
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
-  type:
+  type: git
+  repo: git@github.com:xtzeng/xtzeng.github.io.git
+  branch: master
