@@ -84,6 +84,9 @@ jsonContent:
       categories: false
       tags: true
       
+#Disqus
+disqus_shortname: blog-xmqbeast-com
+
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
