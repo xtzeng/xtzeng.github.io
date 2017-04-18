@@ -63,7 +63,7 @@ pagination_dir: page
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: yilia
+theme: next
 
 jsonContent:
     meta: false
@@ -87,7 +87,12 @@ jsonContent:
   #是否开启分享
 share: true    
 #Disqus
-disqus_shortname: blog-xmqbeast-com
+#disqus_shortname: blog-xmqbeast-com
+
+youyan:
+  on: true
+  id: 2131381
+
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
