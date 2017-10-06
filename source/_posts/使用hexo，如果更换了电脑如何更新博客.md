@@ -18,7 +18,7 @@ tags:
 
 6.修改_config.yml中的deploy参数，分支应为master;
 
-7.依次执行git add、git commit -m "..."、git push origin hexo提交网站相关的文件；
+7.依次执行git add .、git commit -m "..."、git push origin hexo提交网站相关的文件；
 
 8.执行hexo g -d 生成网站并部署到github上；
 
@@ -28,7 +28,7 @@ tags:
 
 在本地对博客进行修改（添加新博客、修改样式等等）后，通过下面的流程进行管理。
 
-1.依次执行git add、git commit -m "..."、git push origin hexo指令将改动推送到github(此时当前分支应为hexo);
+1.依次执行git add .、git commit -m "..."、git push origin hexo指令将改动推送到github(此时当前分支应为hexo);
 
 2.然后才执行hexo g -d 发布到master分支上。
 
