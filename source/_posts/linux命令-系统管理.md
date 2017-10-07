@@ -1,7 +1,7 @@
 ---
 title: linux命令-系统管理
 date: 2017-04-28 16:47:59
-tags:
+tags: [linux]
 ---
 
 1.查看当前日历：cal

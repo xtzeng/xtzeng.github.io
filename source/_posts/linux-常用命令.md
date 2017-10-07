@@ -1,7 +1,7 @@
 ---
 title: linux 常用命令
 date: 2017-04-25 20:12:52
-tags:
+tags: [linux]
 ---
 
 1.linux 命令格式

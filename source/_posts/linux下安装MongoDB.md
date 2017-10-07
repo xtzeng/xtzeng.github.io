@@ -1,7 +1,7 @@
 ---
 title: linux下安装MongoDB
 date: 2017-10-06 01:47:34
-tags:
+tags: [linux]
 ---
 
 MongoDB 提供了 linux 各发行版本 64 位的安装包，你可以在官网下载安装包。
