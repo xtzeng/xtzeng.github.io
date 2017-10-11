@@ -63,7 +63,7 @@ Nexus下载及安装配置
 	Started Nexus OSS.
 
 在浏览器打开:http://ip:8081/nexus,登录：用户名admin  默认密码：admin123
-
+![nexus](http://oncykm32h.bkt.clouddn.com/nexus.png)
 在项目中修改maven仓库地址
-
+![pom-nexus](http://oncykm32h.bkt.clouddn.com/pom-nexus.png)
 这样就配置完成了。在构建maven项目时，如果在私服中存在需要的构件，则会直接从私服中下载；如果私服中没有所需构件，则会先从网络上下载到私服，之后才会下载到本地。
