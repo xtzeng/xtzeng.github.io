@@ -94,6 +94,8 @@ youyan:
   on: true
   id: 2131381
 
+  
+search: true
 
 algolia:
   applicationID: 'JJHD8829T1'
@@ -101,6 +103,10 @@ algolia:
   adminApiKey: '64bce7f1471e7d64a7662330327bb389'
   indexName: 'xt_index'
   chunkSize: 5000
+  fields:
+    - title
+    - slug
+    - content:strip
   
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
