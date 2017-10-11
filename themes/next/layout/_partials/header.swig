@@ -53,8 +53,12 @@
         <li class="menu-item menu-item-search">
           {% if theme.swiftype_key %}
             <a href="javascript:;" class="st-search-show-outputs">
-          {% elseif theme.local_search.enable || theme.algolia_search.enable %}
-            <a href="javascript:;" class="popup-trigger">
+          {% elseif config.search %}
+			<a href="javascript:;" class="popup-trigger">
+			<!-- 添加 开始 -->
+			{% elseif theme.algolia %}
+			<a href="javascript:;" class="popup-trigger">
+			<!-- 添加 结束 -->
           {% endif %}
             {% if theme.menu_icons.enable %}
               <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
