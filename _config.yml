@@ -63,6 +63,13 @@ pagination_dir: page
 # Extensions
 Plugins:
 - hexo-generator-cname
+- hexo-generator-feed
+
+#Feed Atom
+feed:
+type: atom
+path: atom.xml
+limit: 20
 ## Themes: https://hexo.io/themes/
 theme: next
 
@@ -95,7 +102,13 @@ youyan:
   id: 2131381
 
   
-search: true
+#search: true
+
+search:
+  path: search.xml
+  field: post
+  format: html
+  limit: 10000
 
 algolia:
   applicationID: 'JJHD8829T1'
