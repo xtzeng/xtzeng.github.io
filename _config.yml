@@ -110,16 +110,16 @@ search:
   format: html
   limit: 10000
 
-algolia:
-  applicationID: 'JJHD8829T1'
-  apiKey: '18d51d97de754ad683870942f517b621'
-  adminApiKey: '64bce7f1471e7d64a7662330327bb389'
-  indexName: 'xt_index'
-  chunkSize: 5000
-  fields:
-    - title
-    - slug
-    - content:strip
+#algolia:
+#  applicationID: 'JJHD8829T1'
+#  apiKey: '18d51d97de754ad683870942f517b621'
+#  adminApiKey: '64bce7f1471e7d64a7662330327bb389'
+#  indexName: 'xt_index'
+#  chunkSize: 5000
+#  fields:
+#    - title
+#    - slug
+#    - content:strip
   
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
