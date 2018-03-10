@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.xmqbeast.com/"/>
-  <updated>2018-03-09T01:55:13.850Z</updated>
+  <updated>2018-03-10T13:28:04.225Z</updated>
   <id>http://blog.xmqbeast.com/</id>
   
   <author>
@@ -15,6 +15,76 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>拥有好习惯的人</title>
+    <link href="http://blog.xmqbeast.com/2018/03/10/%E5%81%9A%E4%B8%80%E4%B8%AA%E6%8B%A5%E6%9C%89%E5%A5%BD%E4%B9%A0%E6%83%AF%E7%9A%84%E4%BA%BA/"/>
+    <id>http://blog.xmqbeast.com/2018/03/10/做一个拥有好习惯的人/</id>
+    <published>2018-03-10T13:17:29.000Z</published>
+    <updated>2018-03-10T13:28:04.225Z</updated>
+    
+    <content type="html"><![CDATA[<pre><code>思想决定行为，行为决定习惯，习惯决定性格，性格决定命运。</code></pre><p>  如果你想问习惯是什么？大卫-休谟会告诉你：“习惯是人生的伟大指导”。习惯的力量有多大？既不能被经验证明，也不能被经验证伪，能够说明的只有概率，做得多了，时间长了，习惯了也就成自然了。</p><p>习惯是一种长期的思维方式、处世态度，习惯是由一而再、再而三的思想行为形成的，习惯具有很强的惯性，跟转动的车轮一样。</p><p>人们往往会不由自主地启用自己的习惯，不论是好习惯还是不好的习惯，都是如此，可见习惯在不经意间会影响一个人的一生。但是坚持一个好的习惯却很难，比如坚持每天跑5公里，坚持每天背20个单词，坚持每个月看1本书等。这些习惯一旦养成，你会收获一个健康的身体、记住7300个单词，看12本书等等，也许你的生活也会就此改变。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;pre&gt;&lt;code&gt;思想决定行为，行为决定习惯，习惯决定性格，性格决定命运。
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;  如果你想问习惯是什么？大卫-休谟会告诉你：“习惯是人生的伟大指导”。习惯的力量有多大？既不能被经验证明，也不能被经验证伪，能够说明的只有概率，做得多了，时间长了，习
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>在 Markdown 语言中，如何实现段首空格的显示 </title>
+    <link href="http://blog.xmqbeast.com/2018/03/09/%E5%9C%A8-Markdown-%E8%AF%AD%E8%A8%80%E4%B8%AD%EF%BC%8C%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E6%AE%B5%E9%A6%96%E7%A9%BA%E6%A0%BC%E7%9A%84%E6%98%BE%E7%A4%BA/"/>
+    <id>http://blog.xmqbeast.com/2018/03/09/在-Markdown-语言中，如何实现段首空格的显示/</id>
+    <published>2018-03-09T15:47:36.000Z</published>
+    <updated>2018-03-09T15:50:44.254Z</updated>
+    
+    <content type="html"><![CDATA[<p>直接写</p><ul><li>半方大的空白‘&amp;ensp’;或‘&amp;#8194’;</li><li>全方大的空白‘&amp;emsp’;或‘&amp;#8195’;</li><li>不断行的空白格‘&amp;nbsp’;或‘&amp;#160’;</li><li>两个‘&amp;emsp’;即可</li><li>‘&amp;nbsp’;//半角空格（英文）</li><li>‘&amp;emsp’;//全角空格（中文）</li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;直接写&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;半方大的空白‘&amp;amp;ensp’;或‘&amp;amp;#8194’;&lt;/li&gt;
+&lt;li&gt;全方大的空白‘&amp;amp;emsp’;或‘&amp;amp;#8195’;&lt;/li&gt;
+&lt;li&gt;不断行的空白格‘&amp;amp;nbsp’;或‘&amp;amp;#160’;&lt;/li
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>hexo d -g 后出现验证报错verification failed</title>
+    <link href="http://blog.xmqbeast.com/2018/03/09/hexo-d-g-%E5%90%8E%E5%87%BA%E7%8E%B0%E9%AA%8C%E8%AF%81%E6%8A%A5%E9%94%99verification-failed/"/>
+    <id>http://blog.xmqbeast.com/2018/03/09/hexo-d-g-后出现验证报错verification-failed/</id>
+    <published>2018-03-09T15:41:07.000Z</published>
+    <updated>2018-03-09T15:45:39.482Z</updated>
+    
+    <content type="html"><![CDATA[<p>验证报错报错verification failed：<br>Error: Host key verification failed.<br>fatal: Could not read from remote repository.<br>Please make sure you have the correct access rights and the repository exists.</p><ul><li><p>解决方法：条件SSHkey<br>$ ssh-keygen -t rsa -C “<a href="mailto:imsofter@163.com" target="_blank" rel="noopener">imsofter@163.com</a>“<br>三次回车，即可设置密码为空</p></li><li><p>将生成的C:\Users\Administrator.ssh目录下的id_rsa.pub添加到github上</p></li><li><p>再ssh <a href="mailto:git@github.com" target="_blank" rel="noopener">git@github.com</a></p></li><li>Hi imsofter! You’ve successfully authenticated, but GitHub does not provide shell access.<br>Connection to github.com closed.</li></ul><p>再可以将代码推上github上了。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;验证报错报错verification failed：&lt;br&gt;Error: Host key verification failed.&lt;br&gt;fatal: Could not read from remote repository.&lt;br&gt;Please make sure y
+      
+    
+    </summary>
+    
+    
+      <category term="hexo" scheme="http://blog.xmqbeast.com/tags/hexo/"/>
+    
+  </entry>
   
   <entry>
     <title>关于开源</title>
@@ -430,70 +500,6 @@ DEVIC
     
     
       <category term="hexo" scheme="http://blog.xmqbeast.com/tags/hexo/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>阿里云服务器CentOS启动tomcat8巨慢的解决方案</title>
-    <link href="http://blog.xmqbeast.com/2017/10/10/%E9%98%BF%E9%87%8C%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8CentOS%E5%90%AF%E5%8A%A8tomcat8%E5%B7%A8%E6%85%A2%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/"/>
-    <id>http://blog.xmqbeast.com/2017/10/10/阿里云服务器CentOS启动tomcat8巨慢的解决方案/</id>
-    <published>2017-10-10T09:29:11.000Z</published>
-    <updated>2018-03-08T15:55:02.748Z</updated>
-    
-    <content type="html"><![CDATA[<p>摘要： 自己再阿里云申请了一台1G1核的机器，每次重启自己的服务tomcat都需要卡住很长时间 经过在网上搜索，找到了原因： Tomcat 7/8都使用org.apache.catalina.util.SessionIdGeneratorBase.createSecureRandom类产生安全随机类SecureRandom的实例作为会话ID，这里花去了342秒，也即接近6分钟。</p><p>自己再阿里云申请了一台1G1核的机器，每次重启自己的服务tomcat都需要卡住很长时间<br>经过在网上搜索，找到了原因：</p><p>Tomcat 7/8都使用org.apache.catalina.util.SessionIdGeneratorBase.createSecureRandom类产生安全随机类SecureRandom的实例作为会话ID，这里花去了342秒，也即接近6分钟。</p><p>SHA1PRNG算法是基于SHA-1算法实现且保密性较强的伪随机数生成器。</p><p>在SHA1PRNG中，有一个种子产生器，它根据配置执行各种操作。</p><p>1）如果Java.security.egd属性或securerandom.source属性指定的是”file:/dev/random”或”file:/dev/urandom”，那么JVM会使用本地种子产生器NativeSeedGenerator，它会调用super()方法，即调用SeedGenerator.URLSeedGenerator(/dev/random)方法进行初始化。</p><p>2）如果java.security.egd属性或securerandom.source属性指定的是其它已存在的URL，那么会调用SeedGenerator.URLSeedGenerator(url)方法进行初始化。</p><p>这就是为什么我们设置值为”file:///dev/urandom”或者值为”file:/./dev/random”都会起作用的原因。</p><p>在这个实现中，产生器会评估熵池（entropy pool）中的噪声数量。随机数是从熵池中进行创建的。当读操作时，/dev/random设备会只返回熵池中噪声的随机字节。/dev/random非常适合那些需要非常高质量随机性的场景，比如一次性的支付或生成密钥的场景。</p><p>当熵池为空时，来自/dev/random的读操作将被阻塞，直到熵池收集到足够的环境噪声数据。这么做的目的是成为一个密码安全的伪随机数发生器，熵池要有尽可能大的输出。对于生成高质量的加密密钥或者是需要长期保护的场景，一定要这么做。</p><p>那么什么是环境噪声？</p><p>随机数产生器会手机来自设备驱动器和其它源的环境噪声数据，并放入熵池中。产生器会评估熵池中的噪声数据的数量。当熵池为空时，这个噪声数据的收集是比较花时间的。这就意味着，Tomcat在生产环境中使用熵池时，会被阻塞较长的时间。</p><p>基本上就是这样，这里讲的更详细！</p><p>下面说解决方式：</p><p>网上说：</p><pre><code>通过修改Tomcat启动文件-Djava.security.egd=file:/dev/urandom通过修改JRE中的java.security文件securerandom.source=file:/dev/urandom</code></pre><p>这两种方式在我这都失败，不起作用，不知道是我的问题，还是其他问题。</p><p>最终解决方式：</p><pre><code>yum install rng-tools安装rngd服务（熵服务）systemctl start rngd启动服务如果你的CPU不支持DRNG特性或者像我一样使用虚拟机，可以使用/dev/unrandom来模拟。cp /usr/lib/systemd/system/rngd.service /etc/systemd/system编辑/etc/systemd/system/rngd.service service小结，ExecStart=/sbin/rngd -f -r /dev/urandomsystemctl daemon-reload重新载入服务systemctl restart rngd重启服务</code></pre><p>这样安装了熵服务后问题就解决了，Tomcat启动又回到了以往的速度。</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;摘要： 自己再阿里云申请了一台1G1核的机器，每次重启自己的服务tomcat都需要卡住很长时间 经过在网上搜索，找到了原因： Tomcat 7/8都使用org.apache.catalina.util.SessionIdGeneratorBase.createSecureR
-      
-    
-    </summary>
-    
-    
-      <category term="centos" scheme="http://blog.xmqbeast.com/tags/centos/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Vue2.0入门</title>
-    <link href="http://blog.xmqbeast.com/2017/10/10/Vue2-0%E5%85%A5%E9%97%A8/"/>
-    <id>http://blog.xmqbeast.com/2017/10/10/Vue2-0入门/</id>
-    <published>2017-10-09T16:50:40.000Z</published>
-    <updated>2018-03-08T15:55:02.735Z</updated>
-    
-    <summary type="html">
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>linux下修改防火墙配置重启命令</title>
-    <link href="http://blog.xmqbeast.com/2017/10/09/linux%E4%B8%8B%E4%BF%AE%E6%94%B9%E9%98%B2%E7%81%AB%E5%A2%99%E9%85%8D%E7%BD%AE%E9%87%8D%E5%90%AF%E5%91%BD%E4%BB%A4/"/>
-    <id>http://blog.xmqbeast.com/2017/10/09/linux下修改防火墙配置重启命令/</id>
-    <published>2017-10-09T10:12:08.000Z</published>
-    <updated>2018-03-08T15:55:02.738Z</updated>
-    
-    <content type="html"><![CDATA[<ol><li><p>在/etc/sysconfig/iptables里添加</p><pre><code># vi /etc/sysconfig/iptables</code></pre><p>添加一条配置规则，如要想开放8080的端口，如下所示：</p><pre><code>-A RH-Firewall-1-INPUT -m state --state NEW -m tcp -p tcp --dport 8080 –j ACCEPT</code></pre></li><li><p>重启iptables</p><pre><code># /etc/init.d/iptables restart</code></pre></li><li><p>看下状态</p><pre><code># /etc/init.d/iptables status</code></pre></li></ol><p>4.关闭防火墙</p><p>（1） 重启后永久性生效：</p><pre><code>开启：chkconfig iptables on 关闭：chkconfig iptables off</code></pre><p>（2） 即时生效，重启后失效（即重启后防火墙自动开启）：</p><pre><code>开启：service iptables start关闭：service iptables stop</code></pre>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;ol&gt;
-&lt;li&gt;&lt;p&gt;在/etc/sysconfig/iptables里添加&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;# vi /etc/sysconfig/iptables
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;添加一条配置规则，如要想开放8080的端口，如下所示：&lt;/p&gt;
-&lt;pre&gt;&lt;co
-      
-    
-    </summary>
-    
-    
-      <category term="linux" scheme="http://blog.xmqbeast.com/tags/linux/"/>
     
   </entry>
   

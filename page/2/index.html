@@ -300,6 +300,409 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://blog.xmqbeast.com/2017/11/02/linux下配置网络静态ip/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="∮小煤球メ">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="∮小煤球メ">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/11/02/linux下配置网络静态ip/" itemprop="url">
+                  linux下配置网络静态ip
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-02T17:44:08+08:00">
+                2017-11-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>linux下配置网络静态ip</p>
+<pre><code>vi /etc/sysconfig/network-scripts/ifcfg-eth0
+
+service network restart 或/etc/init.d/network restart
+
+
+
+DEVICE=eth0（设备名称）
+HWADDR=00：0c:29：d3:bb:e5 (mac地址)
+TYPE=Ethernet （网络类型）
+ONBOOT=yes (开机启动)
+BOOTTPROTO=static （静态ip）
+DNS1：192.168.1.1 (dns)
+IPADDR=192.168.1.45 （ip地址）
+NETMASK=255.255.255.0 (子网掩码)
+GATEWAY=192.168.1.1 （网关）
+</code></pre><p>如果ping的是广域网而不是局域网，还要确保网关和DNS正确，<br>用命令route add default gw 192.168.1.1</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://blog.xmqbeast.com/2017/11/02/关于冰山模型/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="∮小煤球メ">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="∮小煤球メ">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/11/02/关于冰山模型/" itemprop="url">
+                  关于冰山模型
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-02T01:51:05+08:00">
+                2017-11-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>人类为何有人【小富即安】，而有人有【鸿鹄之志】呢？</p>
+<p>这里有两个问题：</p>
+<p>1.为什么会有动机的产生？</p>
+<p>2.动机为什么会有所不同?</p>
+<p>  我们从冰山模型说起，可能学心理学或者人力资源的人会知道一些。</p>
+<p>模型表达的核心意思有两点：</p>
+<pre><code>1.人类表现出来的知识和技能只是冰山的一角，决定自身综合素质的是冰山下面的部分：价值观、自我认知、品质、动机。
+
+2.冰山以上相对好建设，冰山以下部分，相对难以改变。
+</code></pre><p>这就是冰山模型，由美国著名的心理学家麦克利兰在1973年提出的一个著名模型，所谓“冰山模型”，就是将人员个体素质的不同表现表式划分为表面的“冰山以上部分”和深藏的“冰山以下部分”。</p>
+<p>模型结构如下图展示：</p>
+<p><img src="http://oncykm32h.bkt.clouddn.com/ice_model.jpg" alt="ice-model"></p>
+<p>以上，从上到下，改变难度越来越大，被感知的难度也越来越大。技能比知识好学，价值观虽然难改变，但是也可以被调整或者自我调整，而最底层的“动机”的形成，现在普遍认为只和基因及童年因素有关，几乎无法改变。所以现在有些理论认为冰山模型最下面应该还有一层基因，我们暂时就不说了。</p>
+<p>层次划分：</p>
+<p><img src="http://oncykm32h.bkt.clouddn.com/ice-m.png" alt="ice-model"></p>
+<pre><code>1、知识，指个人在某一特定领域拥有的事实型与经验型信息
+2、技能，指结构化地运用知识完成某项
+具体工作的能力,即对某一特定领域所需技术与知识的掌握情况
+3、社会角色，指一个人基于态度和价值观的行为方式与风格
+4、自我概念，指一个人的态度、价值观和自我印象
+5、特质（性格），指个性、身体特征对环境和各种信息所表现出来的持续反应。品质与动机可以预测个人在长期无人监督下的工作状态。
+6、动机，指在一个特定领域的自然而持续的想法和偏好（如成就、亲和、影响力），它们将驱动，引导和决定一个人的外在行动。
+</code></pre><p>其中第1、2项大部分与工作所要求的直接资质相关，我们能够在比较短的时间使用一定的手段进行测量。可以通过考察资质证书、考试、面谈、简历等具体形式来测量，也可以通过培训、锻炼等办法来提高这些素质。</p>
+<p>第3、4、5、6项往往很难度量和准确表述，又少与工作内容直接关联。只有其主观能动性变化影响到工作时，其对工作的影响才会体现出来。考察这些方面的东西，每个管理者有自己独特的思维方式和理念，但往往因其偏好而有所局限。管理学界及心理学有着一些测量手段，但往往复杂不易采用或效果不够准确。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://blog.xmqbeast.com/2017/10/31/卢巧音唱的三角志歌词所代表的含义/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="∮小煤球メ">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="∮小煤球メ">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/10/31/卢巧音唱的三角志歌词所代表的含义/" itemprop="url">
+                  卢巧音唱的三角志歌词所代表的含义
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-31T18:25:04+08:00">
+                2017-10-31
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>这首歌应该说的是一个女生爱上了一个男生,但是这个男生特别特别花心,这个女生不止一次的发现男生和别的女生有问题,有一天这个女生又发现了这个男生和另一个女生之间的事情,并没有揭穿他,应为她知道,即使揭穿他这一次,仍有下一次.也许当初这个女生也是以第三者的身份和这个男生在一起的,在一起之后发现这个男生的花心,于是这个女生就彻底的看透了这个男生,决定洒脱放手,因为她知道,不放手还有第四者、第五者,即使这个男生这次回到他身旁,仍会有下一次.爱情如果存在三人之间的战争,不管输赢其结果都是伤痕累累.爱上这种花心男是不存在好心有好报的,温柔、善良、妥协都根治不了这种病,也许会一时好转,但总有一天会复发…即使曾在一起再温馨、拥有再美好的回忆终究不会拥有永恒,也许他爱你,但他不会只爱你,更不会永远爱你…</p>
+<p>这就是我对这首歌的理解</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://blog.xmqbeast.com/2017/10/28/喵喵和小煤球/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1238,420 +1641,6 @@ npm info underscore
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://blog.xmqbeast.com/2017/10/10/阿里云服务器CentOS启动tomcat8巨慢的解决方案/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="∮小煤球メ">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="∮小煤球メ">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/10/10/阿里云服务器CentOS启动tomcat8巨慢的解决方案/" itemprop="url">
-                  阿里云服务器CentOS启动tomcat8巨慢的解决方案
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-10T17:29:11+08:00">
-                2017-10-10
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>摘要： 自己再阿里云申请了一台1G1核的机器，每次重启自己的服务tomcat都需要卡住很长时间 经过在网上搜索，找到了原因： Tomcat 7/8都使用org.apache.catalina.util.SessionIdGeneratorBase.createSecureRandom类产生安全随机类SecureRandom的实例作为会话ID，这里花去了342秒，也即接近6分钟。</p>
-<p>自己再阿里云申请了一台1G1核的机器，每次重启自己的服务tomcat都需要卡住很长时间<br>经过在网上搜索，找到了原因：</p>
-<p>Tomcat 7/8都使用org.apache.catalina.util.SessionIdGeneratorBase.createSecureRandom类产生安全随机类SecureRandom的实例作为会话ID，这里花去了342秒，也即接近6分钟。</p>
-<p>SHA1PRNG算法是基于SHA-1算法实现且保密性较强的伪随机数生成器。</p>
-<p>在SHA1PRNG中，有一个种子产生器，它根据配置执行各种操作。</p>
-<p>1）如果Java.security.egd属性或securerandom.source属性指定的是”file:/dev/random”或”file:/dev/urandom”，那么JVM会使用本地种子产生器NativeSeedGenerator，它会调用super()方法，即调用SeedGenerator.URLSeedGenerator(/dev/random)方法进行初始化。</p>
-<p>2）如果java.security.egd属性或securerandom.source属性指定的是其它已存在的URL，那么会调用SeedGenerator.URLSeedGenerator(url)方法进行初始化。</p>
-<p>这就是为什么我们设置值为”file:///dev/urandom”或者值为”file:/./dev/random”都会起作用的原因。</p>
-<p>在这个实现中，产生器会评估熵池（entropy pool）中的噪声数量。随机数是从熵池中进行创建的。当读操作时，/dev/random设备会只返回熵池中噪声的随机字节。/dev/random非常适合那些需要非常高质量随机性的场景，比如一次性的支付或生成密钥的场景。</p>
-<p>当熵池为空时，来自/dev/random的读操作将被阻塞，直到熵池收集到足够的环境噪声数据。这么做的目的是成为一个密码安全的伪随机数发生器，熵池要有尽可能大的输出。对于生成高质量的加密密钥或者是需要长期保护的场景，一定要这么做。</p>
-<p>那么什么是环境噪声？</p>
-<p>随机数产生器会手机来自设备驱动器和其它源的环境噪声数据，并放入熵池中。产生器会评估熵池中的噪声数据的数量。当熵池为空时，这个噪声数据的收集是比较花时间的。这就意味着，Tomcat在生产环境中使用熵池时，会被阻塞较长的时间。</p>
-<p>基本上就是这样，这里讲的更详细！</p>
-<p>下面说解决方式：</p>
-<p>网上说：</p>
-<pre><code>通过修改Tomcat启动文件-Djava.security.egd=file:/dev/urandom
-
-通过修改JRE中的java.security文件securerandom.source=file:/dev/urandom
-</code></pre><p>这两种方式在我这都失败，不起作用，不知道是我的问题，还是其他问题。</p>
-<p>最终解决方式：</p>
-<pre><code>yum install rng-tools安装rngd服务（熵服务）
-
-systemctl start rngd启动服务
-
-如果你的CPU不支持DRNG特性或者像我一样使用虚拟机，可以使用/dev/unrandom来模拟。
-
-cp /usr/lib/systemd/system/rngd.service /etc/systemd/system
-
-编辑/etc/systemd/system/rngd.service service小结，ExecStart=/sbin/rngd -f -r /dev/urandom
-
-systemctl daemon-reload重新载入服务
-
-systemctl restart rngd重启服务
-</code></pre><p>这样安装了熵服务后问题就解决了，Tomcat启动又回到了以往的速度。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://blog.xmqbeast.com/2017/10/10/Vue2-0入门/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="∮小煤球メ">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="∮小煤球メ">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/10/10/Vue2-0入门/" itemprop="url">
-                  Vue2.0入门
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-10T00:50:40+08:00">
-                2017-10-10
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://blog.xmqbeast.com/2017/10/09/linux下修改防火墙配置重启命令/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="∮小煤球メ">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="∮小煤球メ">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/10/09/linux下修改防火墙配置重启命令/" itemprop="url">
-                  linux下修改防火墙配置重启命令
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-09T18:12:08+08:00">
-                2017-10-09
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <ol>
-<li><p>在/etc/sysconfig/iptables里添加</p>
-<pre><code># vi /etc/sysconfig/iptables
-</code></pre><p>添加一条配置规则，如要想开放8080的端口，如下所示：</p>
-<pre><code>-A RH-Firewall-1-INPUT -m state --state NEW -m tcp -p tcp --dport 8080 –j ACCEPT
-</code></pre></li>
-<li><p>重启iptables</p>
-<pre><code># /etc/init.d/iptables restart
-</code></pre></li>
-<li><p>看下状态</p>
-<pre><code># /etc/init.d/iptables status
-</code></pre></li>
-</ol>
-<p>4.关闭防火墙</p>
-<p>（1） 重启后永久性生效：</p>
-<pre><code>开启：chkconfig iptables on 
-关闭：chkconfig iptables off
-</code></pre><p>（2） 即时生效，重启后失效（即重启后防火墙自动开启）：</p>
-<pre><code>开启：service iptables start
-关闭：service iptables stop
-</code></pre>
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1701,7 +1690,7 @@ systemctl restart rngd重启服务
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">44</span>
+                <span class="site-state-item-count">47</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>

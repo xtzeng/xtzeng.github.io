@@ -23,14 +23,14 @@
     </url>
 
     <url>
-        <loc>http://blog.xmqbeast.com/tags/nodejs/</loc>
+        <loc>http://blog.xmqbeast.com/tags/mysql/</loc>
         <lastmod>2018-03-08T15:55:02.742Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
-        <loc>http://blog.xmqbeast.com/tags/mysql/</loc>
+        <loc>http://blog.xmqbeast.com/tags/nodejs/</loc>
         <lastmod>2018-03-08T15:55:02.742Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
@@ -58,13 +58,6 @@
     </url>
 
     <url>
-        <loc>http://blog.xmqbeast.com/tags/hexo/</loc>
-        <lastmod>2018-03-08T15:55:02.744Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>http://blog.xmqbeast.com/tags/mongodb/</loc>
         <lastmod>2018-03-08T15:55:02.744Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -79,14 +72,14 @@
     </url>
 
     <url>
-        <loc>http://blog.xmqbeast.com/tags/%E5%BF%83%E7%90%86/</loc>
+        <loc>http://blog.xmqbeast.com/tags/centos/</loc>
         <lastmod>2018-03-08T15:55:02.748Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
-        <loc>http://blog.xmqbeast.com/tags/centos/</loc>
+        <loc>http://blog.xmqbeast.com/tags/%E5%BF%83%E7%90%86/</loc>
         <lastmod>2018-03-08T15:55:02.748Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
@@ -95,6 +88,13 @@
     <url>
         <loc>http://blog.xmqbeast.com/tags/opensource/</loc>
         <lastmod>2018-03-09T01:55:13.850Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://blog.xmqbeast.com/tags/hexo/</loc>
+        <lastmod>2018-03-09T15:45:39.482Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>

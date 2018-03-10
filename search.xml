@@ -1,6 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[拥有好习惯的人]]></title>
+    <url>%2F2018%2F03%2F10%2F%E5%81%9A%E4%B8%80%E4%B8%AA%E6%8B%A5%E6%9C%89%E5%A5%BD%E4%B9%A0%E6%83%AF%E7%9A%84%E4%BA%BA%2F</url>
+    <content type="text"><![CDATA[思想决定行为，行为决定习惯，习惯决定性格，性格决定命运。 如果你想问习惯是什么？大卫-休谟会告诉你：“习惯是人生的伟大指导”。习惯的力量有多大？既不能被经验证明，也不能被经验证伪，能够说明的只有概率，做得多了，时间长了，习惯了也就成自然了。 习惯是一种长期的思维方式、处世态度，习惯是由一而再、再而三的思想行为形成的，习惯具有很强的惯性，跟转动的车轮一样。 人们往往会不由自主地启用自己的习惯，不论是好习惯还是不好的习惯，都是如此，可见习惯在不经意间会影响一个人的一生。但是坚持一个好的习惯却很难，比如坚持每天跑5公里，坚持每天背20个单词，坚持每个月看1本书等。这些习惯一旦养成，你会收获一个健康的身体、记住7300个单词，看12本书等等，也许你的生活也会就此改变。]]></content>
+  </entry>
+  <entry>
+    <title><![CDATA[在 Markdown 语言中，如何实现段首空格的显示]]></title>
+    <url>%2F2018%2F03%2F09%2F%E5%9C%A8-Markdown-%E8%AF%AD%E8%A8%80%E4%B8%AD%EF%BC%8C%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E6%AE%B5%E9%A6%96%E7%A9%BA%E6%A0%BC%E7%9A%84%E6%98%BE%E7%A4%BA%2F</url>
+    <content type="text"><![CDATA[直接写 半方大的空白‘&amp;ensp’;或‘&amp;#8194’; 全方大的空白‘&amp;emsp’;或‘&amp;#8195’; 不断行的空白格‘&amp;nbsp’;或‘&amp;#160’; 两个‘&amp;emsp’;即可 ‘&amp;nbsp’;//半角空格（英文） ‘&amp;emsp’;//全角空格（中文）]]></content>
+  </entry>
+  <entry>
+    <title><![CDATA[hexo d -g 后出现验证报错verification failed]]></title>
+    <url>%2F2018%2F03%2F09%2Fhexo-d-g-%E5%90%8E%E5%87%BA%E7%8E%B0%E9%AA%8C%E8%AF%81%E6%8A%A5%E9%94%99verification-failed%2F</url>
+    <content type="text"><![CDATA[验证报错报错verification failed：Error: Host key verification failed.fatal: Could not read from remote repository.Please make sure you have the correct access rights and the repository exists. 解决方法：条件SSHkey$ ssh-keygen -t rsa -C “imsofter@163.com“三次回车，即可设置密码为空 将生成的C:\Users\Administrator.ssh目录下的id_rsa.pub添加到github上 再ssh git@github.com Hi imsofter! You’ve successfully authenticated, but GitHub does not provide shell access.Connection to github.com closed. 再可以将代码推上github上了。]]></content>
+      <tags>
+        <tag>hexo</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[关于开源]]></title>
     <url>%2F2018%2F03%2F09%2F%E5%85%B3%E4%BA%8E%E5%BC%80%E6%BA%90%2F</url>
     <content type="text"><![CDATA[&emsp;&emsp;一直很想做一些开源的东西，做了几年了java后端的相关工作，一直很佩服也很欣赏spring的那些开源项目，大到银行、电商，小到一些初创公司的项目，基本中间件都是用spring，无一例外。自己也从开源社区github学到非常多的东西，所以，接下来的重心会放在写一些技术博客上。互联网催生了一大批程序员，这也是我what i make a living。 &emsp;&emsp;其实可能自己从小缺少关爱等其他一些因素，导致现在的我三观跟大多数人并不太一样，自己也一直很努力在调整，希望可以被大众接受。自己业余时间也看了很多心理学、生理学、哲学方面的东西，也许在外人看起来是一些心灵鸡汤的，但是我觉得这些是科学，有机会也希望可以分享给大家，虽然也不知道自己写的东西会不会被看到，但是还是希望可以帮助到一些需要帮助的人。这也是我热衷于开源的一个原因 &emsp;&emsp; 现在这个社会因为信息不对称，催生了很多商业的东西，也许那就是商业的本质，但自己其实更感兴趣的是一些可以为社会创造价值的东西，一直找不到入口去创业，所以会把更多精力花在开源的东西上面。这段时间思考更多的可能是生与死、善与恶、天使与魔鬼这些东西，可能自己或多或少有点抑郁症，有时候确实情绪非常低落的时候，会想离开这个世界。因为害怕自己变成一个坏人，所以一直告诉自己不管做什么，一定要善良。很高兴，自己没有变成坏人，希望日后可以变成一个对社会有用的人，也会尽自己一份最大的努力去做]]></content>
