@@ -300,6 +300,282 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://blog.xmqbeast.com/2017/10/07/linux下安装pm2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="∮小煤球メ">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="∮小煤球メ">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/10/07/linux下安装pm2/" itemprop="url">
+                  linux下安装pm2
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-07T14:15:55+08:00">
+                2017-10-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>如果可以联网</p>
+<pre><code>直接执行：npm install -g pm2
+</code></pre><p>登录部署服务器</p>
+<p>执行 npm config get prefix 看一下这台服务器的npm默认安装目录， 例如目录为 ：</p>
+<pre><code>/opt/java/node-v6.11.4-linux-x64
+</code></pre><p>到这一步，你已经可以使用 /opt/java/node-v6.11.4-linux-x64/lib/node_modules/pm2/bin/pm2 执行pm2的命令了， 下面就是把这个命令加到系统环境中</p>
+<pre><code>ln -s /opt/java/node-v6.11.4-linux-x64/lib/node_modules/pm2/bin/pm2 /usr/local/bin/pm2
+</code></pre><p>下面就是把这个命令加到系统环境中</p>
+<p>这样，就可以直接使用pm2命令来各种操作了</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://blog.xmqbeast.com/2017/10/07/linux下安装node环境/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="∮小煤球メ">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="∮小煤球メ">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/10/07/linux下安装node环境/" itemprop="url">
+                  linux下安装node环境
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-07T13:46:43+08:00">
+                2017-10-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>首先去官网下载代码，这里一定要注意安装分两种，一种是Source Code源码，一种是编译后的文件。</p>
+<p><img src="http://oncykm32h.bkt.clouddn.com/nodejs-download.png" alt="nodejs-download"></p>
+<p>（一） 编译好的文件</p>
+<p>  简单说就是解压后，在bin文件夹中已经存在node以及npm，如果你进入到对应文件的中执行命令行一点问题都没有，不过不是全局的，所以将这个设置为全局就好了。</p>
+<pre><code>cd node-v0.10.28-linux-x64/bin
+ls
+./node -v
+</code></pre><p>然后设置全局：</p>
+<pre><code>ln -s /opt/java/node-v6.11.4-linux-x64/bin/node /usr/local/bin/node
+ln -s /opt/java/node-v6.11.4-linux-x64/bin/npm /usr/local/bin/npm
+</code></pre><p>这里/home/kun/mysofltware/这个路径是你自己放的，你将node文件解压到哪里就是哪里。</p>
+<p>（二）通过源码编译</p>
+<p>这种方式你下载的文件是Source code，</p>
+<pre><code>#  tar xvf node-v0.10.28.tar.gz 
+#  cd node-v0.10.28 
+#  ./configure 
+# make 
+# make install 
+# cp /usr/local/bin/node /usr/sbin/ 
+</code></pre><p>查看当前安装的Node的版本</p>
+<pre><code># node -v 
+v6.11.4
+</code></pre><p>（三）apt-get</p>
+<p>还有一种就是shell提示的apt-get方式</p>
+<pre><code>sudo apt-get install nodejs
+sudo apt-get install npm
+</code></pre><p>这么装完你会发现,node命令好使，nodejs命令可以用</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://blog.xmqbeast.com/2017/10/07/linux下解压tar-xz文件/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1473,463 +1749,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://blog.xmqbeast.com/2017/06/01/如何高效的完成不喜欢的工作-学习任务/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="∮小煤球メ">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="∮小煤球メ">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/06/01/如何高效的完成不喜欢的工作-学习任务/" itemprop="url">
-                  如何高效的完成不喜欢的工作/学习任务
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-01T17:24:45+08:00">
-                2017-06-01
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>进化心理学认为：人天生就是理性的动物，据说这种理性的能力把我们跟其他动物分开。而古希腊的柏拉图和亚里士多德也发现了这一现象，并提出了“意志薄弱”这一哲学问题，即：我们明知道学习对我们有利，但总不喜欢做，或是即使勉强学习，也是拖拖拉拉，效率低下。而这种拖延的低效学习，往往又会对人产生负罪感，从而恶性循环。</p>
-<p>   但事实上，掌握合适自己的学习方法，将它变成一种生活中的习惯，保持高效率的学习，并不是一件不可能完成的事。以下推荐的几种方法，或许能让你一点点改变拖延的毛病</p>
-<p>1.帕累托定律与时间管理的“三只青蛙” </p>
-<p> 1897年，意大利经济学者帕累托偶然注意到19世纪英国人的财富和收益模式。他从大量具体的事实中发现：社会上20%的人占有80%的社会财富。这个现象在工作和学习中也是通用的，把二分法则运用得熟练，可以将那些影响最小，价值最低的工作和最重要，价值最高的任务区分开来。</p>
-<p>而在时间管理中，也有“三只青蛙”的说法。“三只青蛙”，即一天中最重要的三件任务。我们可以将这二者结合起来，确定属于自己的一天中，最重要和紧急的三件事（“三只青蛙”），运用早晨块状的时间，把他们一个个“吃掉”。而最优先“吃掉”的青蛙，自然是最丑最大（最重要）的那只。</p>
-<p>在《超效率理论》这本书里，同样提到了“让你的时间头重脚轻”的观点：一个高效的工作日程，往往是把一天中最难做，最费头脑的事情做完。如果相反，人们总是还没有做到最重要的工作，就已经疲惫不堪了。头重脚轻的工作安排，容易产生许多好处。当你在早上完成了最难啃的任务之后，就算累了，也有信心来处理其他杂事。</p>
-<p>2.番茄工作法与任务清单</p>
-<p>无论是学习还是工作，最大的阻碍就是拖延。曾国藩曾经说过，一勤天下无难事，这句话虽然有鸡汤的成分，但也从侧面说明了人们普遍懒惰的劣性。而在限定的时间内，规定自己必须完成一些任务，既是保障高效工作的前提，也是面对拖延这个小恶魔“残酷”的考验   </p>
-<p>番茄工作法是一种简易的时间管理方法。具体的内容是将番茄时间设为25分钟，专注工作，中途不允许做任何与该任务无关的事，直到番茄时钟响起，然后进行短暂的5分钟休息。每4个番茄时段多休息一会儿。</p>
-<p>番茄工作法的优点在于，一则时间短，半个小时的工作总是比连续几个小时更容易让人在心理上接受。另一个则在于营造的紧迫感和压力感，它会促使你不知不觉的加快工作的速度和效率。</p>
-<p>而想要保障高效率的工作，一份目标明确的任务清单也是必不可少，不明确的任务清单是滋生拖延症的温床。如果我在自己的任务清单里第一条写着：完成毕业论文。那么最有可能出现的场景是：我深情的望着这六个大字发呆，然后拿起手机，百度了半个小时，之后选择放弃，去玩斗地主去了。</p>
-<p>所以，正确的任务清单应该是清晰而准确的。写毕业论文这几个字，我可以把它理解为：选题，找研究材料，作注释，写论点，甚至可以更加细化。再比如说打扫房间卫生，这件事的时间限定是模糊的，我可以在20分钟内将它搞定，也可以拖上一个礼拜。如果没有番茄钟的监督，许多事可能就会永远耽搁下去。当然，番茄钟也只是一种方法，你需要的，只是一个能够监督你有效利用时间的工具而已。</p>
-<p>3.结构拖延法与动力催化</p>
-<p>约翰·佩里在他的《拖拉一点也无妨》这本书里，介绍了一种用逆向思维战胜拖延症的方法–结构化拖延法。结构化拖延法正是利用了拖延者的这种心态，为某人必须完成的那些任务梳理出一个结构。譬如说我明天打算完成五件事：</p>
-<p>完成一篇文案稿件</p>
-<p>背诵100个单词</p>
-<p>写一篇知乎回答</p>
-<p>看完一部电影并写下观后感</p>
-<p>跑完5公里</p>
-<p>在这五件事里，前三件排列在先的任务，对我来说是当天最重要。但是当我早上醒来，准备写文案稿件的时候，我发现自己毫无头绪，那么为了避免一事无成的焦虑感，我就会选择先完成第四项和第五项，从心理上告诉自己：我今天可不是什么也没有做。</p>
-<p>这样虽然我的稿子今天还是没有写，但至少比玩了一天的手机强。</p>
-<p>这种结构拖延法与上述的帕累托定律看似矛盾，但是在不同的学习任务中仍然可供作不同的选择。不论是哪种方法，只要从这些很小的习惯中坚持，变成一个良性循环，就能获得源源不断的力量。</p>
-<p>此外，《心理暗示力》中提到了一条重复定律：<br>任何的行为和思维，只要你不但的重复就会得到不断的加强。在你的潜意识当中，只要你能够不断地重复一些人、事、物，它们都会在潜意识里变成事实。</p>
-<p>把你的目标列成一个表，放在电脑桌面上。把能刺激你的事写成便签，放在工作中显眼的位置，把你的公开承诺告诉你身边的人，因担心自己做不到产生的压力会让你保持动力。类似这些小方法，都可以成为你前进的动力催化。</p>
-<p>4.日程校对与避免刺激</p>
-<p>如果你将你想要做的事写在任务清单上，却没有完成，就会产生拖延。如果你将任务清单上的事完成了，还想要加上一些的时候，就是在破坏信任。任务清单必须要保障它的权威性。</p>
-<p>有时候过度勤奋并不是一件好事，你把预计三天的任务清单在一天内做完，看似高效，但实际上却破坏了这份清单的权威。下一次，你可能就会不太重视它了，因为在你的潜意识里，它是可以变更的，这并不是一个好的信号，它或许会打破你的自律。</p>
-<p>日程校对是你对你的任务清单有着明确的认知，当你没做完的时候，坚持把他们做完。如果完成了，你就停下。</p>
-<p>在这个碎片化信息充斥着我们生活的时代，有太多的事容易让我们分心了。微信上闪烁不停的群消息是刺激，收件箱里的广告也是刺激。所以，当我们要开始工作的时候，请关闭掉这一些能够打扰你的信息刺激。否则，你是无法做到专注的。</p>
-<p>5.保持活力与监督反馈</p>
-<p>高效率的工作是一件很费精力的事，所以这就更需要我们保持自身的活力。在你疲惫的时候，两个小时完成的任务，可能在清醒的时候，40分钟就能够做完。</p>
-<p>想要维持高效率的工作，除了日常的运动以外，为体能进食也尤为重要，血糖高低的水平对体能有着极大的影响。你吃的每种食物都有着对应的血糖值，血糖值高，对你短跑和短暂的运动是有利的，但是在一天的学习中，却未必是好事。所以，多吃低血糖值的全谷物食物吧，它们释放的热量的速度较慢，可以让你不会经历含糖食物快速消耗的冲击。如果条件允许的话，少食多餐也对你的精力保持很有帮助。</p>
-<p>再来谈谈监督和反馈。如果你决定每天打卡一百个单词，坚持一百天。你独自完成成败的概率肯定远远大于一群人监督你完成失败的概率。因为什么？因为你怕丢脸呀。如果你告诉了身边的好友，甚至发了朋友圈，下次坚持不住想要放弃的时候，想想那些给你点赞的人，那些等着你失败嘲笑你的人，是不是又重新有了勇气？</p>
-<p>很多时候你优柔寡断下不定决心去学习工作，其实只是缺少一个破釜沉舟的勇气而已。如果别人的嘲讽对你来说都没有用，那就用金钱吧。给自己设定一个有些难度，但是又能够完成的目标，给朋友支付一笔你能够承受的“巨款”，然后让他来监督你。在预计的时间内，你做到了，钱就还给你，做不到，钱就归他。相信这种简单粗暴的方法，能够让很多人振作起来。</p>
-<p>既然有了惩罚，那么必然就要有奖励。比如：每天坚持练习半小时吉他，一个月后就奖励自己一双跑鞋。每天看完一小时的书，一个月就奖励自己一部kindle，这些增加目标收益，及时反馈，给予自我奖励的方式，都是不错的方法。</p>
-<p>6.养成早起的习惯和独特的仪式感</p>
-<p>早起并不是因为鸡汤书上说的，早起就能够成功，而是因为早起能够训练意志力和自控力，形成习惯化的规律生活。我曾经试过一段时间每天睡到中午自然醒，结果就是，精力变得越来越差，十二点半起床洗漱吃完外卖后，打开电脑工作，到下午三四点又忽忽犯困了，这时候如果不睡，做事效率会变得越来越低，如果睡去，到了晚上，没有一两点又是睡不着的。一整天下来，诧异的法信，真正有效率的工作时间竟然只有两三个小时。</p>
-<p>作为一个熬夜多年的夜猫子，我也尝试过多种方法督促自己早睡，但是不论是听纯音乐，还是深呼吸数绵羊，统统都没用。无数个辗转反侧的夜里，我总是忍不住睁开通红的双眼，缓缓摁亮手机。</p>
-<p>后来我发现真正有用的，只有早起，不曾在清晨的阳光里睁开疲惫双眼的夜猫，不足以人生。只有当你忍受了多次睡眠不足还要坚持起床的苦痛，你才能真正明白早睡的幸福。</p>
-<p>早起需要准备什么？</p>
-<p>一个准时响起的闹钟以及一个属于自己的仪式习惯就够了。闹钟这点不必多说，如果你打算6点起床，6点半开始一天的工作，我的建议是5：57分的闹钟，一首歌的时间让自己从混沌走向清醒。</p>
-<p>而需要仪式感，是因为我们的主动性和自律性比我们想象的更加稀缺。阿里纳斯在罚球之前，喜欢在接球之后把球在腰部绕上三个圈。网球运动员发球时，有的喜欢摸一下自己的鼻子。这些有意无意的信号，都是在心里给予自己暗示。</p>
-<p>需要什么样的仪式感呢？其实很简单，按照自己喜欢的来吧，早上听完一首歌曲再去刷牙洗脸，锻炼完10分钟keep以后喝一杯温水，怎么样都好，你只是需要给予自己一个满血复活的一天现在开始了的信号。</p>
-<p>其实最重要的还是自己能明白高效率工作和学习给自己带来的乐趣。它不仅仅在于当你完成了任务清单能够放心的领到奖金或是不会挂科，更在于有智慧和效率的学习与工作，能够提升自己的生活质量。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://blog.xmqbeast.com/2017/04/28/linux命令-系统管理/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="∮小煤球メ">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="∮小煤球メ">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/04/28/linux命令-系统管理/" itemprop="url">
-                  linux命令-系统管理
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-28T16:47:59+08:00">
-                2017-04-28
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>1.查看当前日历：cal<br>  cal 用于查看当前日历，-y显示整年日历：</p>
-<p>2.显示或设置时间：date</p>
-<p>3.查看进程信息：ps</p>
-<p>  小知识（以ps为例）：<br>  查看命令路径，which ps (显示-/bin/ps)<br>  命令帮助：ps –help<br>  命令完全手册：man ps</p>
-<p>  说明：ps全称是:process status(进程)，他是提供进程信息的<br>  ps命令用于报告当前系统的进程状态，可以搭配kill命令使用随时中断、删除没用的进程。<br>  进程是一个具有独立功能的程序，它是操作系统动态执行的基本单元。<br>  ps命令可以查看进程的详细状况，常用选项如下：</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">选项</th>
-<th style="text-align:right">含义</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">-a</td>
-<td style="text-align:right">显示终端上的所有进程，包括其他用户的进程</td>
-</tr>
-<tr>
-<td style="text-align:left">-u</td>
-<td style="text-align:right">显示进程的详细状态</td>
-</tr>
-<tr>
-<td style="text-align:left">-x</td>
-<td style="text-align:right">显示没有控制终端的进程</td>
-</tr>
-<tr>
-<td style="text-align:left">-W</td>
-<td style="text-align:right">显示加宽，以便显示更多的信息</td>
-</tr>
-<tr>
-<td style="text-align:left">-r</td>
-<td style="text-align:right">只显示正在运行的进程</td>
-</tr>
-</tbody>
-</table>
-<p>方法一：使用ps命令查看程序端口占用情况<br>ps -aus | grep tomcat</p>
-<p>使用命令查看所有进程和端口使用情况：<br>netstat -apn</p>
-<p>进一步使用命令：ps -aux | grep java 或者直接：ps -aux |grep pid<br>方法二：直接使用netstat -anp | grep portno<br>即:netstat -apn | grep 8080</p>
-<p> 4.动态显示进程：top<br>   top命令用来动态显示运行中的进程。top命令能够在运行后，在指定的时间间隔更新显示信息。可以在top命令时加上-d来指定显示信息更新的时间间隔。</p>
-<p>   在top命令执行后，可以按下按键得到对显示的结果进行排序：</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">按键</th>
-<th style="text-align:right">含义</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">M</td>
-<td style="text-align:right">根据内存使用量来排序</td>
-</tr>
-<tr>
-<td style="text-align:left">P</td>
-<td style="text-align:right">根据CPU占有率来排序</td>
-</tr>
-<tr>
-<td style="text-align:left">T</td>
-<td style="text-align:right">根据进程运行时间的长短来排序</td>
-</tr>
-<tr>
-<td style="text-align:left">U</td>
-<td style="text-align:right">可以根据后面输入的用户名来筛选进程</td>
-</tr>
-<tr>
-<td style="text-align:left">K</td>
-<td style="text-align:right">可以根据后面输入的PID来杀死进程</td>
-</tr>
-<tr>
-<td style="text-align:left">q</td>
-<td style="text-align:right">退出</td>
-</tr>
-<tr>
-<td style="text-align:left">h</td>
-<td style="text-align:right">获得帮助</td>
-</tr>
-</tbody>
-</table>
-<p>5.终止进程：kill<br>  kill命令指定进程号的进程，需要配合ps使用<br>  使用格式：<br>   kill [-signal] pid<br>  信号值从0到15，其中9为绝对终止，可以处理一般信号无法终止的进程。<br>  kill 9133 : 杀死进程号为9133所对应的应用程序</p>
-<p>6.关机重启：reboot/shutdown/init</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">命令</th>
-<th style="text-align:right">含义</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">reboot</td>
-<td style="text-align:right">重新启动操作系统</td>
-</tr>
-<tr>
-<td style="text-align:left">shutdown -r now</td>
-<td style="text-align:right">重新启动操作系统，shutdown会给别的用户提示</td>
-</tr>
-<tr>
-<td style="text-align:left">shutdown -h now</td>
-<td style="text-align:right">立刻关机，其中now相当于时间为0的状态</td>
-</tr>
-<tr>
-<td style="text-align:left">shutdown -h 20:25</td>
-<td style="text-align:right">系统在今天的20:25关机</td>
-</tr>
-<tr>
-<td style="text-align:left">shutdown -h +10</td>
-<td style="text-align:right">系统再过十分钟后自动关机</td>
-</tr>
-<tr>
-<td style="text-align:left">init 0</td>
-<td style="text-align:right">关机</td>
-</tr>
-<tr>
-<td style="text-align:left">init 6</td>
-<td style="text-align:right">重启</td>
-</tr>
-</tbody>
-</table>
-<p>7.检测磁盘空间：df<br> df命令用于检测文件系统的磁盘空间占用和空余情况，可以显示所有文件系统对节点和磁盘块的使用情况。</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">选项</th>
-<th style="text-align:right">含义</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">-a</td>
-<td style="text-align:right">显示所有文件系统的磁盘使用情况</td>
-</tr>
-<tr>
-<td style="text-align:left">-m</td>
-<td style="text-align:right">以1024字节单位显示</td>
-</tr>
-<tr>
-<td style="text-align:left">-t</td>
-<td style="text-align:right">显示各指定文件系统的磁盘空间使用情况</td>
-</tr>
-<tr>
-<td style="text-align:left">-T</td>
-<td style="text-align:right">显示文件系统</td>
-</tr>
-</tbody>
-</table>
-<p>8.检测目录所占磁盘空间：du<br>  du命令用于统计目录或文件所占磁盘空间的大小，该命令的执行结果与df类似，du更侧重于磁盘的使用状况。<br>  du命令的使用格式如下：du [选项] 目录或文件名</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">选项</th>
-<th style="text-align:right">含义</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">-a</td>
-<td style="text-align:right">递归显示指定目录中各文件和子目录中文件占用的数据库</td>
-</tr>
-<tr>
-<td style="text-align:left">-s</td>
-<td style="text-align:right">显示指定文件或目录占用的数据块</td>
-</tr>
-<tr>
-<td style="text-align:left">-b</td>
-<td style="text-align:right">以字节为单位显示磁盘占用情况</td>
-</tr>
-<tr>
-<td style="text-align:left">-l</td>
-<td style="text-align:right">计算所有文件大小，对硬链接文件计算多次</td>
-</tr>
-</tbody>
-</table>
-<p>9.查看或配置网卡信息：ifconfig<br>10.测试远程主机连通性：ping<br>   ping 192.168.0.1 -c 4</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1979,7 +1798,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">47</span>
+                <span class="site-state-item-count">49</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -1992,7 +1811,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">14</span>
+                <span class="site-state-item-count">15</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

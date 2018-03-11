@@ -23,14 +23,14 @@
     </url>
 
     <url>
-        <loc>http://blog.xmqbeast.com/tags/mysql/</loc>
+        <loc>http://blog.xmqbeast.com/tags/nodejs/</loc>
         <lastmod>2018-03-08T15:55:02.742Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
-        <loc>http://blog.xmqbeast.com/tags/nodejs/</loc>
+        <loc>http://blog.xmqbeast.com/tags/mysql/</loc>
         <lastmod>2018-03-08T15:55:02.742Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
@@ -44,14 +44,14 @@
     </url>
 
     <url>
-        <loc>http://blog.xmqbeast.com/tags/svn/</loc>
+        <loc>http://blog.xmqbeast.com/tags/redis/</loc>
         <lastmod>2018-03-08T15:55:02.743Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
-        <loc>http://blog.xmqbeast.com/tags/redis/</loc>
+        <loc>http://blog.xmqbeast.com/tags/svn/</loc>
         <lastmod>2018-03-08T15:55:02.743Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
@@ -95,6 +95,13 @@
     <url>
         <loc>http://blog.xmqbeast.com/tags/hexo/</loc>
         <lastmod>2018-03-09T15:45:39.482Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://blog.xmqbeast.com/tags/psychology/</loc>
+        <lastmod>2018-03-11T13:19:56.390Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
