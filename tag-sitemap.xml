@@ -23,14 +23,14 @@
     </url>
 
     <url>
-        <loc>http://blog.xmqbeast.com/tags/nodejs/</loc>
+        <loc>http://blog.xmqbeast.com/tags/mysql/</loc>
         <lastmod>2018-03-08T15:55:02.742Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
-        <loc>http://blog.xmqbeast.com/tags/mysql/</loc>
+        <loc>http://blog.xmqbeast.com/tags/nodejs/</loc>
         <lastmod>2018-03-08T15:55:02.742Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
@@ -101,7 +101,7 @@
 
     <url>
         <loc>http://blog.xmqbeast.com/tags/psychology/</loc>
-        <lastmod>2018-03-11T13:19:56.390Z</lastmod>
+        <lastmod>2018-03-11T13:24:58.205Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
