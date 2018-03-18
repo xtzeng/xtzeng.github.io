@@ -300,6 +300,145 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://blog.xmqbeast.com/2017/10/05/使用hexo，如果更换了电脑如何更新博客/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="∮小煤球メ">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="∮小煤球メ">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/10/05/使用hexo，如果更换了电脑如何更新博客/" itemprop="url">
+                  使用hexo，如果更换了电脑如何更新博客
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-05T09:46:26+08:00">
+                2017-10-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>一、关于搭建的流程</p>
+<p>1.创建仓库:xtzeng.github.io;</p>
+<p>2.创建两个分支：master和hexo;</p>
+<p>3.设置hexo为默认分支（因为我们只需要手动管理这个分支上的hexo网站文件）;</p>
+<p>4.git clone <a href="https://github.com/xtzeng/xtzeng.github.io.git拷贝仓库（hexo分支-默认）" target="_blank" rel="noopener">https://github.com/xtzeng/xtzeng.github.io.git拷贝仓库（hexo分支-默认）</a>;</p>
+<p>5.在本地xtzeng.github.io文件夹下通过git bash依次执行npm install hexo、hexo init、npm install和npm install hexo-deployer-git(此时当前分支应显示为hexo);</p>
+<p>6.修改_config.yml中的deploy参数，分支应为master;</p>
+<p>7.依次执行git add .、git commit -m “…”、git push origin hexo提交网站相关的文件；</p>
+<p>8.执行hexo g -d 生成网站并部署到github上；</p>
+<p>这样一来，在github上的xtzeng.github.io仓库就有两个分支，一个hexo分支用来存放网站的文件，一个master分支用来存放生成的静态文件。</p>
+<p>二、关于日常的流程改动</p>
+<p>在本地对博客进行修改（添加新博客、修改样式等等）后，通过下面的流程进行管理。</p>
+<p>1.依次执行git add .、git commit -m “…”、git push origin hexo指令将改动推送到github(此时当前分支应为hexo);</p>
+<p>2.然后才执行hexo g -d 发布到master分支上。</p>
+<p>虽然两个过程顺序调转一般不会有问题，不过逻辑上这样的顺序是绝对没有问题的（例如突然死机要重装了，悲催…的情况，调转顺序就有问题了）。</p>
+<p>三、本地资料丢失后的流程</p>
+<p>当重装电脑之后，或者想在其他电脑上修改博客，可以使用以下步骤：</p>
+<p>1.使用git clone <a href="https://github.com/xtzeng/xtzeng.github.io.git" target="_blank" rel="noopener">https://github.com/xtzeng/xtzeng.github.io.git</a> 拷贝仓库（默认分支为hexo）;</p>
+<p>2.在本地新拷贝的xtzeng.github.io文件夹下通过git bash依次执行以下指令：npm install hexo、npm install、npm install hexo-deployer-git(记得，不需要hexo init 这条指令)</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://blog.xmqbeast.com/2017/08/10/spring cloud（一）服务注册与发现--eureka-server/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1756,135 +1895,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://blog.xmqbeast.com/2017/04/12/开始使用hexo写自己的blog/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="∮小煤球メ">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="∮小煤球メ">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/04/12/开始使用hexo写自己的blog/" itemprop="url">
-                  开始使用hexo写自己的blog
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-12T18:37:58+08:00">
-                2017-04-12
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="about-hexo-about-markdown"><a href="#about-hexo-about-markdown" class="headerlink" title="about hexo about markdown"></a>about hexo about markdown</h1><p> 一直想搭建一个属于自己的博客，以前都是在csdn或博客园上面写，最近一直在搭建github的hexo博客，折腾了几天时间，终于可以小试牛刀写点属于自己的东西，日后某一天回来看的时候，也许觉得那时候的自己是个煞笔，但能有所成长，也就足够了。以下是关于这几天在github搭建hexo的一些心得。</p>
-<h2 id="关于在不同的电脑（系统）上使用hexo"><a href="#关于在不同的电脑（系统）上使用hexo" class="headerlink" title="关于在不同的电脑（系统）上使用hexo"></a>关于在不同的电脑（系统）上使用hexo</h2><p>将自己的blog文件夹使用git来管理，需要注意一下几点：<br>1.如果主题是通过git管理的，需要将主题文件夹下的.git文件夹删除，才能同步blog文件夹。（如果.git文件夹是隐藏的，需要显示隐藏文件才能删除，linux下用命令rm -rf命令删除）<br>2.按照blog目录下自带的.gitignore文件，node_modules文件夹是不会同步的，所以同步之后需要自己再次npm install,但是要注意一点，不要再进行hexo init了，否则 _config.yml就全都白弄了</p>
-<p>必须拷贝的文件：<br>_config.yml,theme文件夹里面的主题，以及source里面自己写的blog文件,这些肯定是要拷贝的.<br>除此之外还有三个文件需要保留，就是scaffolds文件夹(文章的模板)、packeage.json(说明使用哪些包) 还有.gitignore(限定在提交的时候哪些文件可以忽略)。其实这三个文件不用我们修改的，所以<br>即使丢失了也没有关系，我们可以另外新建一个临时文件夹，然后在里面执行hexo init,就可以生成这三个文件，我们只需要将它们拷贝过来使用即可。<br>总结：_config.yml、theme/、source/、scaffolds/、package.json、.gitignore是需要备份的。</p>
-<p>然后我们再考虑哪些文件是不需要拷贝、或者说可以删除的<br>首先是.git文件夹，无论是在站点根目录下，还是主题目录下的.git文件，都可以删掉。然后是文件夹node_modules(在用npm install 会重新生成)、public文件夹(这个在使用命令hexo g后会重新生成)，deploy_git文件夹(在使用hexo d后也会重新生成),还有db.json文件.其实这些文件也就是.gitignore文件里面记载的内容.<br>总结：.git/、node_modules/、public/、deploy_git/、db.json文件可以删除</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/4/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span>
+    <a class="extend prev" rel="prev" href="/page/4/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/6/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1929,7 +1944,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">50</span>
+                <span class="site-state-item-count">51</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>

@@ -300,6 +300,136 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://blog.xmqbeast.com/2017/10/22/mysql-root-localhost-无法登录/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="∮小煤球メ">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="∮小煤球メ">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/10/22/mysql-root-localhost-无法登录/" itemprop="url">
+                  mysql 'root'@'localhost'无法登录
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-22T11:43:05+08:00">
+                2017-10-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>MySQL ‘root‘@’localhost’无法登录</p>
+<pre><code>#mysql -u root -p 
+</code></pre><p>提示”Access denied for user ‘root’@’localhost’ (using password: YES)”</p>
+<p>远程可以登录，本地不能登录，原因是没有授权本地登录，使用命令</p>
+<pre><code>select Host,User,Password from mysql.user;
+</code></pre><p><img src="http://oncykm32h.bkt.clouddn.com/mysql_grant.png" alt="mysql-grant"></p>
+<p>使用命令：</p>
+<pre><code>grant all privileges on dbName.* to &apos;root&apos;@&apos;localhost&apos; identified by &apos;123456&apos; with grant option;
+
+ flush privileges ;
+</code></pre>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://blog.xmqbeast.com/2017/10/15/hexo添加搜索服务/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1546,173 +1676,11 @@ newdb      0.00002GB
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://blog.xmqbeast.com/2017/10/08/linux下安装配置nexus/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="∮小煤球メ">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="∮小煤球メ">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/10/08/linux下安装配置nexus/" itemprop="url">
-                  linux下安装配置nexus
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-08T02:43:55+08:00">
-                2017-10-08
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>为什么要搭建maven私服？</p>
-<p>在开发过程中，有时候会使用到公司内部的一些开发包，显然把这些包放在外部是不合适的。另外，由于项目一直在开发中，这些内部的依赖可能也在不断的更新。可以通过搭建公司内部的Maven服务器，将第三方和内部的依赖统一管理，同时也可以节省网络带宽，当然前提是项目所需要的构件在私服中已经存在。</p>
-<p>Nexus下载及安装配置</p>
-<p>我们可以在nexus的官网上找到它的相关介绍，下载地址是：<a href="http://www.sonatype.org/nexus/go" target="_blank" rel="noopener">http://www.sonatype.org/nexus/go</a></p>
-<p> 下载</p>
-<pre><code># wget https://sonatype-download.global.ssl.fastly.net/nexus/oss/nexus-2.11.2-03-bundle.tar.gz
-</code></pre><p> 解压</p>
-<pre><code># cd /usr/local
- # mkdir nexus
- # tar -zxvf /opt/java/nexus-2.14.5-02-bundle.tar.gz -C /usr/local/nexus
- # cd nexus
- # ls (显示如下两个文件夹)
- nexus-2.11.2-03   sonatype-work
-</code></pre><p>修改配置文件</p>
-<pre><code># cd nexus-2.11.2-03/conf
-# vi nexus.properties
-#Jetty section
-application-port=8081      ##修改Jetty端口号
-# nexus section
-nexus-work=${bundleBasedir}/../sonatype-work/nexus　
-</code></pre><p>保存以上修改</p>
-<p>配置用户</p>
-<pre><code># vi /usr/local/nexus/nexus-2.11.2-03/bin/nexus
-
-#RUN_AS_USER=
-
-RUN_AS_USER=root
-</code></pre><p>保存以上修改</p>
-<p>若有设置防火墙，需前往修改防火墙配置并重启防火墙，此处略过……</p>
-<p>启动nexus</p>
-<pre><code># /usr/local/nexus/nexus-2.11.2-03/bin/nexus start
-
-****************************************
-
-WARNING - NOT RECOMMENDED TO RUN AS ROOT
-
-****************************************
-
-Starting Nexus OSS...
-
-Started Nexus OSS.
-</code></pre><p>在浏览器打开:<a href="http://ip:8081/nexus,登录：用户名admin" target="_blank" rel="noopener">http://ip:8081/nexus,登录：用户名admin</a>  默认密码：admin123<br><img src="http://oncykm32h.bkt.clouddn.com/nexus.png" alt="nexus"><br>在项目中修改maven仓库地址<br><img src="http://oncykm32h.bkt.clouddn.com/pom-nexus.png" alt="pom-nexus"><br>这样就配置完成了。在构建maven项目时，如果在私服中存在需要的构件，则会直接从私服中下载；如果私服中没有所需构件，则会先从网络上下载到私服，之后才会下载到本地。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1757,7 +1725,7 @@ Started Nexus OSS.
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">50</span>
+                <span class="site-state-item-count">51</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
