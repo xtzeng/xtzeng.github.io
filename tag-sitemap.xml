@@ -44,13 +44,6 @@
     </url>
 
     <url>
-        <loc>http://blog.xmqbeast.com/tags/redis/</loc>
-        <lastmod>2018-03-08T15:55:02.743Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>http://blog.xmqbeast.com/tags/svn/</loc>
         <lastmod>2018-03-08T15:55:02.743Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -102,6 +95,13 @@
     <url>
         <loc>http://blog.xmqbeast.com/tags/psychology/</loc>
         <lastmod>2018-03-11T13:24:58.205Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://blog.xmqbeast.com/tags/redis/</loc>
+        <lastmod>2018-05-13T18:35:44.895Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>

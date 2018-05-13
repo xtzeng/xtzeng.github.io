@@ -1,6 +1,86 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Redis Rpush命令]]></title>
+    <url>%2F2018%2F05%2F14%2FRedis-Rpush%E5%91%BD%E4%BB%A4%2F</url>
+    <content type="text"><![CDATA[Redis Rpush 命令 Redis Rpush 命令用于将一个或多个值插入到列表的尾部(最右边)。如果列表不存在，一个空列表会被创建并执行 RPUSH 操作。 当列表存在但不是列表类型时，返回一个错误。 注意：在 Redis 2.4 版本以前的 RPUSH 命令，都只接受单个 value 值。 语法redis Rpush 命令基本语法如下： redis 127.0.0.1:6379&gt; RPUSH KEY_NAME VALUE1..VALUEN 返回值执行 RPUSH 操作后，列表的长度。 实例 redis 127.0.0.1:6379&gt; RPUSH mylist &quot;hello&quot; (integer) 1 redis 127.0.0.1:6379&gt; RPUSH mylist &quot;foo&quot; (integer) 2 redis 127.0.0.1:6379&gt; RPUSH mylist &quot;bar&quot; (integer) 3 redis 127.0.0.1:6379&gt; LRANGE mylist 0 -1 1) &quot;hello&quot; 2) &quot;foo&quot; 3) &quot;bar&quot;]]></content>
+      <tags>
+        <tag>redis</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Redis Lpush命令]]></title>
+    <url>%2F2018%2F05%2F14%2FRedis-Lpush%E5%91%BD%E4%BB%A4%2F</url>
+    <content type="text"><![CDATA[Redis Lpush 命令 Redis Lpush 命令将一个或多个值插入到列表头部。 如果 key 不存在，一个空列表会被创建并执行 LPUSH 操作。 当 key 存在但不是列表类型时，返回一个错误。 注意：在Redis 2.4版本以前的 LPUSH 命令，都只接受单个 value 值。 语法redis Lpush 命令基本语法如下： redis 127.0.0.1:6379&gt; LPUSH KEY_NAME VALUE1.. VALUEN 返回值执行 LPUSH 命令后，列表的长度。 实例 127.0.0.1:6379&gt; LPUSH list1 &quot;foo&quot; (integer) 1 127.0.0.1:6379&gt; LPUSH list1 &quot;bar&quot; (integer) 2 127.0.0.1:6379&gt; LRANGE list1 0 -1 1) &quot;bar&quot; 2) &quot;foo&quot;]]></content>
+      <tags>
+        <tag>redis</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Redis Rpoplpush命令]]></title>
+    <url>%2F2018%2F05%2F14%2FRedis-Rpoplpush%E5%91%BD%E4%BB%A4%2F</url>
+    <content type="text"><![CDATA[Redis Rpoplpush 命令Redis Rpoplpush 命令用于移除列表的最后一个元素，并将该元素添加到另一个列表并返回。 语法redis Rpoplpush 命令基本语法如下： redis 127.0.0.1:6379&gt; RPOPLPUSH SOURCE_KEY_NAME DESTINATION_KEY_NAME 返回值被弹出的元素。 实例 redis 127.0.0.1:6379&gt; RPUSH mylist &quot;hello&quot; (integer) 1 redis 127.0.0.1:6379&gt; RPUSH mylist &quot;foo&quot; (integer) 2 redis 127.0.0.1:6379&gt; RPUSH mylist &quot;bar&quot; (integer) 3 redis 127.0.0.1:6379&gt; RPOPLPUSH mylist myotherlist &quot;bar&quot; redis 127.0.0.1:6379&gt; LRANGE mylist 0 -1 1) &quot;hello&quot; 2) &quot;foo&quot;]]></content>
+      <tags>
+        <tag>redis</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Redis Lpop命令]]></title>
+    <url>%2F2018%2F05%2F14%2FRedis-Lpop%E5%91%BD%E4%BB%A4%2F</url>
+    <content type="text"><![CDATA[Redis Lpop 命令 Redis Lpop 命令用于移除并返回列表的第一个元素。 语法redis Lpop 命令基本语法如下： redis 127.0.0.1:6379&gt; Lpop KEY_NAME 返回值列表的第一个元素。 当列表 key 不存在时，返回 nil 。 实例 redis 127.0.0.1:6379&gt; RPUSH list1 &quot;foo&quot; (integer) 1 redis 127.0.0.1:6379&gt; RPUSH list1 &quot;bar&quot; (integer) 2 redis 127.0.0.1:6379&gt; LPOP list1 &quot;foo&quot; PS:Redis Rpop 命令用于移除并返回列表的最后一个元素。]]></content>
+      <tags>
+        <tag>redis</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Redis Llen命令]]></title>
+    <url>%2F2018%2F05%2F14%2FRedis-Llen%E5%91%BD%E4%BB%A4%2F</url>
+    <content type="text"><![CDATA[Redis Llen 命令 Redis Llen 命令用于返回列表的长度。 如果列表 key 不存在，则 key 被解释为一个空列表，返回 0 。 如果 key 不是列表类型，返回一个错误。 语法redis Llen 命令基本语法如下： redis 127.0.0.1:6379&gt; LLEN KEY_NAME 返回值列表的长度。 实例 redis 127.0.0.1:6379&gt; RPUSH list1 &quot;foo&quot; (integer) 1 redis 127.0.0.1:6379&gt; RPUSH list1 &quot;bar&quot; (integer) 2 redis 127.0.0.1:6379&gt; LLEN list1 (integer) 2]]></content>
+      <tags>
+        <tag>redis</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Redis Ltrim命令]]></title>
+    <url>%2F2018%2F05%2F14%2FRedis-Ltrim%E5%91%BD%E4%BB%A4%2F</url>
+    <content type="text"><![CDATA[Redis Ltrim 命令 Redis Ltrim 对一个列表进行修剪(trim)，就是说，让列表只保留指定区间内的元素，不在指定区间之内的元素都将被删除。下标 0 表示列表的第一个元素，以 1 表示列表的第二个元素，以此类推。 你也可以使用负数下标，以 -1 表示列表的最后一个元素， -2 表示列表的倒数第二个元素，以此类推。 语法redis Ltrim 命令基本语法如下： redis 127.0.0.1:6379&gt; LTRIM KEY_NAME START STOP 返回值命令执行成功时，返回 ok 。 实例 redis 127.0.0.1:6379&gt; RPUSH mylist &quot;hello&quot; (integer) 1 redis 127.0.0.1:6379&gt; RPUSH mylist &quot;hello&quot; (integer) 2 redis 127.0.0.1:6379&gt; RPUSH mylist &quot;foo&quot; (integer) 3 redis 127.0.0.1:6379&gt; RPUSH mylist &quot;bar&quot; (integer) 4 redis 127.0.0.1:6379&gt; LTRIM mylist 1 -1 OK redis 127.0.0.1:6379&gt; LRANGE mylist 0 -1 1) &quot;hello&quot; 2) &quot;foo&quot; 3) &quot;bar&quot;]]></content>
+      <tags>
+        <tag>redis</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[redis Lrange命令]]></title>
+    <url>%2F2018%2F05%2F14%2Fredis-Lrange%E5%91%BD%E4%BB%A4%2F</url>
+    <content type="text"><![CDATA[Redis Lrange 命令 Redis Lrange 返回列表中指定区间内的元素，区间以偏移量 START 和 END 指定。 其中 0 表示列表的第一个元素， 1 表示列表的第二个元素，以此类推。 你也可以使用负数下标，以 -1 表示列表的最后一个元素， -2 表示列表的倒数第二个元素，以此类推。 语法redis Lrange 命令基本语法如下： redis 127.0.0.1:6379&gt; LRANGE KEY_NAME START END 返回值一个列表，包含指定区间内的元素。 实例 redis&gt; RPUSH mylist “one” (integer) 1 redis&gt; RPUSH mylist “two” (integer) 2 redis&gt; RPUSH mylist “three” (integer) 3 redis&gt; LRANGE mylist 0 0 1) “one” redis&gt; LRANGE mylist -3 2 1) “one” 2) “two” 3) “three” redis&gt; LRANGE mylist -100 100 1) “one” 2) “two” 3) “three” redis&gt; LRANGE mylist 5 10 (empty list or set) redis&gt;]]></content>
+      <tags>
+        <tag>redis</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[redis Rpop命令]]></title>
+    <url>%2F2018%2F05%2F14%2Fredis-Rpop%E5%91%BD%E4%BB%A4%2F</url>
+    <content type="text"><![CDATA[Redis Rpop 命令 Redis Rpop 命令用于移除并返回列表的最后一个元素。 语法redis Rpop 命令基本语法如下： redis 127.0.0.1:6379&gt; RPOP KEY_NAME 返回值列表的最后一个元素。 当列表不存在时，返回 nil 。 实例 redis&gt; RPUSH mylist &quot;one&quot; (integer) 1 redis&gt; RPUSH mylist &quot;two&quot; (integer) 2 redis&gt; RPUSH mylist &quot;three&quot; (integer) 3 redis&gt; RPOP mylist &quot;three&quot; redis&gt; LRANGE mylist 0 -1 1) &quot;one&quot; 2) &quot;two&quot; redis&gt;]]></content>
+      <tags>
+        <tag>redis</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[redis4.0.2配置远程连接（centos7.2）]]></title>
+    <url>%2F2018%2F05%2F14%2Fredis4-0-2%E9%85%8D%E7%BD%AE%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5%EF%BC%88centos7-2%EF%BC%89%2F</url>
+    <content type="text"><![CDATA[最近开始学习redis，在服务器上安装了redis之后，远程连接一直连接不上，报错如下： redis.clients.jedis.exceptions.JedisConnectionException: java.net.ConnectException: Connection refused: connect 总结原因如下：1、6379端口没有开放2.修改redis.conf配置文件 这个文件需要修改两个地方 打开redis.conf文件 按crrl+F查询， 找到bind 127.0.0.1，把这行前面加个#注释掉再查找protected-mode yes 把yes修改为no，然后：wq保存文件，把服务关掉 redis远程连接命令:redis-cli -h 127.0.0.1 -p 6379]]></content>
+      <tags>
+        <tag>redis</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[redis 消息队列(一)]]></title>
+    <url>%2F2018%2F05%2F13%2Fredis-%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97-%E4%B8%80%2F</url>
+    <content type="text"><![CDATA[Redis队列功能介绍 List 常用命令： Blpop删除，并获得该列表中的第一元素，或阻塞，直到有一个可用 Brpop删除，并获得该列表中的最后一个元素，或阻塞，直到有一个可用 Brpoplpush Lindex获取一个元素，通过其索引列表 Linsert在列表中的另一个元素之前或之后插入一个元素 Llen获得队列(List)的长度 Lpop从队列的左边出队一个元素 Lpush从队列的左边入队一个或多个元素 Lpushx当队列存在时，从队到左边入队一个元素 Lrange从列表中获取指定返回的元素 Lrem从列表中删除元素 Lset设置队列里面一个元素的值 Ltrim修剪到指定范围内的清单 Rpop从队列的右边出队一个元素 Rpoplpush删除列表中的最后一个元素，将其追加到另一个列表 Rpush从队列的右边入队一个元素 Rpushx从队列的右边入队一个元素，仅队列存在时有效 应用场景： Redis list的应用场景非常多，也是Redis最重要的数据结构之一，比如twitter的关注列表，粉丝列表等都可以用Redis的list结构来实现。 Lists 就是链表，相信略有数据结构知识的人都应该能理解其结构。使用Lists结构，我们可以轻松地实现最新消息排行等功能。 Lists的另一个应用就是消息队列， 可以利用Lists的PUSH操作，将任务存在Lists中，然后工作线程再用POP操作将任务取出进行执行。Redis还提供了操作Lists中某一段的api，你可以直接查询，删除Lists中某一段的元素。 如果需要还可以用redis的Sorted-Sets数据结构来做优先队列.可以给每条消息加上一个唯一的序号。这里就不详细介绍了。 示意图: 1)入队 2)jedis rpoplpush 具体方法为 /** * Atomically return and remove the last (tail) element of the srckey list, and push the element * as the first (head) element of the dstkey list. For example if the source list contains the * elements &quot;a&quot;,&quot;b&quot;,&quot;c&quot; and the destination list contains the elements &quot;foo&quot;,&quot;bar&quot; after an * RPOPLPUSH command the content of the two lists will be &quot;a&quot;,&quot;b&quot; and &quot;c&quot;,&quot;foo&quot;,&quot;bar&quot;. * &lt;p&gt; * If the key does not exist or the list is already empty the special value &apos;nil&apos; is returned. If * the srckey and dstkey are the same the operation is equivalent to removing the last element * from the list and pusing it as first element of the list, so it&apos;s a &quot;list rotation&quot; command. * &lt;p&gt; * Time complexity: O(1) * @param srckey * @param dstkey * @return Bulk reply */ public String rpoplpush(final String srckey, final String dstkey) RPOPLPUSH source destination 命令 RPOPLPUSH 在一个原子时间内，执行以下两个动作： 将列表 source 中的最后一个元素(尾元素)弹出，并返回给客户端。将 source 弹出的元素插入到列表 destination ，作为 destination 列表的的头元素。举个例子，你有两个列表 source 和 destination ， source 列表有元素 a, b, c ， destination 列表有元素 x, y, z ，执行 RPOPLPUSH source destination 之后， source 列表包含元素 a, b ， destination 列表包含元素 c, x, y, z ，并且元素 c 会被返回给客户端。 如果 source 不存在，值 nil 被返回，并且不执行其他动作。 如果 source 和 destination 相同，则列表中的表尾元素被移动到表头，并返回该元素，可以把这种特殊情况视作列表的旋转(rotation)操作 3） jedis rpop 返回字符串，最后一个元素的值，或者关键不存在返回nil。 /** * Atomically return and remove the first (LPOP) or last (RPOP) element of the list. For example * if the list contains the elements &quot;a&quot;,&quot;b&quot;,&quot;c&quot; RPOP will return &quot;c&quot; and the list will become * &quot;a&quot;,&quot;b&quot;. * &lt;p&gt; * If the key does not exist or the list is already empty the special value &apos;nil&apos; is returned. * @see #lpop(String) * @param key * @return Bulk reply */ public String rpop(final String key) 4) jedis lpush /** * Add the string value to the head (LPUSH) or tail (RPUSH) of the list stored at key. If the key * does not exist an empty list is created just before the append operation. If the key exists but * is not a List an error is returned. * &lt;p&gt; * Time complexity: O(1) * @param key * @param strings * @return Integer reply, specifically, the number of elements inside the list after the push * operation. */ public Long lpush(final String key, final String... strings)]]></content>
+      <tags>
+        <tag>redis</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[凡是你排斥的，就是你所要学习的]]></title>
     <url>%2F2018%2F03%2F18%2F%E5%87%A1%E6%98%AF%E4%BD%A0%E6%8E%92%E6%96%A5%E7%9A%84%EF%BC%8C%E5%B0%B1%E6%98%AF%E4%BD%A0%E6%89%80%E8%A6%81%E5%AD%A6%E4%B9%A0%E7%9A%84%2F</url>
     <content type="text"><![CDATA[&emsp;&emsp;&emsp; 最近有点迷上了心理学，也许是因为自己本身心理方面有些问题，也希望借此改善自己，所以会去看一些心理学方面的内容。“意识”、“潜意识”，对这些还不是有一个很清晰的了解，从小就一直很羡慕别人的家庭，可能是自己一直得不到家庭的温暖吧，现在老大不小了，并不是很想找个女朋友组个家庭，可能是那个阴影一直在脑海里吧。说这些并不是要怪家人什么，只是希望如果有人跟我有同样的经历，希望能或多或少帮助他们一些。我也一直很想改变自己“潜意识”里面那些不好的东西，所以自己也一直在努力在寻找自己“潜意识”里的那个“我”，希望可以改变“潜意识”里面的那个“我” &emsp;&emsp;&emsp; 法则一：【从外在看内在，从别人看自己】透过别人，你才能认识真正的自己，你从别人身上看到的其实是自己。我们对别人的意见，主要是取决于他们使我们看清自己什么，而不是我们如何看他们。你所有的人际关系都是一面镜子，透过它们，你才能认识真正的自己。你在发觉对方的过程中，不知不觉你也等于是在发掘自己。去了解他的感觉、想法，你也会更了解自己，你们相互成为对方的镜子。如果你觉得伴侣对你失去热情，可能是因为你也对他失去热情；就像一位婚姻专家说的：「如果我们的婚姻变得乏味，可能是因为我觉得乏味，或更糟的是我这个人很乏味。」 事实上，那些令你厌恶的人是在帮助你，他帮助你了解自己，让你发觉你的阴暗面。这也就是为什么当我们跟一个人越亲密，就越容易产生厌恶，因为他让你看到了自己 的真面目。别人最惹你讨厌的地方，通常也是你自己最受不了的地方。 &emsp;&emsp;&emsp; 法则二：【你是什么样的人，就会认为别人是什么样】 你不能容忍他人的部分，就是不能容忍自己的部分。一个品德不好的人，就会怀疑别人的品德；一个对别人不忠诚的人，也会怀疑别人对他的忠诚；一个不正直、不正经的人，就会把别人的任何举动都「想歪」，因为他就是那样的人。一个对的女人有非分之想的人，自然而然地，也会猜疑自己的女人。老遇到讨厌的事的，往往是令人讨厌的人。喜欢挑人毛病的人，其实自己才是最有毛病；喜欢说三道四的人，其实自己才是最不三不四。如果你很爱发脾气，你就会认为别人经常惹你生气，每一件事都可能变成你愤怒的理由。并不是说每一样东西都是错的，而是你会投射，你会把隐藏在自己内在的东西投射到别人身上。你会谴责每一个人、每一件事，因为你有太多的怒气，所以即使是一点小事也能引燃怒火。同样，别人对你说什么，也反映了他们是谁及他们的内心世界。他们批评你很可能是因为他们对自己的不满，甚至他们自己就是他们所批评的「那种人」。当你的内心走向良善时，你将停止批评别人和对别人的批评产生反弹。如果你对一颗长满苹果的树丢石头，掉下来的就只会是苹果，不管谁丢都一样。一个真正良善的人，不管你对他怎么样，他显现出来的就只会是平和、良善，因为他就是那样的人。 &emsp;&emsp;&emsp; 法则三：【你内在是什么，就会被什么样的吸引】你对外排斥什么，对内就排斥什么。一般而言，那些我们相处愉快的人，正是反映了我们喜欢且接受的内在自我；而那些我们不喜欢的人，也反映我们不愉快且不接受内在的自我。教双方和谐相处，不如教他们让自己内心和谐，那样双方自然会和谐；教他们如何增进彼此感情，还不如教他们增进自我成长，那样彼此关系自然会成长。当有人问我要如何改善关系，我总会告诉他们：「首先你要深入内在，除非你内在的问题先解决，否则你不但无法改善，而且会制造更多问题。」 一个有控制欲的人，除非内在的空虚得到填补，否则就不可能停止怨怼；一个爱嫉妒的人，除非内在能找到自信，不再跟人比较，否则就不可能嫉妒。每个人外在的言行举止都是内在思想的呈现。你如果无法信任自己，就很难信任别人；你如果无法尊重自己，就很难尊重别人；你如果无法肯定自己，就很难肯定别人；你如果不能照亮自己，就不可能照亮别人。当伴侣们没有了爱而彼此伤害，我不会告诉他们要如何努力爱对方，而是要求他们先学会爱自己，因为伤害对方其实就是在伤害自己。你与每个人的关系，都反映出你与自己的关系。如果你不断与自己的内在冲突，那么你也会不断地与别人冲突；如果你自己内在的情感挣扎，那么你也会与别人在情感上发生挣扎。我们在感情中所遭遇的问题，就是我们内在的问题。我们吸引的关系，都反映出我们拥有的特质，以及呈现我们的内在自我。所以，关系出问题的人，不仅要检讨你跟别人的关系，也要反省你跟自己的关系。 以下是一些可以自我检视的问题：「当我观察你所反映的我，我感到ˍˍˍˍˍ。」（诸如愤怒、恐惧、失控、困惑之类的感受。）「你反映了我的哪个自我？」 「外在」困扰我们的问题，正是我们「内在」无法整合的部分。 如果你想改善外在的一切，就必须从改变内在开始。 &emsp;&emsp;&emsp; 法则四：【你约束别人，自己也会被约束】 你越恨就越束缚，你越爱就越自由。当你掌控别人时，你同时也被掌控；如果你绑住别人，别人也会绑住你。你想想看，当你控制别人，不准他们做这做那个，那如果他们不按照你说的话去做呢？你会怎么样？你就会不高兴，对吗？你的喜怒哀乐是由别人来决定，你认为他们是被你掌控的吗？不，其实你才是被掌控的。以眼还眼，结果是大家都瞎了。如果你不断在记忆中反刍旧伤痛，你就是给了最初导致伤痛的人、事一再伤害你的力量。当你怨恨别人时，表示某种程度上，你也怨恨自己。要怎么彻底消灭敌人？把敌人变成朋友！你就会发现，那些最难得到原谅的人，正是你最需要原谅的人；最难放手的人，正是你最需要放手的人。 &emsp;&emsp;&emsp; 法则五：【如果你很排斥，它就是你必须学习的课题】 如果你很欣赏，它就可以蜕变成爱。我们的主要的人际关系，不断地反映该学习的课题是什么。无论是你的老板、同事、朋友、情人、配偶或小孩皆然，这些人所拥有的你所不喜欢的个性、想法和行为，往往都是你需要学习的部分。他们会显露你的阴影，会一再地重复你所厌恶的言行来让你学习。当有人指出你的错误，你很气那个，但这是他的错吗？不，他只是帮你把「发霉的阴影」拿出来晒晒太阳。你不会因为别人说你想偷窃海洋馆的一只鲸鲨而冒火，因为那是你连想都不会想做的事。但是，如果你太太说你旅游出差是想借机去「偷腥」，你可能就会辩驳，甚至发火。为什么？因为这种事有可能发生，或曾经甚至已经发生了。没错，一般而言，越接近事实的指控，你越有可能起而辩护和发火。 所以，以后当别人指责你的时候，不要再像以前一样，立刻去攻击或反击，你要开始反问自己，因为他们说的很可能是真的。 如果不是真的，你又何必那么「当真」，对吗？ 他们之所以会安排在你身边，都是「有原因」的。 因此，不要说不喜欢就排斥或试图逃避他们，因为他们都是「天赐的良缘」，你应该好好利用这个机缘来蜕变自己。 去爱一个喜欢你的人，没什么了不起。 去爱一个爱你的人，你什么分数也得不到。 去爱一个你不喜欢的人，你一定会在生命中学到一些东西。 去爱一个无缘无故责备你的人，你就学到了生命的艺术。 ——印度大师古儒吉 爱是什么？ 爱就是欣赏你不喜欢和不爱的。 如果在你生活周遭有太多你讨厌或不爱的人事物，那是因为你一直在排斥，所以他们才会一再出现，你必须学会​​生活的艺术——将它们蜕变成爱。]]></content>
@@ -128,8 +208,8 @@
     <url>%2F2017%2F10%2F25%2Fredis%E7%AE%80%E5%8D%95%E4%BB%8B%E7%BB%8D%E5%8F%8A%E5%AE%89%E8%A3%85%EF%BC%88linux%EF%BC%89%2F</url>
     <content type="text"><![CDATA[redis是当前比较热门的NOSQL系统之一，它是一个key-value存储系统。和Memcached类似，但很大程度补偿了memcached的不足，它支持存储的value类型相对更多，包括string、list、set、zset和hash。这些数据类型都支持push/pop、add/remove及取交集并集和差集及更丰富的操作。在此基础上，redis支持各种不同方式的排序。Redis数据都是缓存在计算机内存中，并且会周期性的把更新的数据写入磁盘或者把修改操作写入追加的记录文件。 redis官网地址：http://www.redis.io/ 最新版本：2.8.3 在Linux下安装Redis非常简单，具体步骤如下（官网有说明）： 1、下载源码，解压缩后编译源码。 $ wget http://download.redis.io/releases/redis-2.8.3.tar.gz $ tar xzf redis-2.8.3.tar.gz $ cd redis-2.8.3 $ make 2、编译完成后，在Src目录下，有四个可执行文件redis-server、redis-benchmark、redis-cli和redis.conf。然后拷贝到一个目录下。 mkdir /usr/redis cp redis-server /usr/redis cp redis-benchmark /usr/redis cp redis-cli /usr/redis cp redis.conf /usr/redis cd /usr/redis 3、启动Redis服务。 $ ./redis-server redis.conf 4、然后用客户端测试一下是否启动成功。 $ redis-cli redis&gt; set foo bar OK redis&gt; get foo &quot;bar&quot;]]></content>
       <tags>
-        <tag>linux</tag>
         <tag>redis</tag>
+        <tag>linux</tag>
       </tags>
   </entry>
   <entry>

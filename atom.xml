@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.xmqbeast.com/"/>
-  <updated>2018-03-18T11:03:29.813Z</updated>
+  <updated>2018-05-13T18:32:50.145Z</updated>
   <id>http://blog.xmqbeast.com/</id>
   
   <author>
@@ -15,6 +15,258 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Redis Rpush命令</title>
+    <link href="http://blog.xmqbeast.com/2018/05/14/Redis-Rpush%E5%91%BD%E4%BB%A4/"/>
+    <id>http://blog.xmqbeast.com/2018/05/14/Redis-Rpush命令/</id>
+    <published>2018-05-13T18:30:50.000Z</published>
+    <updated>2018-05-13T18:32:50.145Z</updated>
+    
+    <content type="html"><![CDATA[<p>Redis Rpush 命令</p><p>Redis Rpush 命令用于将一个或多个值插入到列表的尾部(最右边)。<br>如果列表不存在，一个空列表会被创建并执行 RPUSH 操作。 当列表存在但不是列表类型时，返回一个错误。</p><p>注意：在 Redis 2.4 版本以前的 RPUSH 命令，都只接受单个 value 值。</p><p>语法<br>redis Rpush 命令基本语法如下：</p><pre><code>redis 127.0.0.1:6379&gt; RPUSH KEY_NAME VALUE1..VALUEN</code></pre><p>返回值<br>执行 RPUSH 操作后，列表的长度。</p><p>实例</p><pre><code>redis 127.0.0.1:6379&gt; RPUSH mylist &quot;hello&quot;(integer) 1redis 127.0.0.1:6379&gt; RPUSH mylist &quot;foo&quot;(integer) 2redis 127.0.0.1:6379&gt; RPUSH mylist &quot;bar&quot;(integer) 3redis 127.0.0.1:6379&gt; LRANGE mylist 0 -11) &quot;hello&quot;2) &quot;foo&quot;3) &quot;bar&quot;</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;Redis Rpush 命令&lt;/p&gt;
+&lt;p&gt;Redis Rpush 命令用于将一个或多个值插入到列表的尾部(最右边)。&lt;br&gt;如果列表不存在，一个空列表会被创建并执行 RPUSH 操作。 当列表存在但不是列表类型时，返回一个错误。&lt;/p&gt;
+&lt;p&gt;注意：在 Redis 2.4
+      
+    
+    </summary>
+    
+    
+      <category term="redis" scheme="http://blog.xmqbeast.com/tags/redis/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Redis Lpush命令</title>
+    <link href="http://blog.xmqbeast.com/2018/05/14/Redis-Lpush%E5%91%BD%E4%BB%A4/"/>
+    <id>http://blog.xmqbeast.com/2018/05/14/Redis-Lpush命令/</id>
+    <published>2018-05-13T18:28:28.000Z</published>
+    <updated>2018-05-13T18:29:59.454Z</updated>
+    
+    <content type="html"><![CDATA[<p>Redis Lpush 命令</p><p>Redis Lpush 命令将一个或多个值插入到列表头部。 如果 key 不存在，一个空列表会被创建并执行 LPUSH 操作。 当 key 存在但不是列表类型时，返回一个错误。</p><p>注意：在Redis 2.4版本以前的 LPUSH 命令，都只接受单个 value 值。</p><p>语法<br>redis Lpush 命令基本语法如下：</p><pre><code>redis 127.0.0.1:6379&gt; LPUSH KEY_NAME VALUE1.. VALUEN</code></pre><p>返回值<br>执行 LPUSH 命令后，列表的长度。</p><p>实例</p><pre><code>127.0.0.1:6379&gt; LPUSH list1 &quot;foo&quot;(integer) 1127.0.0.1:6379&gt; LPUSH list1 &quot;bar&quot;(integer) 2127.0.0.1:6379&gt; LRANGE list1 0 -11) &quot;bar&quot;2) &quot;foo&quot;</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;Redis Lpush 命令&lt;/p&gt;
+&lt;p&gt;Redis Lpush 命令将一个或多个值插入到列表头部。 如果 key 不存在，一个空列表会被创建并执行 LPUSH 操作。 当 key 存在但不是列表类型时，返回一个错误。&lt;/p&gt;
+&lt;p&gt;注意：在Redis 2.4版本以前的 
+      
+    
+    </summary>
+    
+    
+      <category term="redis" scheme="http://blog.xmqbeast.com/tags/redis/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Redis Rpoplpush命令</title>
+    <link href="http://blog.xmqbeast.com/2018/05/14/Redis-Rpoplpush%E5%91%BD%E4%BB%A4/"/>
+    <id>http://blog.xmqbeast.com/2018/05/14/Redis-Rpoplpush命令/</id>
+    <published>2018-05-13T18:24:57.000Z</published>
+    <updated>2018-05-13T18:35:44.895Z</updated>
+    
+    <content type="html"><![CDATA[<p>Redis Rpoplpush 命令<br>Redis Rpoplpush 命令用于移除列表的最后一个元素，并将该元素添加到另一个列表并返回。</p><p>语法<br>redis Rpoplpush 命令基本语法如下：</p><pre><code>redis 127.0.0.1:6379&gt; RPOPLPUSH SOURCE_KEY_NAME DESTINATION_KEY_NAME</code></pre><p>返回值<br>被弹出的元素。</p><p>实例</p><pre><code>redis 127.0.0.1:6379&gt; RPUSH mylist &quot;hello&quot;(integer) 1redis 127.0.0.1:6379&gt; RPUSH mylist &quot;foo&quot;(integer) 2redis 127.0.0.1:6379&gt; RPUSH mylist &quot;bar&quot;(integer) 3redis 127.0.0.1:6379&gt; RPOPLPUSH mylist myotherlist&quot;bar&quot;redis 127.0.0.1:6379&gt; LRANGE mylist 0 -11) &quot;hello&quot;2) &quot;foo&quot;</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;Redis Rpoplpush 命令&lt;br&gt;Redis Rpoplpush 命令用于移除列表的最后一个元素，并将该元素添加到另一个列表并返回。&lt;/p&gt;
+&lt;p&gt;语法&lt;br&gt;redis Rpoplpush 命令基本语法如下：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;redis 127.0
+      
+    
+    </summary>
+    
+    
+      <category term="redis" scheme="http://blog.xmqbeast.com/tags/redis/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Redis Lpop命令</title>
+    <link href="http://blog.xmqbeast.com/2018/05/14/Redis-Lpop%E5%91%BD%E4%BB%A4/"/>
+    <id>http://blog.xmqbeast.com/2018/05/14/Redis-Lpop命令/</id>
+    <published>2018-05-13T18:15:07.000Z</published>
+    <updated>2018-05-13T18:17:01.611Z</updated>
+    
+    <content type="html"><![CDATA[<p>Redis Lpop 命令</p><p>Redis Lpop 命令用于移除并返回列表的第一个元素。</p><p>语法<br>redis Lpop 命令基本语法如下：</p><pre><code>redis 127.0.0.1:6379&gt; Lpop KEY_NAME</code></pre><p>返回值<br>列表的第一个元素。 当列表 key 不存在时，返回 nil 。</p><p>实例</p><pre><code>redis 127.0.0.1:6379&gt; RPUSH list1 &quot;foo&quot;(integer) 1redis 127.0.0.1:6379&gt; RPUSH list1 &quot;bar&quot;(integer) 2redis 127.0.0.1:6379&gt; LPOP list1&quot;foo&quot;</code></pre><p>PS:Redis Rpop 命令用于移除并返回列表的最后一个元素。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;Redis Lpop 命令&lt;/p&gt;
+&lt;p&gt;Redis Lpop 命令用于移除并返回列表的第一个元素。&lt;/p&gt;
+&lt;p&gt;语法&lt;br&gt;redis Lpop 命令基本语法如下：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;redis 127.0.0.1:6379&amp;gt; Lpop KEY_NAM
+      
+    
+    </summary>
+    
+    
+      <category term="redis" scheme="http://blog.xmqbeast.com/tags/redis/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Redis Llen命令</title>
+    <link href="http://blog.xmqbeast.com/2018/05/14/Redis-Llen%E5%91%BD%E4%BB%A4/"/>
+    <id>http://blog.xmqbeast.com/2018/05/14/Redis-Llen命令/</id>
+    <published>2018-05-13T18:06:56.000Z</published>
+    <updated>2018-05-13T18:35:23.726Z</updated>
+    
+    <content type="html"><![CDATA[<p>Redis Llen 命令</p><p>Redis Llen 命令用于返回列表的长度。 如果列表 key 不存在，则 key 被解释为一个空列表，返回 0 。 如果 key 不是列表类型，返回一个错误。</p><p>语法<br>redis Llen 命令基本语法如下：</p><pre><code>redis 127.0.0.1:6379&gt; LLEN KEY_NAME</code></pre><p>返回值<br>列表的长度。</p><p>实例</p><pre><code>redis 127.0.0.1:6379&gt; RPUSH list1 &quot;foo&quot;(integer) 1redis 127.0.0.1:6379&gt; RPUSH list1 &quot;bar&quot;(integer) 2redis 127.0.0.1:6379&gt; LLEN list1(integer) 2</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;Redis Llen 命令&lt;/p&gt;
+&lt;p&gt;Redis Llen 命令用于返回列表的长度。 如果列表 key 不存在，则 key 被解释为一个空列表，返回 0 。 如果 key 不是列表类型，返回一个错误。&lt;/p&gt;
+&lt;p&gt;语法&lt;br&gt;redis Llen 命令基本语法如下：&lt;
+      
+    
+    </summary>
+    
+    
+      <category term="redis" scheme="http://blog.xmqbeast.com/tags/redis/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Redis Ltrim命令</title>
+    <link href="http://blog.xmqbeast.com/2018/05/14/Redis-Ltrim%E5%91%BD%E4%BB%A4/"/>
+    <id>http://blog.xmqbeast.com/2018/05/14/Redis-Ltrim命令/</id>
+    <published>2018-05-13T18:01:57.000Z</published>
+    <updated>2018-05-13T18:06:10.781Z</updated>
+    
+    <content type="html"><![CDATA[<p>Redis Ltrim 命令</p><p>Redis Ltrim 对一个列表进行修剪(trim)，就是说，让列表只保留指定区间内的元素，不在指定区间之内的元素都将被删除。<br>下标 0 表示列表的第一个元素，以 1 表示列表的第二个元素，以此类推。 你也可以使用负数下标，以 -1 表示列表的最后一个元素， -2 表示列表的倒数第二个元素，以此类推。</p><p>语法<br>redis Ltrim 命令基本语法如下：</p><pre><code>redis 127.0.0.1:6379&gt; LTRIM KEY_NAME START STOP</code></pre><p>返回值<br>命令执行成功时，返回 ok 。</p><p>实例</p><pre><code>redis 127.0.0.1:6379&gt; RPUSH mylist &quot;hello&quot;(integer) 1redis 127.0.0.1:6379&gt; RPUSH mylist &quot;hello&quot;(integer) 2redis 127.0.0.1:6379&gt; RPUSH mylist &quot;foo&quot;(integer) 3redis 127.0.0.1:6379&gt; RPUSH mylist &quot;bar&quot;(integer) 4redis 127.0.0.1:6379&gt; LTRIM mylist 1 -1OKredis 127.0.0.1:6379&gt; LRANGE mylist 0 -11) &quot;hello&quot;2) &quot;foo&quot;3) &quot;bar&quot;</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;Redis Ltrim 命令&lt;/p&gt;
+&lt;p&gt;Redis Ltrim 对一个列表进行修剪(trim)，就是说，让列表只保留指定区间内的元素，不在指定区间之内的元素都将被删除。&lt;br&gt;下标 0 表示列表的第一个元素，以 1 表示列表的第二个元素，以此类推。 你也可以使用负数下标
+      
+    
+    </summary>
+    
+    
+      <category term="redis" scheme="http://blog.xmqbeast.com/tags/redis/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>redis Lrange命令</title>
+    <link href="http://blog.xmqbeast.com/2018/05/14/redis-Lrange%E5%91%BD%E4%BB%A4/"/>
+    <id>http://blog.xmqbeast.com/2018/05/14/redis-Lrange命令/</id>
+    <published>2018-05-13T17:49:53.000Z</published>
+    <updated>2018-05-13T17:52:44.991Z</updated>
+    
+    <content type="html"><![CDATA[<p>Redis Lrange 命令</p><p>Redis Lrange 返回列表中指定区间内的元素，区间以偏移量 START 和 END 指定。 其中 0 表示列表的第一个元素， 1 表示列表的第二个元素，以此类推。 你也可以使用负数下标，以 -1 表示列表的最后一个元素， -2 表示列表的倒数第二个元素，以此类推。</p><p>语法<br>redis Lrange 命令基本语法如下：</p><pre><code>redis 127.0.0.1:6379&gt; LRANGE KEY_NAME START END</code></pre><p>返回值<br>一个列表，包含指定区间内的元素。</p><p>实例<br>    redis&gt; RPUSH mylist “one”<br>    (integer) 1<br>    redis&gt; RPUSH mylist “two”<br>    (integer) 2<br>    redis&gt; RPUSH mylist “three”<br>    (integer) 3<br>    redis&gt; LRANGE mylist 0 0<br>    1) “one”<br>    redis&gt; LRANGE mylist -3 2<br>    1) “one”<br>    2) “two”<br>    3) “three”<br>    redis&gt; LRANGE mylist -100 100<br>    1) “one”<br>    2) “two”<br>    3) “three”<br>    redis&gt; LRANGE mylist 5 10<br>    (empty list or set)<br>    redis&gt; </p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;Redis Lrange 命令&lt;/p&gt;
+&lt;p&gt;Redis Lrange 返回列表中指定区间内的元素，区间以偏移量 START 和 END 指定。 其中 0 表示列表的第一个元素， 1 表示列表的第二个元素，以此类推。 你也可以使用负数下标，以 -1 表示列表的最后一个元素，
+      
+    
+    </summary>
+    
+    
+      <category term="redis" scheme="http://blog.xmqbeast.com/tags/redis/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>redis Rpop命令</title>
+    <link href="http://blog.xmqbeast.com/2018/05/14/redis-Rpop%E5%91%BD%E4%BB%A4/"/>
+    <id>http://blog.xmqbeast.com/2018/05/14/redis-Rpop命令/</id>
+    <published>2018-05-13T17:02:36.000Z</published>
+    <updated>2018-05-13T17:46:28.638Z</updated>
+    
+    <content type="html"><![CDATA[<p>Redis Rpop 命令</p><p>Redis Rpop 命令用于移除并返回列表的最后一个元素。</p><p>语法<br>redis Rpop 命令基本语法如下：</p><pre><code>redis 127.0.0.1:6379&gt; RPOP KEY_NAME </code></pre><p>返回值<br>列表的最后一个元素。 当列表不存在时，返回 nil 。</p><p>实例</p><pre><code>redis&gt; RPUSH mylist &quot;one&quot;(integer) 1redis&gt; RPUSH mylist &quot;two&quot;(integer) 2redis&gt; RPUSH mylist &quot;three&quot;(integer) 3redis&gt; RPOP mylist&quot;three&quot;redis&gt; LRANGE mylist 0 -11) &quot;one&quot;2) &quot;two&quot;redis&gt; </code></pre>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;Redis Rpop 命令&lt;/p&gt;
+&lt;p&gt;Redis Rpop 命令用于移除并返回列表的最后一个元素。&lt;/p&gt;
+&lt;p&gt;语法&lt;br&gt;redis Rpop 命令基本语法如下：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;redis 127.0.0.1:6379&amp;gt; RPOP KEY_NA
+      
+    
+    </summary>
+    
+    
+      <category term="redis" scheme="http://blog.xmqbeast.com/tags/redis/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>redis4.0.2配置远程连接（centos7.2）</title>
+    <link href="http://blog.xmqbeast.com/2018/05/14/redis4-0-2%E9%85%8D%E7%BD%AE%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5%EF%BC%88centos7-2%EF%BC%89/"/>
+    <id>http://blog.xmqbeast.com/2018/05/14/redis4-0-2配置远程连接（centos7-2）/</id>
+    <published>2018-05-13T16:52:01.000Z</published>
+    <updated>2018-05-13T16:55:20.907Z</updated>
+    
+    <content type="html"><![CDATA[<p>最近开始学习redis，在服务器上安装了redis之后，远程连接一直连接不上，报错如下：</p><p> redis.clients.jedis.exceptions.JedisConnectionException: java.net.ConnectException: Connection refused: connect</p><p>总结原因如下：<br>1、6379端口没有开放<br>2.修改redis.conf配置文件</p><p>这个文件需要修改两个地方</p><p>打开redis.conf文件<br>　　按crrl+F查询，</p><p>找到bind 127.0.0.1，把这行前面加个#注释掉<br>再查找protected-mode yes 把yes修改为no，然后：wq保存文件，<br>把服务关掉</p><p>redis远程连接命令:redis-cli -h 127.0.0.1 -p 6379</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;最近开始学习redis，在服务器上安装了redis之后，远程连接一直连接不上，报错如下：&lt;/p&gt;
+&lt;p&gt; redis.clients.jedis.exceptions.JedisConnectionException: java.net.ConnectException: 
+      
+    
+    </summary>
+    
+    
+      <category term="redis" scheme="http://blog.xmqbeast.com/tags/redis/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>redis 消息队列(一)</title>
+    <link href="http://blog.xmqbeast.com/2018/05/13/redis-%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97-%E4%B8%80/"/>
+    <id>http://blog.xmqbeast.com/2018/05/13/redis-消息队列-一/</id>
+    <published>2018-05-13T15:33:43.000Z</published>
+    <updated>2018-05-13T16:07:53.461Z</updated>
+    
+    <content type="html"><![CDATA[<p>Redis队列功能介绍</p><p>List</p><p>常用命令：</p><p>Blpop删除，并获得该列表中的第一元素，或阻塞，直到有一个可用</p><p>Brpop删除，并获得该列表中的最后一个元素，或阻塞，直到有一个可用</p><p>Brpoplpush</p><p>Lindex获取一个元素，通过其索引列表</p><p>Linsert在列表中的另一个元素之前或之后插入一个元素</p><p>Llen获得队列(List)的长度</p><p>Lpop从队列的左边出队一个元素</p><p>Lpush从队列的左边入队一个或多个元素</p><p>Lpushx当队列存在时，从队到左边入队一个元素</p><p>Lrange从列表中获取指定返回的元素</p><p>Lrem从列表中删除元素</p><p>Lset设置队列里面一个元素的值</p><p>Ltrim修剪到指定范围内的清单</p><p>Rpop从队列的右边出队一个元素</p><p>Rpoplpush删除列表中的最后一个元素，将其追加到另一个列表</p><p>Rpush从队列的右边入队一个元素</p><p>Rpushx从队列的右边入队一个元素，仅队列存在时有效</p><p>   应用场景：</p><p>Redis list的应用场景非常多，也是Redis最重要的数据结构之一，比如twitter的关注列表，粉丝列表等都可以用Redis的list结构来实现。</p><p>Lists 就是链表，相信略有数据结构知识的人都应该能理解其结构。使用Lists结构，我们可以轻松地实现最新消息排行等功能。</p><p>Lists的另一个应用就是消息队列，</p><p>可以利用Lists的PUSH操作，将任务存在Lists中，然后工作线程再用POP操作将任务取出进行执行。Redis还提供了操作Lists中某一段的api，你可以直接查询，删除Lists中某一段的元素。</p><p>如果需要还可以用redis的Sorted-Sets数据结构来做优先队列.可以给每条消息加上一个唯一的序号。这里就不详细介绍了。</p><p>示意图:</p><p>1)入队</p><p><img src="http://oncykm32h.bkt.clouddn.com/041122275024610.png" alt="redis-queue"></p><p>2)jedis rpoplpush</p><p>具体方法为</p><pre><code>/** * Atomically return and remove the last (tail) element of the srckey list, and push the element * as the first (head) element of the dstkey list. For example if the source list contains the * elements &quot;a&quot;,&quot;b&quot;,&quot;c&quot; and the destination list contains the elements &quot;foo&quot;,&quot;bar&quot; after an * RPOPLPUSH command the content of the two lists will be &quot;a&quot;,&quot;b&quot; and &quot;c&quot;,&quot;foo&quot;,&quot;bar&quot;. * &lt;p&gt; * If the key does not exist or the list is already empty the special value &apos;nil&apos; is returned. If * the srckey and dstkey are the same the operation is equivalent to removing the last element * from the list and pusing it as first element of the list, so it&apos;s a &quot;list rotation&quot; command. * &lt;p&gt; * Time complexity: O(1) * @param srckey * @param dstkey * @return Bulk reply */  public String rpoplpush(final String srckey, final String dstkey)</code></pre><p>RPOPLPUSH source destination</p><p>命令 RPOPLPUSH 在一个原子时间内，执行以下两个动作：</p><p>将列表 source 中的最后一个元素(尾元素)弹出，并返回给客户端。<br>将 source 弹出的元素插入到列表 destination ，作为 destination 列表的的头元素。<br>举个例子，你有两个列表 source 和 destination ， source 列表有元素 a, b, c ， destination 列表有元素 x, y, z ，执行 RPOPLPUSH source destination 之后， source 列表包含元素 a, b ， destination 列表包含元素 c, x, y, z ，并且元素 c 会被返回给客户端。</p><p>如果 source 不存在，值 nil 被返回，并且不执行其他动作。</p><p>如果 source 和 destination 相同，则列表中的表尾元素被移动到表头，并返回该元素，可以把这种特殊情况视作列表的旋转(rotation)操作</p><p>3） jedis rpop</p><p>返回字符串，最后一个元素的值，或者关键不存在返回nil。</p><pre><code> /**   * Atomically return and remove the first (LPOP) or last (RPOP) element of the list. For example   * if the list contains the elements &quot;a&quot;,&quot;b&quot;,&quot;c&quot; RPOP will return &quot;c&quot; and the list will become   * &quot;a&quot;,&quot;b&quot;.   * &lt;p&gt;   * If the key does not exist or the list is already empty the special value &apos;nil&apos; is returned.   * @see #lpop(String)   * @param key   * @return Bulk reply   */public String rpop(final String key)</code></pre><p>4) jedis lpush</p><pre><code>/**  * Add the string value to the head (LPUSH) or tail (RPUSH) of the list stored at key. If the key  * does not exist an empty list is created just before the append operation. If the key exists but  * is not a List an error is returned.  * &lt;p&gt;  * Time complexity: O(1)  * @param key  * @param strings  * @return Integer reply, specifically, the number of elements inside the list after the push  *         operation.  */public Long lpush(final String key, final String... strings)</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;Redis队列功能介绍&lt;/p&gt;
+&lt;p&gt;List&lt;/p&gt;
+&lt;p&gt;常用命令：&lt;/p&gt;
+&lt;p&gt;Blpop删除，并获得该列表中的第一元素，或阻塞，直到有一个可用&lt;/p&gt;
+&lt;p&gt;Brpop删除，并获得该列表中的最后一个元素，或阻塞，直到有一个可用&lt;/p&gt;
+&lt;p&gt;Brpoplpush&lt;
+      
+    
+    </summary>
+    
+    
+      <category term="redis" scheme="http://blog.xmqbeast.com/tags/redis/"/>
+    
+  </entry>
   
   <entry>
     <title>凡是你排斥的，就是你所要学习的</title>
@@ -239,254 +491,6 @@
     
     
       <category term="spring" scheme="http://blog.xmqbeast.com/tags/spring/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>错过的爱</title>
-    <link href="http://blog.xmqbeast.com/2017/11/10/%E9%94%99%E8%BF%87%E7%9A%84%E7%88%B1/"/>
-    <id>http://blog.xmqbeast.com/2017/11/10/错过的爱/</id>
-    <published>2017-11-10T00:31:33.000Z</published>
-    <updated>2018-03-08T15:55:02.747Z</updated>
-    
-    <content type="html"><![CDATA[<p>   one day</p><p><img src="http://oncykm32h.bkt.clouddn.com/oneday.png" alt="oneday"></p><p>这部改编自英国作家大卫·尼克尔斯的同名小说《一天》,男女主角是大学同学，毕业时才相识，在一夜缠绵后分开，决定每年的一天，都要见面聊聊彼此近况。</p><p>   男主角家境不错，身边不乏女人围绕，而女主角是工人家庭出生，努力工作努力生活。</p><p>   他们各自经历了生活和爱情，他们当了23年的好朋友，却没有真正意义上的在一起过。</p><p>   她一直爱他，不论他的新是否在她这里，不论他变得如何堕落庸俗，如何自私懦弱，她还是爱他。</p><p>   在不断的离别与交汇后，男主角终于明白，soulmate其实就在身边。</p><p>   <img src="http://oncykm32h.bkt.clouddn.com/timg.jpg" alt="timg"></p><p>   但好景不长，女主角因一场车祸去世，两人的感情戛然而止，终究还是错过了。</p><p>   就像影片中所言：”不管明天发生什么，把握好今天“</p><p>   如果真的喜欢一个人，请告诉ta,无论结果如何，至少不会在未来的日子里遗憾。</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;   one day&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://oncykm32h.bkt.clouddn.com/oneday.png&quot; alt=&quot;oneday&quot;&gt;&lt;/p&gt;
-&lt;p&gt;这部改编自英国作家大卫·尼克尔斯的同名小说《一天》,男女主角是大学同学，毕业时才相识，
-      
-    
-    </summary>
-    
-    
-      <category term="情感" scheme="http://blog.xmqbeast.com/tags/%E6%83%85%E6%84%9F/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>马斯洛需求层次理论</title>
-    <link href="http://blog.xmqbeast.com/2017/11/08/%E9%A9%AC%E6%96%AF%E6%B4%9B%E9%9C%80%E6%B1%82%E5%B1%82%E6%AC%A1%E7%90%86%E8%AE%BA/"/>
-    <id>http://blog.xmqbeast.com/2017/11/08/马斯洛需求层次理论/</id>
-    <published>2017-11-07T19:19:22.000Z</published>
-    <updated>2018-03-08T15:55:02.748Z</updated>
-    
-    <content type="html"><![CDATA[<p>   马斯洛将人的需求层次分为五个层次。分别是：</p><p>   <img src="http://oncykm32h.bkt.clouddn.com/msl-theroy.jpg" alt="msl-theory"></p><p> 一、生理需求。它是指人类生存最基本的需求。比如衣、食、住、行。例如一个经常处于饥饿状态的人，首先需要的是食物，为此，他的生活目的被看成是填饱肚子。当基本的生理需求得到满足之后，生理需求就不再是推动人们工作的最强烈动力，取而代之的是安全需求。</p><p> 二、安全需求。安是指保护自己的身体和情感免受伤害的需求。这种安全需求体现在生活生活中是多方面的，比如说生命安全，劳动安全，良好的社会环境。反映在工作环境中，员工希望能够避免危险事故，保障人身安全，避免事业等等。</p><p> 三、社会需求。它包括友谊、爱情、归属，信任和接纳。马斯洛认为，人是一种社会动物，人们的生活和工作都不是独立进行的，经常会与他人接触，因此人们需要社会交往，良好的人际关系，人与人之间的感情还有爱，在组织中能够得到他人的接纳和信任。</p><p> 四、尊重需求。它包括自尊和受到他人尊重两方面。自尊是指自己的自尊心，工作努力不甘落后，有充分的自信心，以及获得成就后的自豪感。受人尊重是指自己的工作成绩，社会地位能够得到他人的认可。这一需求可概括为自尊心、自信心、威望、社会地位等方面的需求。</p><p> 五、自我实现的需求。它是指个人的成长和发展，发挥自身潜能，实现理想的需求。简单来说就是梦想的实现。</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;   马斯洛将人的需求层次分为五个层次。分别是：&lt;/p&gt;
-&lt;p&gt;   &lt;img src=&quot;http://oncykm32h.bkt.clouddn.com/msl-theroy.jpg&quot; alt=&quot;msl-theory&quot;&gt;&lt;/p&gt;
-&lt;p&gt; 一、生理需求。它是指人类生存最基本
-      
-    
-    </summary>
-    
-    
-      <category term="心理" scheme="http://blog.xmqbeast.com/tags/%E5%BF%83%E7%90%86/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>关于经历</title>
-    <link href="http://blog.xmqbeast.com/2017/11/04/%E5%85%B3%E4%BA%8E%E7%BB%8F%E5%8E%86/"/>
-    <id>http://blog.xmqbeast.com/2017/11/04/关于经历/</id>
-    <published>2017-11-04T00:23:43.000Z</published>
-    <updated>2018-03-08T15:55:02.746Z</updated>
-    
-    <content type="html"><![CDATA[<p>如果你曾经玩过角色扮演类的RPG游戏，你就会知道有一个概念叫EXP，全称叫Experience,这就是经历的英文。人的一生就是一场巨大的RPG,你扮演着你自己。你唯一升级的方法，就是不断地积累EXP.</p><p>我们都了解那些故事，我们都懂那些道理，看了那么多励志贴，我们甚至都快知道为什么乔布斯会成为乔布斯。但只有经历才能让我们把那些道理变成意识。那些改变我们一生的道理，都不是别人教会的。</p><p>在人生的每个阶段，只有我们已经拥有的那些经历，决定了我们下一步会去做什么。所以很多时候，你只要记得一件事，那就是：去体验不同的经历。去爱，去恨，去在热恋中没心没肺地笑，去在失恋后嘶声力竭地哭，去翘课，去打架，去拼了命的读书，去让自己真的领悟那些道理。你所尝试的事，你所认识的人，都是你经历的一部分。他们会帮助你去理解你一直知道但是不曾真正理解的事，他们会帮助你看到一直存在着但是你不曾看到的世界。</p><p>你的人生很短，你的时间货币只有那么多。所以除了乔布斯已经告诉你的“不要活在别人的世界里”，你还要记得，永远不要重复一样的经历，因为你不会从第二次一样的经历中收获到更多，更因为这个偌大的世界有着太多有趣的人等着我们去认识、太多截然不同的经历等着我们去体验。</p><p>你只要记住，如果你每个星期都在做着差不多的事情，那么一年以后你还是一年前的你，只是老了一岁。如果你愿意每个星期、或者每个月都去尝试一种新的体验，或者认识一个来自完全不同背景的朋友，那么一年后你和一年前一样年轻，只是比别人多活了一年，多了一年的阅历还有对这个世界的认知。</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;如果你曾经玩过角色扮演类的RPG游戏，你就会知道有一个概念叫EXP，全称叫Experience,这就是经历的英文。人的一生就是一场巨大的RPG,你扮演着你自己。你唯一升级的方法，就是不断地积累EXP.&lt;/p&gt;
-&lt;p&gt;我们都了解那些故事，我们都懂那些道理，看了那么多励志贴，我
-      
-    
-    </summary>
-    
-    
-      <category term="情感" scheme="http://blog.xmqbeast.com/tags/%E6%83%85%E6%84%9F/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>关于是否会为了去经历、去追随感情和理想而后悔</title>
-    <link href="http://blog.xmqbeast.com/2017/11/03/%E5%85%B3%E4%BA%8E%E6%98%AF%E5%90%A6%E4%BC%9A%E4%B8%BA%E4%BA%86%E5%8E%BB%E7%BB%8F%E5%8E%86%E3%80%81%E5%8E%BB%E8%BF%BD%E9%9A%8F%E6%84%9F%E6%83%85%E5%92%8C%E7%90%86%E6%83%B3%E8%80%8C%E5%90%8E%E6%82%94/"/>
-    <id>http://blog.xmqbeast.com/2017/11/03/关于是否会为了去经历、去追随感情和理想而后悔/</id>
-    <published>2017-11-03T00:40:22.000Z</published>
-    <updated>2018-03-08T15:55:02.745Z</updated>
-    
-    <content type="html"><![CDATA[<p>   每个人都会有后悔的经历，但是我们一定不会为了作出追求感情、或者追随理想的决定而后悔。</p><p>   事实是，如果我们有努力追寻、不愿放弃的梦想，如果我们有深爱的、不想伤害的人，那么在这条道路上，我们一定会为我们曾经做过的某些事而后悔。当我们离理想或者真爱越是近，我们越是容易后悔。举个例子，晚一分钟错过飞机的人会比晚一个小时错过飞机的人更加后悔懊恼，因为我们心里很清楚如果自己不曾犯下某些错误，如果我们再多那么一点点坚持，或许早就已经实现了梦想。</p><p>   其实后悔只是一个信号，它告诉我们，离目标已经很近了。更重要的是，我们活着并不是为了追求什么“无悔的生活”，我们不必为了那些后悔而伤心痛苦。因为在我们选择的这条道路上，后悔并不是为了告诉我们曾经做错了什么，而是想要告诉我们怎么做可以做得更好。</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;   每个人都会有后悔的经历，但是我们一定不会为了作出追求感情、或者追随理想的决定而后悔。&lt;/p&gt;
-&lt;p&gt;   事实是，如果我们有努力追寻、不愿放弃的梦想，如果我们有深爱的、不想伤害的人，那么在这条道路上，我们一定会为我们曾经做过的某些事而后悔。当我们离理想或者真爱越是近，
-      
-    
-    </summary>
-    
-    
-      <category term="情感" scheme="http://blog.xmqbeast.com/tags/%E6%83%85%E6%84%9F/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>linux下配置网络静态ip</title>
-    <link href="http://blog.xmqbeast.com/2017/11/02/linux%E4%B8%8B%E9%85%8D%E7%BD%AE%E7%BD%91%E7%BB%9C%E9%9D%99%E6%80%81ip/"/>
-    <id>http://blog.xmqbeast.com/2017/11/02/linux下配置网络静态ip/</id>
-    <published>2017-11-02T09:44:08.000Z</published>
-    <updated>2018-03-08T15:55:02.741Z</updated>
-    
-    <content type="html"><![CDATA[<p>linux下配置网络静态ip</p><pre><code>vi /etc/sysconfig/network-scripts/ifcfg-eth0service network restart 或/etc/init.d/network restartDEVICE=eth0（设备名称）HWADDR=00：0c:29：d3:bb:e5 (mac地址)TYPE=Ethernet （网络类型）ONBOOT=yes (开机启动)BOOTTPROTO=static （静态ip）DNS1：192.168.1.1 (dns)IPADDR=192.168.1.45 （ip地址）NETMASK=255.255.255.0 (子网掩码)GATEWAY=192.168.1.1 （网关）</code></pre><p>如果ping的是广域网而不是局域网，还要确保网关和DNS正确，<br>用命令route add default gw 192.168.1.1</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;linux下配置网络静态ip&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;vi /etc/sysconfig/network-scripts/ifcfg-eth0
-
-service network restart 或/etc/init.d/network restart
-
-
-
-DEVIC
-      
-    
-    </summary>
-    
-    
-      <category term="linux" scheme="http://blog.xmqbeast.com/tags/linux/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>关于冰山模型</title>
-    <link href="http://blog.xmqbeast.com/2017/11/02/%E5%85%B3%E4%BA%8E%E5%86%B0%E5%B1%B1%E6%A8%A1%E5%9E%8B/"/>
-    <id>http://blog.xmqbeast.com/2017/11/02/关于冰山模型/</id>
-    <published>2017-11-01T17:51:05.000Z</published>
-    <updated>2018-03-08T15:55:02.745Z</updated>
-    
-    <content type="html"><![CDATA[<p>人类为何有人【小富即安】，而有人有【鸿鹄之志】呢？</p><p>这里有两个问题：</p><p>1.为什么会有动机的产生？</p><p>2.动机为什么会有所不同?</p><p>  我们从冰山模型说起，可能学心理学或者人力资源的人会知道一些。</p><p>模型表达的核心意思有两点：</p><pre><code>1.人类表现出来的知识和技能只是冰山的一角，决定自身综合素质的是冰山下面的部分：价值观、自我认知、品质、动机。2.冰山以上相对好建设，冰山以下部分，相对难以改变。</code></pre><p>这就是冰山模型，由美国著名的心理学家麦克利兰在1973年提出的一个著名模型，所谓“冰山模型”，就是将人员个体素质的不同表现表式划分为表面的“冰山以上部分”和深藏的“冰山以下部分”。</p><p>模型结构如下图展示：</p><p><img src="http://oncykm32h.bkt.clouddn.com/ice_model.jpg" alt="ice-model"></p><p>以上，从上到下，改变难度越来越大，被感知的难度也越来越大。技能比知识好学，价值观虽然难改变，但是也可以被调整或者自我调整，而最底层的“动机”的形成，现在普遍认为只和基因及童年因素有关，几乎无法改变。所以现在有些理论认为冰山模型最下面应该还有一层基因，我们暂时就不说了。</p><p>层次划分：</p><p><img src="http://oncykm32h.bkt.clouddn.com/ice-m.png" alt="ice-model"></p><pre><code>1、知识，指个人在某一特定领域拥有的事实型与经验型信息2、技能，指结构化地运用知识完成某项具体工作的能力,即对某一特定领域所需技术与知识的掌握情况3、社会角色，指一个人基于态度和价值观的行为方式与风格4、自我概念，指一个人的态度、价值观和自我印象5、特质（性格），指个性、身体特征对环境和各种信息所表现出来的持续反应。品质与动机可以预测个人在长期无人监督下的工作状态。6、动机，指在一个特定领域的自然而持续的想法和偏好（如成就、亲和、影响力），它们将驱动，引导和决定一个人的外在行动。</code></pre><p>其中第1、2项大部分与工作所要求的直接资质相关，我们能够在比较短的时间使用一定的手段进行测量。可以通过考察资质证书、考试、面谈、简历等具体形式来测量，也可以通过培训、锻炼等办法来提高这些素质。</p><p>第3、4、5、6项往往很难度量和准确表述，又少与工作内容直接关联。只有其主观能动性变化影响到工作时，其对工作的影响才会体现出来。考察这些方面的东西，每个管理者有自己独特的思维方式和理念，但往往因其偏好而有所局限。管理学界及心理学有着一些测量手段，但往往复杂不易采用或效果不够准确。</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;人类为何有人【小富即安】，而有人有【鸿鹄之志】呢？&lt;/p&gt;
-&lt;p&gt;这里有两个问题：&lt;/p&gt;
-&lt;p&gt;1.为什么会有动机的产生？&lt;/p&gt;
-&lt;p&gt;2.动机为什么会有所不同?&lt;/p&gt;
-&lt;p&gt;  我们从冰山模型说起，可能学心理学或者人力资源的人会知道一些。&lt;/p&gt;
-&lt;p&gt;模型表达的核
-      
-    
-    </summary>
-    
-    
-      <category term="情感" scheme="http://blog.xmqbeast.com/tags/%E6%83%85%E6%84%9F/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>卢巧音唱的三角志歌词所代表的含义</title>
-    <link href="http://blog.xmqbeast.com/2017/10/31/%E5%8D%A2%E5%B7%A7%E9%9F%B3%E5%94%B1%E7%9A%84%E4%B8%89%E8%A7%92%E5%BF%97%E6%AD%8C%E8%AF%8D%E6%89%80%E4%BB%A3%E8%A1%A8%E7%9A%84%E5%90%AB%E4%B9%89/"/>
-    <id>http://blog.xmqbeast.com/2017/10/31/卢巧音唱的三角志歌词所代表的含义/</id>
-    <published>2017-10-31T10:25:04.000Z</published>
-    <updated>2018-03-08T15:55:02.746Z</updated>
-    
-    <content type="html"><![CDATA[<p>这首歌应该说的是一个女生爱上了一个男生,但是这个男生特别特别花心,这个女生不止一次的发现男生和别的女生有问题,有一天这个女生又发现了这个男生和另一个女生之间的事情,并没有揭穿他,应为她知道,即使揭穿他这一次,仍有下一次.也许当初这个女生也是以第三者的身份和这个男生在一起的,在一起之后发现这个男生的花心,于是这个女生就彻底的看透了这个男生,决定洒脱放手,因为她知道,不放手还有第四者、第五者,即使这个男生这次回到他身旁,仍会有下一次.爱情如果存在三人之间的战争,不管输赢其结果都是伤痕累累.爱上这种花心男是不存在好心有好报的,温柔、善良、妥协都根治不了这种病,也许会一时好转,但总有一天会复发…即使曾在一起再温馨、拥有再美好的回忆终究不会拥有永恒,也许他爱你,但他不会只爱你,更不会永远爱你…</p><p>这就是我对这首歌的理解</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;这首歌应该说的是一个女生爱上了一个男生,但是这个男生特别特别花心,这个女生不止一次的发现男生和别的女生有问题,有一天这个女生又发现了这个男生和另一个女生之间的事情,并没有揭穿他,应为她知道,即使揭穿他这一次,仍有下一次.也许当初这个女生也是以第三者的身份和这个男生在一起的,
-      
-    
-    </summary>
-    
-    
-      <category term="情感" scheme="http://blog.xmqbeast.com/tags/%E6%83%85%E6%84%9F/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>喵喵和小煤球</title>
-    <link href="http://blog.xmqbeast.com/2017/10/28/%E5%96%B5%E5%96%B5%E5%92%8C%E5%B0%8F%E7%85%A4%E7%90%83/"/>
-    <id>http://blog.xmqbeast.com/2017/10/28/喵喵和小煤球/</id>
-    <published>2017-10-28T15:24:07.000Z</published>
-    <updated>2018-03-08T15:55:02.746Z</updated>
-    
-    <summary type="html">
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>redis简单介绍及安装（linux）</title>
-    <link href="http://blog.xmqbeast.com/2017/10/25/redis%E7%AE%80%E5%8D%95%E4%BB%8B%E7%BB%8D%E5%8F%8A%E5%AE%89%E8%A3%85%EF%BC%88linux%EF%BC%89/"/>
-    <id>http://blog.xmqbeast.com/2017/10/25/redis简单介绍及安装（linux）/</id>
-    <published>2017-10-24T16:39:50.000Z</published>
-    <updated>2018-03-08T15:55:02.743Z</updated>
-    
-    <content type="html"><![CDATA[<p>  redis是当前比较热门的NOSQL系统之一，它是一个key-value存储系统。和Memcached类似，但很大程度补偿了memcached的不足，它支持存储的value类型相对更多，包括string、list、set、zset和hash。这些数据类型都支持push/pop、add/remove及取交集并集和差集及更丰富的操作。在此基础上，redis支持各种不同方式的排序。Redis数据都是缓存在计算机内存中，并且会周期性的把更新的数据写入磁盘或者把修改操作写入追加的记录文件。</p><p>redis官网地址：<a href="http://www.redis.io/" target="_blank" rel="noopener">http://www.redis.io/</a></p><p>最新版本：2.8.3</p><p>在Linux下安装Redis非常简单，具体步骤如下（官网有说明）：</p><p>1、下载源码，解压缩后编译源码。</p><pre><code>$ wget http://download.redis.io/releases/redis-2.8.3.tar.gz$ tar xzf redis-2.8.3.tar.gz$ cd redis-2.8.3$ make</code></pre><p>  2、编译完成后，在Src目录下，有四个可执行文件redis-server、redis-benchmark、redis-cli和redis.conf。然后拷贝到一个目录下。</p><pre><code>mkdir /usr/rediscp redis-server  /usr/rediscp redis-benchmark /usr/rediscp redis-cli  /usr/rediscp redis.conf  /usr/rediscd /usr/redis</code></pre><p>3、启动Redis服务。</p><pre><code>$ ./redis-server   redis.conf</code></pre><p> 4、然后用客户端测试一下是否启动成功。</p><pre><code>$ redis-cliredis&gt; set foo barOKredis&gt; get foo&quot;bar&quot;</code></pre>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;  redis是当前比较热门的NOSQL系统之一，它是一个key-value存储系统。和Memcached类似，但很大程度补偿了memcached的不足，它支持存储的value类型相对更多，包括string、list、set、zset和hash。这些数据类型都支持push/
-      
-    
-    </summary>
-    
-    
-      <category term="linux" scheme="http://blog.xmqbeast.com/tags/linux/"/>
-    
-      <category term="redis" scheme="http://blog.xmqbeast.com/tags/redis/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>从你的全世界路过</title>
-    <link href="http://blog.xmqbeast.com/2017/10/22/%E4%BB%8E%E4%BD%A0%E7%9A%84%E5%85%A8%E4%B8%96%E7%95%8C%E8%B7%AF%E8%BF%87/"/>
-    <id>http://blog.xmqbeast.com/2017/10/22/从你的全世界路过/</id>
-    <published>2017-10-22T08:37:40.000Z</published>
-    <updated>2018-03-08T15:55:02.744Z</updated>
-    
-    <content type="html"><![CDATA[<p>从你的全世界路过</p><pre><code>总有几分钟，其中的每一秒，你都愿意拿一年去换取。总有几颗眼泪，其中的每一次抽泣，你都愿意拿满手的承诺去代替。总有几段场景，其中的没幅画面，你都愿意拿全部的力量去铭记。总有几句话，其中的每个字眼，你都愿意拿所有的夜晚去复习。</code></pre>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;从你的全世界路过&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;总有几分钟，其中的每一秒，你都愿意拿一年去换取。
-
-总有几颗眼泪，其中的每一次抽泣，你都愿意拿满手的承诺去代替。
-
-总有几段场景，其中的没幅画面，你都愿意拿全部的力量去铭记。
-
-总有几句话，其中的每个字眼，你都愿意拿所有的夜晚
-      
-    
-    </summary>
-    
-    
-      <category term="情感" scheme="http://blog.xmqbeast.com/tags/%E6%83%85%E6%84%9F/"/>
     
   </entry>
   
