@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.xmqbeast.com/"/>
-  <updated>2018-05-13T18:32:50.145Z</updated>
+  <updated>2018-05-27T07:10:36.655Z</updated>
   <id>http://blog.xmqbeast.com/</id>
   
   <author>
@@ -15,6 +15,181 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>linux下搭建go环境</title>
+    <link href="http://blog.xmqbeast.com/2018/05/27/linux%E4%B8%8B%E6%90%AD%E5%BB%BAgo%E7%8E%AF%E5%A2%83/"/>
+    <id>http://blog.xmqbeast.com/2018/05/27/linux下搭建go环境/</id>
+    <published>2018-05-26T17:01:37.000Z</published>
+    <updated>2018-05-27T07:10:36.655Z</updated>
+    
+    <content type="html"><![CDATA[<p>安装go工具</p><p>在 <a href="http://golang.org/dl/下载最新的linux版本，并把它提取到/usr/local目录，在此目录下进行解压缩" target="_blank" rel="noopener">http://golang.org/dl/下载最新的linux版本，并把它提取到/usr/local目录，在此目录下进行解压缩</a></p><pre><code>$ tar -xvf xxx.tar.gz </code></pre><p>然后将/usr/local/go/bin添加到PATH环境变量中，执行</p><pre><code>$ vim /etc/profile$ export PATH=$PATH:/usr/local/go/bin$ source /etc/profile</code></pre><p>实际上go会默认假定它被安装到/usr/local/go目录下，但也可以将go安装到其他位置，此时必须设置GOROOT环境变量来指出它所安装的位置。</p><p>执行go version，看到go的安装版本即安装成功</p><p>第一个hello world 程序</p><p>GOPATH环境变量指定了你的工作空间位置</p><p>首先创建一个工作目录，并设置相应的GOPATH，工作目录可以放在任何地方，但不能和go的安装目录相同，在这我们使用$HOME/work</p><pre><code>$ mkdir $HOME/work $ vim /etc/profile $ export GOPATH=$HOME/work  </code></pre><p>注意：go的代码必须放在工作空间内，也就是我们这里的work目录下，其中包含了三个子目录</p><pre><code>bin目录包含可执行命令pkg目录包含包对象src目录包含go的源文件，它们被组织成包（每个目录都对应一个包）</code></pre><p>接下来将工作空间的bin子目录添加到PATH中：</p><pre><code>$ vim /etc/profile$ export PATH=$PATH:$GOPATH/bin$ source /etc/profile</code></pre><p>包路径：<br>标准库中的包有给定的短路径比如”fmt”，对于你自己的包，也必须选择一个基本路径，来保证它不会与将来添加到标准库或其他标准库中的包相冲突。</p><p>使用packs作为基本路径，在你的工作空间里创建一个目录，我们将源码放在其中：</p><pre><code>mkdir $GOPATH/src/packs </code></pre><p>要编译运行简单的程序，首先要选择包路径，在这里我们使用packs/hello，并在你的工作空间内创建相应的包目录：</p><pre><code>$ mkdir $GOPATH/src/packs/hello  </code></pre><p>接着在该目录中创建名为hello.go的文件，其内容如下</p><pre><code>package main  import &quot;fmt&quot;  func main() {      fmt.Printf(&quot;Hello, world.\n&quot;)  } </code></pre><p>现在可以使用go工具构建并安装此程序了</p><pre><code>$ go install packs/hello </code></pre><p>注意，你可以在系统的任何地方运行此命令。go工具会根据GOPATH指定的工作空间，在packs/hello包内查找源码。<br>如果从包目录中运行go install，也可以省略包路径：</p><pre><code>$ cd $GOPATH/src/packs/hello  $ go install</code></pre><p>此命令会构建hello命令，产生一个可执行的二进制文件。并存放在工作空间的bin目录下，在这里就是$GOPATH/bin目录下<br>因为已经将$GOPATH/bin添加到PATH中，只需要输入该二进制文件名执行即可</p><pre><code>$ hello  Hello, world. </code></pre>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;安装go工具&lt;/p&gt;
+&lt;p&gt;在 &lt;a href=&quot;http://golang.org/dl/下载最新的linux版本，并把它提取到/usr/local目录，在此目录下进行解压缩&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;http://golang.or
+      
+    
+    </summary>
+    
+    
+      <category term="linux" scheme="http://blog.xmqbeast.com/tags/linux/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>什么是MVVM</title>
+    <link href="http://blog.xmqbeast.com/2018/05/15/%E4%BB%80%E4%B9%88%E6%98%AFMVVM/"/>
+    <id>http://blog.xmqbeast.com/2018/05/15/什么是MVVM/</id>
+    <published>2018-05-15T09:57:17.000Z</published>
+    <updated>2018-05-15T10:54:25.432Z</updated>
+    
+    <content type="html"><![CDATA[<p>什么是MVVM？MVVM是Model-View-ViewModel的缩写。</p><p>要编写可维护的前端代码绝非易事。我们已经用MVC模式通过koa实现了后端数据、模板页面和控制器的分离，但是，对于前端来说，还不够。</p><p>这里有童鞋会问，不是讲Node后端开发吗？怎么又回到前端开发了？</p><p>对于一个全栈开发工程师来说，懂前端才会开发出更好的后端程序（不懂前端的后端工程师会设计出非常难用的API），懂后端才会开发出更好的前端程序。程序设计的基本思想在前后端都是通用的，两者并无本质的区别。这和“不想当厨子的裁缝不是好司机”是一个道理。</p><p>当我们用Node.js有了一整套后端开发模型后，我们对前端开发也会有新的认识。由于前端开发混合了HTML、CSS和JavaScript，而且页面众多，所以，代码的组织和维护难度其实更加复杂，这就是MVVM出现的原因。</p><p>在了解MVVM之前，我们先回顾一下前端发展的历史。</p><p>在上个世纪的1989年，欧洲核子研究中心的物理学家Tim Berners-Lee发明了超文本标记语言（HyperText Markup Language），简称HTML，并在1993年成为互联网草案。从此，互联网开始迅速商业化，诞生了一大批商业网站。</p><p>最早的HTML页面是完全静态的网页，它们是预先编写好的存放在Web服务器上的html文件。浏览器请求某个URL时，Web服务器把对应的html文件扔给浏览器，就可以显示html文件的内容了。</p><p>如果要针对不同的用户显示不同的页面，显然不可能给成千上万的用户准备好成千上万的不同的html文件，所以，服务器就需要针对不同的用户，动态生成不同的html文件。一个最直接的想法就是利用C、C++这些编程语言，直接向浏览器输出拼接后的字符串。这种技术被称为CGI：Common Gateway Interface。</p><p>很显然，像新浪首页这样的复杂的HTML是不可能通过拼字符串得到的。于是，人们又发现，其实拼字符串的时候，大多数字符串都是HTML片段，是不变的，变化的只有少数和用户相关的数据，所以，又出现了新的创建动态HTML的方式：ASP、JSP和PHP——分别由微软、SUN和开源社区开发。</p><p>在ASP中，一个asp文件就是一个HTML，但是，需要替换的变量用特殊的&lt;%=var%&gt;标记出来了，再配合循环、条件判断，创建动态HTML就比CGI要容易得多。</p><p>但是，一旦浏览器显示了一个HTML页面，要更新页面内容，唯一的方法就是重新向服务器获取一份新的HTML内容。如果浏览器想要自己修改HTML页面的内容，就需要等到1995年年底，JavaScript被引入到浏览器。</p><p>有了JavaScript后，浏览器就可以运行JavaScript，然后，对页面进行一些修改。JavaScript还可以通过修改HTML的DOM结构和CSS来实现一些动画效果，而这些功能没法通过服务器完成，必须在浏览器实现。</p><p>用JavaScript在浏览器中操作HTML，经历了若干发展阶段：</p><p>第一阶段，直接用JavaScript操作DOM节点，使用浏览器提供的原生API：</p><pre><code>var dom = document.getElementById(&apos;name&apos;);dom.innerHTML = &apos;Homer&apos;;dom.style.color = &apos;red&apos;;</code></pre><p>第二阶段，由于原生API不好用，还要考虑浏览器兼容性，jQuery横空出世，以简洁的API迅速俘获了前端开发者的芳心：</p><pre><code>$(&apos;#name&apos;).text(&apos;Homer&apos;).css(&apos;color&apos;, &apos;red&apos;);</code></pre><p>第三阶段，MVC模式，需要服务器端配合，JavaScript可以在前端修改服务器渲染后的数据。</p><p>现在，随着前端页面越来越复杂，用户对于交互性要求也越来越高，想要写出Gmail这样的页面，仅仅用jQuery是远远不够的。MVVM模型应运而生。</p><p>MVVM最早由微软提出来，它借鉴了桌面应用程序的MVC思想，在前端页面中，把Model用纯JavaScript对象表示，View负责显示，两者做到了最大限度的分离。</p><p>把Model和View关联起来的就是ViewModel。ViewModel负责把Model的数据同步到View显示出来，还负责把View的修改同步回Model。</p><p>ViewModel如何编写？需要用JavaScript编写一个通用的ViewModel，这样，就可以复用整个MVVM模型了。</p><p>一个MVVM框架和jQuery操作DOM相比有什么区别？</p><p>我们先看用jQuery实现的修改两个DOM节点的例子：</p><pre><code>&lt;!-- HTML --&gt;&lt;p&gt;Hello, &lt;span id=&quot;name&quot;&gt;Bart&lt;/span&gt;!&lt;/p&gt;&lt;p&gt;You are &lt;span id=&quot;age&quot;&gt;12&lt;/span&gt;.&lt;/p&gt;</code></pre><p>Hello, Homer!</p><p>You are 52.</p><p>用jQuery修改name和age节点的内容：</p><pre><code>&apos;use strict&apos;;var name = &apos;Homer&apos;;var age = 52;$(&apos;#name&apos;).text(name);$(&apos;#age&apos;).text(age);</code></pre><p>如果我们使用MVVM框架来实现同样的功能，我们首先并不关心DOM的结构，而是关心数据如何存储。最简单的数据存储方式是使用JavaScript对象：</p><p>var person = {<br>    name: ‘Bart’,<br>    age: 12<br>};</p><p>我们把变量person看作Model，把HTML某些DOM节点看作View，并假定它们之间被关联起来了。</p><p>要把显示的name从Bart改为Homer，把显示的age从12改为51，我们并不操作DOM，而是直接修改JavaScript对象：</p><p>Hello, Homer!</p><p>You are 51</p><pre><code>&apos;use strict&apos;;person.name = &apos;Homer&apos;;person.age = 51;</code></pre><p>执行上面的代码，我们惊讶地发现，改变JavaScript对象的状态，会导致DOM结构作出对应的变化！这让我们的关注点从如何操作DOM变成了如何更新JavaScript对象的状态，而操作JavaScript对象比DOM简单多了！</p><p>这就是MVVM的设计思想：关注Model的变化，让MVVM框架去自动更新DOM的状态，从而把开发者从操作DOM的繁琐步骤中解脱出来！</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;什么是MVVM？MVVM是Model-View-ViewModel的缩写。&lt;/p&gt;
+&lt;p&gt;要编写可维护的前端代码绝非易事。我们已经用MVC模式通过koa实现了后端数据、模板页面和控制器的分离，但是，对于前端来说，还不够。&lt;/p&gt;
+&lt;p&gt;这里有童鞋会问，不是讲Node后端开发
+      
+    
+    </summary>
+    
+    
+      <category term="js" scheme="http://blog.xmqbeast.com/tags/js/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>netty5简介</title>
+    <link href="http://blog.xmqbeast.com/2018/05/15/netty5%E7%AE%80%E4%BB%8B/"/>
+    <id>http://blog.xmqbeast.com/2018/05/15/netty5简介/</id>
+    <published>2018-05-15T03:35:32.000Z</published>
+    <updated>2018-05-15T03:36:32.609Z</updated>
+    
+    <content type="html"><![CDATA[<p>Netty是一个非web的java应用，Java序列化的作用有以下两方面：</p><p>1） 把对象的字节序列永久地保存到硬盘上（通常存放在一个文件中）；</p><p>2） 在网络上传送对象的字节序列。</p><p>NIO和IO最大的区别是数据打包和传输方式。IO是以流的方式处理数据，而NIO是以块的方式处理数据。</p><p>面向流的IO一次一个字节的处理数据，一个输入流产生一个字节，一个输出流就消费一个字节。为流式数据创建过滤器就变得非常容易，链接几个过滤器，以便对数据进行处理非常方便而简单，但是面向流的IO通常处理的很慢。</p><p>面向块的IO系统以块的形式处理数据。每一个操作都在一步中产生或消费一个数据块。按块要比按流快的多，但面向块的IO缺少了面向流IO所具有的有雅兴和简单性。</p><p>Channel是一个对象，可以通过它读取和写入数据。可以把它看做IO中的流。但是它和流相比还有一些不同：Channel是双向的，既可以读又可以写，而流是单向的，Channel可以进行异步的读写，对Channel的读写必须通过buffer对象</p><p>在Java NIO中Channel主要有如下几种类型：</p><p>FileChannel：从文件读取数据的</p><p>DatagramChannel：读写UDP网络协议数据</p><p>SocketChannel：读写TCP网络协议数据</p><p>ServerSocketChannel：可以监听TCP连接</p><p>Netty5与其他版本的区别：</p><p>ChannelInboundHandler和ChannelOutboundHandler整合为ChannelHandler。ChannelHandler现在包含输入和输出的处理方法。</p><p>ChannelInboundHandlerAdapter，ChannelOutboundHandlerAdapter和ChannelDuplexHandlerAdapter已被废弃，由 ChannelHandlerAdapter代替。</p><p>由于现在无法区分处理器(handler) 是输入还是输出的处理器，CombinedChannelDuplexHandler现在由 ChannelHandlerAppender代替。</p><p>更多相关变化，可参考<a href="https://github.com/netty/netty/pull/1999" target="_blank" rel="noopener">https://github.com/netty/netty/pull/1999</a></p><p>channelRead0() → messageReceived()</p><p>我知道。这是一个愚蠢的错误。如果你使用了SimpleChannelInboundHandler，你需要把channelRead0()重命名为messageReceived()。</p><p>ChannelInitializer，当一个链接建立时，我们需要知道怎么来接收或者发送数据，当然，我们有各种各样的Handler实现来处理它，那么ChannelInitializer便是用来配置这些Handler，它会提供一个ChannelPipeline，并把Handler加入到ChannelPipeline。 </p><p>ChannelPipeline，ChannelPipeline实际上应该叫做ChannelHandlerPipeline，可以把ChannelPipeline看成是一个ChandlerHandler的链表，当需要对Channel进行某种处理的时候，Pipeline负责依次调用每一个Handler进行处理。每个Channel都有一个属于自己的Pipeline，调用Channel#pipeline()方法可以获得Channel的Pipeline，调用Pipeline#channel()方法可以获得Pipeline的Channel。一个Netty应用基于ChannelPipeline机制，这种机制需要依赖于EventLoop和EventLoopGroup，因为它们三个都和事件或者事件处理相关。 EventLoops的目的是为Channel处理IO操作，一个EventLoop可以为多个Channel服务。 EventLoopGroup会包含多个EventLoop。 Channel代表了一个Socket链接，或者其它和IO操作相关的组件，它和EventLoop一起用来参与IO处理。</p><p> Future，在Netty中所有的IO操作都是异步的，因此，你不能立刻得知消息是否被正确处理，但是我们可以过一会等它执行完成或者直接注册一个监听，具体的实现就是通过Future和ChannelFutures,他们可以注册一个监听，当操作执行成功或失败时监听会自动触发。总之，所有的操作都会返回一个ChannelFuture。</p><pre><code>Netty是一个非阻塞的、事件驱动的、网络编程框架。当然，我们很容易理解Netty会用线程来处理IO事件，对于熟悉多线程编程的人来说，你或许会想到如何同步你的代码，但是Netty不需要我们考虑这些，具体是这样：</code></pre><p>一个Channel会对应一个EventLoop，而一个EventLoop会对应着一个线程，也就是说，仅有一个线程在负责一个Channel的IO操作。</p><pre><code>当一个ChannelHandler被加入到ChannelPipeline中时，它便会获得一个ChannelHandlerContext的引用，而ChannelHandlerContext可以用来读写Netty中的数据流。因此，现在可以有两种方式来发送数据，一种是把数据直接写入Channel，一种是把数据写入ChannelHandlerContext，它们的区别是写入Channel的话，数据流会从Channel的头开始传递，而如果写入ChannelHandlerContext的话，数据流会流入管道中的下一个Handler。</code></pre><p>我们最关心的部分，如何处理我们的业务逻辑？ 通常继承基类ChannelHandlerAdapter</p><p>Netty中会有很多Handler，具体是哪种Handler还要看它们继承的是InboundAdapter还是OutboundAdapter。当然，Netty中还提供了一些列的Adapter来帮助我们简化开发，我们知道在Channelpipeline中每一个Handler都负责把Event传递给下一个Handler，如果有了这些辅助Adapter，这些额外的工作都可自动完成，我们只需覆盖实现我们真正关心的部分即可。此外，还有一些Adapter会提供一些额外的功能，比如编码和解码。那么下面我们就来看一下其中的三种常用的ChannelHandler：</p><p>Encoders和Decoders</p><p>因为我们在网络传输时只能传输字节流，因此，才发送数据之前，我们必须把我们的message型转换为bytes，与之对应，我们在接收数据后，必须把接收到的bytes再转换成message。我们把bytes to message这个过程称作Decode(解码成我们可以理解的)，把message to bytes这个过程成为Encode。</p><p>Netty中提供了很多现成的编码/解码器，我们一般从他们的名字中便可知道他们的用途，如ByteToMessageDecoder、MessageToByteEncoder，如专门用来处理Google Protobuf协议的ProtobufEncoder、 ProtobufDecoder。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;Netty是一个非web的java应用，Java序列化的作用有以下两方面：&lt;/p&gt;
+&lt;p&gt;1） 把对象的字节序列永久地保存到硬盘上（通常存放在一个文件中）；&lt;/p&gt;
+&lt;p&gt;2） 在网络上传送对象的字节序列。&lt;/p&gt;
+&lt;p&gt;NIO和IO最大的区别是数据打包和传输方式。IO是以
+      
+    
+    </summary>
+    
+    
+      <category term="netty" scheme="http://blog.xmqbeast.com/tags/netty/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>java中BIO、NIO、AIO的区别</title>
+    <link href="http://blog.xmqbeast.com/2018/05/15/java%E4%B8%ADBIO%E3%80%81NIO%E3%80%81AIO%E7%9A%84%E5%8C%BA%E5%88%AB/"/>
+    <id>http://blog.xmqbeast.com/2018/05/15/java中BIO、NIO、AIO的区别/</id>
+    <published>2018-05-15T03:31:13.000Z</published>
+    <updated>2018-05-15T03:41:27.009Z</updated>
+    
+    <content type="html"><![CDATA[<p>java中的IO主要源自于网络和本地文件</p><p>  IO的方式通常分为几种，同步阻塞的BIO、同步非阻塞的NIO、异步非阻塞的AIO</p><p> 在JDK1.4出来之前，我们建立网络连接的时候采用BIO模式，需要先在服务端启动一个ServerSocket，然后在客户端启动Socket来对服务端进行通信，默认情况下服务端需要对每个请求建立一堆线程等待请求，而客户端发送请求后，先咨询服务端是否有线程相应，如果没有则会一直等待或者遭到拒绝请求，如果有的话，客户端会线程会等待请求结束后才继续执行。</p><p>BIO与NIO一个比较重要的不同，是我们使用BIO的时候往往会引入多线程，每个连接一个单独的线程；而NIO则是使用单线程或者只使用少量的多线程，每个连接共用一个线程。</p><p>  NIO的最重要的地方是当一个连接创建后，不需要对应一个线程，这个连接会被注册到多路复用器上面，所以所有的连接只需要一个线程就可以搞定，当这个线程中的多路复用器进行轮询的时候，发现连接上有请求的话，才开启一个线程进行处理，也就是一个请求一个线程模式。</p><p>在NIO的处理方式中，当一个请求来的话，开启线程进行处理，可能会等待后端应用的资源(JDBC连接等)，其实这个线程就被阻塞了，当并发上来的话，还是会有BIO一样的问题。<br>　　<br>HTTP/1.1出现后，有了Http长连接，这样除了超时和指明特定关闭的http header外，这个链接是一直打开的状态的，这样在NIO处理中可以进一步的进化，在后端资源中可以实现资源池或者队列，当请求来的话，开启的线程把请求和请求数据传送给后端资源池或者队列里面就返回，并且在全局的地方保持住这个现场(哪个连接的哪个请求等)，这样前面的线程还是可以去接受其他的请求，而后端的应用的处理只需要执行队列里面的就可以了，这样请求处理和后端应用是异步的.当后端处理完，到全局地方得到现场，产生响应，这个就实现了异步处理。</p><p>BIO是一个连接一个线程。<br>　<br>NIO是一个请求一个线程。<br>　<br>AIO是一个有效请求一个线程。</p><p>先来个例子理解一下概念，以银行取款为例：<br>同步 ： 自己亲自出马持银行卡到银行取钱（使用同步IO时，Java自己处理IO读写）。<br>异步 ： 委托一小弟拿银行卡到银行取钱，然后给你（使用异步IO时，Java将IO读写委托给OS处理，需要将数据缓冲区地址和大小传给OS(银行卡和密码)，OS需要支持异步IO操作API）。<br>阻塞 ： ATM排队取款，你只能等待（使用阻塞IO时，Java调用会一直阻塞到读写完成才返回）。<br>非阻塞 ： 柜台取款，取个号，然后坐在椅子上做其它事，等号广播会通知你办理，没到号你就不能去，你可以不断问大堂经理排到了没有，大堂经理如果说还没到你就不能去（使用非阻塞IO时，如果不能读写Java调用会马上返回，当IO事件分发器会通知可读写时再继续进行读写，不断循环直到读写完成）</p><p>Java对BIO、NIO、AIO的支持：</p><p>Java BIO ： 同步并阻塞，服务器实现模式为一个连接一个线程，即客户端有连接请求时服务器端就需要启动一个线程进行处理，如果这个连接不做任何事情会造成不必要的线程开销，当然可以通过线程池机制改善。<br>Java NIO ： 同步非阻塞，服务器实现模式为一个请求一个线程，即客户端发送的连接请求都会注册到多路复用器上，多路复用器轮询到连接有I/O请求时才启动一个线程进行处理。<br>Java AIO(NIO.2) ： 异步非阻塞，服务器实现模式为一个有效请求一个线程，客户端的I/O请求都是由OS先完成了再通知服务器应用去启动线程进行处理，</p><p>BIO、NIO、AIO适用场景分析:</p><p>BIO方式适用于连接数目比较小且固定的架构，这种方式对服务器资源要求比较高，并发局限于应用中，JDK1.4以前的唯一选择，但程序直观简单易理解。<br>NIO方式适用于连接数目多且连接比较短（轻操作）的架构，比如聊天服务器，并发局限于应用中，编程比较复杂，JDK1.4开始支持。<br>AIO方式使用于连接数目多且连接比较长（重操作）的架构，比如相册服务器，充分调用OS参与并发操作，编程比较复杂，JDK7开始支持。<br>另外，I/O属于底层操作，需要操作系统支持，并发也需要操作系统的支持，所以性能方面不同操作系统差异会比较明显。</p><p> 在高性能的I/O设计中，有两个比较著名的模式Reactor和Proactor模式，其中Reactor模式用于同步I/O，而Proactor运用于异步I/O操作。</p><p>在比较这两个模式之前，我们首先的搞明白几个概念，什么是阻塞和非阻塞，什么是同步和异步,同步和异步是针对应用程序和内核的交互而言的，同步指的是用户进程触发IO操作并等待或者轮询的去查看IO操作是否就绪，而异步是指用户进程触发IO操作以后便开始做自己的事情，而当IO操作已经完成的时候会得到IO完成的通知。而阻塞和非阻塞是针对于进程在访问数据的时候，根据IO操作的就绪状态来采取的不同方式，说白了是一种读取或者写入操作函数的实现方式，阻塞方式下读取或者写入函数将一直等待，而非阻塞方式下，读取或者写入函数会立即返回一个状态值。</p><p>  一般来说I/O模型可以分为：同步阻塞，同步非阻塞，异步阻塞，异步非阻塞IO</p><p>同步阻塞IO：</p><p>   在此种方式下，用户进程在发起一个IO操作以后，必须等待IO操作的完成，只有当真正完成了IO操作以后，用户进程才能运行。JAVA传统的IO模型属于此种方式！</p><p>同步非阻塞IO:</p><p>在此种方式下，用户进程发起一个IO操作以后边可返回做其它事情，但是用户进程需要时不时的询问IO操作是否就绪，这就要求用户进程不停的去询问，从而引入不必要的CPU资源浪费。其中目前JAVA的NIO就属于同步非阻塞IO。</p><p>异步阻塞IO：</p><p>   此种方式下是指应用发起一个IO操作以后，不等待内核IO操作的完成，等内核完成IO操作以后会通知应用程序，这其实就是同步和异步最关键的区别，同步必须等待或者主动的去询问IO是否完成，那么为什么说是阻塞的呢？因为此时是通过select系统调用来完成的，而select函数本身的实现方式是阻塞的，而采用select函数有个好处就是它可以同时监听多个文件句柄，从而提高系统的并发性！</p><p>异步非阻塞IO:</p><p>   在此种模式下，用户进程只需要发起一个IO操作然后立即返回，等IO操作真正的完成以后，应用程序会得到IO操作完成的通知，此时用户进程只需要对数据进行处理就好了，不需要进行实际的IO读写操作，因为真正的IO读取或者写入操作已经由内核完成了。目前Java中还没有支持此种IO模型。   </p><p>搞清楚了以上概念以后，我们再回过头来看看，Reactor模式和Proactor模式。</p><p>首先来看看Reactor模式，Reactor模式应用于同步I/O的场景。我们分别以读操作和写操作为例来看看Reactor中的具体步骤：</p><p>读取操作：</p><ol><li><p>应用程序注册读就需事件和相关联的事件处理器</p></li><li><p>事件分离器等待事件的发生</p></li><li><p>当发生读就需事件的时候，事件分离器调用第一步注册的事件处理器</p></li><li><p>事件处理器首先执行实际的读取操作，然后根据读取到的内容进行进一步的处理</p></li></ol><p>写入操作类似于读取操作，只不过第一步注册的是写就绪事件。</p><p>下面我们来看看Proactor模式中读取操作和写入操作的过程：</p><p>读取操作：</p><ol><li><p>应用程序初始化一个异步读取操作，然后注册相应的事件处理器，此时事件处理器不关注读取就绪事件，而是关注读取完成事件，这是区别于Reactor的关键。</p></li><li><p>事件分离器等待读取操作完成事件</p></li><li><p>在事件分离器等待读取操作完成的时候，操作系统调用内核线程完成读取操作，并将读取的内容放入用户传递过来的缓存区中。这也是区别于Reactor的一点，Proactor中，应用程序需要传递缓存区。</p></li><li><p>事件分离器捕获到读取完成事件后，激活应用程序注册的事件处理器，事件处理器直接从缓存区读取数据，而不需要进行实际的读取操作。</p></li></ol><p>Proactor中写入操作和读取操作，只不过感兴趣的事件是写入完成事件。</p><p>从上面可以看出，Reactor和Proactor模式的主要区别就是真正的读取和写入操作是有谁来完成的，Reactor中需要应用程序自己读取或者写入数据，而Proactor模式中，应用程序不需要进行实际的读写过程，它只需要从缓存区读取或者写入即可，操作系统会读取缓存区或者写入缓存区到真正的IO设备.</p><p>   综上所述，同步和异步是相对于应用和内核的交互方式而言的，同步 需要主动去询问，而异步的时候内核在IO事件发生的时候通知应用程序，而阻塞和非阻塞仅仅是系统在调用系统调用的时候函数的实现方式而已。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;java中的IO主要源自于网络和本地文件&lt;/p&gt;
+&lt;p&gt;  IO的方式通常分为几种，同步阻塞的BIO、同步非阻塞的NIO、异步非阻塞的AIO&lt;/p&gt;
+&lt;p&gt; 在JDK1.4出来之前，我们建立网络连接的时候采用BIO模式，需要先在服务端启动一个ServerSocket，然后在
+      
+    
+    </summary>
+    
+    
+      <category term="nio" scheme="http://blog.xmqbeast.com/tags/nio/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>eclipse debug启动老是跳转到断点，提示SilentExitException</title>
+    <link href="http://blog.xmqbeast.com/2018/05/15/eclipse-debug%E5%90%AF%E5%8A%A8%E8%80%81%E6%98%AF%E8%B7%B3%E8%BD%AC%E5%88%B0%E6%96%AD%E7%82%B9%EF%BC%8C%E6%8F%90%E7%A4%BASilentExitException/"/>
+    <id>http://blog.xmqbeast.com/2018/05/15/eclipse-debug启动老是跳转到断点，提示SilentExitException/</id>
+    <published>2018-05-15T03:21:28.000Z</published>
+    <updated>2018-05-15T03:25:37.170Z</updated>
+    
+    <content type="html"><![CDATA[<p>最近在做一个spring boot的项目，在main方法debug启动的时候，老是自动跳转到断点，如下图所示</p><p><img src="http://oncykm32h.bkt.clouddn.com/20180228175121654.png" alt="silentExitException"></p><p>出现这种状况是因为Eclipse默认开启挂起未捕获的异常(Suspend execution on uncaught exceptions)，只要关闭此项就可以了。</p><p>解决方法：在eclipse中选择Window-&gt;Preference-&gt;Java-&gt;Debug，将“Suspend execution on uncaught exceptions”的勾去掉即可。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;最近在做一个spring boot的项目，在main方法debug启动的时候，老是自动跳转到断点，如下图所示&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://oncykm32h.bkt.clouddn.com/20180228175121654.png&quot; alt=&quot;sile
+      
+    
+    </summary>
+    
+    
+      <category term="eclipse" scheme="http://blog.xmqbeast.com/tags/eclipse/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>java中socket的用法</title>
+    <link href="http://blog.xmqbeast.com/2018/05/15/java%E4%B8%ADsocket%E7%9A%84%E7%94%A8%E6%B3%95/"/>
+    <id>http://blog.xmqbeast.com/2018/05/15/java中socket的用法/</id>
+    <published>2018-05-14T17:58:04.000Z</published>
+    <updated>2018-05-14T18:01:59.225Z</updated>
+    
+    <content type="html"><![CDATA[<p>Java中的Socket的用法</p><p>Java中的Socket分为普通的Socket和NioSocket。</p><p>普通Socket的用法</p><p>Java中的网络通信时通过Socket实现的，Socket分为ServerSocket和Socket两大类，ServerSocket用于服务器端，可以通过accept方法监听请求，监听请求后返回Socket，Socket用于完成具体数据传输，客户端也可以使用Socket发起请求并传输数据。ServerSocket的使用可以分为三步：</p><p>创建ServerSocket。ServerSocket的构造方法有5个，其中最方便的是ServerSocket(int port)，只需要一个port就可以了。<br>调用创建出来的ServerSocket的accept方法进行监听。accept方法是阻塞方法，也就是说调用accept方法后程序会停下来等待连接请求，在接受请求之前程序将不会继续执行，当接收到请求后accept方法返回一个Socket。</p><p>使用accept方法返回的Socket与客户端进行通信　　</p><p>如下代码，我们在服务器端创建ServerSocket，并调用accept方法监听Client的请求，收到请求后返回一个Socket。</p><p>public class Server {</p><pre><code>public static void main(String[] args) {    // TODO Auto-generated method stub    try {        //创建一个ServerSocket监听8080端口        ServerSocket server = new ServerSocket(8080);        //等待请求        Socket socket = server.accept();        //接受请求后使用Socket进行通信，创建BufferedReader用于读取数据        BufferedReader is = new BufferedReader(new InputStreamReader(socket.getInputStream()));        String line = is.readLine();        System.out.println(&quot;received frome client:&quot; + line);        //创建PrintWriter，用于发送数据        PrintWriter pw = new PrintWriter(socket.getOutputStream());        pw.println(&quot;this data is from server&quot;);        pw.flush();        //关闭资源        pw.close();        is.close();        socket.close();        server.close();    } catch (IOException e) {        // TODO Auto-generated catch block        e.printStackTrace();    }}}</code></pre><p>然后我们再看看客户端的Socket代码，Socket的使用也是一样，首先创建一个Socket，Socket的构造方法非常多，这里用的是Socket(String host, int port)，把目标主机的地址和端口号传入即可（本实验代码中服务器和Client代码没有在同一台机器上，服务器的IP地址：192.168.6.42，所以如果读者在实验过程中ServerSocket和Client在同一主机下，那么Client中的IP地址需要更改为：127.0.0.1，Socket创建的过程就会跟服务器端建立连接，创建完Socket后，再创建Writer和Reader来传输数据，数据传输完成后释放资源关闭连接。</p><p>public class Client {</p><pre><code>public static void main(String[] args) {    // TODO Auto-generated method stub    String msg = &quot;Client data&quot;;    try {        //创建一个Socket，跟服务器的8080端口链接        Socket socket = new Socket(&quot;192.168.6.42&quot;,8080);        //使用PrintWriter和BufferedReader进行读写数据        PrintWriter pw = new PrintWriter(socket.getOutputStream());        BufferedReader is = new BufferedReader(new InputStreamReader(socket.getInputStream()));        //发送数据        pw.println(msg);        pw.flush();        //接收数据        String line = is.readLine();        System.out.println(&quot;received from server&quot; + line);        //关闭资源        pw.close();        is.close();        socket.close();    } catch (UnknownHostException e) {        // TODO Auto-generated catch block        e.printStackTrace();    } catch (IOException e) {        // TODO Auto-generated catch block        e.printStackTrace();    }}}</code></pre><p>最后先启动Server然后启动Client就可以完成一次Client和Server的通信。</p><p>NioSocket的用法</p><p>　　从JDK1.4开始，Java增加了新的IO模式-nio（new IO），nio在底层采用了新的处理方式，极大提高了IO的效率。我们使用的Socket也是IO的一种，nio提供了相应的工具：ServerSocketChannel和SocketChannel，他们分别对应原来的ServerSocket和Socket。</p><p>　　在了解NioSocket之前我们先了解Buffer、Channel、Selector。为了方便理解，我们来看个例子，要过圣诞节了，需要给同学们发贺卡和苹果，班长这时候又是最辛苦的，每次拿一个苹果和一张贺卡发给一个同学，发送完成后回来再取一张贺卡和一个苹果发给另一个同学，直到全班同学都拿到贺卡和苹果为止，这就是普通Socket处理方式，来一个请求，ServerSocket就进行处理，处理完成后继续接受请求，这种方式效率很低啊！还是圣诞节的例子，班长发现班委不止他一个，就通知了生活委员（女）和组织委员（男）来帮助他发贺卡和苹果，女生的贺卡是粉色的，男生的贺卡是蓝色的，生活委员负责从全班的贺卡中挑选女生的贺卡，而组织委员则负责男生的贺卡，然后生活委员和组织委员分别以宿舍为单位通知宿舍长来领取宿舍同学的贺卡和苹果，班长将圣诞节发苹果和贺卡的工作布置给两个班委后，就可以继续干其他工作了。这就是NioSocket，Buffer就是所有传递的货物，也就是例子中的苹果和贺卡，而Channel就是传递货物的通道，也就是例子中的宿舍长，负责将礼物搬回自己宿舍，而生活委员和组织委员充当了Selector的职责，负责礼物的分拣。</p><p>　　ServerSocketChannel可以使用自己的静态工厂方法open创建，每个ServerSocketChannel对应一个ServerSocket（通过调用其socket()获取），如果直接使用获取的ServerSocket来监听请求，那么还是普通ServerSocket，而通过将获取的ServerSocket绑定端口号来实现NioSocket。ServerSocketChannel可以通过configureBlocking方法来设置是否采用阻塞模式，如果设置为非阻塞模式，就可以调用register方法注册Selector来使用了。</p><p>　　Selector可以通过其静态工厂方法open创建，创建后通过Channel的register方法注册到ServerSocketChannel或者SocketChannel上，注册完成后Selector就可以通过select方法来等待请求，select方法有一个long类型参数，代表最长等待时间，如果在这段时间内收到相应操作的请求则返回可以处理的请求的数量，否则在超时后返回0，如果传入的参数为0或者无参数的重载方法，select方法会采用阻塞模式知道有相应操作请求的出现。当接收到请求后Selector调用selectdKeys方法返回SelectionKey集合。</p><p>　　SelectionKey保存了处理当前请求的Channel和Selector，并且提供了不同的操作类型。Channel在注册Selector时可以通过register的第二个参数选择特定的操作（请求操作、连接操作、读操作、写操作），只有在register中注册了相应的操作Selector才会关心相应类型操作的请求。</p><p>　　我们来看看服务器端NioSocket的处理过程：</p><p>创建ServerSocketChannel并设置相应的端口号、是否为阻塞模式<br>创建Selector并注册到ServerSocketChannel上<br>调用Selector的selector方法等待请求<br>Selector接收到请求后使用selectdKeys返回SelectionKey集合<br>使用SelectionKey获取到channel、selector和操作类型并进行具体操作。</p><pre><code>public class NIOServer {public static void main(String[] args) {    // TODO Auto-generated method stub    try {        //创建ServerSocketChannel，监听8080端口        ServerSocketChannel ssc = ServerSocketChannel.open();        ssc.socket().bind(new InetSocketAddress(8080));        //设置为非阻塞模式        ssc.configureBlocking(false);        //为ssc注册选择器        Selector selector = Selector.open();        ssc.register(selector, SelectionKey.OP_ACCEPT);        //创建处理器        Handler handler = new Handler(1024);        while(true){            //等待请求，每次等待阻塞3s，超过3s后线程继续向下运行，如果传入0或者不传入参数则一直阻塞            if(selector.select(3000) == 0){                System.out.println(&quot;等待请求超时----&quot;);                continue;            }            System.out.println(&quot;处理请求----&quot;);            //获取处理的SelectionKey            Iterator&lt;SelectionKey&gt; keyIter = selector.selectedKeys().iterator();            while(keyIter.hasNext()){                SelectionKey key = keyIter.next();                try{                    //接收到连接请求时                    if(key.isAcceptable()){                        handler.handleAccept(key);                    }                    //读数据                    if(key.isReadable()){                        handler.handleRead(key);                    }                }catch(IOException ex){                    keyIter.remove();                    continue;                }                //处理完后，从待处理的SelectionKey迭代器中移除当前所使用的key                keyIter.remove();            }        }    } catch (IOException e) {        // TODO Auto-generated catch block        e.printStackTrace();    }}private static class Handler{    private int bufferSize = 1024;    private String localCharset = &quot;UTF-8&quot;;    public Handler(int bufferSize){        this.bufferSize = bufferSize;    }    public void handleAccept(SelectionKey key) throws IOException{        SocketChannel sc = ((ServerSocketChannel) key.channel()).accept();        sc.configureBlocking(false);        sc.register(key.selector(), SelectionKey.OP_READ, ByteBuffer.allocate(bufferSize));    }    public void handleRead(SelectionKey key) throws IOException{        //获取Channel        SocketChannel sc = (SocketChannel) key.channel();        //获取buffer并重置        ByteBuffer buffer = (ByteBuffer)key.attachment();        buffer.clear();        //没有读到内容则关闭        if(sc.read(buffer) == -1)            sc.close();        else{            //将buffer转换为读状态            buffer.flip();            //将buffer中接收到的值按localCharset格式编码后保存到receivedString            String receivedString = Charset.forName(localCharset).newDecoder().decode(buffer).toString();            System.out.println(&quot;received from client:&quot; + receivedString);            //返回数据给客户端            String sendString = &quot;this data is from Server&quot;;            buffer = ByteBuffer.wrap(sendString.getBytes(localCharset));            sc.write(buffer);            sc.close();        }    }}}</code></pre><p>　客户端代码通普通Socket一样，Socket socket = new Socket(“127.0.0.1”,8080);表示与服务器端建立连接，从而执行服务器端的handleAccept()方法，给ServerSocketChannel注册selector以及添加SelectionKey.OP_READ参数，表示selector关心读方法。然后通过PrintWrite在客户端将内容发送给服务器端，服务器端执行handleRead方法对接收到的内容进行处理，并将结果返回给客户端，客户端通过BufferedReader接受数据</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;Java中的Socket的用法&lt;/p&gt;
+&lt;p&gt;Java中的Socket分为普通的Socket和NioSocket。&lt;/p&gt;
+&lt;p&gt;普通Socket的用法&lt;/p&gt;
+&lt;p&gt;Java中的网络通信时通过Socket实现的，Socket分为ServerSocket和Socket两大类
+      
+    
+    </summary>
+    
+    
+      <category term="socket" scheme="http://blog.xmqbeast.com/tags/socket/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>redis list列表</title>
+    <link href="http://blog.xmqbeast.com/2018/05/14/redis-list%E5%88%97%E8%A1%A8/"/>
+    <id>http://blog.xmqbeast.com/2018/05/14/redis-list列表/</id>
+    <published>2018-05-14T02:50:25.000Z</published>
+    <updated>2018-05-14T02:52:38.909Z</updated>
+    
+    <content type="html"><![CDATA[<p>模式：安全的队列</p><p>Redis的列表经常被用作队列(queue)，用于在不同程序之间有序地交换消息(message)。一个客户端通过 LPUSH 命令将消息放入队列中，而另一个客户端通过 RPOP 或者 BRPOP 命令取出队列中等待时间最长的消息。</p><p>不幸的是，上面的队列方法是『不安全』的，因为在这个过程中，一个客户端可能在取出一个消息之后崩溃，而未处理完的消息也就因此丢失。</p><p>使用 RPOPLPUSH 命令(或者它的阻塞版本 BRPOPLPUSH )可以解决这个问题：因为它不仅返回一个消息，同时还将这个消息添加到另一个备份列表当中，如果一切正常的话，当一个客户端完成某个消息的处理之后，可以用 LREM 命令将这个消息从备份表删除。</p><p>最后，还可以添加一个客户端专门用于监视备份表，它自动地将超过一定处理时限的消息重新放入队列中去(负责处理该消息的客户端可能已经崩溃)，这样就不会丢失任何消息了。</p><p>模式：循环列表</p><p>通过使用相同的 key 作为 RPOPLPUSH 命令的两个参数，客户端可以用一个接一个地获取列表元素的方式，取得列表的所有元素，而不必像 LRANGE 命令那样一下子将所有列表元素都从服务器传送到客户端中(两种方式的总复杂度都是 O(N))。</p><p>以上的模式甚至在以下的两个情况下也能正常工作：</p><p>有多个客户端同时对同一个列表进行旋转(rotating)，它们获取不同的元素，直到所有元素都被读取完，之后又从头开始。<br>有客户端在向列表尾部(右边)添加新元素。<br>这个模式使得我们可以很容易实现这样一类系统：有 N 个客户端，需要连续不断地对一些元素进行处理，而且处理的过程必须尽可能地快。一个典型的例子就是服务器的监控程序：它们需要在尽可能短的时间内，并行地检查一组网站，确保它们的可访问性。</p><p>注意，使用这个模式的客户端是易于扩展(scala)且安全(reliable)的，因为就算接收到元素的客户端失败，元素还是保存在列表里面，不会丢失，等到下个迭代来临的时候，别的客户端又可以继续处理这些元素了。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;模式：安全的队列&lt;/p&gt;
+&lt;p&gt;Redis的列表经常被用作队列(queue)，用于在不同程序之间有序地交换消息(message)。一个客户端通过 LPUSH 命令将消息放入队列中，而另一个客户端通过 RPOP 或者 BRPOP 命令取出队列中等待时间最长的消息。&lt;/p&gt;
+&lt;
+      
+    
+    </summary>
+    
+    
+      <category term="redis" scheme="http://blog.xmqbeast.com/tags/redis/"/>
+    
+  </entry>
   
   <entry>
     <title>Redis Rpush命令</title>
@@ -330,167 +505,6 @@
     
     
       <category term="psychology" scheme="http://blog.xmqbeast.com/tags/psychology/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>在关系中遇见自己</title>
-    <link href="http://blog.xmqbeast.com/2018/03/10/%E5%9C%A8%E5%85%B3%E7%B3%BB%E4%B8%AD%E9%81%87%E8%A7%81%E8%87%AA%E5%B7%B1/"/>
-    <id>http://blog.xmqbeast.com/2018/03/10/在关系中遇见自己/</id>
-    <published>2018-03-10T13:43:39.000Z</published>
-    <updated>2018-03-10T13:48:48.912Z</updated>
-    
-    <content type="html"><![CDATA[<p>  &emsp; &emsp; 人的一生中，我们会遇到很多人，建立多种不同的人际关系：亲子关系、夫妻关系、婆媳关系、同事关系、朋友关系等，在这种种关系中，你会有不同的角色和感受，激情、亲密、压抑、苦恼、愤怒等等，每一种情绪背后都藏着你的渴求。</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;  &amp;emsp; &amp;emsp; 人的一生中，我们会遇到很多人，建立多种不同的人际关系：亲子关系、夫妻关系、婆媳关系、同事关系、朋友关系等，在这种种关系中，你会有不同的角色和感受，激情、亲密、压抑、苦恼、愤怒等等，每一种情绪背后都藏着你的渴求。&lt;/p&gt;
-
-      
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>做一个拥有好习惯的人</title>
-    <link href="http://blog.xmqbeast.com/2018/03/10/%E5%81%9A%E4%B8%80%E4%B8%AA%E6%8B%A5%E6%9C%89%E5%A5%BD%E4%B9%A0%E6%83%AF%E7%9A%84%E4%BA%BA/"/>
-    <id>http://blog.xmqbeast.com/2018/03/10/做一个拥有好习惯的人/</id>
-    <published>2018-03-10T13:17:29.000Z</published>
-    <updated>2018-03-10T13:34:38.762Z</updated>
-    
-    <content type="html"><![CDATA[<pre><code>思想决定行为，行为决定习惯，习惯决定性格，性格决定命运。</code></pre><p>  如果你想问习惯是什么？大卫-休谟会告诉你：“习惯是人生的伟大指导”。习惯的力量有多大？既不能被经验证明，也不能被经验证伪，能够说明的只有概率，做得多了，时间长了，习惯了也就成自然了。</p><p>习惯是一种长期的思维方式、处世态度，习惯是由一而再、再而三的思想行为形成的，习惯具有很强的惯性，跟转动的车轮一样。</p><p>人们往往会不由自主地启用自己的习惯，不论是好习惯还是不好的习惯，都是如此，可见习惯在不经意间会影响一个人的一生。但是坚持一个好的习惯却很难，比如坚持每天跑5公里，坚持每天背20个单词，坚持每个月看1本书等。这些习惯一旦养成，你会收获一个健康的身体、记住7300个单词，看12本书等等，也许你的生活也会就此改变。</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;pre&gt;&lt;code&gt;思想决定行为，行为决定习惯，习惯决定性格，性格决定命运。
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;  如果你想问习惯是什么？大卫-休谟会告诉你：“习惯是人生的伟大指导”。习惯的力量有多大？既不能被经验证明，也不能被经验证伪，能够说明的只有概率，做得多了，时间长了，习
-      
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>在 Markdown 语言中，如何实现段首空格的显示 </title>
-    <link href="http://blog.xmqbeast.com/2018/03/09/%E5%9C%A8-Markdown-%E8%AF%AD%E8%A8%80%E4%B8%AD%EF%BC%8C%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E6%AE%B5%E9%A6%96%E7%A9%BA%E6%A0%BC%E7%9A%84%E6%98%BE%E7%A4%BA/"/>
-    <id>http://blog.xmqbeast.com/2018/03/09/在-Markdown-语言中，如何实现段首空格的显示/</id>
-    <published>2018-03-09T15:47:36.000Z</published>
-    <updated>2018-03-09T15:50:44.254Z</updated>
-    
-    <content type="html"><![CDATA[<p>直接写</p><ul><li>半方大的空白‘&amp;ensp’;或‘&amp;#8194’;</li><li>全方大的空白‘&amp;emsp’;或‘&amp;#8195’;</li><li>不断行的空白格‘&amp;nbsp’;或‘&amp;#160’;</li><li>两个‘&amp;emsp’;即可</li><li>‘&amp;nbsp’;//半角空格（英文）</li><li>‘&amp;emsp’;//全角空格（中文）</li></ul>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;直接写&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;半方大的空白‘&amp;amp;ensp’;或‘&amp;amp;#8194’;&lt;/li&gt;
-&lt;li&gt;全方大的空白‘&amp;amp;emsp’;或‘&amp;amp;#8195’;&lt;/li&gt;
-&lt;li&gt;不断行的空白格‘&amp;amp;nbsp’;或‘&amp;amp;#160’;&lt;/li
-      
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>hexo d -g 后出现验证报错verification failed</title>
-    <link href="http://blog.xmqbeast.com/2018/03/09/hexo-d-g-%E5%90%8E%E5%87%BA%E7%8E%B0%E9%AA%8C%E8%AF%81%E6%8A%A5%E9%94%99verification-failed/"/>
-    <id>http://blog.xmqbeast.com/2018/03/09/hexo-d-g-后出现验证报错verification-failed/</id>
-    <published>2018-03-09T15:41:07.000Z</published>
-    <updated>2018-03-09T15:45:39.482Z</updated>
-    
-    <content type="html"><![CDATA[<p>验证报错报错verification failed：<br>Error: Host key verification failed.<br>fatal: Could not read from remote repository.<br>Please make sure you have the correct access rights and the repository exists.</p><ul><li><p>解决方法：条件SSHkey<br>$ ssh-keygen -t rsa -C “<a href="mailto:imsofter@163.com" target="_blank" rel="noopener">imsofter@163.com</a>“<br>三次回车，即可设置密码为空</p></li><li><p>将生成的C:\Users\Administrator.ssh目录下的id_rsa.pub添加到github上</p></li><li><p>再ssh <a href="mailto:git@github.com" target="_blank" rel="noopener">git@github.com</a></p></li><li>Hi imsofter! You’ve successfully authenticated, but GitHub does not provide shell access.<br>Connection to github.com closed.</li></ul><p>再可以将代码推上github上了。</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;验证报错报错verification failed：&lt;br&gt;Error: Host key verification failed.&lt;br&gt;fatal: Could not read from remote repository.&lt;br&gt;Please make sure y
-      
-    
-    </summary>
-    
-    
-      <category term="hexo" scheme="http://blog.xmqbeast.com/tags/hexo/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>关于开源</title>
-    <link href="http://blog.xmqbeast.com/2018/03/09/%E5%85%B3%E4%BA%8E%E5%BC%80%E6%BA%90/"/>
-    <id>http://blog.xmqbeast.com/2018/03/09/关于开源/</id>
-    <published>2018-03-09T00:58:45.000Z</published>
-    <updated>2018-03-09T01:55:13.850Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote><p>&emsp;&emsp;一直很想做一些开源的东西，做了几年了java后端的相关工作，一直很佩服也很欣赏spring的那些开源项目，大到银行、电商，小到一些初创公司的项目，基本中间件都是用spring，无一例外。自己也从开源社区github学到非常多的东西，所以，接下来的重心会放在写一些技术博客上。互联网催生了一大批程序员，这也是我what i make a living。</p><p>&emsp;&emsp;其实可能自己从小缺少关爱等其他一些因素，导致现在的我三观跟大多数人并不太一样，自己也一直很努力在调整，希望可以被大众接受。自己业余时间也看了很多心理学、生理学、哲学方面的东西，也许在外人看起来是一些心灵鸡汤的，但是我觉得这些是科学，有机会也希望可以分享给大家，虽然也不知道自己写的东西会不会被看到，但是还是希望可以帮助到一些需要帮助的人。这也是我热衷于开源的一个原因</p><p>&emsp;&emsp; 现在这个社会因为信息不对称，催生了很多商业的东西，也许那就是商业的本质，但自己其实更感兴趣的是一些可以为社会创造价值的东西，一直找不到入口去创业，所以会把更多精力花在开源的东西上面。这段时间思考更多的可能是生与死、善与恶、天使与魔鬼这些东西，可能自己或多或少有点抑郁症，有时候确实情绪非常低落的时候，会想离开这个世界。因为害怕自己变成一个坏人，所以一直告诉自己不管做什么，一定要善良。很高兴，自己没有变成坏人，希望日后可以变成一个对社会有用的人，也会尽自己一份最大的努力去做</p></blockquote>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;blockquote&gt;
-&lt;p&gt;&amp;emsp;&amp;emsp;一直很想做一些开源的东西，做了几年了java后端的相关工作，一直很佩服也很欣赏spring的那些开源项目，大到银行、电商，小到一些初创公司的项目，基本中间件都是用spring，无一例外。自己也从开源社区github学到非常多
-      
-    
-    </summary>
-    
-    
-      <category term="opensource" scheme="http://blog.xmqbeast.com/tags/opensource/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Hello World</title>
-    <link href="http://blog.xmqbeast.com/2018/03/08/hello-world/"/>
-    <id>http://blog.xmqbeast.com/2018/03/08/hello-world/</id>
-    <published>2018-03-08T15:55:02.736Z</published>
-    <updated>2018-03-08T15:55:02.736Z</updated>
-    
-    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.
-      
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>How to set the max size of upload file</title>
-    <link href="http://blog.xmqbeast.com/2017/11/19/How-to-set-the-max-size-of-upload-file/"/>
-    <id>http://blog.xmqbeast.com/2017/11/19/How-to-set-the-max-size-of-upload-file/</id>
-    <published>2017-11-19T08:06:19.000Z</published>
-    <updated>2018-03-08T15:55:02.734Z</updated>
-    
-    <content type="html"><![CDATA[<p>I’m developing application based on Spring Boot and AngularJS using JHipster. My question is how to set max size of uploading files?</p><p>If I’m trying to upload to big file I’m getting this information in console</p><pre><code> DEBUG 11768 --- [io-8080-exec-10] c.a.app.aop.logging.LoggingAspect: Enter: com.anuglarspring.app.web.rest.errors.ExceptionTranslator.processRuntimeException() with argument[s] = [org.springframework.web.multipart.MultipartException: Could not parse multipart servlet request; nested exception is java.lang.IllegalStateException: org.apache.tomcat.util.http.fileupload.FileUploadBase$FileSizeLimitExceededException: The field file exceeds its maximum permitted size of 1048576 bytes.]</code></pre><p>Also in Spring boot 1.4, you can add following lines to your application.properties to set the file size limit:</p><pre><code>spring.http.multipart.max-file-size=128KBspring.http.multipart.max-request-size=128KB</code></pre><p>There is some difference when we define the properties in the application.properties and application yaml.</p><p>In application.yml :</p><pre><code>spring:    http:        multipart:            max-file-size: 256KB           max-request-size: 256KB</code></pre><p>And in application.propeties :</p><pre><code>spring.http.multipart.max-file-size=128KBspring.http.multipart.max-request-size=128KB</code></pre>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;I’m developing application based on Spring Boot and AngularJS using JHipster. My question is how to set max size of uploading files?&lt;/p&gt;
-
-      
-    
-    </summary>
-    
-    
-      <category term="spring" scheme="http://blog.xmqbeast.com/tags/spring/"/>
     
   </entry>
   

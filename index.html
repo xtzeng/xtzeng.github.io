@@ -300,6 +300,1200 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://blog.xmqbeast.com/2018/05/27/linux下搭建go环境/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="∮小煤球メ">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="∮小煤球メ">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2018/05/27/linux下搭建go环境/" itemprop="url">
+                  linux下搭建go环境
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-27T01:01:37+08:00">
+                2018-05-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>安装go工具</p>
+<p>在 <a href="http://golang.org/dl/下载最新的linux版本，并把它提取到/usr/local目录，在此目录下进行解压缩" target="_blank" rel="noopener">http://golang.org/dl/下载最新的linux版本，并把它提取到/usr/local目录，在此目录下进行解压缩</a></p>
+<pre><code>$ tar -xvf xxx.tar.gz 
+</code></pre><p>然后将/usr/local/go/bin添加到PATH环境变量中，执行</p>
+<pre><code>$ vim /etc/profile
+$ export PATH=$PATH:/usr/local/go/bin
+$ source /etc/profile
+</code></pre><p>实际上go会默认假定它被安装到/usr/local/go目录下，但也可以将go安装到其他位置，此时必须设置GOROOT环境变量来指出它所安装的位置。</p>
+<p>执行go version，看到go的安装版本即安装成功</p>
+<p>第一个hello world 程序</p>
+<p>GOPATH环境变量指定了你的工作空间位置</p>
+<p>首先创建一个工作目录，并设置相应的GOPATH，工作目录可以放在任何地方，但不能和go的安装目录相同，在这我们使用$HOME/work</p>
+<pre><code>$ mkdir $HOME/work 
+$ vim /etc/profile 
+$ export GOPATH=$HOME/work  
+</code></pre><p>注意：go的代码必须放在工作空间内，也就是我们这里的work目录下，其中包含了三个子目录</p>
+<pre><code>bin目录包含可执行命令
+
+pkg目录包含包对象
+
+src目录包含go的源文件，它们被组织成包（每个目录都对应一个包）
+</code></pre><p>接下来将工作空间的bin子目录添加到PATH中：</p>
+<pre><code>$ vim /etc/profile
+$ export PATH=$PATH:$GOPATH/bin
+$ source /etc/profile
+</code></pre><p>包路径：<br>标准库中的包有给定的短路径比如”fmt”，对于你自己的包，也必须选择一个基本路径，来保证它不会与将来添加到标准库或其他标准库中的包相冲突。</p>
+<p>使用packs作为基本路径，在你的工作空间里创建一个目录，我们将源码放在其中：</p>
+<pre><code>mkdir $GOPATH/src/packs 
+</code></pre><p>要编译运行简单的程序，首先要选择包路径，在这里我们使用packs/hello，并在你的工作空间内创建相应的包目录：</p>
+<pre><code>$ mkdir $GOPATH/src/packs/hello  
+</code></pre><p>接着在该目录中创建名为hello.go的文件，其内容如下</p>
+<pre><code>package main  
+
+import &quot;fmt&quot;  
+
+func main() {  
+    fmt.Printf(&quot;Hello, world.\n&quot;)  
+} 
+</code></pre><p>现在可以使用go工具构建并安装此程序了</p>
+<pre><code>$ go install packs/hello 
+</code></pre><p>注意，你可以在系统的任何地方运行此命令。go工具会根据GOPATH指定的工作空间，在packs/hello包内查找源码。<br>如果从包目录中运行go install，也可以省略包路径：</p>
+<pre><code>$ cd $GOPATH/src/packs/hello  
+$ go install
+</code></pre><p>此命令会构建hello命令，产生一个可执行的二进制文件。并存放在工作空间的bin目录下，在这里就是$GOPATH/bin目录下<br>因为已经将$GOPATH/bin添加到PATH中，只需要输入该二进制文件名执行即可</p>
+<pre><code>$ hello  
+Hello, world. 
+</code></pre>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://blog.xmqbeast.com/2018/05/15/什么是MVVM/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="∮小煤球メ">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="∮小煤球メ">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2018/05/15/什么是MVVM/" itemprop="url">
+                  什么是MVVM
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-15T17:57:17+08:00">
+                2018-05-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>什么是MVVM？MVVM是Model-View-ViewModel的缩写。</p>
+<p>要编写可维护的前端代码绝非易事。我们已经用MVC模式通过koa实现了后端数据、模板页面和控制器的分离，但是，对于前端来说，还不够。</p>
+<p>这里有童鞋会问，不是讲Node后端开发吗？怎么又回到前端开发了？</p>
+<p>对于一个全栈开发工程师来说，懂前端才会开发出更好的后端程序（不懂前端的后端工程师会设计出非常难用的API），懂后端才会开发出更好的前端程序。程序设计的基本思想在前后端都是通用的，两者并无本质的区别。这和“不想当厨子的裁缝不是好司机”是一个道理。</p>
+<p>当我们用Node.js有了一整套后端开发模型后，我们对前端开发也会有新的认识。由于前端开发混合了HTML、CSS和JavaScript，而且页面众多，所以，代码的组织和维护难度其实更加复杂，这就是MVVM出现的原因。</p>
+<p>在了解MVVM之前，我们先回顾一下前端发展的历史。</p>
+<p>在上个世纪的1989年，欧洲核子研究中心的物理学家Tim Berners-Lee发明了超文本标记语言（HyperText Markup Language），简称HTML，并在1993年成为互联网草案。从此，互联网开始迅速商业化，诞生了一大批商业网站。</p>
+<p>最早的HTML页面是完全静态的网页，它们是预先编写好的存放在Web服务器上的html文件。浏览器请求某个URL时，Web服务器把对应的html文件扔给浏览器，就可以显示html文件的内容了。</p>
+<p>如果要针对不同的用户显示不同的页面，显然不可能给成千上万的用户准备好成千上万的不同的html文件，所以，服务器就需要针对不同的用户，动态生成不同的html文件。一个最直接的想法就是利用C、C++这些编程语言，直接向浏览器输出拼接后的字符串。这种技术被称为CGI：Common Gateway Interface。</p>
+<p>很显然，像新浪首页这样的复杂的HTML是不可能通过拼字符串得到的。于是，人们又发现，其实拼字符串的时候，大多数字符串都是HTML片段，是不变的，变化的只有少数和用户相关的数据，所以，又出现了新的创建动态HTML的方式：ASP、JSP和PHP——分别由微软、SUN和开源社区开发。</p>
+<p>在ASP中，一个asp文件就是一个HTML，但是，需要替换的变量用特殊的&lt;%=var%&gt;标记出来了，再配合循环、条件判断，创建动态HTML就比CGI要容易得多。</p>
+<p>但是，一旦浏览器显示了一个HTML页面，要更新页面内容，唯一的方法就是重新向服务器获取一份新的HTML内容。如果浏览器想要自己修改HTML页面的内容，就需要等到1995年年底，JavaScript被引入到浏览器。</p>
+<p>有了JavaScript后，浏览器就可以运行JavaScript，然后，对页面进行一些修改。JavaScript还可以通过修改HTML的DOM结构和CSS来实现一些动画效果，而这些功能没法通过服务器完成，必须在浏览器实现。</p>
+<p>用JavaScript在浏览器中操作HTML，经历了若干发展阶段：</p>
+<p>第一阶段，直接用JavaScript操作DOM节点，使用浏览器提供的原生API：</p>
+<pre><code>var dom = document.getElementById(&apos;name&apos;);
+dom.innerHTML = &apos;Homer&apos;;
+dom.style.color = &apos;red&apos;;
+</code></pre><p>第二阶段，由于原生API不好用，还要考虑浏览器兼容性，jQuery横空出世，以简洁的API迅速俘获了前端开发者的芳心：</p>
+<pre><code>$(&apos;#name&apos;).text(&apos;Homer&apos;).css(&apos;color&apos;, &apos;red&apos;);
+</code></pre><p>第三阶段，MVC模式，需要服务器端配合，JavaScript可以在前端修改服务器渲染后的数据。</p>
+<p>现在，随着前端页面越来越复杂，用户对于交互性要求也越来越高，想要写出Gmail这样的页面，仅仅用jQuery是远远不够的。MVVM模型应运而生。</p>
+<p>MVVM最早由微软提出来，它借鉴了桌面应用程序的MVC思想，在前端页面中，把Model用纯JavaScript对象表示，View负责显示，两者做到了最大限度的分离。</p>
+<p>把Model和View关联起来的就是ViewModel。ViewModel负责把Model的数据同步到View显示出来，还负责把View的修改同步回Model。</p>
+<p>ViewModel如何编写？需要用JavaScript编写一个通用的ViewModel，这样，就可以复用整个MVVM模型了。</p>
+<p>一个MVVM框架和jQuery操作DOM相比有什么区别？</p>
+<p>我们先看用jQuery实现的修改两个DOM节点的例子：</p>
+<pre><code>&lt;!-- HTML --&gt;
+&lt;p&gt;Hello, &lt;span id=&quot;name&quot;&gt;Bart&lt;/span&gt;!&lt;/p&gt;
+&lt;p&gt;You are &lt;span id=&quot;age&quot;&gt;12&lt;/span&gt;.&lt;/p&gt;
+</code></pre><p>Hello, Homer!</p>
+<p>You are 52.</p>
+<p>用jQuery修改name和age节点的内容：</p>
+<pre><code>&apos;use strict&apos;;
+
+var name = &apos;Homer&apos;;
+var age = 52;
+
+$(&apos;#name&apos;).text(name);
+$(&apos;#age&apos;).text(age);
+</code></pre><p>如果我们使用MVVM框架来实现同样的功能，我们首先并不关心DOM的结构，而是关心数据如何存储。最简单的数据存储方式是使用JavaScript对象：</p>
+<p>var person = {<br>    name: ‘Bart’,<br>    age: 12<br>};</p>
+<p>我们把变量person看作Model，把HTML某些DOM节点看作View，并假定它们之间被关联起来了。</p>
+<p>要把显示的name从Bart改为Homer，把显示的age从12改为51，我们并不操作DOM，而是直接修改JavaScript对象：</p>
+<p>Hello, Homer!</p>
+<p>You are 51</p>
+<pre><code>&apos;use strict&apos;;
+person.name = &apos;Homer&apos;;
+person.age = 51;
+</code></pre><p>执行上面的代码，我们惊讶地发现，改变JavaScript对象的状态，会导致DOM结构作出对应的变化！这让我们的关注点从如何操作DOM变成了如何更新JavaScript对象的状态，而操作JavaScript对象比DOM简单多了！</p>
+<p>这就是MVVM的设计思想：关注Model的变化，让MVVM框架去自动更新DOM的状态，从而把开发者从操作DOM的繁琐步骤中解脱出来！</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://blog.xmqbeast.com/2018/05/15/netty5简介/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="∮小煤球メ">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="∮小煤球メ">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2018/05/15/netty5简介/" itemprop="url">
+                  netty5简介
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-15T11:35:32+08:00">
+                2018-05-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>Netty是一个非web的java应用，Java序列化的作用有以下两方面：</p>
+<p>1） 把对象的字节序列永久地保存到硬盘上（通常存放在一个文件中）；</p>
+<p>2） 在网络上传送对象的字节序列。</p>
+<p>NIO和IO最大的区别是数据打包和传输方式。IO是以流的方式处理数据，而NIO是以块的方式处理数据。</p>
+<p>面向流的IO一次一个字节的处理数据，一个输入流产生一个字节，一个输出流就消费一个字节。为流式数据创建过滤器就变得非常容易，链接几个过滤器，以便对数据进行处理非常方便而简单，但是面向流的IO通常处理的很慢。</p>
+<p>面向块的IO系统以块的形式处理数据。每一个操作都在一步中产生或消费一个数据块。按块要比按流快的多，但面向块的IO缺少了面向流IO所具有的有雅兴和简单性。</p>
+<p>Channel是一个对象，可以通过它读取和写入数据。可以把它看做IO中的流。但是它和流相比还有一些不同：Channel是双向的，既可以读又可以写，而流是单向的，Channel可以进行异步的读写，对Channel的读写必须通过buffer对象</p>
+<p>在Java NIO中Channel主要有如下几种类型：</p>
+<p>FileChannel：从文件读取数据的</p>
+<p>DatagramChannel：读写UDP网络协议数据</p>
+<p>SocketChannel：读写TCP网络协议数据</p>
+<p>ServerSocketChannel：可以监听TCP连接</p>
+<p>Netty5与其他版本的区别：</p>
+<p>ChannelInboundHandler和ChannelOutboundHandler整合为ChannelHandler。ChannelHandler现在包含输入和输出的处理方法。</p>
+<p>ChannelInboundHandlerAdapter，ChannelOutboundHandlerAdapter和ChannelDuplexHandlerAdapter已被废弃，由 ChannelHandlerAdapter代替。</p>
+<p>由于现在无法区分处理器(handler) 是输入还是输出的处理器，CombinedChannelDuplexHandler现在由 ChannelHandlerAppender代替。</p>
+<p>更多相关变化，可参考<a href="https://github.com/netty/netty/pull/1999" target="_blank" rel="noopener">https://github.com/netty/netty/pull/1999</a></p>
+<p>channelRead0() → messageReceived()</p>
+<p>我知道。这是一个愚蠢的错误。如果你使用了SimpleChannelInboundHandler，你需要把channelRead0()重命名为messageReceived()。</p>
+<p>ChannelInitializer，当一个链接建立时，我们需要知道怎么来接收或者发送数据，当然，我们有各种各样的Handler实现来处理它，那么ChannelInitializer便是用来配置这些Handler，它会提供一个ChannelPipeline，并把Handler加入到ChannelPipeline。 </p>
+<p>ChannelPipeline，ChannelPipeline实际上应该叫做ChannelHandlerPipeline，可以把ChannelPipeline看成是一个ChandlerHandler的链表，当需要对Channel进行某种处理的时候，Pipeline负责依次调用每一个Handler进行处理。每个Channel都有一个属于自己的Pipeline，调用Channel#pipeline()方法可以获得Channel的Pipeline，调用Pipeline#channel()方法可以获得Pipeline的Channel。一个Netty应用基于ChannelPipeline机制，这种机制需要依赖于EventLoop和EventLoopGroup，因为它们三个都和事件或者事件处理相关。 EventLoops的目的是为Channel处理IO操作，一个EventLoop可以为多个Channel服务。 EventLoopGroup会包含多个EventLoop。 Channel代表了一个Socket链接，或者其它和IO操作相关的组件，它和EventLoop一起用来参与IO处理。</p>
+<p> Future，在Netty中所有的IO操作都是异步的，因此，你不能立刻得知消息是否被正确处理，但是我们可以过一会等它执行完成或者直接注册一个监听，具体的实现就是通过Future和ChannelFutures,他们可以注册一个监听，当操作执行成功或失败时监听会自动触发。总之，所有的操作都会返回一个ChannelFuture。</p>
+<pre><code>Netty是一个非阻塞的、事件驱动的、网络编程框架。当然，我们很容易理解Netty会用线程来处理IO事件，对于熟悉多线程编程的人来说，你或许会想到如何同步你的代码，但是Netty不需要我们考虑这些，具体是这样：
+</code></pre><p>一个Channel会对应一个EventLoop，而一个EventLoop会对应着一个线程，也就是说，仅有一个线程在负责一个Channel的IO操作。</p>
+<pre><code>当一个ChannelHandler被加入到ChannelPipeline中时，它便会获得一个ChannelHandlerContext的引用，而ChannelHandlerContext可以用来读写Netty中的数据流。因此，现在可以有两种方式来发送数据，一种是把数据直接写入Channel，一种是把数据写入ChannelHandlerContext，它们的区别是写入Channel的话，数据流会从Channel的头开始传递，而如果写入ChannelHandlerContext的话，数据流会流入管道中的下一个Handler。
+</code></pre><p>我们最关心的部分，如何处理我们的业务逻辑？ 通常继承基类ChannelHandlerAdapter</p>
+<p>Netty中会有很多Handler，具体是哪种Handler还要看它们继承的是InboundAdapter还是OutboundAdapter。当然，Netty中还提供了一些列的Adapter来帮助我们简化开发，我们知道在Channelpipeline中每一个Handler都负责把Event传递给下一个Handler，如果有了这些辅助Adapter，这些额外的工作都可自动完成，我们只需覆盖实现我们真正关心的部分即可。此外，还有一些Adapter会提供一些额外的功能，比如编码和解码。那么下面我们就来看一下其中的三种常用的ChannelHandler：</p>
+<p>Encoders和Decoders</p>
+<p>因为我们在网络传输时只能传输字节流，因此，才发送数据之前，我们必须把我们的message型转换为bytes，与之对应，我们在接收数据后，必须把接收到的bytes再转换成message。我们把bytes to message这个过程称作Decode(解码成我们可以理解的)，把message to bytes这个过程成为Encode。</p>
+<p>Netty中提供了很多现成的编码/解码器，我们一般从他们的名字中便可知道他们的用途，如ByteToMessageDecoder、MessageToByteEncoder，如专门用来处理Google Protobuf协议的ProtobufEncoder、 ProtobufDecoder。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://blog.xmqbeast.com/2018/05/15/java中BIO、NIO、AIO的区别/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="∮小煤球メ">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="∮小煤球メ">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2018/05/15/java中BIO、NIO、AIO的区别/" itemprop="url">
+                  java中BIO、NIO、AIO的区别
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-15T11:31:13+08:00">
+                2018-05-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>java中的IO主要源自于网络和本地文件</p>
+<p>  IO的方式通常分为几种，同步阻塞的BIO、同步非阻塞的NIO、异步非阻塞的AIO</p>
+<p> 在JDK1.4出来之前，我们建立网络连接的时候采用BIO模式，需要先在服务端启动一个ServerSocket，然后在客户端启动Socket来对服务端进行通信，默认情况下服务端需要对每个请求建立一堆线程等待请求，而客户端发送请求后，先咨询服务端是否有线程相应，如果没有则会一直等待或者遭到拒绝请求，如果有的话，客户端会线程会等待请求结束后才继续执行。</p>
+<p>BIO与NIO一个比较重要的不同，是我们使用BIO的时候往往会引入多线程，每个连接一个单独的线程；而NIO则是使用单线程或者只使用少量的多线程，每个连接共用一个线程。</p>
+<p>  NIO的最重要的地方是当一个连接创建后，不需要对应一个线程，这个连接会被注册到多路复用器上面，所以所有的连接只需要一个线程就可以搞定，当这个线程中的多路复用器进行轮询的时候，发现连接上有请求的话，才开启一个线程进行处理，也就是一个请求一个线程模式。</p>
+<p>在NIO的处理方式中，当一个请求来的话，开启线程进行处理，可能会等待后端应用的资源(JDBC连接等)，其实这个线程就被阻塞了，当并发上来的话，还是会有BIO一样的问题。<br>　　<br>HTTP/1.1出现后，有了Http长连接，这样除了超时和指明特定关闭的http header外，这个链接是一直打开的状态的，这样在NIO处理中可以进一步的进化，在后端资源中可以实现资源池或者队列，当请求来的话，开启的线程把请求和请求数据传送给后端资源池或者队列里面就返回，并且在全局的地方保持住这个现场(哪个连接的哪个请求等)，这样前面的线程还是可以去接受其他的请求，而后端的应用的处理只需要执行队列里面的就可以了，这样请求处理和后端应用是异步的.当后端处理完，到全局地方得到现场，产生响应，这个就实现了异步处理。</p>
+<p>BIO是一个连接一个线程。<br>　<br>NIO是一个请求一个线程。<br>　<br>AIO是一个有效请求一个线程。</p>
+<p>先来个例子理解一下概念，以银行取款为例：<br>同步 ： 自己亲自出马持银行卡到银行取钱（使用同步IO时，Java自己处理IO读写）。<br>异步 ： 委托一小弟拿银行卡到银行取钱，然后给你（使用异步IO时，Java将IO读写委托给OS处理，需要将数据缓冲区地址和大小传给OS(银行卡和密码)，OS需要支持异步IO操作API）。<br>阻塞 ： ATM排队取款，你只能等待（使用阻塞IO时，Java调用会一直阻塞到读写完成才返回）。<br>非阻塞 ： 柜台取款，取个号，然后坐在椅子上做其它事，等号广播会通知你办理，没到号你就不能去，你可以不断问大堂经理排到了没有，大堂经理如果说还没到你就不能去（使用非阻塞IO时，如果不能读写Java调用会马上返回，当IO事件分发器会通知可读写时再继续进行读写，不断循环直到读写完成）</p>
+<p>Java对BIO、NIO、AIO的支持：</p>
+<p>Java BIO ： 同步并阻塞，服务器实现模式为一个连接一个线程，即客户端有连接请求时服务器端就需要启动一个线程进行处理，如果这个连接不做任何事情会造成不必要的线程开销，当然可以通过线程池机制改善。<br>Java NIO ： 同步非阻塞，服务器实现模式为一个请求一个线程，即客户端发送的连接请求都会注册到多路复用器上，多路复用器轮询到连接有I/O请求时才启动一个线程进行处理。<br>Java AIO(NIO.2) ： 异步非阻塞，服务器实现模式为一个有效请求一个线程，客户端的I/O请求都是由OS先完成了再通知服务器应用去启动线程进行处理，</p>
+<p>BIO、NIO、AIO适用场景分析:</p>
+<p>BIO方式适用于连接数目比较小且固定的架构，这种方式对服务器资源要求比较高，并发局限于应用中，JDK1.4以前的唯一选择，但程序直观简单易理解。<br>NIO方式适用于连接数目多且连接比较短（轻操作）的架构，比如聊天服务器，并发局限于应用中，编程比较复杂，JDK1.4开始支持。<br>AIO方式使用于连接数目多且连接比较长（重操作）的架构，比如相册服务器，充分调用OS参与并发操作，编程比较复杂，JDK7开始支持。<br>另外，I/O属于底层操作，需要操作系统支持，并发也需要操作系统的支持，所以性能方面不同操作系统差异会比较明显。</p>
+<p> 在高性能的I/O设计中，有两个比较著名的模式Reactor和Proactor模式，其中Reactor模式用于同步I/O，而Proactor运用于异步I/O操作。</p>
+<p>在比较这两个模式之前，我们首先的搞明白几个概念，什么是阻塞和非阻塞，什么是同步和异步,同步和异步是针对应用程序和内核的交互而言的，同步指的是用户进程触发IO操作并等待或者轮询的去查看IO操作是否就绪，而异步是指用户进程触发IO操作以后便开始做自己的事情，而当IO操作已经完成的时候会得到IO完成的通知。而阻塞和非阻塞是针对于进程在访问数据的时候，根据IO操作的就绪状态来采取的不同方式，说白了是一种读取或者写入操作函数的实现方式，阻塞方式下读取或者写入函数将一直等待，而非阻塞方式下，读取或者写入函数会立即返回一个状态值。</p>
+<p>  一般来说I/O模型可以分为：同步阻塞，同步非阻塞，异步阻塞，异步非阻塞IO</p>
+<p>同步阻塞IO：</p>
+<p>   在此种方式下，用户进程在发起一个IO操作以后，必须等待IO操作的完成，只有当真正完成了IO操作以后，用户进程才能运行。JAVA传统的IO模型属于此种方式！</p>
+<p>同步非阻塞IO:</p>
+<p>在此种方式下，用户进程发起一个IO操作以后边可返回做其它事情，但是用户进程需要时不时的询问IO操作是否就绪，这就要求用户进程不停的去询问，从而引入不必要的CPU资源浪费。其中目前JAVA的NIO就属于同步非阻塞IO。</p>
+<p>异步阻塞IO：</p>
+<p>   此种方式下是指应用发起一个IO操作以后，不等待内核IO操作的完成，等内核完成IO操作以后会通知应用程序，这其实就是同步和异步最关键的区别，同步必须等待或者主动的去询问IO是否完成，那么为什么说是阻塞的呢？因为此时是通过select系统调用来完成的，而select函数本身的实现方式是阻塞的，而采用select函数有个好处就是它可以同时监听多个文件句柄，从而提高系统的并发性！</p>
+<p>异步非阻塞IO:</p>
+<p>   在此种模式下，用户进程只需要发起一个IO操作然后立即返回，等IO操作真正的完成以后，应用程序会得到IO操作完成的通知，此时用户进程只需要对数据进行处理就好了，不需要进行实际的IO读写操作，因为真正的IO读取或者写入操作已经由内核完成了。目前Java中还没有支持此种IO模型。   </p>
+<p>搞清楚了以上概念以后，我们再回过头来看看，Reactor模式和Proactor模式。</p>
+<p>首先来看看Reactor模式，Reactor模式应用于同步I/O的场景。我们分别以读操作和写操作为例来看看Reactor中的具体步骤：</p>
+<p>读取操作：</p>
+<ol>
+<li><p>应用程序注册读就需事件和相关联的事件处理器</p>
+</li>
+<li><p>事件分离器等待事件的发生</p>
+</li>
+<li><p>当发生读就需事件的时候，事件分离器调用第一步注册的事件处理器</p>
+</li>
+<li><p>事件处理器首先执行实际的读取操作，然后根据读取到的内容进行进一步的处理</p>
+</li>
+</ol>
+<p>写入操作类似于读取操作，只不过第一步注册的是写就绪事件。</p>
+<p>下面我们来看看Proactor模式中读取操作和写入操作的过程：</p>
+<p>读取操作：</p>
+<ol>
+<li><p>应用程序初始化一个异步读取操作，然后注册相应的事件处理器，此时事件处理器不关注读取就绪事件，而是关注读取完成事件，这是区别于Reactor的关键。</p>
+</li>
+<li><p>事件分离器等待读取操作完成事件</p>
+</li>
+<li><p>在事件分离器等待读取操作完成的时候，操作系统调用内核线程完成读取操作，并将读取的内容放入用户传递过来的缓存区中。这也是区别于Reactor的一点，Proactor中，应用程序需要传递缓存区。</p>
+</li>
+<li><p>事件分离器捕获到读取完成事件后，激活应用程序注册的事件处理器，事件处理器直接从缓存区读取数据，而不需要进行实际的读取操作。</p>
+</li>
+</ol>
+<p>Proactor中写入操作和读取操作，只不过感兴趣的事件是写入完成事件。</p>
+<p>从上面可以看出，Reactor和Proactor模式的主要区别就是真正的读取和写入操作是有谁来完成的，Reactor中需要应用程序自己读取或者写入数据，而Proactor模式中，应用程序不需要进行实际的读写过程，它只需要从缓存区读取或者写入即可，操作系统会读取缓存区或者写入缓存区到真正的IO设备.</p>
+<p>   综上所述，同步和异步是相对于应用和内核的交互方式而言的，同步 需要主动去询问，而异步的时候内核在IO事件发生的时候通知应用程序，而阻塞和非阻塞仅仅是系统在调用系统调用的时候函数的实现方式而已。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://blog.xmqbeast.com/2018/05/15/eclipse-debug启动老是跳转到断点，提示SilentExitException/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="∮小煤球メ">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="∮小煤球メ">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2018/05/15/eclipse-debug启动老是跳转到断点，提示SilentExitException/" itemprop="url">
+                  eclipse debug启动老是跳转到断点，提示SilentExitException
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-15T11:21:28+08:00">
+                2018-05-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>最近在做一个spring boot的项目，在main方法debug启动的时候，老是自动跳转到断点，如下图所示</p>
+<p><img src="http://oncykm32h.bkt.clouddn.com/20180228175121654.png" alt="silentExitException"></p>
+<p>出现这种状况是因为Eclipse默认开启挂起未捕获的异常(Suspend execution on uncaught exceptions)，只要关闭此项就可以了。</p>
+<p>解决方法：在eclipse中选择Window-&gt;Preference-&gt;Java-&gt;Debug，将“Suspend execution on uncaught exceptions”的勾去掉即可。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://blog.xmqbeast.com/2018/05/15/java中socket的用法/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="∮小煤球メ">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="∮小煤球メ">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2018/05/15/java中socket的用法/" itemprop="url">
+                  java中socket的用法
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-15T01:58:04+08:00">
+                2018-05-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>Java中的Socket的用法</p>
+<p>Java中的Socket分为普通的Socket和NioSocket。</p>
+<p>普通Socket的用法</p>
+<p>Java中的网络通信时通过Socket实现的，Socket分为ServerSocket和Socket两大类，ServerSocket用于服务器端，可以通过accept方法监听请求，监听请求后返回Socket，Socket用于完成具体数据传输，客户端也可以使用Socket发起请求并传输数据。ServerSocket的使用可以分为三步：</p>
+<p>创建ServerSocket。ServerSocket的构造方法有5个，其中最方便的是ServerSocket(int port)，只需要一个port就可以了。<br>调用创建出来的ServerSocket的accept方法进行监听。accept方法是阻塞方法，也就是说调用accept方法后程序会停下来等待连接请求，在接受请求之前程序将不会继续执行，当接收到请求后accept方法返回一个Socket。</p>
+<p>使用accept方法返回的Socket与客户端进行通信
+　　</p>
+<p>如下代码，我们在服务器端创建ServerSocket，并调用accept方法监听Client的请求，收到请求后返回一个Socket。</p>
+<p>public class Server {</p>
+<pre><code>public static void main(String[] args) {
+    // TODO Auto-generated method stub
+    try {
+        //创建一个ServerSocket监听8080端口
+        ServerSocket server = new ServerSocket(8080);
+        //等待请求
+        Socket socket = server.accept();
+        //接受请求后使用Socket进行通信，创建BufferedReader用于读取数据
+        BufferedReader is = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+        String line = is.readLine();
+        System.out.println(&quot;received frome client:&quot; + line);
+        //创建PrintWriter，用于发送数据
+        PrintWriter pw = new PrintWriter(socket.getOutputStream());
+        pw.println(&quot;this data is from server&quot;);
+        pw.flush();
+        //关闭资源
+        pw.close();
+        is.close();
+        socket.close();
+        server.close();
+    } catch (IOException e) {
+        // TODO Auto-generated catch block
+        e.printStackTrace();
+    }
+}
+
+}
+</code></pre><p>然后我们再看看客户端的Socket代码，Socket的使用也是一样，首先创建一个Socket，Socket的构造方法非常多，这里用的是Socket(String host, int port)，把目标主机的地址和端口号传入即可（本实验代码中服务器和Client代码没有在同一台机器上，服务器的IP地址：192.168.6.42，所以如果读者在实验过程中ServerSocket和Client在同一主机下，那么Client中的IP地址需要更改为：127.0.0.1，Socket创建的过程就会跟服务器端建立连接，创建完Socket后，再创建Writer和Reader来传输数据，数据传输完成后释放资源关闭连接。</p>
+<p>public class Client {</p>
+<pre><code>public static void main(String[] args) {
+    // TODO Auto-generated method stub
+    String msg = &quot;Client data&quot;;
+
+    try {
+        //创建一个Socket，跟服务器的8080端口链接
+        Socket socket = new Socket(&quot;192.168.6.42&quot;,8080);
+        //使用PrintWriter和BufferedReader进行读写数据
+        PrintWriter pw = new PrintWriter(socket.getOutputStream());
+        BufferedReader is = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+        //发送数据
+        pw.println(msg);
+        pw.flush();
+        //接收数据
+        String line = is.readLine();
+        System.out.println(&quot;received from server&quot; + line);
+        //关闭资源
+        pw.close();
+        is.close();
+        socket.close();
+    } catch (UnknownHostException e) {
+        // TODO Auto-generated catch block
+        e.printStackTrace();
+    } catch (IOException e) {
+        // TODO Auto-generated catch block
+        e.printStackTrace();
+    }
+}
+
+}
+</code></pre><p>最后先启动Server然后启动Client就可以完成一次Client和Server的通信。</p>
+<p>NioSocket的用法</p>
+<p>　　从JDK1.4开始，Java增加了新的IO模式-nio（new IO），nio在底层采用了新的处理方式，极大提高了IO的效率。我们使用的Socket也是IO的一种，nio提供了相应的工具：ServerSocketChannel和SocketChannel，他们分别对应原来的ServerSocket和Socket。</p>
+<p>　　在了解NioSocket之前我们先了解Buffer、Channel、Selector。为了方便理解，我们来看个例子，要过圣诞节了，需要给同学们发贺卡和苹果，班长这时候又是最辛苦的，每次拿一个苹果和一张贺卡发给一个同学，发送完成后回来再取一张贺卡和一个苹果发给另一个同学，直到全班同学都拿到贺卡和苹果为止，这就是普通Socket处理方式，来一个请求，ServerSocket就进行处理，处理完成后继续接受请求，这种方式效率很低啊！还是圣诞节的例子，班长发现班委不止他一个，就通知了生活委员（女）和组织委员（男）来帮助他发贺卡和苹果，女生的贺卡是粉色的，男生的贺卡是蓝色的，生活委员负责从全班的贺卡中挑选女生的贺卡，而组织委员则负责男生的贺卡，然后生活委员和组织委员分别以宿舍为单位通知宿舍长来领取宿舍同学的贺卡和苹果，班长将圣诞节发苹果和贺卡的工作布置给两个班委后，就可以继续干其他工作了。这就是NioSocket，Buffer就是所有传递的货物，也就是例子中的苹果和贺卡，而Channel就是传递货物的通道，也就是例子中的宿舍长，负责将礼物搬回自己宿舍，而生活委员和组织委员充当了Selector的职责，负责礼物的分拣。</p>
+<p>　　ServerSocketChannel可以使用自己的静态工厂方法open创建，每个ServerSocketChannel对应一个ServerSocket（通过调用其socket()获取），如果直接使用获取的ServerSocket来监听请求，那么还是普通ServerSocket，而通过将获取的ServerSocket绑定端口号来实现NioSocket。ServerSocketChannel可以通过configureBlocking方法来设置是否采用阻塞模式，如果设置为非阻塞模式，就可以调用register方法注册Selector来使用了。</p>
+<p>　　Selector可以通过其静态工厂方法open创建，创建后通过Channel的register方法注册到ServerSocketChannel或者SocketChannel上，注册完成后Selector就可以通过select方法来等待请求，select方法有一个long类型参数，代表最长等待时间，如果在这段时间内收到相应操作的请求则返回可以处理的请求的数量，否则在超时后返回0，如果传入的参数为0或者无参数的重载方法，select方法会采用阻塞模式知道有相应操作请求的出现。当接收到请求后Selector调用selectdKeys方法返回SelectionKey集合。</p>
+<p>　　SelectionKey保存了处理当前请求的Channel和Selector，并且提供了不同的操作类型。Channel在注册Selector时可以通过register的第二个参数选择特定的操作（请求操作、连接操作、读操作、写操作），只有在register中注册了相应的操作Selector才会关心相应类型操作的请求。</p>
+<p>　　我们来看看服务器端NioSocket的处理过程：</p>
+<p>创建ServerSocketChannel并设置相应的端口号、是否为阻塞模式<br>创建Selector并注册到ServerSocketChannel上<br>调用Selector的selector方法等待请求<br>Selector接收到请求后使用selectdKeys返回SelectionKey集合<br>使用SelectionKey获取到channel、selector和操作类型并进行具体操作。</p>
+<pre><code>public class NIOServer {
+
+public static void main(String[] args) {
+    // TODO Auto-generated method stub
+    try {
+        //创建ServerSocketChannel，监听8080端口
+        ServerSocketChannel ssc = ServerSocketChannel.open();
+        ssc.socket().bind(new InetSocketAddress(8080));
+        //设置为非阻塞模式
+        ssc.configureBlocking(false);
+        //为ssc注册选择器
+        Selector selector = Selector.open();
+        ssc.register(selector, SelectionKey.OP_ACCEPT);
+        //创建处理器
+        Handler handler = new Handler(1024);
+        while(true){
+            //等待请求，每次等待阻塞3s，超过3s后线程继续向下运行，如果传入0或者不传入参数则一直阻塞
+            if(selector.select(3000) == 0){
+                System.out.println(&quot;等待请求超时----&quot;);
+                continue;
+            }
+            System.out.println(&quot;处理请求----&quot;);
+            //获取处理的SelectionKey
+            Iterator&lt;SelectionKey&gt; keyIter = selector.selectedKeys().iterator();
+            while(keyIter.hasNext()){
+                SelectionKey key = keyIter.next();
+                try{
+                    //接收到连接请求时
+                    if(key.isAcceptable()){
+                        handler.handleAccept(key);
+                    }
+                    //读数据
+                    if(key.isReadable()){
+                        handler.handleRead(key);
+                    }
+                }catch(IOException ex){
+                    keyIter.remove();
+                    continue;
+                }
+                //处理完后，从待处理的SelectionKey迭代器中移除当前所使用的key
+                keyIter.remove();
+            }
+        }
+    } catch (IOException e) {
+        // TODO Auto-generated catch block
+        e.printStackTrace();
+    }
+}
+private static class Handler{
+    private int bufferSize = 1024;
+    private String localCharset = &quot;UTF-8&quot;;
+    public Handler(int bufferSize){
+        this.bufferSize = bufferSize;
+    }
+    public void handleAccept(SelectionKey key) throws IOException{
+        SocketChannel sc = ((ServerSocketChannel) key.channel()).accept();
+        sc.configureBlocking(false);
+        sc.register(key.selector(), SelectionKey.OP_READ, ByteBuffer.allocate(bufferSize));
+    }
+    public void handleRead(SelectionKey key) throws IOException{
+        //获取Channel
+        SocketChannel sc = (SocketChannel) key.channel();
+        //获取buffer并重置
+        ByteBuffer buffer = (ByteBuffer)key.attachment();
+        buffer.clear();
+        //没有读到内容则关闭
+        if(sc.read(buffer) == -1)
+            sc.close();
+        else{
+            //将buffer转换为读状态
+            buffer.flip();
+            //将buffer中接收到的值按localCharset格式编码后保存到receivedString
+            String receivedString = Charset.forName(localCharset).newDecoder().decode(buffer).toString();
+            System.out.println(&quot;received from client:&quot; + receivedString);
+            //返回数据给客户端
+            String sendString = &quot;this data is from Server&quot;;
+            buffer = ByteBuffer.wrap(sendString.getBytes(localCharset));
+            sc.write(buffer);
+            sc.close();
+        }
+    }
+}
+}
+</code></pre><p>　客户端代码通普通Socket一样，Socket socket = new Socket(“127.0.0.1”,8080);表示与服务器端建立连接，从而执行服务器端的handleAccept()方法，给ServerSocketChannel注册selector以及添加SelectionKey.OP_READ参数，表示selector关心读方法。然后通过PrintWrite在客户端将内容发送给服务器端，服务器端执行handleRead方法对接收到的内容进行处理，并将结果返回给客户端，客户端通过BufferedReader接受数据</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://blog.xmqbeast.com/2018/05/14/redis-list列表/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="∮小煤球メ">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="∮小煤球メ">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2018/05/14/redis-list列表/" itemprop="url">
+                  redis list列表
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-14T10:50:25+08:00">
+                2018-05-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>模式：安全的队列</p>
+<p>Redis的列表经常被用作队列(queue)，用于在不同程序之间有序地交换消息(message)。一个客户端通过 LPUSH 命令将消息放入队列中，而另一个客户端通过 RPOP 或者 BRPOP 命令取出队列中等待时间最长的消息。</p>
+<p>不幸的是，上面的队列方法是『不安全』的，因为在这个过程中，一个客户端可能在取出一个消息之后崩溃，而未处理完的消息也就因此丢失。</p>
+<p>使用 RPOPLPUSH 命令(或者它的阻塞版本 BRPOPLPUSH )可以解决这个问题：因为它不仅返回一个消息，同时还将这个消息添加到另一个备份列表当中，如果一切正常的话，当一个客户端完成某个消息的处理之后，可以用 LREM 命令将这个消息从备份表删除。</p>
+<p>最后，还可以添加一个客户端专门用于监视备份表，它自动地将超过一定处理时限的消息重新放入队列中去(负责处理该消息的客户端可能已经崩溃)，这样就不会丢失任何消息了。</p>
+<p>模式：循环列表</p>
+<p>通过使用相同的 key 作为 RPOPLPUSH 命令的两个参数，客户端可以用一个接一个地获取列表元素的方式，取得列表的所有元素，而不必像 LRANGE 命令那样一下子将所有列表元素都从服务器传送到客户端中(两种方式的总复杂度都是 O(N))。</p>
+<p>以上的模式甚至在以下的两个情况下也能正常工作：</p>
+<p>有多个客户端同时对同一个列表进行旋转(rotating)，它们获取不同的元素，直到所有元素都被读取完，之后又从头开始。<br>有客户端在向列表尾部(右边)添加新元素。<br>这个模式使得我们可以很容易实现这样一类系统：有 N 个客户端，需要连续不断地对一些元素进行处理，而且处理的过程必须尽可能地快。一个典型的例子就是服务器的监控程序：它们需要在尽可能短的时间内，并行地检查一组网站，确保它们的可访问性。</p>
+<p>注意，使用这个模式的客户端是易于扩展(scala)且安全(reliable)的，因为就算接收到元素的客户端失败，元素还是保存在列表里面，不会丢失，等到下个迭代来临的时候，别的客户端又可以继续处理这些元素了。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://blog.xmqbeast.com/2018/05/14/Redis-Rpush命令/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -698,1003 +1892,6 @@ redis 127.0.0.1:6379&gt; LRANGE mylist 0 -1
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://blog.xmqbeast.com/2018/05/14/Redis-Lpop命令/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="∮小煤球メ">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="∮小煤球メ">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2018/05/14/Redis-Lpop命令/" itemprop="url">
-                  Redis Lpop命令
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-14T02:15:07+08:00">
-                2018-05-14
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Redis Lpop 命令</p>
-<p>Redis Lpop 命令用于移除并返回列表的第一个元素。</p>
-<p>语法<br>redis Lpop 命令基本语法如下：</p>
-<pre><code>redis 127.0.0.1:6379&gt; Lpop KEY_NAME
-</code></pre><p>返回值<br>列表的第一个元素。 当列表 key 不存在时，返回 nil 。</p>
-<p>实例</p>
-<pre><code>redis 127.0.0.1:6379&gt; RPUSH list1 &quot;foo&quot;
-(integer) 1
-redis 127.0.0.1:6379&gt; RPUSH list1 &quot;bar&quot;
-(integer) 2
-redis 127.0.0.1:6379&gt; LPOP list1
-&quot;foo&quot;
-</code></pre><p>PS:Redis Rpop 命令用于移除并返回列表的最后一个元素。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://blog.xmqbeast.com/2018/05/14/Redis-Llen命令/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="∮小煤球メ">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="∮小煤球メ">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2018/05/14/Redis-Llen命令/" itemprop="url">
-                  Redis Llen命令
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-14T02:06:56+08:00">
-                2018-05-14
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Redis Llen 命令</p>
-<p>Redis Llen 命令用于返回列表的长度。 如果列表 key 不存在，则 key 被解释为一个空列表，返回 0 。 如果 key 不是列表类型，返回一个错误。</p>
-<p>语法<br>redis Llen 命令基本语法如下：</p>
-<pre><code>redis 127.0.0.1:6379&gt; LLEN KEY_NAME
-</code></pre><p>返回值<br>列表的长度。</p>
-<p>实例</p>
-<pre><code>redis 127.0.0.1:6379&gt; RPUSH list1 &quot;foo&quot;
-(integer) 1
-redis 127.0.0.1:6379&gt; RPUSH list1 &quot;bar&quot;
-(integer) 2
-redis 127.0.0.1:6379&gt; LLEN list1
-(integer) 2
-</code></pre>
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://blog.xmqbeast.com/2018/05/14/Redis-Ltrim命令/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="∮小煤球メ">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="∮小煤球メ">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2018/05/14/Redis-Ltrim命令/" itemprop="url">
-                  Redis Ltrim命令
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-14T02:01:57+08:00">
-                2018-05-14
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Redis Ltrim 命令</p>
-<p>Redis Ltrim 对一个列表进行修剪(trim)，就是说，让列表只保留指定区间内的元素，不在指定区间之内的元素都将被删除。<br>下标 0 表示列表的第一个元素，以 1 表示列表的第二个元素，以此类推。 你也可以使用负数下标，以 -1 表示列表的最后一个元素， -2 表示列表的倒数第二个元素，以此类推。</p>
-<p>语法<br>redis Ltrim 命令基本语法如下：</p>
-<pre><code>redis 127.0.0.1:6379&gt; LTRIM KEY_NAME START STOP
-</code></pre><p>返回值<br>命令执行成功时，返回 ok 。</p>
-<p>实例</p>
-<pre><code>redis 127.0.0.1:6379&gt; RPUSH mylist &quot;hello&quot;
-(integer) 1
-redis 127.0.0.1:6379&gt; RPUSH mylist &quot;hello&quot;
-(integer) 2
-redis 127.0.0.1:6379&gt; RPUSH mylist &quot;foo&quot;
-(integer) 3
-redis 127.0.0.1:6379&gt; RPUSH mylist &quot;bar&quot;
-(integer) 4
-redis 127.0.0.1:6379&gt; LTRIM mylist 1 -1
-OK
-redis 127.0.0.1:6379&gt; LRANGE mylist 0 -1
-1) &quot;hello&quot;
-2) &quot;foo&quot;
-3) &quot;bar&quot;
-</code></pre>
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://blog.xmqbeast.com/2018/05/14/redis-Lrange命令/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="∮小煤球メ">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="∮小煤球メ">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2018/05/14/redis-Lrange命令/" itemprop="url">
-                  redis Lrange命令
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-14T01:49:53+08:00">
-                2018-05-14
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Redis Lrange 命令</p>
-<p>Redis Lrange 返回列表中指定区间内的元素，区间以偏移量 START 和 END 指定。 其中 0 表示列表的第一个元素， 1 表示列表的第二个元素，以此类推。 你也可以使用负数下标，以 -1 表示列表的最后一个元素， -2 表示列表的倒数第二个元素，以此类推。</p>
-<p>语法<br>redis Lrange 命令基本语法如下：</p>
-<pre><code>redis 127.0.0.1:6379&gt; LRANGE KEY_NAME START END
-</code></pre><p>返回值<br>一个列表，包含指定区间内的元素。</p>
-<p>实例<br>    redis&gt; RPUSH mylist “one”<br>    (integer) 1<br>    redis&gt; RPUSH mylist “two”<br>    (integer) 2<br>    redis&gt; RPUSH mylist “three”<br>    (integer) 3<br>    redis&gt; LRANGE mylist 0 0<br>    1) “one”<br>    redis&gt; LRANGE mylist -3 2<br>    1) “one”<br>    2) “two”<br>    3) “three”<br>    redis&gt; LRANGE mylist -100 100<br>    1) “one”<br>    2) “two”<br>    3) “three”<br>    redis&gt; LRANGE mylist 5 10<br>    (empty list or set)<br>    redis&gt; </p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://blog.xmqbeast.com/2018/05/14/redis-Rpop命令/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="∮小煤球メ">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="∮小煤球メ">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2018/05/14/redis-Rpop命令/" itemprop="url">
-                  redis Rpop命令
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-14T01:02:36+08:00">
-                2018-05-14
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Redis Rpop 命令</p>
-<p>Redis Rpop 命令用于移除并返回列表的最后一个元素。</p>
-<p>语法<br>redis Rpop 命令基本语法如下：</p>
-<pre><code>redis 127.0.0.1:6379&gt; RPOP KEY_NAME 
-</code></pre><p>返回值<br>列表的最后一个元素。 当列表不存在时，返回 nil 。</p>
-<p>实例</p>
-<pre><code>redis&gt; RPUSH mylist &quot;one&quot;
-(integer) 1
-redis&gt; RPUSH mylist &quot;two&quot;
-(integer) 2
-redis&gt; RPUSH mylist &quot;three&quot;
-(integer) 3
-redis&gt; RPOP mylist
-&quot;three&quot;
-redis&gt; LRANGE mylist 0 -1
-1) &quot;one&quot;
-2) &quot;two&quot;
-redis&gt; 
-</code></pre>
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://blog.xmqbeast.com/2018/05/14/redis4-0-2配置远程连接（centos7-2）/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="∮小煤球メ">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="∮小煤球メ">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2018/05/14/redis4-0-2配置远程连接（centos7-2）/" itemprop="url">
-                  redis4.0.2配置远程连接（centos7.2）
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-14T00:52:01+08:00">
-                2018-05-14
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>最近开始学习redis，在服务器上安装了redis之后，远程连接一直连接不上，报错如下：</p>
-<p> redis.clients.jedis.exceptions.JedisConnectionException: java.net.ConnectException: Connection refused: connect</p>
-<p>总结原因如下：<br>1、6379端口没有开放<br>2.修改redis.conf配置文件</p>
-<p>这个文件需要修改两个地方</p>
-<p>打开redis.conf文件<br>　　按crrl+F查询，</p>
-<p>找到bind 127.0.0.1，把这行前面加个#注释掉<br>再查找protected-mode yes 把yes修改为no，然后：wq保存文件，<br>把服务关掉</p>
-<p>redis远程连接命令:redis-cli -h 127.0.0.1 -p 6379</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://blog.xmqbeast.com/2018/05/13/redis-消息队列-一/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="∮小煤球メ">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="∮小煤球メ">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2018/05/13/redis-消息队列-一/" itemprop="url">
-                  redis 消息队列(一)
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-13T23:33:43+08:00">
-                2018-05-13
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Redis队列功能介绍</p>
-<p>List</p>
-<p>常用命令：</p>
-<p>Blpop删除，并获得该列表中的第一元素，或阻塞，直到有一个可用</p>
-<p>Brpop删除，并获得该列表中的最后一个元素，或阻塞，直到有一个可用</p>
-<p>Brpoplpush</p>
-<p>Lindex获取一个元素，通过其索引列表</p>
-<p>Linsert在列表中的另一个元素之前或之后插入一个元素</p>
-<p>Llen获得队列(List)的长度</p>
-<p>Lpop从队列的左边出队一个元素</p>
-<p>Lpush从队列的左边入队一个或多个元素</p>
-<p>Lpushx当队列存在时，从队到左边入队一个元素</p>
-<p>Lrange从列表中获取指定返回的元素</p>
-<p>Lrem从列表中删除元素</p>
-<p>Lset设置队列里面一个元素的值</p>
-<p>Ltrim修剪到指定范围内的清单</p>
-<p>Rpop从队列的右边出队一个元素</p>
-<p>Rpoplpush删除列表中的最后一个元素，将其追加到另一个列表</p>
-<p>Rpush从队列的右边入队一个元素</p>
-<p>Rpushx从队列的右边入队一个元素，仅队列存在时有效</p>
-<p>   应用场景：</p>
-<p>Redis list的应用场景非常多，也是Redis最重要的数据结构之一，比如twitter的关注列表，粉丝列表等都可以用Redis的list结构来实现。</p>
-<p>Lists 就是链表，相信略有数据结构知识的人都应该能理解其结构。使用Lists结构，我们可以轻松地实现最新消息排行等功能。</p>
-<p>Lists的另一个应用就是消息队列，</p>
-<p>可以利用Lists的PUSH操作，将任务存在Lists中，然后工作线程再用POP操作将任务取出进行执行。Redis还提供了操作Lists中某一段的api，你可以直接查询，删除Lists中某一段的元素。</p>
-<p>如果需要还可以用redis的Sorted-Sets数据结构来做优先队列.可以给每条消息加上一个唯一的序号。这里就不详细介绍了。</p>
-<p>示意图:</p>
-<p>1)入队</p>
-<p><img src="http://oncykm32h.bkt.clouddn.com/041122275024610.png" alt="redis-queue"></p>
-<p>2)jedis rpoplpush</p>
-<p>具体方法为</p>
-<pre><code>/**
- * Atomically return and remove the last (tail) element of the srckey list, and push the element
- * as the first (head) element of the dstkey list. For example if the source list contains the
- * elements &quot;a&quot;,&quot;b&quot;,&quot;c&quot; and the destination list contains the elements &quot;foo&quot;,&quot;bar&quot; after an
- * RPOPLPUSH command the content of the two lists will be &quot;a&quot;,&quot;b&quot; and &quot;c&quot;,&quot;foo&quot;,&quot;bar&quot;.
- * &lt;p&gt;
- * If the key does not exist or the list is already empty the special value &apos;nil&apos; is returned. If
- * the srckey and dstkey are the same the operation is equivalent to removing the last element
- * from the list and pusing it as first element of the list, so it&apos;s a &quot;list rotation&quot; command.
- * &lt;p&gt;
- * Time complexity: O(1)
- * @param srckey
- * @param dstkey
- * @return Bulk reply
- */
-
-  public String rpoplpush(final String srckey, final String dstkey)
-</code></pre><p>RPOPLPUSH source destination</p>
-<p>命令 RPOPLPUSH 在一个原子时间内，执行以下两个动作：</p>
-<p>将列表 source 中的最后一个元素(尾元素)弹出，并返回给客户端。<br>将 source 弹出的元素插入到列表 destination ，作为 destination 列表的的头元素。<br>举个例子，你有两个列表 source 和 destination ， source 列表有元素 a, b, c ， destination 列表有元素 x, y, z ，执行 RPOPLPUSH source destination 之后， source 列表包含元素 a, b ， destination 列表包含元素 c, x, y, z ，并且元素 c 会被返回给客户端。</p>
-<p>如果 source 不存在，值 nil 被返回，并且不执行其他动作。</p>
-<p>如果 source 和 destination 相同，则列表中的表尾元素被移动到表头，并返回该元素，可以把这种特殊情况视作列表的旋转(rotation)操作</p>
-<p>3） jedis rpop</p>
-<p>返回字符串，最后一个元素的值，或者关键不存在返回nil。</p>
-<pre><code> /**
-   * Atomically return and remove the first (LPOP) or last (RPOP) element of the list. For example
-   * if the list contains the elements &quot;a&quot;,&quot;b&quot;,&quot;c&quot; RPOP will return &quot;c&quot; and the list will become
-   * &quot;a&quot;,&quot;b&quot;.
-   * &lt;p&gt;
-   * If the key does not exist or the list is already empty the special value &apos;nil&apos; is returned.
-   * @see #lpop(String)
-   * @param key
-   * @return Bulk reply
-   */
-
-public String rpop(final String key)
-</code></pre><p>4) jedis lpush</p>
-<pre><code>/**
-  * Add the string value to the head (LPUSH) or tail (RPUSH) of the list stored at key. If the key
-  * does not exist an empty list is created just before the append operation. If the key exists but
-  * is not a List an error is returned.
-  * &lt;p&gt;
-  * Time complexity: O(1)
-  * @param key
-  * @param strings
-  * @return Integer reply, specifically, the number of elements inside the list after the push
-  *         operation.
-  */
-
-public Long lpush(final String key, final String... strings)
-</code></pre>
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1744,7 +1941,7 @@ public Long lpush(final String key, final String... strings)
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">61</span>
+                <span class="site-state-item-count">68</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -1757,7 +1954,7 @@ public Long lpush(final String key, final String... strings)
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">15</span>
+                <span class="site-state-item-count">20</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

@@ -23,13 +23,6 @@
     </url>
 
     <url>
-        <loc>http://blog.xmqbeast.com/tags/mysql/</loc>
-        <lastmod>2018-03-08T15:55:02.742Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>http://blog.xmqbeast.com/tags/nodejs/</loc>
         <lastmod>2018-03-08T15:55:02.742Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -37,8 +30,8 @@
     </url>
 
     <url>
-        <loc>http://blog.xmqbeast.com/tags/linux/</loc>
-        <lastmod>2018-03-08T15:55:02.743Z</lastmod>
+        <loc>http://blog.xmqbeast.com/tags/mysql/</loc>
+        <lastmod>2018-03-08T15:55:02.742Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
@@ -101,7 +94,49 @@
 
     <url>
         <loc>http://blog.xmqbeast.com/tags/redis/</loc>
-        <lastmod>2018-05-13T18:35:44.895Z</lastmod>
+        <lastmod>2018-05-14T02:52:38.909Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://blog.xmqbeast.com/tags/socket/</loc>
+        <lastmod>2018-05-14T18:01:59.225Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://blog.xmqbeast.com/tags/eclipse/</loc>
+        <lastmod>2018-05-15T03:25:37.170Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://blog.xmqbeast.com/tags/netty/</loc>
+        <lastmod>2018-05-15T03:36:32.609Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://blog.xmqbeast.com/tags/nio/</loc>
+        <lastmod>2018-05-15T03:41:27.009Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://blog.xmqbeast.com/tags/js/</loc>
+        <lastmod>2018-05-15T10:54:25.432Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://blog.xmqbeast.com/tags/linux/</loc>
+        <lastmod>2018-05-27T07:10:36.655Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>

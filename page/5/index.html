@@ -300,6 +300,962 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://blog.xmqbeast.com/2017/10/12/hexo博客出现commond-not-found解决方案/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="∮小煤球メ">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="∮小煤球メ">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/10/12/hexo博客出现commond-not-found解决方案/" itemprop="url">
+                  hexo博客出现commond not found解决方案
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-12T02:34:35+08:00">
+                2017-10-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <pre><code>hexo -v
+</code></pre><p>出现了conmand not found的提示</p>
+<p> 按照字面上的翻译就是 找不到所使用的命令。我猜想可能是好久没有使用的原因了，于是按照以前的安装教程重新安装了一次安装教程，安装完毕之后，发现还是存在上面的问题，于是去请教大神，先查看各种工具是否都安装好了，在命令行中输入node -v 然后再检查npm -v。</p>
+<pre><code>结果发现这里也没有问题。所以就可能是环境变量的问题，这里我突然想起可能是上次配置JAVA环境变量的时候，可能把这个环境变量搞错了，所以这里先去找到这个路径，C:\Users\xiaoti\node_modules\hexo\bin ，然后把它添加到环境变量PATH路径的后面。
+</code></pre><p><img src="http://oncykm32h.bkt.clouddn.com/path.png" alt="path"></p>
+<p>配置下环境变量，hexo就恢复正常了</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://blog.xmqbeast.com/2017/10/10/阿里云服务器CentOS启动tomcat8巨慢的解决方案/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="∮小煤球メ">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="∮小煤球メ">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/10/10/阿里云服务器CentOS启动tomcat8巨慢的解决方案/" itemprop="url">
+                  阿里云服务器CentOS启动tomcat8巨慢的解决方案
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-10T17:29:11+08:00">
+                2017-10-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>摘要： 自己再阿里云申请了一台1G1核的机器，每次重启自己的服务tomcat都需要卡住很长时间 经过在网上搜索，找到了原因： Tomcat 7/8都使用org.apache.catalina.util.SessionIdGeneratorBase.createSecureRandom类产生安全随机类SecureRandom的实例作为会话ID，这里花去了342秒，也即接近6分钟。</p>
+<p>自己再阿里云申请了一台1G1核的机器，每次重启自己的服务tomcat都需要卡住很长时间<br>经过在网上搜索，找到了原因：</p>
+<p>Tomcat 7/8都使用org.apache.catalina.util.SessionIdGeneratorBase.createSecureRandom类产生安全随机类SecureRandom的实例作为会话ID，这里花去了342秒，也即接近6分钟。</p>
+<p>SHA1PRNG算法是基于SHA-1算法实现且保密性较强的伪随机数生成器。</p>
+<p>在SHA1PRNG中，有一个种子产生器，它根据配置执行各种操作。</p>
+<p>1）如果Java.security.egd属性或securerandom.source属性指定的是”file:/dev/random”或”file:/dev/urandom”，那么JVM会使用本地种子产生器NativeSeedGenerator，它会调用super()方法，即调用SeedGenerator.URLSeedGenerator(/dev/random)方法进行初始化。</p>
+<p>2）如果java.security.egd属性或securerandom.source属性指定的是其它已存在的URL，那么会调用SeedGenerator.URLSeedGenerator(url)方法进行初始化。</p>
+<p>这就是为什么我们设置值为”file:///dev/urandom”或者值为”file:/./dev/random”都会起作用的原因。</p>
+<p>在这个实现中，产生器会评估熵池（entropy pool）中的噪声数量。随机数是从熵池中进行创建的。当读操作时，/dev/random设备会只返回熵池中噪声的随机字节。/dev/random非常适合那些需要非常高质量随机性的场景，比如一次性的支付或生成密钥的场景。</p>
+<p>当熵池为空时，来自/dev/random的读操作将被阻塞，直到熵池收集到足够的环境噪声数据。这么做的目的是成为一个密码安全的伪随机数发生器，熵池要有尽可能大的输出。对于生成高质量的加密密钥或者是需要长期保护的场景，一定要这么做。</p>
+<p>那么什么是环境噪声？</p>
+<p>随机数产生器会手机来自设备驱动器和其它源的环境噪声数据，并放入熵池中。产生器会评估熵池中的噪声数据的数量。当熵池为空时，这个噪声数据的收集是比较花时间的。这就意味着，Tomcat在生产环境中使用熵池时，会被阻塞较长的时间。</p>
+<p>基本上就是这样，这里讲的更详细！</p>
+<p>下面说解决方式：</p>
+<p>网上说：</p>
+<pre><code>通过修改Tomcat启动文件-Djava.security.egd=file:/dev/urandom
+
+通过修改JRE中的java.security文件securerandom.source=file:/dev/urandom
+</code></pre><p>这两种方式在我这都失败，不起作用，不知道是我的问题，还是其他问题。</p>
+<p>最终解决方式：</p>
+<pre><code>yum install rng-tools安装rngd服务（熵服务）
+
+systemctl start rngd启动服务
+
+如果你的CPU不支持DRNG特性或者像我一样使用虚拟机，可以使用/dev/unrandom来模拟。
+
+cp /usr/lib/systemd/system/rngd.service /etc/systemd/system
+
+编辑/etc/systemd/system/rngd.service service小结，ExecStart=/sbin/rngd -f -r /dev/urandom
+
+systemctl daemon-reload重新载入服务
+
+systemctl restart rngd重启服务
+</code></pre><p>这样安装了熵服务后问题就解决了，Tomcat启动又回到了以往的速度。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://blog.xmqbeast.com/2017/10/10/Vue2-0入门/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="∮小煤球メ">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="∮小煤球メ">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/10/10/Vue2-0入门/" itemprop="url">
+                  Vue2.0入门
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-10T00:50:40+08:00">
+                2017-10-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://blog.xmqbeast.com/2017/10/09/linux下修改防火墙配置重启命令/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="∮小煤球メ">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="∮小煤球メ">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/10/09/linux下修改防火墙配置重启命令/" itemprop="url">
+                  linux下修改防火墙配置重启命令
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-09T18:12:08+08:00">
+                2017-10-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <ol>
+<li><p>在/etc/sysconfig/iptables里添加</p>
+<pre><code># vi /etc/sysconfig/iptables
+</code></pre><p>添加一条配置规则，如要想开放8080的端口，如下所示：</p>
+<pre><code>-A RH-Firewall-1-INPUT -m state --state NEW -m tcp -p tcp --dport 8080 –j ACCEPT
+</code></pre></li>
+<li><p>重启iptables</p>
+<pre><code># /etc/init.d/iptables restart
+</code></pre></li>
+<li><p>看下状态</p>
+<pre><code># /etc/init.d/iptables status
+</code></pre></li>
+</ol>
+<p>4.关闭防火墙</p>
+<p>（1） 重启后永久性生效：</p>
+<pre><code>开启：chkconfig iptables on 
+关闭：chkconfig iptables off
+</code></pre><p>（2） 即时生效，重启后失效（即重启后防火墙自动开启）：</p>
+<pre><code>开启：service iptables start
+关闭：service iptables stop
+</code></pre>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://blog.xmqbeast.com/2017/10/09/使用mongoDB创建数据库/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="∮小煤球メ">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="∮小煤球メ">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/10/09/使用mongoDB创建数据库/" itemprop="url">
+                  使用mongoDB创建数据库
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-09T17:43:53+08:00">
+                2017-10-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>如何在 MongoDB 中创建数据库</p>
+<p>use 命令</p>
+<p>MongoDB使用 use DATABASE_NAME 命令来创建数据库。如果指定的数据库DATABASE_NAME不存在，则该命令将创建一个新的数据库，否则返回现有的数据库。</p>
+<p>语法</p>
+<p>use DATABASE 语句的基本语法如下 -</p>
+<pre><code>use DATABASE_NAME
+</code></pre><p>示例</p>
+<p>如果要创建一个名称为<newdb>的数据库，那么使用 use DATABASE 语句将如下所示：</newdb></p>
+<pre><code>&gt; use newdb
+switched to db newdb
+</code></pre><p>如果要检查数据库列表，请使用命令：show dbs。</p>
+<pre><code>&gt;show dbs
+local     0.000025GB
+test      0.00002GB
+</code></pre><p>创建的数据库(newdb)不在列表中。要显示数据库，需要至少插入一个文档，空的数据库是不显示出来的。</p>
+<pre><code>&gt;db.items.insert({&quot;name&quot;:&quot;yiibai tutorials&quot;})
+&gt;show dbs
+local     0.00005GB
+test      0.00002GB
+newdb      0.00002GB
+</code></pre><p>在 MongoDB 中默认数据库是：test。 如果您还没有创建过任何数据库，则集合/文档将存储在test数据库中。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://blog.xmqbeast.com/2017/10/09/maven-deploy到nexus报401，Unauthorized/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="∮小煤球メ">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="∮小煤球メ">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/10/09/maven-deploy到nexus报401，Unauthorized/" itemprop="url">
+                  maven deploy到nexus报401，Unauthorized
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-09T17:18:55+08:00">
+                2017-10-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>提交到nexus时候报错：</p>
+<p>[ERROR] Failed to execute goal org.apache.maven.plugins:maven-deploy-plugin:2.7:deploy (default-deploy) on project <em>: Failed to deploy artifacts: Could not transfer artifact </em>:jar:1.0 from/to releases (<a href="http://10.1.81.199:8081/nexus/content/repositories/releases/)" target="_blank" rel="noopener">http://10.1.81.199:8081/nexus/content/repositories/releases/)</a>: Failed to transfer file: <a href="http://10.1.81.199:8081/nexus/content/repositories/releases/com/cs2c/security-management-client" target="_blank" rel="noopener">http://10.1.81.199:8081/nexus/content/repositories/releases/com/cs2c/security-management-client</a><em> /1.0/</em>-1.0.jar. Return code is: 401, ReasonPhrase:Unauthorized.</p>
+<p>原来是没有配置认证。</p>
+<p>maven目录conf的setting.xml里，</p>
+<pre><code>&lt;servers&gt;
+      &lt;server&gt;  
+        &lt;id&gt;releases&lt;/id&gt;  
+        &lt;username&gt;admin&lt;/username&gt;  
+        &lt;password&gt;admin123&lt;/password&gt;  
+      &lt;/server&gt;  
+     &lt;server&gt;  
+          &lt;id&gt;snapshots&lt;/id&gt;  
+          &lt;username&gt;admin&lt;/username&gt;  
+          &lt;password&gt;admin123&lt;/password&gt;  
+      &lt;/server&gt;  
+&lt;/servers&gt;
+</code></pre><p>用户名和密码都是nexus的。再次deploy即可。</p>
+<p>注意这里的id要和pom.xml里远程deploy的地址对应一致，我的pom.xml里配置：</p>
+<!-- 配置远程发布到私服，mvn deploy -->  
+<pre><code>&lt;distributionManagement&gt;  
+    &lt;repository&gt;  
+        &lt;id&gt;releases&lt;/id&gt;  
+        &lt;name&gt;Nexus Release Repository&lt;/name&gt;  
+        &lt;url&gt;http://10.1.81.199:8081/nexus/content/repositories/releases/&lt;/url&gt;  
+    &lt;/repository&gt;  
+    &lt;snapshotRepository&gt;  
+        &lt;id&gt;snapshots&lt;/id&gt;  
+        &lt;name&gt;Nexus Snapshot Repository&lt;/name&gt;  
+        &lt;url&gt;http://10.1.81.199:8081/nexus/content/repositories/snapshots/&lt;/url&gt;  
+    &lt;/snapshotRepository&gt;  
+&lt;/distributionManagement&gt;
+</code></pre><p>如果这里不配置，会报错：</p>
+<p>报错：Failed to execute goal org.apache.maven.plugins:maven-deploy-plugin:2.5:deploy (default-deploy) on project git-demo: Deployment failed: repository element was not specified in the POM inside distributionManagement element or in -DaltDeploymentRepository=id::layout::url parameter</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://blog.xmqbeast.com/2017/10/08/svn-Can-t-open-file-svn-stdrepo-db-txn-current-lock/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="∮小煤球メ">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="∮小煤球メ">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/10/08/svn-Can-t-open-file-svn-stdrepo-db-txn-current-lock/" itemprop="url">
+                  svn Can't open file '/svn/stdrepo/db/txn-current-lock
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-08T22:27:08+08:00">
+                2017-10-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>solution:</p>
+<p>sudo chmod -R g+rws /svn/stdrepo </p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://blog.xmqbeast.com/2017/10/08/linux下安装配置nexus/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -718,1044 +1674,6 @@ hexo d -g #生成并上传
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://blog.xmqbeast.com/2017/10/07/linux下安装node环境/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="∮小煤球メ">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="∮小煤球メ">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/10/07/linux下安装node环境/" itemprop="url">
-                  linux下安装node环境
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-07T13:46:43+08:00">
-                2017-10-07
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>首先去官网下载代码，这里一定要注意安装分两种，一种是Source Code源码，一种是编译后的文件。</p>
-<p><img src="http://oncykm32h.bkt.clouddn.com/nodejs-download.png" alt="nodejs-download"></p>
-<p>（一） 编译好的文件</p>
-<p>  简单说就是解压后，在bin文件夹中已经存在node以及npm，如果你进入到对应文件的中执行命令行一点问题都没有，不过不是全局的，所以将这个设置为全局就好了。</p>
-<pre><code>cd node-v0.10.28-linux-x64/bin
-ls
-./node -v
-</code></pre><p>然后设置全局：</p>
-<pre><code>ln -s /opt/java/node-v6.11.4-linux-x64/bin/node /usr/local/bin/node
-ln -s /opt/java/node-v6.11.4-linux-x64/bin/npm /usr/local/bin/npm
-</code></pre><p>这里/home/kun/mysofltware/这个路径是你自己放的，你将node文件解压到哪里就是哪里。</p>
-<p>（二）通过源码编译</p>
-<p>这种方式你下载的文件是Source code，</p>
-<pre><code>#  tar xvf node-v0.10.28.tar.gz 
-#  cd node-v0.10.28 
-#  ./configure 
-# make 
-# make install 
-# cp /usr/local/bin/node /usr/sbin/ 
-</code></pre><p>查看当前安装的Node的版本</p>
-<pre><code># node -v 
-v6.11.4
-</code></pre><p>（三）apt-get</p>
-<p>还有一种就是shell提示的apt-get方式</p>
-<pre><code>sudo apt-get install nodejs
-sudo apt-get install npm
-</code></pre><p>这么装完你会发现,node命令好使，nodejs命令可以用</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://blog.xmqbeast.com/2017/10/07/linux下解压tar-xz文件/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="∮小煤球メ">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="∮小煤球メ">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/10/07/linux下解压tar-xz文件/" itemprop="url">
-                  linux下解压tar.xz文件
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-07T13:39:09+08:00">
-                2017-10-07
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>这个压缩包也是打包后再压缩，外面是xz压缩方式，里层是tar打包方式。</p>
-<p>使用如下命令：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">$xz -d ***.tar.xz</span><br><span class="line"></span><br><span class="line">$tar -xvf  ***.tar</span><br></pre></td></tr></table></figure>
-<p>   补充：目前也可以直接使用 tar xvJf  ***.tar.xz来解压</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://blog.xmqbeast.com/2017/10/07/DOClever介绍/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="∮小煤球メ">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="∮小煤球メ">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/10/07/DOClever介绍/" itemprop="url">
-                  DOClever介绍
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-07T13:30:13+08:00">
-                2017-10-07
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="什么是DOClever？"><a href="#什么是DOClever？" class="headerlink" title="什么是DOClever？"></a>什么是DOClever？</h2><h4 id="DOClever是一个商业化开源产品，完全免费。无论你是前端工程师，还是后端工程师，接口永远都是两者交互的桥梁，所以DOClever专为中小型团队量身打造，旨在解决接口的管理，测试与数据生成，实现真正的一体化解决方案。"><a href="#DOClever是一个商业化开源产品，完全免费。无论你是前端工程师，还是后端工程师，接口永远都是两者交互的桥梁，所以DOClever专为中小型团队量身打造，旨在解决接口的管理，测试与数据生成，实现真正的一体化解决方案。" class="headerlink" title="DOClever是一个商业化开源产品，完全免费。无论你是前端工程师，还是后端工程师，接口永远都是两者交互的桥梁，所以DOClever专为中小型团队量身打造，旨在解决接口的管理，测试与数据生成，实现真正的一体化解决方案。"></a>DOClever是一个商业化开源产品，完全免费。无论你是前端工程师，还是后端工程师，接口永远都是两者交互的桥梁，所以DOClever专为中小型团队量身打造，旨在解决接口的管理，测试与数据生成，实现真正的一体化解决方案。</h4><h2 id="DOClever有哪些功能"><a href="#DOClever有哪些功能" class="headerlink" title="DOClever有哪些功能"></a>DOClever有哪些功能</h2><h4 id="1-可以对接口信息进行编辑管理，支持get-post-put-delete-patch五种方法，支持https和https协议，并且支持query，body，json，raw，rest，formdata的参数可视化编辑。同时对json可以进行无限层次可视化编辑。并且，状态码，代码注入，markdown文档等附加功能应有尽有。"><a href="#1-可以对接口信息进行编辑管理，支持get-post-put-delete-patch五种方法，支持https和https协议，并且支持query，body，json，raw，rest，formdata的参数可视化编辑。同时对json可以进行无限层次可视化编辑。并且，状态码，代码注入，markdown文档等附加功能应有尽有。" class="headerlink" title="1.可以对接口信息进行编辑管理，支持get,post,put,delete,patch五种方法，支持https和https协议，并且支持query，body，json，raw，rest，formdata的参数可视化编辑。同时对json可以进行无限层次可视化编辑。并且，状态码，代码注入，markdown文档等附加功能应有尽有。"></a>1.可以对接口信息进行编辑管理，支持get,post,put,delete,patch五种方法，支持https和https协议，并且支持query，body，json，raw，rest，formdata的参数可视化编辑。同时对json可以进行无限层次可视化编辑。并且，状态码，代码注入，markdown文档等附加功能应有尽有。</h4><h4 id="2-接口调试运行，一个都不能少，可以对参数进行加密，从md5到aes一应俱全，返回参数与模型实时分析对比，给出不一致的地方，找出接口可能出现的问题。如果你不想手写文档，那么试试接口的数据生成功能，可以对接口运行的数据一键生成文档信息。"><a href="#2-接口调试运行，一个都不能少，可以对参数进行加密，从md5到aes一应俱全，返回参数与模型实时分析对比，给出不一致的地方，找出接口可能出现的问题。如果你不想手写文档，那么试试接口的数据生成功能，可以对接口运行的数据一键生成文档信息。" class="headerlink" title="2.接口调试运行，一个都不能少，可以对参数进行加密，从md5到aes一应俱全，返回参数与模型实时分析对比，给出不一致的地方，找出接口可能出现的问题。如果你不想手写文档，那么试试接口的数据生成功能，可以对接口运行的数据一键生成文档信息。"></a>2.接口调试运行，一个都不能少，可以对参数进行加密，从md5到aes一应俱全，返回参数与模型实时分析对比，给出不一致的地方，找出接口可能出现的问题。如果你不想手写文档，那么试试接口的数据生成功能，可以对接口运行的数据一键生成文档信息。</h4><h4 id="3-mock的无缝整合，DOClever自己就是一个mock服务器，当你把接口的开发状态设置成已完成，本地mock便会自动请求真实接口数据，否则返回事先定义好的mock数据。"><a href="#3-mock的无缝整合，DOClever自己就是一个mock服务器，当你把接口的开发状态设置成已完成，本地mock便会自动请求真实接口数据，否则返回事先定义好的mock数据。" class="headerlink" title="3.mock的无缝整合，DOClever自己就是一个mock服务器，当你把接口的开发状态设置成已完成，本地mock便会自动请求真实接口数据，否则返回事先定义好的mock数据。"></a>3.mock的无缝整合，DOClever自己就是一个mock服务器，当你把接口的开发状态设置成已完成，本地mock便会自动请求真实接口数据，否则返回事先定义好的mock数据。</h4><h4 id="4-支持postman，rap，swagger的导入，方便你做无缝迁移，同时也支持html文件的导出，方便你离线浏览！"><a href="#4-支持postman，rap，swagger的导入，方便你做无缝迁移，同时也支持html文件的导出，方便你离线浏览！" class="headerlink" title="4.支持postman，rap，swagger的导入，方便你做无缝迁移，同时也支持html文件的导出，方便你离线浏览！"></a>4.支持postman，rap，swagger的导入，方便你做无缝迁移，同时也支持html文件的导出，方便你离线浏览！</h4><h4 id="5-项目版本和接口快照功能并行，你可以为一个项目定义1-0，1-1，1-2版本，并且可以自由的在不同版本间切换回滚，再也不怕接口信息的遗失，同时接口也有快照功能，当你接口开发到一半或者接口需求变更的时候，可以随时查看之前编辑的接口信息。"><a href="#5-项目版本和接口快照功能并行，你可以为一个项目定义1-0，1-1，1-2版本，并且可以自由的在不同版本间切换回滚，再也不怕接口信息的遗失，同时接口也有快照功能，当你接口开发到一半或者接口需求变更的时候，可以随时查看之前编辑的接口信息。" class="headerlink" title="5.项目版本和接口快照功能并行，你可以为一个项目定义1.0，1.1，1.2版本，并且可以自由的在不同版本间切换回滚，再也不怕接口信息的遗失，同时接口也有快照功能，当你接口开发到一半或者接口需求变更的时候，可以随时查看之前编辑的接口信息。"></a>5.项目版本和接口快照功能并行，你可以为一个项目定义1.0，1.1，1.2版本，并且可以自由的在不同版本间切换回滚，再也不怕接口信息的遗失，同时接口也有快照功能，当你接口开发到一半或者接口需求变更的时候，可以随时查看之前编辑的接口信息。</h4><h4 id="6-自动化测试功能，目前市面上类似平台的接口自动化测试大部分都是伪自动化，对于一个复杂的场景，比如获取验证码，登陆，获取订单列表，获取某个特定订单详情这样一个上下文关联的一系列操作无能为力。而DOClever独创的自动化测试功能，只需要你编写极少量的javascript代码便可以在网页里完成这样一系列操作，同时，DOClever还提供了后台定时批量执行测试用例并把结果发送到团队成员邮箱的功能，你可以及时获取接口的运行状态。"><a href="#6-自动化测试功能，目前市面上类似平台的接口自动化测试大部分都是伪自动化，对于一个复杂的场景，比如获取验证码，登陆，获取订单列表，获取某个特定订单详情这样一个上下文关联的一系列操作无能为力。而DOClever独创的自动化测试功能，只需要你编写极少量的javascript代码便可以在网页里完成这样一系列操作，同时，DOClever还提供了后台定时批量执行测试用例并把结果发送到团队成员邮箱的功能，你可以及时获取接口的运行状态。" class="headerlink" title="6.自动化测试功能，目前市面上类似平台的接口自动化测试大部分都是伪自动化，对于一个复杂的场景，比如获取验证码，登陆，获取订单列表，获取某个特定订单详情这样一个上下文关联的一系列操作无能为力。而DOClever独创的自动化测试功能，只需要你编写极少量的javascript代码便可以在网页里完成这样一系列操作，同时，DOClever还提供了后台定时批量执行测试用例并把结果发送到团队成员邮箱的功能，你可以及时获取接口的运行状态。"></a>6.自动化测试功能，目前市面上类似平台的接口自动化测试大部分都是伪自动化，对于一个复杂的场景，比如获取验证码，登陆，获取订单列表，获取某个特定订单详情这样一个上下文关联的一系列操作无能为力。而DOClever独创的自动化测试功能，只需要你编写极少量的javascript代码便可以在网页里完成这样一系列操作，同时，DOClever还提供了后台定时批量执行测试用例并把结果发送到团队成员邮箱的功能，你可以及时获取接口的运行状态。</h4><h4 id="7-团队协作功能，很多类似的平台这样的功能是收费的，但是DOClever觉得好东西需要共享出来，你可以新建一个团队，并且把团队内的成员都拉进来，给他们分组，给他们分配相关的项目以及权限，发布团队公告等等。"><a href="#7-团队协作功能，很多类似的平台这样的功能是收费的，但是DOClever觉得好东西需要共享出来，你可以新建一个团队，并且把团队内的成员都拉进来，给他们分组，给他们分配相关的项目以及权限，发布团队公告等等。" class="headerlink" title="7.团队协作功能，很多类似的平台这样的功能是收费的，但是DOClever觉得好东西需要共享出来，你可以新建一个团队，并且把团队内的成员都拉进来，给他们分组，给他们分配相关的项目以及权限，发布团队公告等等。"></a>7.团队协作功能，很多类似的平台这样的功能是收费的，但是DOClever觉得好东西需要共享出来，你可以新建一个团队，并且把团队内的成员都拉进来，给他们分组，给他们分配相关的项目以及权限，发布团队公告等等。</h4><h4 id="8-DOClever开源免费，支持内网部署，很多公司考虑到数据的安全性，不愿意把接口放到公网上，没有关系，DOClever给出一个方便快捷的解决方案，你可以把平台放到自己的内网上，完全不需要连接外网，同时功能一样也不少，即便是对于产品的升级，DOClever也提供了很便捷的升级方案！"><a href="#8-DOClever开源免费，支持内网部署，很多公司考虑到数据的安全性，不愿意把接口放到公网上，没有关系，DOClever给出一个方便快捷的解决方案，你可以把平台放到自己的内网上，完全不需要连接外网，同时功能一样也不少，即便是对于产品的升级，DOClever也提供了很便捷的升级方案！" class="headerlink" title="8.DOClever开源免费，支持内网部署，很多公司考虑到数据的安全性，不愿意把接口放到公网上，没有关系，DOClever给出一个方便快捷的解决方案，你可以把平台放到自己的内网上，完全不需要连接外网，同时功能一样也不少，即便是对于产品的升级，DOClever也提供了很便捷的升级方案！"></a>8.DOClever开源免费，支持内网部署，很多公司考虑到数据的安全性，不愿意把接口放到公网上，没有关系，DOClever给出一个方便快捷的解决方案，你可以把平台放到自己的内网上，完全不需要连接外网，同时功能一样也不少，即便是对于产品的升级，DOClever也提供了很便捷的升级方案！</h4><h2 id="产品文档"><a href="#产品文档" class="headerlink" title="产品文档"></a>产品文档</h2><h4 id="http-doclever-cn"><a href="#http-doclever-cn" class="headerlink" title="http://doclever.cn"></a><a href="http://doclever.cn" target="_blank" rel="noopener">http://doclever.cn</a></h4><h2 id="DOClever开源"><a href="#DOClever开源" class="headerlink" title="DOClever开源"></a>DOClever开源</h2><h4 id="本次开源的是DOClever的内网版本，可以直接部署到内网中，和线上版本在功能上是完全一样的，区别在于："><a href="#本次开源的是DOClever的内网版本，可以直接部署到内网中，和线上版本在功能上是完全一样的，区别在于：" class="headerlink" title="本次开源的是DOClever的内网版本，可以直接部署到内网中，和线上版本在功能上是完全一样的，区别在于："></a>本次开源的是DOClever的内网版本，可以直接部署到内网中，和线上版本在功能上是完全一样的，区别在于：</h4><h4 id="1-线上的系统用了前端和后端两套工程，并且用nginx做了负载均衡，redis做缓存，而内网版本合并为一个工程，直接用node做静态服务器，取消了缓存，这样对于很多中小型团队来说很轻便而且也够用了。"><a href="#1-线上的系统用了前端和后端两套工程，并且用nginx做了负载均衡，redis做缓存，而内网版本合并为一个工程，直接用node做静态服务器，取消了缓存，这样对于很多中小型团队来说很轻便而且也够用了。" class="headerlink" title="1.线上的系统用了前端和后端两套工程，并且用nginx做了负载均衡，redis做缓存，而内网版本合并为一个工程，直接用node做静态服务器，取消了缓存，这样对于很多中小型团队来说很轻便而且也够用了。"></a>1.线上的系统用了前端和后端两套工程，并且用nginx做了负载均衡，redis做缓存，而内网版本合并为一个工程，直接用node做静态服务器，取消了缓存，这样对于很多中小型团队来说很轻便而且也够用了。</h4><h4 id="2-线上系统在安全性方面做了不少加固处理，而内网版本默认内网是安全的，也为了提高node作为服务器的效率，取消了很多加固处理，如果用户有需要可以自行添加。"><a href="#2-线上系统在安全性方面做了不少加固处理，而内网版本默认内网是安全的，也为了提高node作为服务器的效率，取消了很多加固处理，如果用户有需要可以自行添加。" class="headerlink" title="2.线上系统在安全性方面做了不少加固处理，而内网版本默认内网是安全的，也为了提高node作为服务器的效率，取消了很多加固处理，如果用户有需要可以自行添加。"></a>2.线上系统在安全性方面做了不少加固处理，而内网版本默认内网是安全的，也为了提高node作为服务器的效率，取消了很多加固处理，如果用户有需要可以自行添加。</h4><h2 id="如何部署"><a href="#如何部署" class="headerlink" title="如何部署"></a>如何部署</h2><h4 id="1-首先本地要安装node环境，推荐6-10-0版本-下载页面"><a href="#1-首先本地要安装node环境，推荐6-10-0版本-下载页面" class="headerlink" title="1.首先本地要安装node环境，推荐6.10.0版本(下载页面)"></a>1.首先本地要安装node环境，推荐6.10.0版本(<a href="https://nodejs.org/en/" target="_blank" rel="noopener">下载页面</a>)</h4><h4 id="2-安装mongodb-下载页面-，可使用robomongo来作为mongodb的客户端工具-下载页面-，启动mongodb后（如何启动），用robomongo来连接，新建一个database作为DOClever的数据库（名称随意）"><a href="#2-安装mongodb-下载页面-，可使用robomongo来作为mongodb的客户端工具-下载页面-，启动mongodb后（如何启动），用robomongo来连接，新建一个database作为DOClever的数据库（名称随意）" class="headerlink" title="2.安装mongodb(下载页面)，可使用robomongo来作为mongodb的客户端工具(下载页面)，启动mongodb后（如何启动），用robomongo来连接，新建一个database作为DOClever的数据库（名称随意）"></a>2.安装mongodb(<a href="https://www.mongodb.com/" target="_blank" rel="noopener">下载页面</a>)，可使用robomongo来作为mongodb的客户端工具(<a href="https://robomongo.org/" target="_blank" rel="noopener">下载页面</a>)，启动mongodb后（<a href="http://www.open-open.com/lib/view/open1435117403544.html" target="_blank" rel="noopener">如何启动</a>），用robomongo来连接，新建一个database作为DOClever的数据库（名称随意）</h4><h4 id="3-将DOClever的源码down到本地，在命令行下运行node-DOClever的根目录-Server-bin-www（如果是windows环境下，请修改目录分隔符-，第一次启动，会出现命令行提示符，按照提示符输入即可完成相关的配置，等到DOClever启动成功后，-在浏览器里输入localhost-DOClever启动的端口号-出现首页表示部署成功。"><a href="#3-将DOClever的源码down到本地，在命令行下运行node-DOClever的根目录-Server-bin-www（如果是windows环境下，请修改目录分隔符-，第一次启动，会出现命令行提示符，按照提示符输入即可完成相关的配置，等到DOClever启动成功后，-在浏览器里输入localhost-DOClever启动的端口号-出现首页表示部署成功。" class="headerlink" title="3.将DOClever的源码down到本地，在命令行下运行node DOClever的根目录/Server/bin/www（如果是windows环境下，请修改目录分隔符)，第一次启动，会出现命令行提示符，按照提示符输入即可完成相关的配置，等到DOClever启动成功后， 在浏览器里输入localhost:DOClever启动的端口号,出现首页表示部署成功。"></a>3.将DOClever的源码down到本地，在命令行下运行node DOClever的根目录/Server/bin/www（如果是windows环境下，请修改目录分隔符)，第一次启动，会出现命令行提示符，按照提示符输入即可完成相关的配置，等到DOClever启动成功后， 在浏览器里输入localhost:DOClever启动的端口号,出现首页表示部署成功。</h4><p><img src="http://oncykm32h.bkt.clouddn.com/node-DOClever-Server-bin-www.png" alt="node-DOClever-Server-bin-www"></p>
-<h2 id="github地址"><a href="#github地址" class="headerlink" title="github地址"></a>github地址</h2><h4 id="https-github-com-sx1989827-DOClever"><a href="#https-github-com-sx1989827-DOClever" class="headerlink" title="https://github.com/sx1989827/DOClever"></a><a href="https://github.com/sx1989827/DOClever" target="_blank" rel="noopener">https://github.com/sx1989827/DOClever</a></h4>
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://blog.xmqbeast.com/2017/10/07/linux下安装jsvnadmin/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="∮小煤球メ">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="∮小煤球メ">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/10/07/linux下安装jsvnadmin/" itemprop="url">
-                  linux下安装jsvnadmin
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-07T00:17:40+08:00">
-                2017-10-07
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>jsvnadmin-Subversion Web Admin</p>
-<p>Introduction</p>
-<p>Web Client for Subversion Configuration:</p>
-<blockquote>
-<ul>
-<li>Repositories management</li>
-</ul>
-</blockquote>
-<blockquote>
-<ul>
-<li>Users management</li>
-</ul>
-</blockquote>
-<blockquote>
-<ul>
-<li>Groups management</li>
-</ul>
-</blockquote>
-<blockquote>
-<ul>
-<li>Access rights management</li>
-</ul>
-</blockquote>
-<blockquote>
-<ul>
-<li>Supports svn or http(Apache) protocol</li>
-</ul>
-</blockquote>
-<blockquote>
-<ul>
-<li>Supports password encryption</li>
-</ul>
-</blockquote>
-<blockquote>
-<ul>
-<li>Supports multiple databases</li>
-</ul>
-</blockquote>
-<blockquote>
-<ul>
-<li>Supports multiple operating system</li>
-</ul>
-</blockquote>
-<blockquote>
-<ul>
-<li>Supports browse repositories online(since 3.0.2)</li>
-</ul>
-</blockquote>
-<blockquote>
-<ul>
-<li>Supports multiple languages (since 3.0.2)</li>
-</ul>
-</blockquote>
-<p>什么是Svn Admin</p>
-<p>【svnadmin介绍】Svn Admin是一个Java开发的管理Svn服务器的项目用户的web应用。安装好Svn服务器端好，把Svn Admin部署好，就可以通过web浏览器管理Svn的项目，管理项目的用户，管理项目的权限。使得管理配置Svn简便，再也不需要每次都到服务器手工修改配置文件。</p>
-<p>【有什么优点】</p>
-<blockquote>
-<p>*多数据库：Svn项目配置数据保存在数据库，支持所有数据库（默认MySQL/Oracle/SQL Server）。</p>
-</blockquote>
-<blockquote>
-<p>*多操作系统：支持Window,Linux等操作系统。</p>
-</blockquote>
-<blockquote>
-<p>*权限控制：管理员可以随意分配权限、项目管理员可以管理项目成员、成员只能查看和修改自己的密码。</p>
-</blockquote>
-<blockquote>
-<p>*支持多项目、多用户、多用户组Group（默认带有“项目管理组”、“项目开发组”、“项目测试组”）。</p>
-</blockquote>
-<blockquote>
-<p>*安全：密码加密保存。</p>
-</blockquote>
-<blockquote>
-<p>*多协议：支持svn协议和http协议(从2.0开始支持Apache服务器单库方式，从3.0开始支持Apache多库方式)</p>
-</blockquote>
-<blockquote>
-<p>*仓库浏览(从3.0.2开始)</p>
-</blockquote>
-<blockquote>
-<p>*多语言(从3.0.2开始)</p>
-</blockquote>
-<p>【是否适合你】</p>
-<p>Svnadmin在Java 1.6、Tomcat 6、Subversion 1.6、MySQL 5.1、Apache 2.2、Windows 7上开发测试通过，同时支持其他操作系统和数据库。</p>
-<blockquote>
-<p>*支持svn协议</p>
-</blockquote>
-<p>Svn的配置信息都在仓库目录的conf下的authz,passwd,svnserve.conf三个文件中，配置用户和权限都是通过修改passwd和authz，立刻就生效。Svn Admin的本质是对这3个文件进行管理，所有成员、权限的数据都保存在数据库中，一旦在Svn Admin的页面上修改，就会把配置信息输出到conf下的那3个配置文件中。</p>
-<blockquote>
-<p>*支持http协议</p>
-</blockquote>
-<p>Apache+SVN配置成功后可以有两种方式：</p>
-<p>1.多库方式：SVNParentPath 指定一个父目录，所有仓库在这个父目录下，使用一个密码文件和一个权限配置文件。优点是增加删除仓库不需要改apache的httpd.conf，不需要重启Apache。缺点是项目多会很混乱</p>
-<p>2单库方式：SVNPath 每个仓库单独配置各自的密码和权限文件。优点是各自分开，互相不影响，维护方便。缺点是增加或删除仓库需要修改apache的httpd.conf后重启。</p>
-<p>下载地址：<a href="https://code.google.com/p/jsvnadmin/" target="_blank" rel="noopener">https://code.google.com/p/jsvnadmin/</a></p>
-<p><a href="https://jsvnadmin.googlecode.com/files/svnadmin-3.0.5.zip" target="_blank" rel="noopener">https://jsvnadmin.googlecode.com/files/svnadmin-3.0.5.zip</a></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://blog.xmqbeast.com/2017/10/06/linux下安装Subversion-Apache/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="∮小煤球メ">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="∮小煤球メ">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/10/06/linux下安装Subversion-Apache/" itemprop="url">
-                  linux下安装Subversion+Apache
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-06T23:30:27+08:00">
-                2017-10-06
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>root用户操作</p>
-<p>建议安装前更新操作系统</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"># yum update</span><br></pre></td></tr></table></figure>
-<p>更新完成后重启</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">#reboot</span><br></pre></td></tr></table></figure>
-<p>安装apache</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"># yum install httpd httpd-devel</span><br><span class="line"># service httpd start</span><br><span class="line"># chkconfig httpd on    //配置httpd开机启动</span><br></pre></td></tr></table></figure>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">#vi /etc/httpd/conf/httpd.conf</span><br></pre></td></tr></table></figure>
-<p>找到ServerName并修改成【ServerName localhost:80】</p>
-<p>防火墙中打开80端口：</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"># vi /etc/sysconfig/iptables</span><br><span class="line">-A INPUT -m state --state NEW -m tcp -p tcp --dport <span class="number">80</span> -j ACCEPT</span><br><span class="line"># service iptables restart</span><br></pre></td></tr></table></figure>
-<p><a href="http://192.168.1.119/" target="_blank" rel="noopener">http://192.168.1.119/</a></p>
-<p><img src="http://oncykm32h.bkt.clouddn.com/apache2-test-page.png" alt="apage2-test-page"></p>
-<p>安装SVN服务</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"># yum install mod_dav_svn subversion</span><br></pre></td></tr></table></figure>
-<p>必须安装mod_dav_svn模块</p>
-<p>安装完svn后要重启apache</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"># service httpd restart</span><br></pre></td></tr></table></figure>
-<p>查看测试是否安装svn模块</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"># ls /etc/httpd/modules/ | grep svn</span><br><span class="line">  mod_authz_svn.so</span><br><span class="line">  mod_dav_svn.so</span><br><span class="line"># svn --version</span><br></pre></td></tr></table></figure>
-<p>在根目录下创建svn库主目录（多库模式，一份配置文件管理多个库）</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"># mkdir /svn/</span><br><span class="line"># cd/etc/httpd/conf.d</span><br><span class="line"># ls</span><br></pre></td></tr></table></figure>
-<p>此时可以看到一个subversion.conf配置文件（是在安装mod_dav_svn模块时生成的）</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"># vi subversion.conf</span><br></pre></td></tr></table></figure>
-<p>添加以下内容</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">#Include /svn/httpd.conf</span><br><span class="line">&lt;Location /svn/&gt;</span><br><span class="line">DAV svn</span><br><span class="line">SVNListParentPath on</span><br><span class="line">SVNParentPath /svn</span><br><span class="line">AuthType Basic</span><br><span class="line">AuthName <span class="string">"Subversion repositories"</span></span><br><span class="line">AuthUserFile /svn/passwd.http</span><br><span class="line">AuthzSVNAccessFile /svn/authz</span><br><span class="line">Require valid-user</span><br><span class="line">&lt;<span class="regexp">/Location&gt;</span></span><br><span class="line"><span class="regexp">RedirectMatch ^(/</span>svn)$ $<span class="number">1</span>/</span><br></pre></td></tr></table></figure>
-<p>创建/svn/passwd.http和/svn/authz</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"># touch /svn/passwd.http</span><br><span class="line"># touch /svn/authz</span><br></pre></td></tr></table></figure>
-<p>重启apache</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"># service httpd restart</span><br></pre></td></tr></table></figure>
-<p>重启成功说明我们添加的配置是没有问题的</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://blog.xmqbeast.com/2017/10/06/hexo添加tags/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="∮小煤球メ">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="∮小煤球メ">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/10/06/hexo添加tags/" itemprop="url">
-                  hexo添加tags
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-06T17:00:08+08:00">
-                2017-10-06
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="步骤一"><a href="#步骤一" class="headerlink" title="步骤一"></a>步骤一</h2><p>新建一个页面，命名为 tags 。命令如下：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">$ hexo <span class="keyword">new</span> page <span class="string">"tags"</span></span><br></pre></td></tr></table></figure>
-<h2 id="步骤二"><a href="#步骤二" class="headerlink" title="步骤二"></a>步骤二</h2><p>这时会在在sources/tags里面有个index.md的文件，打开这个文件编辑<br>将页面的类型设置为 tags ，主题将自动为这个页面显示标签云。页面内容如下：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">title: Tagcloud</span><br><span class="line">date: <span class="number">2014</span><span class="number">-12</span><span class="number">-22</span> <span class="number">12</span>:<span class="number">39</span>:<span class="number">04</span></span><br><span class="line">type: <span class="string">"tags"</span></span><br><span class="line">comments: <span class="literal">false</span></span><br><span class="line">---</span><br></pre></td></tr></table></figure>
-<p>注意：如果有启用多说或者Disqus评论，默认页面也会带有评论。需要关闭的话，需要添加字段comments并将该值设置为false（如上）</p>
-<h2 id="步骤三"><a href="#步骤三" class="headerlink" title="步骤三"></a>步骤三</h2><p>在菜单中添加链接。编辑 主题(这里以next为例)配置文件 ，添加 tags 到 menu 中，如下:</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">menu:</span><br><span class="line">     home: <span class="regexp">/</span></span><br><span class="line"><span class="regexp">     archives: /</span>archives</span><br><span class="line">     tags: <span class="regexp">/tags     /</span><span class="regexp">/确保标签页已打开</span></span><br><span class="line"><span class="regexp">  #schedule: /</span>schedule     </span><br><span class="line"> 	  #commonweal: /404.html</span><br></pre></td></tr></table></figure>
-<p>注意：所有冒号后面都有个空格</p>
-<p>hexo一篇文章添加多个tags用法为：tags:[linux,c,c++]</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://blog.xmqbeast.com/2017/10/06/linux下安装MongoDB/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="∮小煤球メ">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="∮小煤球メ">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/10/06/linux下安装MongoDB/" itemprop="url">
-                  linux下安装MongoDB
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-06T01:47:34+08:00">
-                2017-10-06
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>MongoDB 提供了 linux 各发行版本 64 位的安装包，你可以在官网下载安装包。</p>
-<p>下载地址：<a href="https://www.mongodb.com/download-center#community" target="_blank" rel="noopener">https://www.mongodb.com/download-center#community</a></p>
-<p><img src="http://oncykm32h.bkt.clouddn.com/mongodb-download.png" alt="legacy-linux-64bit"></p>
-<p>下载完安装包，并解压 tgz（以下演示的是 64 位 Linux上的安装。</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">curl -O https:<span class="comment">//fastdl.mongodb.org/linux/mongodb-linux-x86_64-3.0.6.tgz    # 下载</span></span><br><span class="line"></span><br><span class="line">tar -zxvf mongodb-linux-x86_64-3.0.6.tgz                                   # 解压</span><br><span class="line"></span><br><span class="line">mv  mongodb-linux-x86_64-3.0.6/ /usr/local/mongodb                         # 将解压包拷贝到指定目录</span><br></pre></td></tr></table></figure>
-<p>MongoDB 的可执行文件位于 bin 目录下，所以可以将其添加到 PATH 路径中：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">export</span> PATH=&lt;mongodb-install-directory&gt;/bin:$PATH</span><br></pre></td></tr></table></figure>
-<p><mongodb-install-directory> 为你 MongoDB 的安装路径。如本文的 /usr/local/mongodb</mongodb-install-directory></p>
-<p>创建数据库目录</p>
-<p>MongoDB的数据存储在data目录的db目录下，但是这个目录在安装过程不会自动创建，所以你需要手动创建data目录，并在data目录中创建db目录。<br>以下实例中我们将data目录创建于根目录下(/)。</p>
-<p>注意：/data/db 是 MongoDB 默认的启动的数据库路径(–dbpath)。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">mkdir -p /data/db</span><br></pre></td></tr></table></figure>
-<p>命令行中运行 MongoDB 服务</p>
-<p>你可以再命令行中执行mongo安装目录中的bin目录执行mongod命令来启动mongdb服务。</p>
-<p>注意：如果你的数据库目录不是/data/db，可以通过 –dbpath 来指定。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">./mongod -dbpath /data/db -logpath /usr/local/mongodb/log/mongodb.log -logappend -fork -port <span class="number">27017</span></span><br></pre></td></tr></table></figure>
-<p>MongoDB后台管理 Shell</p>
-<p>如果你需要进入MongoDB后台管理，你需要先打开mongodb装目录的下的bin目录，然后执行mongo命令文件。</p>
-<p>MongoDB Shell是MongoDB自带的交互式Javascript shell,用来对MongoDB进行操作和管理的交互式环境。</p>
-<p>当你进入mongoDB后台后，它默认会链接到 test 文档（数据库）：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">$ cd /usr/local/mongodb/bin</span><br><span class="line">$ ./mongo</span><br><span class="line">MongoDB shell version: <span class="number">3.0</span><span class="number">.6</span></span><br><span class="line">connecting to: test</span><br><span class="line">Welcome to the MongoDB shell.</span><br><span class="line">……</span><br></pre></td></tr></table></figure>
-<p>由于它是一个JavaScript shell，你可以运行一些简单的算术运算:</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&gt; <span class="number">2</span>+<span class="number">2</span></span><br><span class="line"><span class="number">4</span></span><br><span class="line">&gt; <span class="number">3</span>+<span class="number">6</span></span><br><span class="line"><span class="number">9</span></span><br></pre></td></tr></table></figure>
-<p>现在让我们插入一些简单的数据，并对插入的数据进行检索：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&gt; db.runoob.insert(&#123;<span class="attr">x</span>:<span class="number">10</span>&#125;)</span><br><span class="line">WriteResult(&#123; <span class="string">"nInserted"</span> : <span class="number">1</span> &#125;)</span><br><span class="line">&gt; db.runoob.find()</span><br><span class="line">&#123; <span class="string">"_id"</span> : ObjectId(<span class="string">"5604ff74a274a611b0c990aa"</span>), <span class="string">"x"</span> : <span class="number">10</span> &#125;</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
-<p>第一个命令将数字 10 插入到 runoob 集合的 x 字段中。</p>
-<p>MongoDb web 用户界面</p>
-<p>MongoDB 提供了简单的 HTTP 用户界面。 如果你想启用该功能，需要在启动的时候指定参数 –rest 。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">$ ./mongod --dbpath=<span class="regexp">/data/</span>db --rest</span><br></pre></td></tr></table></figure>
-<p>MongoDB 的 Web 界面访问端口比服务的端口多1000。</p>
-<p>如果你的MongoDB运行端口使用默认的27017，你可以在端口号为28017访问web用户界面，即地址为：<a href="http://localhost:28017。" target="_blank" rel="noopener">http://localhost:28017。</a></p>
-<p><img src="http://oncykm32h.bkt.clouddn.com/mongodb-web.jpg" alt="mongdb-web"></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1805,7 +1723,7 @@ sudo apt-get install npm
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">61</span>
+                <span class="site-state-item-count">68</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -1818,7 +1736,7 @@ sudo apt-get install npm
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">15</span>
+                <span class="site-state-item-count">20</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
