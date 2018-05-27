@@ -1,0 +1,70 @@
+---
+title: netty5简介
+date: 2018-05-15 11:35:32
+tags: [netty]
+---
+
+
+Netty是一个非web的java应用，Java序列化的作用有以下两方面：
+
+1） 把对象的字节序列永久地保存到硬盘上（通常存放在一个文件中）；
+
+2） 在网络上传送对象的字节序列。
+
+NIO和IO最大的区别是数据打包和传输方式。IO是以流的方式处理数据，而NIO是以块的方式处理数据。
+
+面向流的IO一次一个字节的处理数据，一个输入流产生一个字节，一个输出流就消费一个字节。为流式数据创建过滤器就变得非常容易，链接几个过滤器，以便对数据进行处理非常方便而简单，但是面向流的IO通常处理的很慢。
+
+面向块的IO系统以块的形式处理数据。每一个操作都在一步中产生或消费一个数据块。按块要比按流快的多，但面向块的IO缺少了面向流IO所具有的有雅兴和简单性。
+
+Channel是一个对象，可以通过它读取和写入数据。可以把它看做IO中的流。但是它和流相比还有一些不同：Channel是双向的，既可以读又可以写，而流是单向的，Channel可以进行异步的读写，对Channel的读写必须通过buffer对象
+
+在Java NIO中Channel主要有如下几种类型：
+
+FileChannel：从文件读取数据的
+
+DatagramChannel：读写UDP网络协议数据
+
+SocketChannel：读写TCP网络协议数据
+
+ServerSocketChannel：可以监听TCP连接
+
+Netty5与其他版本的区别：
+
+ChannelInboundHandler和ChannelOutboundHandler整合为ChannelHandler。ChannelHandler现在包含输入和输出的处理方法。
+
+ChannelInboundHandlerAdapter，ChannelOutboundHandlerAdapter和ChannelDuplexHandlerAdapter已被废弃，由 ChannelHandlerAdapter代替。
+
+由于现在无法区分处理器(handler) 是输入还是输出的处理器，CombinedChannelDuplexHandler现在由 ChannelHandlerAppender代替。
+
+更多相关变化，可参考https://github.com/netty/netty/pull/1999
+
+channelRead0() → messageReceived()
+
+我知道。这是一个愚蠢的错误。如果你使用了SimpleChannelInboundHandler，你需要把channelRead0()重命名为messageReceived()。
+
+
+
+ChannelInitializer，当一个链接建立时，我们需要知道怎么来接收或者发送数据，当然，我们有各种各样的Handler实现来处理它，那么ChannelInitializer便是用来配置这些Handler，它会提供一个ChannelPipeline，并把Handler加入到ChannelPipeline。 
+
+ChannelPipeline，ChannelPipeline实际上应该叫做ChannelHandlerPipeline，可以把ChannelPipeline看成是一个ChandlerHandler的链表，当需要对Channel进行某种处理的时候，Pipeline负责依次调用每一个Handler进行处理。每个Channel都有一个属于自己的Pipeline，调用Channel#pipeline()方法可以获得Channel的Pipeline，调用Pipeline#channel()方法可以获得Pipeline的Channel。一个Netty应用基于ChannelPipeline机制，这种机制需要依赖于EventLoop和EventLoopGroup，因为它们三个都和事件或者事件处理相关。 EventLoops的目的是为Channel处理IO操作，一个EventLoop可以为多个Channel服务。 EventLoopGroup会包含多个EventLoop。 Channel代表了一个Socket链接，或者其它和IO操作相关的组件，它和EventLoop一起用来参与IO处理。
+
+ Future，在Netty中所有的IO操作都是异步的，因此，你不能立刻得知消息是否被正确处理，但是我们可以过一会等它执行完成或者直接注册一个监听，具体的实现就是通过Future和ChannelFutures,他们可以注册一个监听，当操作执行成功或失败时监听会自动触发。总之，所有的操作都会返回一个ChannelFuture。
+
+      Netty是一个非阻塞的、事件驱动的、网络编程框架。当然，我们很容易理解Netty会用线程来处理IO事件，对于熟悉多线程编程的人来说，你或许会想到如何同步你的代码，但是Netty不需要我们考虑这些，具体是这样：
+
+一个Channel会对应一个EventLoop，而一个EventLoop会对应着一个线程，也就是说，仅有一个线程在负责一个Channel的IO操作。
+
+        当一个ChannelHandler被加入到ChannelPipeline中时，它便会获得一个ChannelHandlerContext的引用，而ChannelHandlerContext可以用来读写Netty中的数据流。因此，现在可以有两种方式来发送数据，一种是把数据直接写入Channel，一种是把数据写入ChannelHandlerContext，它们的区别是写入Channel的话，数据流会从Channel的头开始传递，而如果写入ChannelHandlerContext的话，数据流会流入管道中的下一个Handler。
+
+
+
+我们最关心的部分，如何处理我们的业务逻辑？ 通常继承基类ChannelHandlerAdapter
+
+Netty中会有很多Handler，具体是哪种Handler还要看它们继承的是InboundAdapter还是OutboundAdapter。当然，Netty中还提供了一些列的Adapter来帮助我们简化开发，我们知道在Channelpipeline中每一个Handler都负责把Event传递给下一个Handler，如果有了这些辅助Adapter，这些额外的工作都可自动完成，我们只需覆盖实现我们真正关心的部分即可。此外，还有一些Adapter会提供一些额外的功能，比如编码和解码。那么下面我们就来看一下其中的三种常用的ChannelHandler：
+
+Encoders和Decoders
+
+因为我们在网络传输时只能传输字节流，因此，才发送数据之前，我们必须把我们的message型转换为bytes，与之对应，我们在接收数据后，必须把接收到的bytes再转换成message。我们把bytes to message这个过程称作Decode(解码成我们可以理解的)，把message to bytes这个过程成为Encode。
+
+Netty中提供了很多现成的编码/解码器，我们一般从他们的名字中便可知道他们的用途，如ByteToMessageDecoder、MessageToByteEncoder，如专门用来处理Google Protobuf协议的ProtobufEncoder、 ProtobufDecoder。
