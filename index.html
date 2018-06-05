@@ -300,6 +300,870 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://blog.xmqbeast.com/2018/06/05/git-tag的用法/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="∮小煤球メ">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="∮小煤球メ">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2018/06/05/git-tag的用法/" itemprop="url">
+                  git tag的用法
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-05T17:08:55+08:00">
+                2018-06-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>标签（tag）可以针对某一时间点的版本做标记，常用于版本发布。</p>
+<p>列出标签</p>
+<pre><code>// 在控制台打印出当前仓库的所有标签
+$ git tag 
+
+// 搜索符合模式的标签
+$ git tag -l ‘v0.1.*’
+</code></pre><p>打标签</p>
+<p>git标签分为两种类型：轻量标签和附注标签。轻量标签是指向提交对象的引用，附注标签则是仓库中的一个独立对象。建议使用附注标签。</p>
+<pre><code>// 创建轻量标签
+$ git tag v0.1.2-light
+
+// 创建附注标签
+$ git tag -a v0.1.2 -m “0.1.2版本”
+</code></pre><p>创建轻量标签不需要传递参数，直接指定标签名称即可。<br>创建附注标签时，参数a即annotated的缩写，指定标签类型，后附标签名。参数m指定标签说明，说明信息会保存在标签对象中。</p>
+<p>切换到标签</p>
+<p>与切换分支命令相同，用git checkout [tagname]</p>
+<p>查看标签信息</p>
+<pre><code>用git show命令可以查看标签的版本信息：
+$ git show v0.1.2
+</code></pre><p>删除标签</p>
+<p>误打或需要修改标签时，需要先将标签删除，再打新标签。</p>
+<pre><code>// 删除标签
+$ git tag -d v0.1.2
+</code></pre><p>参数d即delete的缩写，意为删除其后指定的标签。</p>
+<p>给指定的commit打标签</p>
+<p>打标签不必要在head之上，也可在之前的版本上打，这需要你知道某个提交对象的校验和（通过git log获取） </p>
+<pre><code>// 补打标签
+$ git tag -a v0.1.1 9fbc3d0
+</code></pre><p>标签发布</p>
+<p>通常的git push不会将标签对象提交到git服务器，我们需要进行显式的操作：</p>
+<pre><code># 将v0.1.2标签提交到git服务器
+$ git push origin v0.1.2
+</code></pre><p>注意：如果想看之前某个标签状态下的文件，可以这样操作</p>
+<pre><code>1.git tag   查看当前分支下的标签
+
+2.git  checkout v0.21   此时会指向打v0.21标签时的代码状态，（但现在处于一个空的分支上）
+
+3. cat  test.txt   查看某个文件
+</code></pre>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://blog.xmqbeast.com/2018/06/05/redis-setnx的用法/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="∮小煤球メ">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="∮小煤球メ">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2018/06/05/redis-setnx的用法/" itemprop="url">
+                  redis setnx的用法
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-05T10:52:43+08:00">
+                2018-06-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <pre><code>SETNX key value
+</code></pre><p>将 key 的值设为 value ，当且仅当 key 不存在。</p>
+<p>若给定的 key 已经存在，则 SETNX 不做任何动作。</p>
+<p>SETNX 是『SET if Not eXists』(如果不存在，则 SET)的简写。</p>
+<p>可用版本：&gt;= 1.0.0</p>
+<p>时间复杂度：<br>O(1)</p>
+<p>返回值：<br>设置成功，返回 1 。<br>设置失败，返回 0 。</p>
+<pre><code>redis&gt; EXISTS job                # job 不存在
+(integer) 0
+
+redis&gt; SETNX job &quot;programmer&quot;    # job 设置成功
+(integer) 1
+
+redis&gt; SETNX job &quot;code-farmer&quot;   # 尝试覆盖 job ，失败
+(integer) 0
+
+redis&gt; GET job                   # 没有被覆盖
+&quot;programmer&quot;
+</code></pre>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://blog.xmqbeast.com/2018/05/28/关于maven的denpencyManagement/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="∮小煤球メ">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="∮小煤球メ">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2018/05/28/关于maven的denpencyManagement/" itemprop="url">
+                  关于maven的denpencyManagement
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-28T17:56:03+08:00">
+                2018-05-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>这里介绍一个在父项目中的根结点中声明dependencyManagement和dependencies的区别</p>
+<p>dependencyManagement</p>
+<p>Maven 使用dependencyManagement 元素来提供了一种管理依赖版本号的方式。通常会在一个组织或者项目的最顶层的父POM 中看到dependencyManagement 元素。使用pom.xml 中的dependencyManagement 元素能让所有在子项目中引用一个依赖而不用显式的列出版本号。Maven 会沿着父子层次向上走，直到找到一个拥有dependencyManagement 元素的项目，然后它就会使用在这个dependencyManagement 元素中指定的版本号。</p>
+<p>例如在父项目里：</p>
+<pre><code>&lt;dependencyManagement&gt;  
+    &lt;dependencies&gt;  
+    &lt;dependency&gt;  
+    &lt;groupId&gt;mysql&lt;/groupId&gt;  
+    &lt;artifactId&gt;mysql-connector-java&lt;/artifactId&gt;  
+    &lt;version&gt;5.1.2&lt;/version&gt;  
+    &lt;/dependency&gt;   
+    &lt;dependencies&gt;  
+&lt;/dependencyManagement&gt; 
+</code></pre><p>然后在子项目里就可以添加mysql-connector时可以不指定版本号，例如：</p>
+<pre><code>&lt;dependencies&gt;  
+    &lt;dependency&gt;  
+    &lt;groupId&gt;mysql&lt;/groupId&gt;  
+    &lt;artifactId&gt;mysql-connector-java&lt;/artifactId&gt;  
+    &lt;/dependency&gt;  
+&lt;/dependencies&gt; 
+</code></pre><p>这样做的好处就是：如果有多个子项目都引用同一样依赖，则可以避免在每个使用的子项目里都声明一个版本号，这样当想升级或切换到另一个版本时，只需要在顶层父容器里更新，而不需要一个一个子项目的修改 ；另外如果某个子项目需要另外的一个版本，只需要声明version就可。</p>
+<p>dependencyManagement里只是声明依赖，并不实现引入，因此子项目需要显式的声明需要用的依赖。</p>
+<p>dependencies</p>
+<p>相对于dependencyManagement，所有声明在dependencies里的依赖都会自动引入，并默认被所有的子项目继承。</p>
+<p>classifier</p>
+<p>如果你要发布同样的代码，但是由于技术原因需要生成两个单独的构件，你就要使用一个分类器（classifier）。例如，如果你想要构建两个单独的构件成JAR，一个使用Java 1.4 编译器，另一个使用Java 6 编译器，你就可以使用分类器<br>来生成两个单独的JAR构件，它们有同样的groupId:artifactId:version组合。如果你的项目使用本地扩展类库，你可以使用分类器为每一个目标平台生成一个构件。分类器常用于打包构件的源码，JavaDoc 或者二进制集合。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://blog.xmqbeast.com/2018/05/28/git-push命令/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="∮小煤球メ">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="∮小煤球メ">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2018/05/28/git-push命令/" itemprop="url">
+                  git push命令
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-28T10:56:27+08:00">
+                2018-05-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>git push命令用于将本地分支的更新，推送到远程主机。它的格式与git pull命令相似。</p>
+<pre><code>$ git push &lt;远程主机名&gt; &lt;本地分支名&gt;:&lt;远程分支名&gt;
+</code></pre><p>示例</p>
+<pre><code>$ git push origin master
+</code></pre><p>上面命令表示，将本地的master分支推送到origin主机的master分支。如果master不存在，则会被新建。</p>
+<p>如果省略本地分支名，则表示删除指定的远程分支，因为这等同于推送一个空的本地分支到远程分支。</p>
+<pre><code>$ git push origin :master
+# 等同于
+$ git push origin --delete master
+</code></pre><p>上面命令表示删除origin主机的master分支。如果当前分支与远程分支之间存在追踪关系，则本地分支和远程分支都可以省略。</p>
+<pre><code>$ git push origin
+</code></pre><p>上面命令表示，将当前分支推送到origin主机的对应分支。如果当前分支只有一个追踪分支，那么主机名都可以省略。</p>
+<pre><code>$ git push
+</code></pre><p>如果当前分支与多个主机存在追踪关系，则可以使用-u选项指定一个默认主机，这样后面就可以不加任何参数使用git push。</p>
+<pre><code>$ git push -u origin master    
+</code></pre><p>上面命令将本地的master分支推送到origin主机，同时指定origin为默认主机，后面就可以不加任何参数使用git push了。</p>
+<pre><code>$ git push --all origin
+</code></pre><p>上面命令表示，将所有本地分支都推送到origin主机。<br>如果远程主机的版本比本地版本更新，推送时Git会报错，要求先在本地做git pull合并差异，然后再推送到远程主机。这时，如果你一定要推送，可以使用–force选项。</p>
+<pre><code>$ git push --force origin
+</code></pre><p>上面命令使用-–force选项，结果导致在远程主机产生一个”非直进式”的合并(non-fast-forward merge)。除非你很确定要这样做，否则应该尽量避免使用–-force选项。</p>
+<p>最后，git push不会推送标签(tag)，除非使用–tags选项。</p>
+<pre><code>$ git push origin --tags
+</code></pre>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://blog.xmqbeast.com/2018/05/28/linux-git-clone-ssl-connect-error/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="∮小煤球メ">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="∮小煤球メ">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2018/05/28/linux-git-clone-ssl-connect-error/" itemprop="url">
+                  linux git clone ssl connect error
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-28T02:03:17+08:00">
+                2018-05-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>linux下 git clone 出现</p>
+<pre><code>fatal: unable to access &apos;https://github.com/angular/bower-angular.git/&apos;: SSL connect error 
+</code></pre><p>升级 nss curl libcurl 就好了</p>
+<p>   分别执行 </p>
+<pre><code>yum update nss
+yum update curl
+yum update libcurl
+</code></pre>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://blog.xmqbeast.com/2018/05/28/linux下安装git/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="∮小煤球メ">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="∮小煤球メ">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2018/05/28/linux下安装git/" itemprop="url">
+                  linux下安装git
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-28T01:41:13+08:00">
+                2018-05-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>Git是一个开源的分布式版本控制系统，可以有效、高速的处理从很小到非常大的项目版本管理。而国外的GitHub和国内的Coding都是项目的托管平台。但是在使用Git工具的时候，第一步要学会如何安装git，本教程就手把手教大家如何手动编译安装git。</p>
+<p>1、介绍</p>
+<p>　　使用Coding管理项目，上面要求使用的git版本为1.8.0以上，而很多yum源上自动安装的git版本为1.7，所以需要掌握手动编译安装git方法。</p>
+<p>2、安装git依赖包</p>
+<pre><code>yum install curl-devel expat-devel gettext-devel openssl-devel zlib-devel gcc perl-ExtUtils-MakeMaker
+</code></pre><p>3、删除已有的git</p>
+<pre><code>yum remove git
+</code></pre><p>4、下载git源码</p>
+<p>　　切换到你的包文件存放目录下
+　　            </p>
+<pre><code>cd /usr/src
+</code></pre><p>下载git安装包</p>
+<pre><code>wget https://www.kernel.org/pub/software/scm/git/git-2.8.3.tar.gz
+</code></pre><p>　　解压git安装包                </p>
+<pre><code>tar -zxvf git-2.8.3.tar.gz　　
+cd git-2.8.3
+</code></pre><p>　　配置git安装路径　</p>
+<pre><code>./configure prefix=/usr/local/git/
+</code></pre><p>　　编译并且安装　　　　</p>
+<pre><code>make &amp;&amp; make install
+</code></pre><p>　　查看git版本号　　    </p>
+<pre><code>cd /usr/local/git/bin
+
+git --version
+</code></pre><p>　　git已经安装完毕</p>
+<p>5、将git指令添加到bash中
+　</p>
+<pre><code>vi /etc/profile
+</code></pre><p>　　在最后一行加入</p>
+<pre><code>export PATH=$PATH:/usr/local/git/bin
+</code></pre><p>　　让该配置文件立即生效</p>
+<pre><code>source /etc/profile
+</code></pre>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://blog.xmqbeast.com/2018/05/27/linux下搭建go环境/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -950,953 +1814,11 @@ person.age = 51;
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://blog.xmqbeast.com/2018/05/15/eclipse-debug启动老是跳转到断点，提示SilentExitException/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="∮小煤球メ">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="∮小煤球メ">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2018/05/15/eclipse-debug启动老是跳转到断点，提示SilentExitException/" itemprop="url">
-                  eclipse debug启动老是跳转到断点，提示SilentExitException
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-15T11:21:28+08:00">
-                2018-05-15
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>最近在做一个spring boot的项目，在main方法debug启动的时候，老是自动跳转到断点，如下图所示</p>
-<p><img src="http://oncykm32h.bkt.clouddn.com/20180228175121654.png" alt="silentExitException"></p>
-<p>出现这种状况是因为Eclipse默认开启挂起未捕获的异常(Suspend execution on uncaught exceptions)，只要关闭此项就可以了。</p>
-<p>解决方法：在eclipse中选择Window-&gt;Preference-&gt;Java-&gt;Debug，将“Suspend execution on uncaught exceptions”的勾去掉即可。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://blog.xmqbeast.com/2018/05/15/java中socket的用法/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="∮小煤球メ">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="∮小煤球メ">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2018/05/15/java中socket的用法/" itemprop="url">
-                  java中socket的用法
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-15T01:58:04+08:00">
-                2018-05-15
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Java中的Socket的用法</p>
-<p>Java中的Socket分为普通的Socket和NioSocket。</p>
-<p>普通Socket的用法</p>
-<p>Java中的网络通信时通过Socket实现的，Socket分为ServerSocket和Socket两大类，ServerSocket用于服务器端，可以通过accept方法监听请求，监听请求后返回Socket，Socket用于完成具体数据传输，客户端也可以使用Socket发起请求并传输数据。ServerSocket的使用可以分为三步：</p>
-<p>创建ServerSocket。ServerSocket的构造方法有5个，其中最方便的是ServerSocket(int port)，只需要一个port就可以了。<br>调用创建出来的ServerSocket的accept方法进行监听。accept方法是阻塞方法，也就是说调用accept方法后程序会停下来等待连接请求，在接受请求之前程序将不会继续执行，当接收到请求后accept方法返回一个Socket。</p>
-<p>使用accept方法返回的Socket与客户端进行通信
-　　</p>
-<p>如下代码，我们在服务器端创建ServerSocket，并调用accept方法监听Client的请求，收到请求后返回一个Socket。</p>
-<p>public class Server {</p>
-<pre><code>public static void main(String[] args) {
-    // TODO Auto-generated method stub
-    try {
-        //创建一个ServerSocket监听8080端口
-        ServerSocket server = new ServerSocket(8080);
-        //等待请求
-        Socket socket = server.accept();
-        //接受请求后使用Socket进行通信，创建BufferedReader用于读取数据
-        BufferedReader is = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-        String line = is.readLine();
-        System.out.println(&quot;received frome client:&quot; + line);
-        //创建PrintWriter，用于发送数据
-        PrintWriter pw = new PrintWriter(socket.getOutputStream());
-        pw.println(&quot;this data is from server&quot;);
-        pw.flush();
-        //关闭资源
-        pw.close();
-        is.close();
-        socket.close();
-        server.close();
-    } catch (IOException e) {
-        // TODO Auto-generated catch block
-        e.printStackTrace();
-    }
-}
-
-}
-</code></pre><p>然后我们再看看客户端的Socket代码，Socket的使用也是一样，首先创建一个Socket，Socket的构造方法非常多，这里用的是Socket(String host, int port)，把目标主机的地址和端口号传入即可（本实验代码中服务器和Client代码没有在同一台机器上，服务器的IP地址：192.168.6.42，所以如果读者在实验过程中ServerSocket和Client在同一主机下，那么Client中的IP地址需要更改为：127.0.0.1，Socket创建的过程就会跟服务器端建立连接，创建完Socket后，再创建Writer和Reader来传输数据，数据传输完成后释放资源关闭连接。</p>
-<p>public class Client {</p>
-<pre><code>public static void main(String[] args) {
-    // TODO Auto-generated method stub
-    String msg = &quot;Client data&quot;;
-
-    try {
-        //创建一个Socket，跟服务器的8080端口链接
-        Socket socket = new Socket(&quot;192.168.6.42&quot;,8080);
-        //使用PrintWriter和BufferedReader进行读写数据
-        PrintWriter pw = new PrintWriter(socket.getOutputStream());
-        BufferedReader is = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-        //发送数据
-        pw.println(msg);
-        pw.flush();
-        //接收数据
-        String line = is.readLine();
-        System.out.println(&quot;received from server&quot; + line);
-        //关闭资源
-        pw.close();
-        is.close();
-        socket.close();
-    } catch (UnknownHostException e) {
-        // TODO Auto-generated catch block
-        e.printStackTrace();
-    } catch (IOException e) {
-        // TODO Auto-generated catch block
-        e.printStackTrace();
-    }
-}
-
-}
-</code></pre><p>最后先启动Server然后启动Client就可以完成一次Client和Server的通信。</p>
-<p>NioSocket的用法</p>
-<p>　　从JDK1.4开始，Java增加了新的IO模式-nio（new IO），nio在底层采用了新的处理方式，极大提高了IO的效率。我们使用的Socket也是IO的一种，nio提供了相应的工具：ServerSocketChannel和SocketChannel，他们分别对应原来的ServerSocket和Socket。</p>
-<p>　　在了解NioSocket之前我们先了解Buffer、Channel、Selector。为了方便理解，我们来看个例子，要过圣诞节了，需要给同学们发贺卡和苹果，班长这时候又是最辛苦的，每次拿一个苹果和一张贺卡发给一个同学，发送完成后回来再取一张贺卡和一个苹果发给另一个同学，直到全班同学都拿到贺卡和苹果为止，这就是普通Socket处理方式，来一个请求，ServerSocket就进行处理，处理完成后继续接受请求，这种方式效率很低啊！还是圣诞节的例子，班长发现班委不止他一个，就通知了生活委员（女）和组织委员（男）来帮助他发贺卡和苹果，女生的贺卡是粉色的，男生的贺卡是蓝色的，生活委员负责从全班的贺卡中挑选女生的贺卡，而组织委员则负责男生的贺卡，然后生活委员和组织委员分别以宿舍为单位通知宿舍长来领取宿舍同学的贺卡和苹果，班长将圣诞节发苹果和贺卡的工作布置给两个班委后，就可以继续干其他工作了。这就是NioSocket，Buffer就是所有传递的货物，也就是例子中的苹果和贺卡，而Channel就是传递货物的通道，也就是例子中的宿舍长，负责将礼物搬回自己宿舍，而生活委员和组织委员充当了Selector的职责，负责礼物的分拣。</p>
-<p>　　ServerSocketChannel可以使用自己的静态工厂方法open创建，每个ServerSocketChannel对应一个ServerSocket（通过调用其socket()获取），如果直接使用获取的ServerSocket来监听请求，那么还是普通ServerSocket，而通过将获取的ServerSocket绑定端口号来实现NioSocket。ServerSocketChannel可以通过configureBlocking方法来设置是否采用阻塞模式，如果设置为非阻塞模式，就可以调用register方法注册Selector来使用了。</p>
-<p>　　Selector可以通过其静态工厂方法open创建，创建后通过Channel的register方法注册到ServerSocketChannel或者SocketChannel上，注册完成后Selector就可以通过select方法来等待请求，select方法有一个long类型参数，代表最长等待时间，如果在这段时间内收到相应操作的请求则返回可以处理的请求的数量，否则在超时后返回0，如果传入的参数为0或者无参数的重载方法，select方法会采用阻塞模式知道有相应操作请求的出现。当接收到请求后Selector调用selectdKeys方法返回SelectionKey集合。</p>
-<p>　　SelectionKey保存了处理当前请求的Channel和Selector，并且提供了不同的操作类型。Channel在注册Selector时可以通过register的第二个参数选择特定的操作（请求操作、连接操作、读操作、写操作），只有在register中注册了相应的操作Selector才会关心相应类型操作的请求。</p>
-<p>　　我们来看看服务器端NioSocket的处理过程：</p>
-<p>创建ServerSocketChannel并设置相应的端口号、是否为阻塞模式<br>创建Selector并注册到ServerSocketChannel上<br>调用Selector的selector方法等待请求<br>Selector接收到请求后使用selectdKeys返回SelectionKey集合<br>使用SelectionKey获取到channel、selector和操作类型并进行具体操作。</p>
-<pre><code>public class NIOServer {
-
-public static void main(String[] args) {
-    // TODO Auto-generated method stub
-    try {
-        //创建ServerSocketChannel，监听8080端口
-        ServerSocketChannel ssc = ServerSocketChannel.open();
-        ssc.socket().bind(new InetSocketAddress(8080));
-        //设置为非阻塞模式
-        ssc.configureBlocking(false);
-        //为ssc注册选择器
-        Selector selector = Selector.open();
-        ssc.register(selector, SelectionKey.OP_ACCEPT);
-        //创建处理器
-        Handler handler = new Handler(1024);
-        while(true){
-            //等待请求，每次等待阻塞3s，超过3s后线程继续向下运行，如果传入0或者不传入参数则一直阻塞
-            if(selector.select(3000) == 0){
-                System.out.println(&quot;等待请求超时----&quot;);
-                continue;
-            }
-            System.out.println(&quot;处理请求----&quot;);
-            //获取处理的SelectionKey
-            Iterator&lt;SelectionKey&gt; keyIter = selector.selectedKeys().iterator();
-            while(keyIter.hasNext()){
-                SelectionKey key = keyIter.next();
-                try{
-                    //接收到连接请求时
-                    if(key.isAcceptable()){
-                        handler.handleAccept(key);
-                    }
-                    //读数据
-                    if(key.isReadable()){
-                        handler.handleRead(key);
-                    }
-                }catch(IOException ex){
-                    keyIter.remove();
-                    continue;
-                }
-                //处理完后，从待处理的SelectionKey迭代器中移除当前所使用的key
-                keyIter.remove();
-            }
-        }
-    } catch (IOException e) {
-        // TODO Auto-generated catch block
-        e.printStackTrace();
-    }
-}
-private static class Handler{
-    private int bufferSize = 1024;
-    private String localCharset = &quot;UTF-8&quot;;
-    public Handler(int bufferSize){
-        this.bufferSize = bufferSize;
-    }
-    public void handleAccept(SelectionKey key) throws IOException{
-        SocketChannel sc = ((ServerSocketChannel) key.channel()).accept();
-        sc.configureBlocking(false);
-        sc.register(key.selector(), SelectionKey.OP_READ, ByteBuffer.allocate(bufferSize));
-    }
-    public void handleRead(SelectionKey key) throws IOException{
-        //获取Channel
-        SocketChannel sc = (SocketChannel) key.channel();
-        //获取buffer并重置
-        ByteBuffer buffer = (ByteBuffer)key.attachment();
-        buffer.clear();
-        //没有读到内容则关闭
-        if(sc.read(buffer) == -1)
-            sc.close();
-        else{
-            //将buffer转换为读状态
-            buffer.flip();
-            //将buffer中接收到的值按localCharset格式编码后保存到receivedString
-            String receivedString = Charset.forName(localCharset).newDecoder().decode(buffer).toString();
-            System.out.println(&quot;received from client:&quot; + receivedString);
-            //返回数据给客户端
-            String sendString = &quot;this data is from Server&quot;;
-            buffer = ByteBuffer.wrap(sendString.getBytes(localCharset));
-            sc.write(buffer);
-            sc.close();
-        }
-    }
-}
-}
-</code></pre><p>　客户端代码通普通Socket一样，Socket socket = new Socket(“127.0.0.1”,8080);表示与服务器端建立连接，从而执行服务器端的handleAccept()方法，给ServerSocketChannel注册selector以及添加SelectionKey.OP_READ参数，表示selector关心读方法。然后通过PrintWrite在客户端将内容发送给服务器端，服务器端执行handleRead方法对接收到的内容进行处理，并将结果返回给客户端，客户端通过BufferedReader接受数据</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://blog.xmqbeast.com/2018/05/14/redis-list列表/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="∮小煤球メ">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="∮小煤球メ">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2018/05/14/redis-list列表/" itemprop="url">
-                  redis list列表
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-14T10:50:25+08:00">
-                2018-05-14
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>模式：安全的队列</p>
-<p>Redis的列表经常被用作队列(queue)，用于在不同程序之间有序地交换消息(message)。一个客户端通过 LPUSH 命令将消息放入队列中，而另一个客户端通过 RPOP 或者 BRPOP 命令取出队列中等待时间最长的消息。</p>
-<p>不幸的是，上面的队列方法是『不安全』的，因为在这个过程中，一个客户端可能在取出一个消息之后崩溃，而未处理完的消息也就因此丢失。</p>
-<p>使用 RPOPLPUSH 命令(或者它的阻塞版本 BRPOPLPUSH )可以解决这个问题：因为它不仅返回一个消息，同时还将这个消息添加到另一个备份列表当中，如果一切正常的话，当一个客户端完成某个消息的处理之后，可以用 LREM 命令将这个消息从备份表删除。</p>
-<p>最后，还可以添加一个客户端专门用于监视备份表，它自动地将超过一定处理时限的消息重新放入队列中去(负责处理该消息的客户端可能已经崩溃)，这样就不会丢失任何消息了。</p>
-<p>模式：循环列表</p>
-<p>通过使用相同的 key 作为 RPOPLPUSH 命令的两个参数，客户端可以用一个接一个地获取列表元素的方式，取得列表的所有元素，而不必像 LRANGE 命令那样一下子将所有列表元素都从服务器传送到客户端中(两种方式的总复杂度都是 O(N))。</p>
-<p>以上的模式甚至在以下的两个情况下也能正常工作：</p>
-<p>有多个客户端同时对同一个列表进行旋转(rotating)，它们获取不同的元素，直到所有元素都被读取完，之后又从头开始。<br>有客户端在向列表尾部(右边)添加新元素。<br>这个模式使得我们可以很容易实现这样一类系统：有 N 个客户端，需要连续不断地对一些元素进行处理，而且处理的过程必须尽可能地快。一个典型的例子就是服务器的监控程序：它们需要在尽可能短的时间内，并行地检查一组网站，确保它们的可访问性。</p>
-<p>注意，使用这个模式的客户端是易于扩展(scala)且安全(reliable)的，因为就算接收到元素的客户端失败，元素还是保存在列表里面，不会丢失，等到下个迭代来临的时候，别的客户端又可以继续处理这些元素了。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://blog.xmqbeast.com/2018/05/14/Redis-Rpush命令/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="∮小煤球メ">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="∮小煤球メ">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2018/05/14/Redis-Rpush命令/" itemprop="url">
-                  Redis Rpush命令
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-14T02:30:50+08:00">
-                2018-05-14
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Redis Rpush 命令</p>
-<p>Redis Rpush 命令用于将一个或多个值插入到列表的尾部(最右边)。<br>如果列表不存在，一个空列表会被创建并执行 RPUSH 操作。 当列表存在但不是列表类型时，返回一个错误。</p>
-<p>注意：在 Redis 2.4 版本以前的 RPUSH 命令，都只接受单个 value 值。</p>
-<p>语法<br>redis Rpush 命令基本语法如下：</p>
-<pre><code>redis 127.0.0.1:6379&gt; RPUSH KEY_NAME VALUE1..VALUEN
-</code></pre><p>返回值<br>执行 RPUSH 操作后，列表的长度。</p>
-<p>实例</p>
-<pre><code>redis 127.0.0.1:6379&gt; RPUSH mylist &quot;hello&quot;
-(integer) 1
-redis 127.0.0.1:6379&gt; RPUSH mylist &quot;foo&quot;
-(integer) 2
-redis 127.0.0.1:6379&gt; RPUSH mylist &quot;bar&quot;
-(integer) 3
-redis 127.0.0.1:6379&gt; LRANGE mylist 0 -1
-1) &quot;hello&quot;
-2) &quot;foo&quot;
-3) &quot;bar&quot;
-</code></pre>
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://blog.xmqbeast.com/2018/05/14/Redis-Lpush命令/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="∮小煤球メ">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="∮小煤球メ">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2018/05/14/Redis-Lpush命令/" itemprop="url">
-                  Redis Lpush命令
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-14T02:28:28+08:00">
-                2018-05-14
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Redis Lpush 命令</p>
-<p>Redis Lpush 命令将一个或多个值插入到列表头部。 如果 key 不存在，一个空列表会被创建并执行 LPUSH 操作。 当 key 存在但不是列表类型时，返回一个错误。</p>
-<p>注意：在Redis 2.4版本以前的 LPUSH 命令，都只接受单个 value 值。</p>
-<p>语法<br>redis Lpush 命令基本语法如下：</p>
-<pre><code>redis 127.0.0.1:6379&gt; LPUSH KEY_NAME VALUE1.. VALUEN
-</code></pre><p>返回值<br>执行 LPUSH 命令后，列表的长度。</p>
-<p>实例</p>
-<pre><code>127.0.0.1:6379&gt; LPUSH list1 &quot;foo&quot;
-(integer) 1
-127.0.0.1:6379&gt; LPUSH list1 &quot;bar&quot;
-(integer) 2
-127.0.0.1:6379&gt; LRANGE list1 0 -1
-1) &quot;bar&quot;
-2) &quot;foo&quot;
-</code></pre>
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://blog.xmqbeast.com/2018/05/14/Redis-Rpoplpush命令/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="∮小煤球メ">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="∮小煤球メ">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2018/05/14/Redis-Rpoplpush命令/" itemprop="url">
-                  Redis Rpoplpush命令
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-14T02:24:57+08:00">
-                2018-05-14
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Redis Rpoplpush 命令<br>Redis Rpoplpush 命令用于移除列表的最后一个元素，并将该元素添加到另一个列表并返回。</p>
-<p>语法<br>redis Rpoplpush 命令基本语法如下：</p>
-<pre><code>redis 127.0.0.1:6379&gt; RPOPLPUSH SOURCE_KEY_NAME DESTINATION_KEY_NAME
-</code></pre><p>返回值<br>被弹出的元素。</p>
-<p>实例</p>
-<pre><code>redis 127.0.0.1:6379&gt; RPUSH mylist &quot;hello&quot;
-(integer) 1
-redis 127.0.0.1:6379&gt; RPUSH mylist &quot;foo&quot;
-(integer) 2
-redis 127.0.0.1:6379&gt; RPUSH mylist &quot;bar&quot;
-(integer) 3
-redis 127.0.0.1:6379&gt; RPOPLPUSH mylist myotherlist
-&quot;bar&quot;
-redis 127.0.0.1:6379&gt; LRANGE mylist 0 -1
-1) &quot;hello&quot;
-2) &quot;foo&quot;
-</code></pre>
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1941,7 +1863,7 @@ redis 127.0.0.1:6379&gt; LRANGE mylist 0 -1
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">68</span>
+                <span class="site-state-item-count">74</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -1954,7 +1876,7 @@ redis 127.0.0.1:6379&gt; LRANGE mylist 0 -1
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">20</span>
+                <span class="site-state-item-count">21</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

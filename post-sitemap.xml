@@ -7,6 +7,54 @@
     </url>
 
     <url>
+        <loc>http://blog.xmqbeast.com/2018/06/05/git-tag%E7%9A%84%E7%94%A8%E6%B3%95/</loc>
+        <lastmod>2018-06-05T09:14:28.181Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://blog.xmqbeast.com/2018/06/05/redis-setnx%E7%9A%84%E7%94%A8%E6%B3%95/</loc>
+        <lastmod>2018-06-05T02:55:59.260Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://blog.xmqbeast.com/2018/05/28/%E5%85%B3%E4%BA%8Emaven%E7%9A%84denpencyManagement/</loc>
+        <lastmod>2018-05-28T10:01:48.714Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://blog.xmqbeast.com/2018/05/28/git-push%E5%91%BD%E4%BB%A4/</loc>
+        <lastmod>2018-05-28T03:03:21.635Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://blog.xmqbeast.com/2018/05/28/linux-git-clone-ssl-connect-error/</loc>
+        <lastmod>2018-05-27T18:05:40.986Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://blog.xmqbeast.com/2018/05/28/linux%E4%B8%8B%E5%AE%89%E8%A3%85git/</loc>
+        <lastmod>2018-05-27T17:47:33.981Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>http://blog.xmqbeast.com/2018/05/27/linux%E4%B8%8B%E6%90%AD%E5%BB%BAgo%E7%8E%AF%E5%A2%83/</loc>
         <lastmod>2018-05-27T07:10:36.655Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -223,7 +271,7 @@
     </url>
 
     <url>
-        <loc>http://blog.xmqbeast.com/2017/06/01/%E5%A6%82%E4%BD%95%E9%AB%98%E6%95%88%E7%9A%84%E5%AE%8C%E6%88%90%E4%B8%8D%E5%96%9C%E6%AC%A2%E7%9A%84%E5%B7%A5%E4%BD%9C-%E5%AD%A6%E4%B9%A0%E4%BB%BB%E5%8A%A1/</loc>
+        <loc>http://blog.xmqbeast.com/2017/11/10/%E9%94%99%E8%BF%87%E7%9A%84%E7%88%B1/</loc>
         <lastmod>2018-03-08T15:55:02.747Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -239,7 +287,7 @@
     </url>
 
     <url>
-        <loc>http://blog.xmqbeast.com/2017/11/10/%E9%94%99%E8%BF%87%E7%9A%84%E7%88%B1/</loc>
+        <loc>http://blog.xmqbeast.com/2017/06/01/%E5%A6%82%E4%BD%95%E9%AB%98%E6%95%88%E7%9A%84%E5%AE%8C%E6%88%90%E4%B8%8D%E5%96%9C%E6%AC%A2%E7%9A%84%E5%B7%A5%E4%BD%9C-%E5%AD%A6%E4%B9%A0%E4%BB%BB%E5%8A%A1/</loc>
         <lastmod>2018-03-08T15:55:02.747Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -303,14 +351,6 @@
     </url>
 
     <url>
-        <loc>http://blog.xmqbeast.com/2017/10/09/%E4%BD%BF%E7%94%A8mongoDB%E5%88%9B%E5%BB%BA%E6%95%B0%E6%8D%AE%E5%BA%93/</loc>
-        <lastmod>2018-03-08T15:55:02.744Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
         <loc>http://blog.xmqbeast.com/2017/10/05/%E4%BD%BF%E7%94%A8hexo%EF%BC%8C%E5%A6%82%E6%9E%9C%E6%9B%B4%E6%8D%A2%E4%BA%86%E7%94%B5%E8%84%91%E5%A6%82%E4%BD%95%E6%9B%B4%E6%96%B0%E5%8D%9A%E5%AE%A2/</loc>
         <lastmod>2018-03-08T15:55:02.744Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -319,7 +359,15 @@
     </url>
 
     <url>
-        <loc>http://blog.xmqbeast.com/2017/08/10/spring%20cloud%EF%BC%88%E4%B8%80%EF%BC%89%E6%9C%8D%E5%8A%A1%E6%B3%A8%E5%86%8C%E4%B8%8E%E5%8F%91%E7%8E%B0--eureka-server/</loc>
+        <loc>http://blog.xmqbeast.com/2017/10/09/%E4%BD%BF%E7%94%A8mongoDB%E5%88%9B%E5%BB%BA%E6%95%B0%E6%8D%AE%E5%BA%93/</loc>
+        <lastmod>2018-03-08T15:55:02.744Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://blog.xmqbeast.com/2017/10/25/redis%E7%AE%80%E5%8D%95%E4%BB%8B%E7%BB%8D%E5%8F%8A%E5%AE%89%E8%A3%85%EF%BC%88linux%EF%BC%89/</loc>
         <lastmod>2018-03-08T15:55:02.743Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -335,7 +383,7 @@
     </url>
 
     <url>
-        <loc>http://blog.xmqbeast.com/2017/10/25/redis%E7%AE%80%E5%8D%95%E4%BB%8B%E7%BB%8D%E5%8F%8A%E5%AE%89%E8%A3%85%EF%BC%88linux%EF%BC%89/</loc>
+        <loc>http://blog.xmqbeast.com/2017/08/10/spring%20cloud%EF%BC%88%E4%B8%80%EF%BC%89%E6%9C%8D%E5%8A%A1%E6%B3%A8%E5%86%8C%E4%B8%8E%E5%8F%91%E7%8E%B0--eureka-server/</loc>
         <lastmod>2018-03-08T15:55:02.743Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -343,7 +391,7 @@
     </url>
 
     <url>
-        <loc>http://blog.xmqbeast.com/2017/10/12/npm-install%E9%A1%B9%E7%9B%AE%E5%87%BA%E9%94%99%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/</loc>
+        <loc>http://blog.xmqbeast.com/2017/10/22/mysql-root-localhost-%E6%97%A0%E6%B3%95%E7%99%BB%E5%BD%95/</loc>
         <lastmod>2018-03-08T15:55:02.742Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -351,7 +399,7 @@
     </url>
 
     <url>
-        <loc>http://blog.xmqbeast.com/2017/10/22/mysql-root-localhost-%E6%97%A0%E6%B3%95%E7%99%BB%E5%BD%95/</loc>
+        <loc>http://blog.xmqbeast.com/2017/10/12/npm-install%E9%A1%B9%E7%9B%AE%E5%87%BA%E9%94%99%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/</loc>
         <lastmod>2018-03-08T15:55:02.742Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -367,14 +415,6 @@
     </url>
 
     <url>
-        <loc>http://blog.xmqbeast.com/2017/10/09/maven-deploy%E5%88%B0nexus%E6%8A%A5401%EF%BC%8CUnauthorized/</loc>
-        <lastmod>2018-03-08T15:55:02.741Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
         <loc>http://blog.xmqbeast.com/2017/04/28/linux%E5%91%BD%E4%BB%A4-%E7%B3%BB%E7%BB%9F%E7%AE%A1%E7%90%86/</loc>
         <lastmod>2018-03-08T15:55:02.741Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -383,8 +423,8 @@
     </url>
 
     <url>
-        <loc>http://blog.xmqbeast.com/2017/10/07/linux%E4%B8%8B%E5%AE%89%E8%A3%85pm2/</loc>
-        <lastmod>2018-03-08T15:55:02.740Z</lastmod>
+        <loc>http://blog.xmqbeast.com/2017/10/09/maven-deploy%E5%88%B0nexus%E6%8A%A5401%EF%BC%8CUnauthorized/</loc>
+        <lastmod>2018-03-08T15:55:02.741Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -392,6 +432,14 @@
 
     <url>
         <loc>http://blog.xmqbeast.com/2017/10/08/linux%E4%B8%8B%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AEnexus/</loc>
+        <lastmod>2018-03-08T15:55:02.740Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://blog.xmqbeast.com/2017/10/07/linux%E4%B8%8B%E5%AE%89%E8%A3%85pm2/</loc>
         <lastmod>2018-03-08T15:55:02.740Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -439,7 +487,7 @@
     </url>
 
     <url>
-        <loc>http://blog.xmqbeast.com/2017/10/06/linux%E4%B8%8B%E5%AE%89%E8%A3%85Subversion-Apache/</loc>
+        <loc>http://blog.xmqbeast.com/2017/10/06/linux%E4%B8%8B%E5%AE%89%E8%A3%85MongoDB/</loc>
         <lastmod>2018-03-08T15:55:02.738Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -447,7 +495,7 @@
     </url>
 
     <url>
-        <loc>http://blog.xmqbeast.com/2017/10/06/linux%E4%B8%8B%E5%AE%89%E8%A3%85MongoDB/</loc>
+        <loc>http://blog.xmqbeast.com/2017/10/06/linux%E4%B8%8B%E5%AE%89%E8%A3%85Subversion-Apache/</loc>
         <lastmod>2018-03-08T15:55:02.738Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -503,7 +551,7 @@
     </url>
 
     <url>
-        <loc>http://blog.xmqbeast.com/2017/10/10/Vue2-0%E5%85%A5%E9%97%A8/</loc>
+        <loc>http://blog.xmqbeast.com/2017/04/26/MarkDown%E4%B8%80%E4%BA%9B%E5%B8%B8%E7%94%A8%E8%AF%AD%E6%B3%95/</loc>
         <lastmod>2018-03-08T15:55:02.735Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -511,7 +559,7 @@
     </url>
 
     <url>
-        <loc>http://blog.xmqbeast.com/2017/04/26/MarkDown%E4%B8%80%E4%BA%9B%E5%B8%B8%E7%94%A8%E8%AF%AD%E6%B3%95/</loc>
+        <loc>http://blog.xmqbeast.com/2017/10/10/Vue2-0%E5%85%A5%E9%97%A8/</loc>
         <lastmod>2018-03-08T15:55:02.735Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>

@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.xmqbeast.com/"/>
-  <updated>2018-05-27T07:10:36.655Z</updated>
+  <updated>2018-06-05T09:14:28.181Z</updated>
   <id>http://blog.xmqbeast.com/</id>
   
   <author>
@@ -15,6 +15,163 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>git tag的用法</title>
+    <link href="http://blog.xmqbeast.com/2018/06/05/git-tag%E7%9A%84%E7%94%A8%E6%B3%95/"/>
+    <id>http://blog.xmqbeast.com/2018/06/05/git-tag的用法/</id>
+    <published>2018-06-05T09:08:55.000Z</published>
+    <updated>2018-06-05T09:14:28.181Z</updated>
+    
+    <content type="html"><![CDATA[<p>标签（tag）可以针对某一时间点的版本做标记，常用于版本发布。</p><p>列出标签</p><pre><code>// 在控制台打印出当前仓库的所有标签$ git tag // 搜索符合模式的标签$ git tag -l ‘v0.1.*’</code></pre><p>打标签</p><p>git标签分为两种类型：轻量标签和附注标签。轻量标签是指向提交对象的引用，附注标签则是仓库中的一个独立对象。建议使用附注标签。</p><pre><code>// 创建轻量标签$ git tag v0.1.2-light// 创建附注标签$ git tag -a v0.1.2 -m “0.1.2版本”</code></pre><p>创建轻量标签不需要传递参数，直接指定标签名称即可。<br>创建附注标签时，参数a即annotated的缩写，指定标签类型，后附标签名。参数m指定标签说明，说明信息会保存在标签对象中。</p><p>切换到标签</p><p>与切换分支命令相同，用git checkout [tagname]</p><p>查看标签信息</p><pre><code>用git show命令可以查看标签的版本信息：$ git show v0.1.2</code></pre><p>删除标签</p><p>误打或需要修改标签时，需要先将标签删除，再打新标签。</p><pre><code>// 删除标签$ git tag -d v0.1.2</code></pre><p>参数d即delete的缩写，意为删除其后指定的标签。</p><p>给指定的commit打标签</p><p>打标签不必要在head之上，也可在之前的版本上打，这需要你知道某个提交对象的校验和（通过git log获取） </p><pre><code>// 补打标签$ git tag -a v0.1.1 9fbc3d0</code></pre><p>标签发布</p><p>通常的git push不会将标签对象提交到git服务器，我们需要进行显式的操作：</p><pre><code># 将v0.1.2标签提交到git服务器$ git push origin v0.1.2</code></pre><p>注意：如果想看之前某个标签状态下的文件，可以这样操作</p><pre><code>1.git tag   查看当前分支下的标签2.git  checkout v0.21   此时会指向打v0.21标签时的代码状态，（但现在处于一个空的分支上）3. cat  test.txt   查看某个文件</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;标签（tag）可以针对某一时间点的版本做标记，常用于版本发布。&lt;/p&gt;
+&lt;p&gt;列出标签&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// 在控制台打印出当前仓库的所有标签
+$ git tag 
+
+// 搜索符合模式的标签
+$ git tag -l ‘v0.1.*’
+&lt;/code&gt;&lt;/pr
+      
+    
+    </summary>
+    
+    
+      <category term="git" scheme="http://blog.xmqbeast.com/tags/git/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>redis setnx的用法</title>
+    <link href="http://blog.xmqbeast.com/2018/06/05/redis-setnx%E7%9A%84%E7%94%A8%E6%B3%95/"/>
+    <id>http://blog.xmqbeast.com/2018/06/05/redis-setnx的用法/</id>
+    <published>2018-06-05T02:52:43.000Z</published>
+    <updated>2018-06-05T02:55:59.260Z</updated>
+    
+    <content type="html"><![CDATA[<pre><code>SETNX key value</code></pre><p>将 key 的值设为 value ，当且仅当 key 不存在。</p><p>若给定的 key 已经存在，则 SETNX 不做任何动作。</p><p>SETNX 是『SET if Not eXists』(如果不存在，则 SET)的简写。</p><p>可用版本：&gt;= 1.0.0</p><p>时间复杂度：<br>O(1)</p><p>返回值：<br>设置成功，返回 1 。<br>设置失败，返回 0 。</p><pre><code>redis&gt; EXISTS job                # job 不存在(integer) 0redis&gt; SETNX job &quot;programmer&quot;    # job 设置成功(integer) 1redis&gt; SETNX job &quot;code-farmer&quot;   # 尝试覆盖 job ，失败(integer) 0redis&gt; GET job                   # 没有被覆盖&quot;programmer&quot;</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;pre&gt;&lt;code&gt;SETNX key value
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;将 key 的值设为 value ，当且仅当 key 不存在。&lt;/p&gt;
+&lt;p&gt;若给定的 key 已经存在，则 SETNX 不做任何动作。&lt;/p&gt;
+&lt;p&gt;SETNX 是『SET if Not eX
+      
+    
+    </summary>
+    
+    
+      <category term="redis" scheme="http://blog.xmqbeast.com/tags/redis/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>关于maven的denpencyManagement</title>
+    <link href="http://blog.xmqbeast.com/2018/05/28/%E5%85%B3%E4%BA%8Emaven%E7%9A%84denpencyManagement/"/>
+    <id>http://blog.xmqbeast.com/2018/05/28/关于maven的denpencyManagement/</id>
+    <published>2018-05-28T09:56:03.000Z</published>
+    <updated>2018-05-28T10:01:48.714Z</updated>
+    
+    <content type="html"><![CDATA[<p>这里介绍一个在父项目中的根结点中声明dependencyManagement和dependencies的区别</p><p>dependencyManagement</p><p>Maven 使用dependencyManagement 元素来提供了一种管理依赖版本号的方式。通常会在一个组织或者项目的最顶层的父POM 中看到dependencyManagement 元素。使用pom.xml 中的dependencyManagement 元素能让所有在子项目中引用一个依赖而不用显式的列出版本号。Maven 会沿着父子层次向上走，直到找到一个拥有dependencyManagement 元素的项目，然后它就会使用在这个dependencyManagement 元素中指定的版本号。</p><p>例如在父项目里：</p><pre><code>&lt;dependencyManagement&gt;      &lt;dependencies&gt;      &lt;dependency&gt;      &lt;groupId&gt;mysql&lt;/groupId&gt;      &lt;artifactId&gt;mysql-connector-java&lt;/artifactId&gt;      &lt;version&gt;5.1.2&lt;/version&gt;      &lt;/dependency&gt;       &lt;dependencies&gt;  &lt;/dependencyManagement&gt; </code></pre><p>然后在子项目里就可以添加mysql-connector时可以不指定版本号，例如：</p><pre><code>&lt;dependencies&gt;      &lt;dependency&gt;      &lt;groupId&gt;mysql&lt;/groupId&gt;      &lt;artifactId&gt;mysql-connector-java&lt;/artifactId&gt;      &lt;/dependency&gt;  &lt;/dependencies&gt; </code></pre><p>这样做的好处就是：如果有多个子项目都引用同一样依赖，则可以避免在每个使用的子项目里都声明一个版本号，这样当想升级或切换到另一个版本时，只需要在顶层父容器里更新，而不需要一个一个子项目的修改 ；另外如果某个子项目需要另外的一个版本，只需要声明version就可。</p><p>dependencyManagement里只是声明依赖，并不实现引入，因此子项目需要显式的声明需要用的依赖。</p><p>dependencies</p><p>相对于dependencyManagement，所有声明在dependencies里的依赖都会自动引入，并默认被所有的子项目继承。</p><p>classifier</p><p>如果你要发布同样的代码，但是由于技术原因需要生成两个单独的构件，你就要使用一个分类器（classifier）。例如，如果你想要构建两个单独的构件成JAR，一个使用Java 1.4 编译器，另一个使用Java 6 编译器，你就可以使用分类器<br>来生成两个单独的JAR构件，它们有同样的groupId:artifactId:version组合。如果你的项目使用本地扩展类库，你可以使用分类器为每一个目标平台生成一个构件。分类器常用于打包构件的源码，JavaDoc 或者二进制集合。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;这里介绍一个在父项目中的根结点中声明dependencyManagement和dependencies的区别&lt;/p&gt;
+&lt;p&gt;dependencyManagement&lt;/p&gt;
+&lt;p&gt;Maven 使用dependencyManagement 元素来提供了一种管理依赖版本号的方式
+      
+    
+    </summary>
+    
+    
+      <category term="maven" scheme="http://blog.xmqbeast.com/tags/maven/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>git push命令</title>
+    <link href="http://blog.xmqbeast.com/2018/05/28/git-push%E5%91%BD%E4%BB%A4/"/>
+    <id>http://blog.xmqbeast.com/2018/05/28/git-push命令/</id>
+    <published>2018-05-28T02:56:27.000Z</published>
+    <updated>2018-05-28T03:03:21.635Z</updated>
+    
+    <content type="html"><![CDATA[<p>git push命令用于将本地分支的更新，推送到远程主机。它的格式与git pull命令相似。</p><pre><code>$ git push &lt;远程主机名&gt; &lt;本地分支名&gt;:&lt;远程分支名&gt;</code></pre><p>示例</p><pre><code>$ git push origin master</code></pre><p>上面命令表示，将本地的master分支推送到origin主机的master分支。如果master不存在，则会被新建。</p><p>如果省略本地分支名，则表示删除指定的远程分支，因为这等同于推送一个空的本地分支到远程分支。</p><pre><code>$ git push origin :master# 等同于$ git push origin --delete master</code></pre><p>上面命令表示删除origin主机的master分支。如果当前分支与远程分支之间存在追踪关系，则本地分支和远程分支都可以省略。</p><pre><code>$ git push origin</code></pre><p>上面命令表示，将当前分支推送到origin主机的对应分支。如果当前分支只有一个追踪分支，那么主机名都可以省略。</p><pre><code>$ git push</code></pre><p>如果当前分支与多个主机存在追踪关系，则可以使用-u选项指定一个默认主机，这样后面就可以不加任何参数使用git push。</p><pre><code>$ git push -u origin master    </code></pre><p>上面命令将本地的master分支推送到origin主机，同时指定origin为默认主机，后面就可以不加任何参数使用git push了。</p><pre><code>$ git push --all origin</code></pre><p>上面命令表示，将所有本地分支都推送到origin主机。<br>如果远程主机的版本比本地版本更新，推送时Git会报错，要求先在本地做git pull合并差异，然后再推送到远程主机。这时，如果你一定要推送，可以使用–force选项。</p><pre><code>$ git push --force origin</code></pre><p>上面命令使用-–force选项，结果导致在远程主机产生一个”非直进式”的合并(non-fast-forward merge)。除非你很确定要这样做，否则应该尽量避免使用–-force选项。</p><p>最后，git push不会推送标签(tag)，除非使用–tags选项。</p><pre><code>$ git push origin --tags</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;git push命令用于将本地分支的更新，推送到远程主机。它的格式与git pull命令相似。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ git push &amp;lt;远程主机名&amp;gt; &amp;lt;本地分支名&amp;gt;:&amp;lt;远程分支名&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;示例&lt;/p
+      
+    
+    </summary>
+    
+    
+      <category term="git" scheme="http://blog.xmqbeast.com/tags/git/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>linux git clone ssl connect error</title>
+    <link href="http://blog.xmqbeast.com/2018/05/28/linux-git-clone-ssl-connect-error/"/>
+    <id>http://blog.xmqbeast.com/2018/05/28/linux-git-clone-ssl-connect-error/</id>
+    <published>2018-05-27T18:03:17.000Z</published>
+    <updated>2018-05-27T18:05:40.986Z</updated>
+    
+    <content type="html"><![CDATA[<p>linux下 git clone 出现</p><pre><code>fatal: unable to access &apos;https://github.com/angular/bower-angular.git/&apos;: SSL connect error </code></pre><p>升级 nss curl libcurl 就好了</p><p>   分别执行 </p><pre><code>yum update nssyum update curlyum update libcurl</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;linux下 git clone 出现&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;fatal: unable to access &amp;apos;https://github.com/angular/bower-angular.git/&amp;apos;: SSL connect error 
+
+      
+    
+    </summary>
+    
+    
+      <category term="git" scheme="http://blog.xmqbeast.com/tags/git/"/>
+    
+      <category term="linux" scheme="http://blog.xmqbeast.com/tags/linux/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>linux下安装git</title>
+    <link href="http://blog.xmqbeast.com/2018/05/28/linux%E4%B8%8B%E5%AE%89%E8%A3%85git/"/>
+    <id>http://blog.xmqbeast.com/2018/05/28/linux下安装git/</id>
+    <published>2018-05-27T17:41:13.000Z</published>
+    <updated>2018-05-27T17:47:33.981Z</updated>
+    
+    <content type="html"><![CDATA[<p>Git是一个开源的分布式版本控制系统，可以有效、高速的处理从很小到非常大的项目版本管理。而国外的GitHub和国内的Coding都是项目的托管平台。但是在使用Git工具的时候，第一步要学会如何安装git，本教程就手把手教大家如何手动编译安装git。</p><p>1、介绍</p><p>　　使用Coding管理项目，上面要求使用的git版本为1.8.0以上，而很多yum源上自动安装的git版本为1.7，所以需要掌握手动编译安装git方法。</p><p>2、安装git依赖包</p><pre><code>yum install curl-devel expat-devel gettext-devel openssl-devel zlib-devel gcc perl-ExtUtils-MakeMaker</code></pre><p>3、删除已有的git</p><pre><code>yum remove git</code></pre><p>4、下载git源码</p><p>　　切换到你的包文件存放目录下　　            </p><pre><code>cd /usr/src</code></pre><p>下载git安装包</p><pre><code>wget https://www.kernel.org/pub/software/scm/git/git-2.8.3.tar.gz</code></pre><p>　　解压git安装包                </p><pre><code>tar -zxvf git-2.8.3.tar.gz　　cd git-2.8.3</code></pre><p>　　配置git安装路径　</p><pre><code>./configure prefix=/usr/local/git/</code></pre><p>　　编译并且安装　　　　</p><pre><code>make &amp;&amp; make install</code></pre><p>　　查看git版本号　　    </p><pre><code>cd /usr/local/git/bingit --version</code></pre><p>　　git已经安装完毕</p><p>5、将git指令添加到bash中　</p><pre><code>vi /etc/profile</code></pre><p>　　在最后一行加入</p><pre><code>export PATH=$PATH:/usr/local/git/bin</code></pre><p>　　让该配置文件立即生效</p><pre><code>source /etc/profile</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;Git是一个开源的分布式版本控制系统，可以有效、高速的处理从很小到非常大的项目版本管理。而国外的GitHub和国内的Coding都是项目的托管平台。但是在使用Git工具的时候，第一步要学会如何安装git，本教程就手把手教大家如何手动编译安装git。&lt;/p&gt;
+&lt;p&gt;1、介绍&lt;
+      
+    
+    </summary>
+    
+    
+      <category term="linux" scheme="http://blog.xmqbeast.com/tags/linux/"/>
+    
+  </entry>
   
   <entry>
     <title>linux下搭建go环境</title>
@@ -362,149 +519,6 @@
     
     
       <category term="redis" scheme="http://blog.xmqbeast.com/tags/redis/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>redis Rpop命令</title>
-    <link href="http://blog.xmqbeast.com/2018/05/14/redis-Rpop%E5%91%BD%E4%BB%A4/"/>
-    <id>http://blog.xmqbeast.com/2018/05/14/redis-Rpop命令/</id>
-    <published>2018-05-13T17:02:36.000Z</published>
-    <updated>2018-05-13T17:46:28.638Z</updated>
-    
-    <content type="html"><![CDATA[<p>Redis Rpop 命令</p><p>Redis Rpop 命令用于移除并返回列表的最后一个元素。</p><p>语法<br>redis Rpop 命令基本语法如下：</p><pre><code>redis 127.0.0.1:6379&gt; RPOP KEY_NAME </code></pre><p>返回值<br>列表的最后一个元素。 当列表不存在时，返回 nil 。</p><p>实例</p><pre><code>redis&gt; RPUSH mylist &quot;one&quot;(integer) 1redis&gt; RPUSH mylist &quot;two&quot;(integer) 2redis&gt; RPUSH mylist &quot;three&quot;(integer) 3redis&gt; RPOP mylist&quot;three&quot;redis&gt; LRANGE mylist 0 -11) &quot;one&quot;2) &quot;two&quot;redis&gt; </code></pre>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;Redis Rpop 命令&lt;/p&gt;
-&lt;p&gt;Redis Rpop 命令用于移除并返回列表的最后一个元素。&lt;/p&gt;
-&lt;p&gt;语法&lt;br&gt;redis Rpop 命令基本语法如下：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;redis 127.0.0.1:6379&amp;gt; RPOP KEY_NA
-      
-    
-    </summary>
-    
-    
-      <category term="redis" scheme="http://blog.xmqbeast.com/tags/redis/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>redis4.0.2配置远程连接（centos7.2）</title>
-    <link href="http://blog.xmqbeast.com/2018/05/14/redis4-0-2%E9%85%8D%E7%BD%AE%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5%EF%BC%88centos7-2%EF%BC%89/"/>
-    <id>http://blog.xmqbeast.com/2018/05/14/redis4-0-2配置远程连接（centos7-2）/</id>
-    <published>2018-05-13T16:52:01.000Z</published>
-    <updated>2018-05-13T16:55:20.907Z</updated>
-    
-    <content type="html"><![CDATA[<p>最近开始学习redis，在服务器上安装了redis之后，远程连接一直连接不上，报错如下：</p><p> redis.clients.jedis.exceptions.JedisConnectionException: java.net.ConnectException: Connection refused: connect</p><p>总结原因如下：<br>1、6379端口没有开放<br>2.修改redis.conf配置文件</p><p>这个文件需要修改两个地方</p><p>打开redis.conf文件<br>　　按crrl+F查询，</p><p>找到bind 127.0.0.1，把这行前面加个#注释掉<br>再查找protected-mode yes 把yes修改为no，然后：wq保存文件，<br>把服务关掉</p><p>redis远程连接命令:redis-cli -h 127.0.0.1 -p 6379</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;最近开始学习redis，在服务器上安装了redis之后，远程连接一直连接不上，报错如下：&lt;/p&gt;
-&lt;p&gt; redis.clients.jedis.exceptions.JedisConnectionException: java.net.ConnectException: 
-      
-    
-    </summary>
-    
-    
-      <category term="redis" scheme="http://blog.xmqbeast.com/tags/redis/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>redis 消息队列(一)</title>
-    <link href="http://blog.xmqbeast.com/2018/05/13/redis-%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97-%E4%B8%80/"/>
-    <id>http://blog.xmqbeast.com/2018/05/13/redis-消息队列-一/</id>
-    <published>2018-05-13T15:33:43.000Z</published>
-    <updated>2018-05-13T16:07:53.461Z</updated>
-    
-    <content type="html"><![CDATA[<p>Redis队列功能介绍</p><p>List</p><p>常用命令：</p><p>Blpop删除，并获得该列表中的第一元素，或阻塞，直到有一个可用</p><p>Brpop删除，并获得该列表中的最后一个元素，或阻塞，直到有一个可用</p><p>Brpoplpush</p><p>Lindex获取一个元素，通过其索引列表</p><p>Linsert在列表中的另一个元素之前或之后插入一个元素</p><p>Llen获得队列(List)的长度</p><p>Lpop从队列的左边出队一个元素</p><p>Lpush从队列的左边入队一个或多个元素</p><p>Lpushx当队列存在时，从队到左边入队一个元素</p><p>Lrange从列表中获取指定返回的元素</p><p>Lrem从列表中删除元素</p><p>Lset设置队列里面一个元素的值</p><p>Ltrim修剪到指定范围内的清单</p><p>Rpop从队列的右边出队一个元素</p><p>Rpoplpush删除列表中的最后一个元素，将其追加到另一个列表</p><p>Rpush从队列的右边入队一个元素</p><p>Rpushx从队列的右边入队一个元素，仅队列存在时有效</p><p>   应用场景：</p><p>Redis list的应用场景非常多，也是Redis最重要的数据结构之一，比如twitter的关注列表，粉丝列表等都可以用Redis的list结构来实现。</p><p>Lists 就是链表，相信略有数据结构知识的人都应该能理解其结构。使用Lists结构，我们可以轻松地实现最新消息排行等功能。</p><p>Lists的另一个应用就是消息队列，</p><p>可以利用Lists的PUSH操作，将任务存在Lists中，然后工作线程再用POP操作将任务取出进行执行。Redis还提供了操作Lists中某一段的api，你可以直接查询，删除Lists中某一段的元素。</p><p>如果需要还可以用redis的Sorted-Sets数据结构来做优先队列.可以给每条消息加上一个唯一的序号。这里就不详细介绍了。</p><p>示意图:</p><p>1)入队</p><p><img src="http://oncykm32h.bkt.clouddn.com/041122275024610.png" alt="redis-queue"></p><p>2)jedis rpoplpush</p><p>具体方法为</p><pre><code>/** * Atomically return and remove the last (tail) element of the srckey list, and push the element * as the first (head) element of the dstkey list. For example if the source list contains the * elements &quot;a&quot;,&quot;b&quot;,&quot;c&quot; and the destination list contains the elements &quot;foo&quot;,&quot;bar&quot; after an * RPOPLPUSH command the content of the two lists will be &quot;a&quot;,&quot;b&quot; and &quot;c&quot;,&quot;foo&quot;,&quot;bar&quot;. * &lt;p&gt; * If the key does not exist or the list is already empty the special value &apos;nil&apos; is returned. If * the srckey and dstkey are the same the operation is equivalent to removing the last element * from the list and pusing it as first element of the list, so it&apos;s a &quot;list rotation&quot; command. * &lt;p&gt; * Time complexity: O(1) * @param srckey * @param dstkey * @return Bulk reply */  public String rpoplpush(final String srckey, final String dstkey)</code></pre><p>RPOPLPUSH source destination</p><p>命令 RPOPLPUSH 在一个原子时间内，执行以下两个动作：</p><p>将列表 source 中的最后一个元素(尾元素)弹出，并返回给客户端。<br>将 source 弹出的元素插入到列表 destination ，作为 destination 列表的的头元素。<br>举个例子，你有两个列表 source 和 destination ， source 列表有元素 a, b, c ， destination 列表有元素 x, y, z ，执行 RPOPLPUSH source destination 之后， source 列表包含元素 a, b ， destination 列表包含元素 c, x, y, z ，并且元素 c 会被返回给客户端。</p><p>如果 source 不存在，值 nil 被返回，并且不执行其他动作。</p><p>如果 source 和 destination 相同，则列表中的表尾元素被移动到表头，并返回该元素，可以把这种特殊情况视作列表的旋转(rotation)操作</p><p>3） jedis rpop</p><p>返回字符串，最后一个元素的值，或者关键不存在返回nil。</p><pre><code> /**   * Atomically return and remove the first (LPOP) or last (RPOP) element of the list. For example   * if the list contains the elements &quot;a&quot;,&quot;b&quot;,&quot;c&quot; RPOP will return &quot;c&quot; and the list will become   * &quot;a&quot;,&quot;b&quot;.   * &lt;p&gt;   * If the key does not exist or the list is already empty the special value &apos;nil&apos; is returned.   * @see #lpop(String)   * @param key   * @return Bulk reply   */public String rpop(final String key)</code></pre><p>4) jedis lpush</p><pre><code>/**  * Add the string value to the head (LPUSH) or tail (RPUSH) of the list stored at key. If the key  * does not exist an empty list is created just before the append operation. If the key exists but  * is not a List an error is returned.  * &lt;p&gt;  * Time complexity: O(1)  * @param key  * @param strings  * @return Integer reply, specifically, the number of elements inside the list after the push  *         operation.  */public Long lpush(final String key, final String... strings)</code></pre>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;Redis队列功能介绍&lt;/p&gt;
-&lt;p&gt;List&lt;/p&gt;
-&lt;p&gt;常用命令：&lt;/p&gt;
-&lt;p&gt;Blpop删除，并获得该列表中的第一元素，或阻塞，直到有一个可用&lt;/p&gt;
-&lt;p&gt;Brpop删除，并获得该列表中的最后一个元素，或阻塞，直到有一个可用&lt;/p&gt;
-&lt;p&gt;Brpoplpush&lt;
-      
-    
-    </summary>
-    
-    
-      <category term="redis" scheme="http://blog.xmqbeast.com/tags/redis/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>凡是你排斥的，就是你所要学习的</title>
-    <link href="http://blog.xmqbeast.com/2018/03/18/%E5%87%A1%E6%98%AF%E4%BD%A0%E6%8E%92%E6%96%A5%E7%9A%84%EF%BC%8C%E5%B0%B1%E6%98%AF%E4%BD%A0%E6%89%80%E8%A6%81%E5%AD%A6%E4%B9%A0%E7%9A%84/"/>
-    <id>http://blog.xmqbeast.com/2018/03/18/凡是你排斥的，就是你所要学习的/</id>
-    <published>2018-03-18T09:55:57.000Z</published>
-    <updated>2018-03-18T11:03:29.813Z</updated>
-    
-    <content type="html"><![CDATA[<p>&emsp;&emsp;&emsp; 最近有点迷上了心理学，也许是因为自己本身心理方面有些问题，也希望借此改善自己，所以会去看一些心理学方面的内容。“意识”、“潜意识”，对这些还不是有一个很清晰的了解，从小就一直很羡慕别人的家庭，可能是自己一直得不到家庭的温暖吧，现在老大不小了，并不是很想找个女朋友组个家庭，可能是那个阴影一直在脑海里吧。说这些并不是要怪家人什么，只是希望如果有人跟我有同样的经历，希望能或多或少帮助他们一些。我也一直很想改变自己“潜意识”里面那些不好的东西，所以自己也一直在努力在寻找自己“潜意识”里的那个“我”，希望可以改变“潜意识”里面的那个“我”</p><p>&emsp;&emsp;&emsp; 法则一：【从外在看内在，从别人看自己】透过别人，你才能认识真正的自己，你从别人身上看到的其实是自己。我们对别人的意见，主要是取决于他们使我们看清自己什么，而不是我们如何看他们。你所有的人际关系都是一面镜子，透过它们，你才能认识真正的自己。你在发觉对方的过程中，不知不觉你也等于是在发掘自己。去了解他的感觉、想法，你也会更了解自己，你们相互成为对方的镜子。如果你觉得伴侣对你失去热情，可能是因为你也对他失去热情；就像一位婚姻专家说的：「如果我们的婚姻变得乏味，可能是因为我觉得乏味，或更糟的是我这个人很乏味。」 事实上，那些令你厌恶的人是在帮助你，他帮助你了解自己，让你发觉你的阴暗面。这也就是为什么当我们跟一个人越亲密，就越容易产生厌恶，因为他让你看到了自己 的真面目。别人最惹你讨厌的地方，通常也是你自己最受不了的地方。</p><p>&emsp;&emsp;&emsp; 法则二：【你是什么样的人，就会认为别人是什么样】 你不能容忍他人的部分，就是不能容忍自己的部分。一个品德不好的人，就会怀疑别人的品德；一个对别人不忠诚的人，也会怀疑别人对他的忠诚；一个不正直、不正经的人，就会把别人的任何举动都「想歪」，因为他就是那样的人。一个对的女人有非分之想的人，自然而然地，也会猜疑自己的女人。老遇到讨厌的事的，往往是令人讨厌的人。喜欢挑人毛病的人，其实自己才是最有毛病；喜欢说三道四的人，其实自己才是最不三不四。如果你很爱发脾气，你就会认为别人经常惹你生气，每一件事都可能变成你愤怒的理由。并不是说每一样东西都是错的，而是你会投射，你会把隐藏在自己内在的东西投射到别人身上。你会谴责每一个人、每一件事，因为你有太多的怒气，所以即使是一点小事也能引燃怒火。同样，别人对你说什么，也反映了他们是谁及他们的内心世界。他们批评你很可能是因为他们对自己的不满，甚至他们自己就是他们所批评的「那种人」。当你的内心走向良善时，你将停止批评别人和对别人的批评产生反弹。如果你对一颗长满苹果的树丢石头，掉下来的就只会是苹果，不管谁丢都一样。一个真正良善的人，不管你对他怎么样，他显现出来的就只会是平和、良善，因为他就是那样的人。</p><p>&emsp;&emsp;&emsp; 法则三：【你内在是什么，就会被什么样的吸引】你对外排斥什么，对内就排斥什么。一般而言，那些我们相处愉快的人，正是反映了我们喜欢且接受的内在自我；而那些我们不喜欢的人，也反映我们不愉快且不接受内在的自我。教双方和谐相处，不如教他们让自己内心和谐，那样双方自然会和谐；教他们如何增进彼此感情，还不如教他们增进自我成长，那样彼此关系自然会成长。当有人问我要如何改善关系，我总会告诉他们：「首先你要深入内在，除非你内在的问题先解决，否则你不但无法改善，而且会制造更多问题。」 一个有控制欲的人，除非内在的空虚得到填补，否则就不可能停止怨怼；一个爱嫉妒的人，除非内在能找到自信，不再跟人比较，否则就不可能嫉妒。每个人外在的言行举止都是内在思想的呈现。你如果无法信任自己，就很难信任别人；你如果无法尊重自己，就很难尊重别人；你如果无法肯定自己，就很难肯定别人；你如果不能照亮自己，就不可能照亮别人。当伴侣们没有了爱而彼此伤害，我不会告诉他们要如何努力爱对方，而是要求他们先学会爱自己，因为伤害对方其实就是在伤害自己。你与每个人的关系，都反映出你与自己的关系。如果你不断与自己的内在冲突，那么你也会不断地与别人冲突；如果你自己内在的情感挣扎，那么你也会与别人在情感上发生挣扎。我们在感情中所遭遇的问题，就是我们内在的问题。我们吸引的关系，都反映出我们拥有的特质，以及呈现我们的内在自我。所以，关系出问题的人，不仅要检讨你跟别人的关系，也要反省你跟自己的关系。</p><p>以下是一些可以自我检视的问题：「当我观察你所反映的我，我感到ˍˍˍˍˍ。」（诸如愤怒、恐惧、失控、困惑之类的感受。）「你反映了我的哪个自我？」 「外在」困扰我们的问题，正是我们「内在」无法整合的部分。 如果你想改善外在的一切，就必须从改变内在开始。 </p><p>&emsp;&emsp;&emsp; 法则四：【你约束别人，自己也会被约束】 你越恨就越束缚，你越爱就越自由。当你掌控别人时，你同时也被掌控；如果你绑住别人，别人也会绑住你。你想想看，当你控制别人，不准他们做这做那个，那如果他们不按照你说的话去做呢？你会怎么样？你就会不高兴，对吗？你的喜怒哀乐是由别人来决定，你认为他们是被你掌控的吗？不，其实你才是被掌控的。以眼还眼，结果是大家都瞎了。如果你不断在记忆中反刍旧伤痛，你就是给了最初导致伤痛的人、事一再伤害你的力量。当你怨恨别人时，表示某种程度上，你也怨恨自己。要怎么彻底消灭敌人？把敌人变成朋友！你就会发现，那些最难得到原谅的人，正是你最需要原谅的人；最难放手的人，正是你最需要放手的人。</p><p>&emsp;&emsp;&emsp; 法则五：【如果你很排斥，它就是你必须学习的课题】 如果你很欣赏，它就可以蜕变成爱。我们的主要的人际关系，不断地反映该学习的课题是什么。无论是你的老板、同事、朋友、情人、配偶或小孩皆然，这些人所拥有的你所不喜欢的个性、想法和行为，往往都是你需要学习的部分。他们会显露你的阴影，会一再地重复你所厌恶的言行来让你学习。当有人指出你的错误，你很气那个，但这是他的错吗？不，他只是帮你把「发霉的阴影」拿出来晒晒太阳。你不会因为别人说你想偷窃海洋馆的一只鲸鲨而冒火，因为那是你连想都不会想做的事。但是，如果你太太说你旅游出差是想借机去「偷腥」，你可能就会辩驳，甚至发火。为什么？因为这种事有可能发生，或曾经甚至已经发生了。没错，一般而言，越接近事实的指控，你越有可能起而辩护和发火。 所以，以后当别人指责你的时候，不要再像以前一样，立刻去攻击或反击，你要开始反问自己，因为他们说的很可能是真的。 如果不是真的，你又何必那么「当真」，对吗？ 他们之所以会安排在你身边，都是「有原因」的。 因此，不要说不喜欢就排斥或试图逃避他们，因为他们都是「天赐的良缘」，你应该好好利用这个机缘来蜕变自己。 去爱一个喜欢你的人，没什么了不起。 去爱一个爱你的人，你什么分数也得不到。 去爱一个你不喜欢的人，你一定会在生命中学到一些东西。 去爱一个无缘无故责备你的人，你就学到了生命的艺术。 ——印度大师古儒吉 爱是什么？ 爱就是欣赏你不喜欢和不爱的。 如果在你生活周遭有太多你讨厌或不爱的人事物，那是因为你一直在排斥，所以他们才会一再出现，你必须学会​​生活的艺术——将它们蜕变成爱。</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;&amp;emsp;&amp;emsp;&amp;emsp; 最近有点迷上了心理学，也许是因为自己本身心理方面有些问题，也希望借此改善自己，所以会去看一些心理学方面的内容。“意识”、“潜意识”，对这些还不是有一个很清晰的了解，从小就一直很羡慕别人的家庭，可能是自己一直得不到家庭的温暖吧，现在老大不
-      
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>关于融资</title>
-    <link href="http://blog.xmqbeast.com/2018/03/12/%E5%85%B3%E4%BA%8E%E8%9E%8D%E8%B5%84/"/>
-    <id>http://blog.xmqbeast.com/2018/03/12/关于融资/</id>
-    <published>2018-03-11T16:23:16.000Z</published>
-    <updated>2018-03-11T16:47:30.151Z</updated>
-    
-    <content type="html"><![CDATA[<p>&ensp;&ensp;&emsp;  一直在想一些关于创业的事情，最近炒的很火的比特币、区块链技术、去中心化等等，也许现在的社会是有点浮躁了，每个人都想快速增加自己的财富，所以造成一大堆人的赌博、跟风心理。可能过了30岁这个槛，我现在也有点这种心理，可能是技术出身，所以也不太会去赌博，还是希望在新的一年里能静下心来好好专研技术。最近在面试，跟面试官聊了一些创业的东西，感觉还是不错的，淘宝、支付宝能成功，是因为他们解决了买家跟卖家的信任问题，淘宝网购确实给社会带来了很大便利，也解决了很多社会问题，就业、商品的销售渠道等等。我觉得，如果能解决信任问题，就可以做成很多买卖，就跟滴滴的私家车一样，解决了车主跟乘客的信任问题，同时也给社会创造了价值，让跑私家车的司机可以多赚点家用补贴，还是非常了不起的。但是话说回来，做平台也并不是那么容易的，需要大众的信任，因为很多平台也是做到一半就跑路，所以让人信任也不是一件容易的事儿。</p><p>   &ensp;&ensp;&emsp;  刚看到一篇融资的文章，写的还不错，如果有一天，能自己创业，拿到投资或者融资的钱，一定会尽心尽力去做，当前应该做一些比较实际的东西，比如说做好技术、锻炼身体、好好爱自己等等。</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;&amp;ensp;&amp;ensp;&amp;emsp;  一直在想一些关于创业的事情，最近炒的很火的比特币、区块链技术、去中心化等等，也许现在的社会是有点浮躁了，每个人都想快速增加自己的财富，所以造成一大堆人的赌博、跟风心理。可能过了30岁这个槛，我现在也有点这种心理，可能是技术出身，所以也
-      
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>七秒钟的记忆</title>
-    <link href="http://blog.xmqbeast.com/2018/03/11/%E4%B8%83%E7%A7%92%E9%92%9F%E7%9A%84%E8%AE%B0%E5%BF%86/"/>
-    <id>http://blog.xmqbeast.com/2018/03/11/七秒钟的记忆/</id>
-    <published>2018-03-11T06:36:48.000Z</published>
-    <updated>2018-03-11T13:24:58.205Z</updated>
-    
-    <content type="html"><![CDATA[<p>  &ensp;&ensp;&emsp; 一直在思考一些心理、行为，可能自己有一些心理或精神上的缺失，所以有时候会比较想去研究这些东西。活了30多年，也许之前自己是一直处于比较迷茫的，但是也一直在很努力寻找努力的方向。这些话看起来很老套，有点像心灵鸡汤的东西，但人确确实实是需要目标或者理想的。慢慢发现，自己对那些美好的文字、音乐、电影等艺术算是比较感兴趣，假如自己的职业不是一个程序员，可能会去搞艺术或者当一名运动员，因为自己也算是比较喜欢运动的，然而这艺术跟运动的门槛比当一名程序员高得多，所以暂时也没有想换行业的想法，还是会花大部分精力在写代码上面。</p><p>  &ensp;&ensp;&emsp; 写这些东西可能是因为做一个总结吧，刚过完农历的新年，算是一个新的开始吧。最近在看一本叫《心流》的心理学相关方面的书，里面有说到，我们接收到的每一条资讯，都要经过自我的批判。它对我们的目标是威胁、支持，还是完全中立？股市下跌的消息往往令银行家担忧，但对政治异议分子却可能是振奋人心的好消息。一条新资讯可能会使我们付出所有心力应付威胁，造成意识的失序；但它也可能强化我们的目标，激发出更多的精神能量。</p><p>  &ensp;&ensp;&emsp; 当我们发觉收到的资讯与目标亲和，精神能量就会源源不断，没有担心的必要，也无须猜疑自己的能力。我们不再怀疑自己，只因为我们得到了明确的鼓励：“你做得很好！”积极的反馈强化了自我，使我们能投入更多的注意力，照顾内心与外在环境的平衡。最优体验出现时，一个人可以投入全部的注意力，以求实现目标；没有失序现象需要整顿，自我也没有受到任何威胁，因此不需要分心防卫。我们称它为“心流体验”，处于最优状态时的感觉：“好像漂浮起来”，“一股洪流带领着我”。它正好是精神熵的反面————实际上，有时候我们称它为“精神负熵”。拥有它的人就能培养一股更坚强、更自信的自我，能够用更多的精神力量，专注于自己选择的目标。</p><p>  &ensp;&ensp;&emsp; 一个人若能充分掌控意识，尽可能创造心流体验，生活品质势必会提高。即使是平凡无奇地例行公事，经过自我转换，也变得有方向、有乐趣。在心流中，我们是精神力量的主宰，无论做什么事都能使意识更有秩序。以下是一名知名攀岩专家的心流体验：</p><pre><code>越来越完美的自我控制，产生一种痛快的感觉你不断逼身体发挥所有的极限，直到全身隐隐作痛然后你会满怀敬畏地回顾自我，回顾你所做的一切，那种佩服的感觉简直无法形容它带给你一种狂喜，一种自我满足只要在这种战役中战胜过自己，人生其他战场的挑战，也就变得容易多了</code></pre><p>&ensp;&ensp;&emsp; 其实战斗中对抗的不是自己，而是使意识失序的精神熵。我们是为保卫自我而战，这同时也是一场控制注意力的斗争，虽然它不一定像攀岩那样涉及到体能的挑战。体验过心流的人都知道，那份深沉的快乐是严格的自律、集中注意力换来的。</p><p>&ensp;&ensp;&emsp; 在心流状态下，意识全神贯注、秩序井然，有助于自我的整合。思想、企图、感觉和所有的感官都集中于同一个目标上，自我体验也臻于和谐。当心流结束时，一个人会觉得，内心和人际关系都比以前更“完整”。前面提到的那位攀岩专家还说：“爬山是激发一个人全部能力的最佳活动。没有人会逼迫你，能否爬上巅峰对身心不构成压力，你有很多志同道合的同伴在旁边，大家都齐心协力。还有谁比这些人更值得信赖呢？他们跟你同样追求自律，全心全意投入，跟这些人建立这样的关系，本身就是最大的喜悦”</p><p>&ensp;&ensp;&emsp; 我们只有在不掺杂其他动机，只为行动而行动时，才能学会做一个比原来的自己更复杂的人。选定一个目标，投入全部的注意力，不论做什么事都会觉得乐趣无穷。一旦尝到这种快乐，我们就会加倍努力，重温它的滋味————自我就这样开始成长了。</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;  &amp;ensp;&amp;ensp;&amp;emsp; 一直在思考一些心理、行为，可能自己有一些心理或精神上的缺失，所以有时候会比较想去研究这些东西。活了30多年，也许之前自己是一直处于比较迷茫的，但是也一直在很努力寻找努力的方向。这些话看起来很老套，有点像心灵鸡汤的东西，但人确确实实是
-      
-    
-    </summary>
-    
-    
-      <category term="psychology" scheme="http://blog.xmqbeast.com/tags/psychology/"/>
     
   </entry>
   
