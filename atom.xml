@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.xmqbeast.com/"/>
-  <updated>2018-06-05T09:14:28.181Z</updated>
+  <updated>2018-07-25T06:25:32.731Z</updated>
   <id>http://blog.xmqbeast.com/</id>
   
   <author>
@@ -15,6 +15,182 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>oc中创建类</title>
+    <link href="http://blog.xmqbeast.com/2018/07/25/oc%E4%B8%AD%E5%88%9B%E5%BB%BA%E7%B1%BB/"/>
+    <id>http://blog.xmqbeast.com/2018/07/25/oc中创建类/</id>
+    <published>2018-07-25T02:06:39.000Z</published>
+    <updated>2018-07-25T06:25:32.731Z</updated>
+    
+    <content type="html"><![CDATA[<pre><code> @interface Person : NSObject //继承 {   //一定要在大括号中声明类是熟悉（成员变量）   //命名规则：标识符规则   //命名规范： 必须以下划线开头，下划线的首字母小写，其他的单词首字母大写  @public   char *_name;   int _age; - (void) show; } @end @implementation Person - (void) show; {//对象方法中可以直接访问该对象的成员变量      NSLog(@&quot;name = %s, age = %d&quot;,_name,_age) } @end</code></pre><p>OC中类的声明必须以@interface开头，必须以@end结尾<br>类的实现碧玺以@implementation开头，必须以@end结尾</p><p>NSObject: 基类，所有类的祖先类</p><p>:NSObject 作用是让Person类具有创建对象的能力 （继承）</p><p>注意：如果一个类中只有声明没有实现，那么这个类在链接时就会报错，是不可创建成功.</p><p>OC中方法声明的格式<br>无形参： 方法类型符 （返回值类型） 方法名称<br>对象方法： 是属于对象的，只能通过对象调用，它的方法类型符是-</p><pre><code>int main(int argc, const char * argv[]){    /*[类名 new] 作用 通过类创建一个对象    1.为Person这个对象在堆中分配内存    2.初始化成员变量    3.返回指向刚刚创建出来的对象的指针    */   Person *p1 = [Person new];   p1-&gt;_age = 10;   p1-&gt;_name = &quot;xiaoti&quot;;   NSLog(@&quot;%p,%d&quot;,p1,p1-&gt;_age);   [p1 show]; //方法调用   //NSLog(@&quot;%p,%d&quot;,p1,(*p1)._age);   return 0;}</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;pre&gt;&lt;code&gt; @interface Person : NSObject //继承
+ {
+   //一定要在大括号中声明类是熟悉（成员变量）
+   //命名规则：标识符规则
+   //命名规范： 必须以下划线开头，下划线的首字母小写，其他的单词首字母大写
+
+  @publ
+      
+    
+    </summary>
+    
+    
+      <category term="object-c" scheme="http://blog.xmqbeast.com/tags/object-c/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>rabbitMQ中的几个概念</title>
+    <link href="http://blog.xmqbeast.com/2018/06/13/rabbitMQ%E4%B8%AD%E7%9A%84%E5%87%A0%E4%B8%AA%E6%A6%82%E5%BF%B5/"/>
+    <id>http://blog.xmqbeast.com/2018/06/13/rabbitMQ中的几个概念/</id>
+    <published>2018-06-13T05:27:10.000Z</published>
+    <updated>2018-06-13T05:29:39.142Z</updated>
+    
+    <content type="html"><![CDATA[<pre><code> producer：消息生产者consumer：消息消费者virtual host：虚拟主机，在RabbitMQ中，用户只能在虚拟主机的层面上进行一些权限设置，比如我可以访问哪些队列，我可以处理哪些请求等等；broker：消息转发者，也就是我们RabbitMQ服务端充当的功能了，那么消息是按照什么规则进行转发的呢？需要用到下面几个概念；exchange：交换机，他是和producer直接进行打交道的，有点类似于路由器的功能，主要就是进行转发操作的呗，那么producer到底用哪个exchange进行路由呢？这个取决于routing key(路由键)，每个消息都有这个键，我们也可以自己设定，其实就是一字符串；queue：消息队列，用于存放消息，他接收exchange路由过来的消息，我们可以对队列内容进行持久化操作，那么queue到底接收那个exchange路由的消息呢？这个时候就要用到binding key(绑定键)了，绑定键会将队列和exchange进行绑定</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;pre&gt;&lt;code&gt; producer：消息生产者
+
+consumer：消息消费者
+
+virtual host：虚拟主机，在RabbitMQ中，用户只能在虚拟主机的层面上进行一些权限设置，比如我可以访问哪些队列，我可以处理哪些请求等等；
+
+broker：消息转发者，也就是我们R
+      
+    
+    </summary>
+    
+    
+      <category term="rabbitMQ" scheme="http://blog.xmqbeast.com/tags/rabbitMQ/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>windows下安装rabbitMQ</title>
+    <link href="http://blog.xmqbeast.com/2018/06/12/windows%E4%B8%8B%E5%AE%89%E8%A3%85rabbitMQ/"/>
+    <id>http://blog.xmqbeast.com/2018/06/12/windows下安装rabbitMQ/</id>
+    <published>2018-06-12T08:36:48.000Z</published>
+    <updated>2018-06-12T08:42:44.744Z</updated>
+    
+    <content type="html"><![CDATA[<p>1.Windows下安装RabbitMQ需要以下几个步骤</p><p> (1)：下载erlang，原因在于RabbitMQ服务端代码是使用并发式语言erlang编写的，下载地址：<a href="http://www.erlang.org/downloads，双击.exe文件进行安装就好，安装完成之后创建一个名为ERLANG_HOME的环境变量，其值指向erlang的安装目录，同时将%ERLANG_HOME%\bin加入到Path中，最后打开命令行，输入erl，如果出现erlang的版本信息就表示erlang语言环境安装成功；" target="_blank" rel="noopener">http://www.erlang.org/downloads，双击.exe文件进行安装就好，安装完成之后创建一个名为ERLANG_HOME的环境变量，其值指向erlang的安装目录，同时将%ERLANG_HOME%\bin加入到Path中，最后打开命令行，输入erl，如果出现erlang的版本信息就表示erlang语言环境安装成功；</a></p><p>(2)：下载RabbitMQ，下载地址：<a href="http://www.rabbitmq.com/，同样双击.exe进行安装就好" target="_blank" rel="noopener">http://www.rabbitmq.com/，同样双击.exe进行安装就好</a>(这里需要注意一点，默认的安装目录是C:/Program Files/….，这个目录中是存在空格符的，我们需要改变安装目录，貌似RabbitMQ安装目录中是不允许有空格的，我之前踩过这个大坑)；</p><p> (3)：安装RabbitMQ-Plugins，这个相当于是一个管理界面，方便我们在浏览器界面查看RabbitMQ各个消息队列以及exchange的工作情况，安装方法是：打开命令行cd进入rabbitmq的sbin目录(我的目录是：E:\software\rabbitmq\rabbitmq_server-3.6.5\sbin)，输入：rabbitmq-plugins enable rabbitmq_management命令，稍等会会发现出现plugins安装成功的提示，默认是安装6个插件,这样，就安装好插件了，是不是能使用了呢？别急，需要重启服务才行，使用命令：</p><pre><code>net stop RabbitMQ &amp;&amp; net start RabbitMQ</code></pre><p>这时候的，也许会出现这种结果：</p><p>“发生错误：发生系统错误 5。  拒绝访问。”</p><p>这是什么鬼？查了下，原来，5代表的是：不是系统管理员权限。</p><p>问题解决方案：使用管理员打开cmd再执行此命令：</p><p> (4)：插件安装完之后，在浏览器输入<a href="http://localhost:15672进行验证，你会看到下面界面，输入用户名：guest，密码：guest你就可以进入管理界面，当然用户名密码你都可以变的；" target="_blank" rel="noopener">http://localhost:15672进行验证，你会看到下面界面，输入用户名：guest，密码：guest你就可以进入管理界面，当然用户名密码你都可以变的；</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;1.Windows下安装RabbitMQ需要以下几个步骤&lt;/p&gt;
+&lt;p&gt; (1)：下载erlang，原因在于RabbitMQ服务端代码是使用并发式语言erlang编写的，下载地址：&lt;a href=&quot;http://www.erlang.org/downloads，双击.exe
+      
+    
+    </summary>
+    
+    
+      <category term="rabbitMQ" scheme="http://blog.xmqbeast.com/tags/rabbitMQ/"/>
+    
+      <category term="windows" scheme="http://blog.xmqbeast.com/tags/windows/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>git add,git commit 填加错文件撤销</title>
+    <link href="http://blog.xmqbeast.com/2018/06/06/git-add-git-commit-%E5%A1%AB%E5%8A%A0%E9%94%99%E6%96%87%E4%BB%B6%E6%92%A4%E9%94%80/"/>
+    <id>http://blog.xmqbeast.com/2018/06/06/git-add-git-commit-填加错文件撤销/</id>
+    <published>2018-06-06T03:51:37.000Z</published>
+    <updated>2018-06-06T03:56:12.494Z</updated>
+    
+    <content type="html"><![CDATA[<pre><code>1. git add 添加 多余文件 </code></pre><p>这样的错误是由于， 有的时候 可能</p><p>git add . （空格+ 点） 表示当前目录所有文件，不小心就会提交其他文件</p><p>git add 如果添加了错误的文件的话</p><p>撤销操作</p><p>git status 先看一下add 中的文件 </p><p>git reset HEAD 如果后面什么都不跟的话 就是上一次add 里面的全部撤销了 </p><p>git reset HEAD XXX/XXX/XXX.java 就是对某个文件进行撤销了</p><pre><code>2. git commit 错误</code></pre><p>如果不小心 弄错了 git add后 ， 又 git commit 了。</p><p>先使用 </p><p>git log 查看节点 </p><pre><code>commit xxxxxxxxxxxxxxxxxxxxxxxxxx Merge: Author: Date:</code></pre><p>然后 </p><pre><code>git reset commit_id</code></pre><p>over</p><p>PS：还没有 push 也就是 repo upload 的时候</p><p>git reset commit_id （回退到上一个 提交的节点 代码还是原来你修改的） </p><p>git reset –hard commit_id （回退到上一个commit节点， 代码也发生了改变，变成上一次的）</p><pre><code>3.如果要是 提交了以后，可以使用 git revert</code></pre><p>还原已经提交的修改 </p><p>此次操作之前和之后的commit和history都会保留，并且把这次撤销作为一次最新的提交 </p><p>git revert HEAD 撤销前一次 commit </p><p>git revert HEAD^ 撤销前前一次 commit</p><p>git revert commit-id (撤销指定的版本，撤销也会作为一次提交进行保存） </p><p>git revert是提交一个新的版本，将需要revert的版本的内容再反向修改回去，版本会递增，不影响之前提交的内容。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;pre&gt;&lt;code&gt;1. git add 添加 多余文件 
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;这样的错误是由于， 有的时候 可能&lt;/p&gt;
+&lt;p&gt;git add . （空格+ 点） 表示当前目录所有文件，不小心就会提交其他文件&lt;/p&gt;
+&lt;p&gt;git add 如果添加了错误的文件的话
+      
+    
+    </summary>
+    
+    
+      <category term="git" scheme="http://blog.xmqbeast.com/tags/git/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>git关联本地分支与远程分支</title>
+    <link href="http://blog.xmqbeast.com/2018/06/06/git%E5%85%B3%E8%81%94%E6%9C%AC%E5%9C%B0%E5%88%86%E6%94%AF%E4%B8%8E%E8%BF%9C%E7%A8%8B%E5%88%86%E6%94%AF/"/>
+    <id>http://blog.xmqbeast.com/2018/06/06/git关联本地分支与远程分支/</id>
+    <published>2018-06-06T03:35:10.000Z</published>
+    <updated>2018-06-06T03:35:10.098Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>git分支管理推送本地分支到远程分支</title>
+    <link href="http://blog.xmqbeast.com/2018/06/06/git%E5%88%86%E6%94%AF%E7%AE%A1%E7%90%86%E6%8E%A8%E9%80%81%E6%9C%AC%E5%9C%B0%E5%88%86%E6%94%AF%E5%88%B0%E8%BF%9C%E7%A8%8B%E5%88%86%E6%94%AF/"/>
+    <id>http://blog.xmqbeast.com/2018/06/06/git分支管理推送本地分支到远程分支/</id>
+    <published>2018-06-06T01:14:05.000Z</published>
+    <updated>2018-06-06T02:11:02.684Z</updated>
+    
+    <content type="html"><![CDATA[<p>git 分支管理 推送本地分支到远程分支</p><p>1、创建本地分支 local_branch</p><pre><code>git branch local_branch</code></pre><p>2、创建本地分支local_branch 并切换到local_branch分支</p><pre><code>git checkout -b local_branch</code></pre><p>3、切换到分支local_branch</p><pre><code>git checkout local_branch</code></pre><p>4、推送本地分支local_branch到远程分支 remote_branch并建立关联关系</p><pre><code> a.远程已有remote_branch分支并且已经关联本地分支local_branch且本地已经切换到local_branch     git pushb.远程已有remote_branch分支但未关联本地分支local_branch且本地已经切换到local_branch    git push -u origin/remote_branchc.远程没有remote_branch分支并本地已经切换到local_branch   git push origin local_branch:remote_branch</code></pre><p>5、删除本地分支local_branch</p><pre><code>git branch -d local_branch</code></pre><p>6、删除远程分支remote_branch</p><pre><code>git push origin  :remote_branchgit branch -m | -M oldbranch newbranch 重命名分支，如果newbranch名字分支已经存在，则需要使用-M强制重命名，否则，使用-m进行重命名。git branch -d | -D branchname 删除branchname分支git branch -d -r branchname 删除远程branchname分支</code></pre><p>7、查看本地分支</p><pre><code>git branch</code></pre><p>8、查看远程和本地分支</p><pre><code>git branch -a</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;git 分支管理 推送本地分支到远程分支&lt;/p&gt;
+&lt;p&gt;1、创建本地分支 local_branch&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;git branch local_branch
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;2、创建本地分支local_branch 并切换到local_b
+      
+    
+    </summary>
+    
+    
+      <category term="git" scheme="http://blog.xmqbeast.com/tags/git/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>git 创建分支</title>
+    <link href="http://blog.xmqbeast.com/2018/06/05/git-%E5%88%9B%E5%BB%BA%E5%88%86%E6%94%AF/"/>
+    <id>http://blog.xmqbeast.com/2018/06/05/git-创建分支/</id>
+    <published>2018-06-05T11:24:07.000Z</published>
+    <updated>2018-06-05T11:33:12.050Z</updated>
+    
+    <content type="html"><![CDATA[<pre><code>$ git checkout -b iss53Switched to a new branch &apos;iss53&apos;</code></pre><p>这相当于执行下面这两条命令：</p><pre><code>$ git branch iss53$ git checkout iss53</code></pre><p>1.git branch</p><p>不带参数：列出本地已经存在的分支，并且在当前分支的前面用”*”标记</p><p>2.git branch -r</p><p>查看远程版本库分支列表</p><p>3.git branch -a</p><p>查看所有分支列表，包括本地和远程</p><p>4.git branch dev</p><p>创建名为dev的分支，创建分支时需要是最新的环境，创建分支但依然停留在当前分支</p><p>5.git branch -d dev</p><p>删除dev分支，如果在分支中有一些未merge的提交，那么会删除分支失败，此时可以使用 git branch -D dev：强制删除dev分支，</p><p>6.git branch -vv </p><p>可以查看本地分支对应的远程分支</p><ol><li>git branch -m oldName newName</li></ol><p>给分支重命名</p><p>Git checkout</p><ol><li><p>操作文件  2. 操作分支</p><pre><code>git checkout filename 放弃单个文件的修改git checkout . 放弃当前目录下的修改</code></pre></li></ol><p>git checkout master 将分支切换到master</p><p>git checkout -b master 如果分支存在则只切换分支，若不存在则创建并切换到master分支，repo start是对git checkout -b这个命令的封装，将所有仓库的分支都切换到master，master是分支名，</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;pre&gt;&lt;code&gt;$ git checkout -b iss53
+Switched to a new branch &amp;apos;iss53&amp;apos;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;这相当于执行下面这两条命令：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ git branch iss
+      
+    
+    </summary>
+    
+    
+      <category term="git" scheme="http://blog.xmqbeast.com/tags/git/"/>
+    
+  </entry>
   
   <entry>
     <title>git tag的用法</title>
@@ -339,180 +515,6 @@ $ git tag -l ‘v0.1.*’
         &lt;p&gt;模式：安全的队列&lt;/p&gt;
 &lt;p&gt;Redis的列表经常被用作队列(queue)，用于在不同程序之间有序地交换消息(message)。一个客户端通过 LPUSH 命令将消息放入队列中，而另一个客户端通过 RPOP 或者 BRPOP 命令取出队列中等待时间最长的消息。&lt;/p&gt;
 &lt;
-      
-    
-    </summary>
-    
-    
-      <category term="redis" scheme="http://blog.xmqbeast.com/tags/redis/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Redis Rpush命令</title>
-    <link href="http://blog.xmqbeast.com/2018/05/14/Redis-Rpush%E5%91%BD%E4%BB%A4/"/>
-    <id>http://blog.xmqbeast.com/2018/05/14/Redis-Rpush命令/</id>
-    <published>2018-05-13T18:30:50.000Z</published>
-    <updated>2018-05-13T18:32:50.145Z</updated>
-    
-    <content type="html"><![CDATA[<p>Redis Rpush 命令</p><p>Redis Rpush 命令用于将一个或多个值插入到列表的尾部(最右边)。<br>如果列表不存在，一个空列表会被创建并执行 RPUSH 操作。 当列表存在但不是列表类型时，返回一个错误。</p><p>注意：在 Redis 2.4 版本以前的 RPUSH 命令，都只接受单个 value 值。</p><p>语法<br>redis Rpush 命令基本语法如下：</p><pre><code>redis 127.0.0.1:6379&gt; RPUSH KEY_NAME VALUE1..VALUEN</code></pre><p>返回值<br>执行 RPUSH 操作后，列表的长度。</p><p>实例</p><pre><code>redis 127.0.0.1:6379&gt; RPUSH mylist &quot;hello&quot;(integer) 1redis 127.0.0.1:6379&gt; RPUSH mylist &quot;foo&quot;(integer) 2redis 127.0.0.1:6379&gt; RPUSH mylist &quot;bar&quot;(integer) 3redis 127.0.0.1:6379&gt; LRANGE mylist 0 -11) &quot;hello&quot;2) &quot;foo&quot;3) &quot;bar&quot;</code></pre>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;Redis Rpush 命令&lt;/p&gt;
-&lt;p&gt;Redis Rpush 命令用于将一个或多个值插入到列表的尾部(最右边)。&lt;br&gt;如果列表不存在，一个空列表会被创建并执行 RPUSH 操作。 当列表存在但不是列表类型时，返回一个错误。&lt;/p&gt;
-&lt;p&gt;注意：在 Redis 2.4
-      
-    
-    </summary>
-    
-    
-      <category term="redis" scheme="http://blog.xmqbeast.com/tags/redis/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Redis Lpush命令</title>
-    <link href="http://blog.xmqbeast.com/2018/05/14/Redis-Lpush%E5%91%BD%E4%BB%A4/"/>
-    <id>http://blog.xmqbeast.com/2018/05/14/Redis-Lpush命令/</id>
-    <published>2018-05-13T18:28:28.000Z</published>
-    <updated>2018-05-13T18:29:59.454Z</updated>
-    
-    <content type="html"><![CDATA[<p>Redis Lpush 命令</p><p>Redis Lpush 命令将一个或多个值插入到列表头部。 如果 key 不存在，一个空列表会被创建并执行 LPUSH 操作。 当 key 存在但不是列表类型时，返回一个错误。</p><p>注意：在Redis 2.4版本以前的 LPUSH 命令，都只接受单个 value 值。</p><p>语法<br>redis Lpush 命令基本语法如下：</p><pre><code>redis 127.0.0.1:6379&gt; LPUSH KEY_NAME VALUE1.. VALUEN</code></pre><p>返回值<br>执行 LPUSH 命令后，列表的长度。</p><p>实例</p><pre><code>127.0.0.1:6379&gt; LPUSH list1 &quot;foo&quot;(integer) 1127.0.0.1:6379&gt; LPUSH list1 &quot;bar&quot;(integer) 2127.0.0.1:6379&gt; LRANGE list1 0 -11) &quot;bar&quot;2) &quot;foo&quot;</code></pre>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;Redis Lpush 命令&lt;/p&gt;
-&lt;p&gt;Redis Lpush 命令将一个或多个值插入到列表头部。 如果 key 不存在，一个空列表会被创建并执行 LPUSH 操作。 当 key 存在但不是列表类型时，返回一个错误。&lt;/p&gt;
-&lt;p&gt;注意：在Redis 2.4版本以前的 
-      
-    
-    </summary>
-    
-    
-      <category term="redis" scheme="http://blog.xmqbeast.com/tags/redis/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Redis Rpoplpush命令</title>
-    <link href="http://blog.xmqbeast.com/2018/05/14/Redis-Rpoplpush%E5%91%BD%E4%BB%A4/"/>
-    <id>http://blog.xmqbeast.com/2018/05/14/Redis-Rpoplpush命令/</id>
-    <published>2018-05-13T18:24:57.000Z</published>
-    <updated>2018-05-13T18:35:44.895Z</updated>
-    
-    <content type="html"><![CDATA[<p>Redis Rpoplpush 命令<br>Redis Rpoplpush 命令用于移除列表的最后一个元素，并将该元素添加到另一个列表并返回。</p><p>语法<br>redis Rpoplpush 命令基本语法如下：</p><pre><code>redis 127.0.0.1:6379&gt; RPOPLPUSH SOURCE_KEY_NAME DESTINATION_KEY_NAME</code></pre><p>返回值<br>被弹出的元素。</p><p>实例</p><pre><code>redis 127.0.0.1:6379&gt; RPUSH mylist &quot;hello&quot;(integer) 1redis 127.0.0.1:6379&gt; RPUSH mylist &quot;foo&quot;(integer) 2redis 127.0.0.1:6379&gt; RPUSH mylist &quot;bar&quot;(integer) 3redis 127.0.0.1:6379&gt; RPOPLPUSH mylist myotherlist&quot;bar&quot;redis 127.0.0.1:6379&gt; LRANGE mylist 0 -11) &quot;hello&quot;2) &quot;foo&quot;</code></pre>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;Redis Rpoplpush 命令&lt;br&gt;Redis Rpoplpush 命令用于移除列表的最后一个元素，并将该元素添加到另一个列表并返回。&lt;/p&gt;
-&lt;p&gt;语法&lt;br&gt;redis Rpoplpush 命令基本语法如下：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;redis 127.0
-      
-    
-    </summary>
-    
-    
-      <category term="redis" scheme="http://blog.xmqbeast.com/tags/redis/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Redis Lpop命令</title>
-    <link href="http://blog.xmqbeast.com/2018/05/14/Redis-Lpop%E5%91%BD%E4%BB%A4/"/>
-    <id>http://blog.xmqbeast.com/2018/05/14/Redis-Lpop命令/</id>
-    <published>2018-05-13T18:15:07.000Z</published>
-    <updated>2018-05-13T18:17:01.611Z</updated>
-    
-    <content type="html"><![CDATA[<p>Redis Lpop 命令</p><p>Redis Lpop 命令用于移除并返回列表的第一个元素。</p><p>语法<br>redis Lpop 命令基本语法如下：</p><pre><code>redis 127.0.0.1:6379&gt; Lpop KEY_NAME</code></pre><p>返回值<br>列表的第一个元素。 当列表 key 不存在时，返回 nil 。</p><p>实例</p><pre><code>redis 127.0.0.1:6379&gt; RPUSH list1 &quot;foo&quot;(integer) 1redis 127.0.0.1:6379&gt; RPUSH list1 &quot;bar&quot;(integer) 2redis 127.0.0.1:6379&gt; LPOP list1&quot;foo&quot;</code></pre><p>PS:Redis Rpop 命令用于移除并返回列表的最后一个元素。</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;Redis Lpop 命令&lt;/p&gt;
-&lt;p&gt;Redis Lpop 命令用于移除并返回列表的第一个元素。&lt;/p&gt;
-&lt;p&gt;语法&lt;br&gt;redis Lpop 命令基本语法如下：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;redis 127.0.0.1:6379&amp;gt; Lpop KEY_NAM
-      
-    
-    </summary>
-    
-    
-      <category term="redis" scheme="http://blog.xmqbeast.com/tags/redis/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Redis Llen命令</title>
-    <link href="http://blog.xmqbeast.com/2018/05/14/Redis-Llen%E5%91%BD%E4%BB%A4/"/>
-    <id>http://blog.xmqbeast.com/2018/05/14/Redis-Llen命令/</id>
-    <published>2018-05-13T18:06:56.000Z</published>
-    <updated>2018-05-13T18:35:23.726Z</updated>
-    
-    <content type="html"><![CDATA[<p>Redis Llen 命令</p><p>Redis Llen 命令用于返回列表的长度。 如果列表 key 不存在，则 key 被解释为一个空列表，返回 0 。 如果 key 不是列表类型，返回一个错误。</p><p>语法<br>redis Llen 命令基本语法如下：</p><pre><code>redis 127.0.0.1:6379&gt; LLEN KEY_NAME</code></pre><p>返回值<br>列表的长度。</p><p>实例</p><pre><code>redis 127.0.0.1:6379&gt; RPUSH list1 &quot;foo&quot;(integer) 1redis 127.0.0.1:6379&gt; RPUSH list1 &quot;bar&quot;(integer) 2redis 127.0.0.1:6379&gt; LLEN list1(integer) 2</code></pre>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;Redis Llen 命令&lt;/p&gt;
-&lt;p&gt;Redis Llen 命令用于返回列表的长度。 如果列表 key 不存在，则 key 被解释为一个空列表，返回 0 。 如果 key 不是列表类型，返回一个错误。&lt;/p&gt;
-&lt;p&gt;语法&lt;br&gt;redis Llen 命令基本语法如下：&lt;
-      
-    
-    </summary>
-    
-    
-      <category term="redis" scheme="http://blog.xmqbeast.com/tags/redis/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Redis Ltrim命令</title>
-    <link href="http://blog.xmqbeast.com/2018/05/14/Redis-Ltrim%E5%91%BD%E4%BB%A4/"/>
-    <id>http://blog.xmqbeast.com/2018/05/14/Redis-Ltrim命令/</id>
-    <published>2018-05-13T18:01:57.000Z</published>
-    <updated>2018-05-13T18:06:10.781Z</updated>
-    
-    <content type="html"><![CDATA[<p>Redis Ltrim 命令</p><p>Redis Ltrim 对一个列表进行修剪(trim)，就是说，让列表只保留指定区间内的元素，不在指定区间之内的元素都将被删除。<br>下标 0 表示列表的第一个元素，以 1 表示列表的第二个元素，以此类推。 你也可以使用负数下标，以 -1 表示列表的最后一个元素， -2 表示列表的倒数第二个元素，以此类推。</p><p>语法<br>redis Ltrim 命令基本语法如下：</p><pre><code>redis 127.0.0.1:6379&gt; LTRIM KEY_NAME START STOP</code></pre><p>返回值<br>命令执行成功时，返回 ok 。</p><p>实例</p><pre><code>redis 127.0.0.1:6379&gt; RPUSH mylist &quot;hello&quot;(integer) 1redis 127.0.0.1:6379&gt; RPUSH mylist &quot;hello&quot;(integer) 2redis 127.0.0.1:6379&gt; RPUSH mylist &quot;foo&quot;(integer) 3redis 127.0.0.1:6379&gt; RPUSH mylist &quot;bar&quot;(integer) 4redis 127.0.0.1:6379&gt; LTRIM mylist 1 -1OKredis 127.0.0.1:6379&gt; LRANGE mylist 0 -11) &quot;hello&quot;2) &quot;foo&quot;3) &quot;bar&quot;</code></pre>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;Redis Ltrim 命令&lt;/p&gt;
-&lt;p&gt;Redis Ltrim 对一个列表进行修剪(trim)，就是说，让列表只保留指定区间内的元素，不在指定区间之内的元素都将被删除。&lt;br&gt;下标 0 表示列表的第一个元素，以 1 表示列表的第二个元素，以此类推。 你也可以使用负数下标
-      
-    
-    </summary>
-    
-    
-      <category term="redis" scheme="http://blog.xmqbeast.com/tags/redis/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>redis Lrange命令</title>
-    <link href="http://blog.xmqbeast.com/2018/05/14/redis-Lrange%E5%91%BD%E4%BB%A4/"/>
-    <id>http://blog.xmqbeast.com/2018/05/14/redis-Lrange命令/</id>
-    <published>2018-05-13T17:49:53.000Z</published>
-    <updated>2018-05-13T17:52:44.991Z</updated>
-    
-    <content type="html"><![CDATA[<p>Redis Lrange 命令</p><p>Redis Lrange 返回列表中指定区间内的元素，区间以偏移量 START 和 END 指定。 其中 0 表示列表的第一个元素， 1 表示列表的第二个元素，以此类推。 你也可以使用负数下标，以 -1 表示列表的最后一个元素， -2 表示列表的倒数第二个元素，以此类推。</p><p>语法<br>redis Lrange 命令基本语法如下：</p><pre><code>redis 127.0.0.1:6379&gt; LRANGE KEY_NAME START END</code></pre><p>返回值<br>一个列表，包含指定区间内的元素。</p><p>实例<br>    redis&gt; RPUSH mylist “one”<br>    (integer) 1<br>    redis&gt; RPUSH mylist “two”<br>    (integer) 2<br>    redis&gt; RPUSH mylist “three”<br>    (integer) 3<br>    redis&gt; LRANGE mylist 0 0<br>    1) “one”<br>    redis&gt; LRANGE mylist -3 2<br>    1) “one”<br>    2) “two”<br>    3) “three”<br>    redis&gt; LRANGE mylist -100 100<br>    1) “one”<br>    2) “two”<br>    3) “three”<br>    redis&gt; LRANGE mylist 5 10<br>    (empty list or set)<br>    redis&gt; </p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;Redis Lrange 命令&lt;/p&gt;
-&lt;p&gt;Redis Lrange 返回列表中指定区间内的元素，区间以偏移量 START 和 END 指定。 其中 0 表示列表的第一个元素， 1 表示列表的第二个元素，以此类推。 你也可以使用负数下标，以 -1 表示列表的最后一个元素，
       
     
     </summary>

@@ -300,6 +300,1010 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://blog.xmqbeast.com/2018/07/25/oc中创建类/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="∮小煤球メ">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="∮小煤球メ">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2018/07/25/oc中创建类/" itemprop="url">
+                  oc中创建类
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-25T10:06:39+08:00">
+                2018-07-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <pre><code> @interface Person : NSObject //继承
+ {
+   //一定要在大括号中声明类是熟悉（成员变量）
+   //命名规则：标识符规则
+   //命名规范： 必须以下划线开头，下划线的首字母小写，其他的单词首字母大写
+
+  @public
+   char *_name;
+   int _age;
+
+ - (void) show;
+
+ }
+ @end
+
+ @implementation Person
+
+ - (void) show;
+ {
+//对象方法中可以直接访问该对象的成员变量
+      NSLog(@&quot;name = %s, age = %d&quot;,_name,_age)
+ }
+
+ @end
+</code></pre><p>OC中类的声明必须以@interface开头，必须以@end结尾<br>类的实现碧玺以@implementation开头，必须以@end结尾</p>
+<p>NSObject: 基类，所有类的祖先类</p>
+<p>:NSObject 作用是让Person类具有创建对象的能力 （继承）</p>
+<p>注意：如果一个类中只有声明没有实现，那么这个类在链接时就会报错，是不可创建成功.</p>
+<p>OC中方法声明的格式<br>无形参： 方法类型符 （返回值类型） 方法名称<br>对象方法： 是属于对象的，只能通过对象调用，它的方法类型符是-</p>
+<pre><code>int main(int argc, const char * argv[]){
+
+    /*[类名 new] 作用 通过类创建一个对象
+    1.为Person这个对象在堆中分配内存
+    2.初始化成员变量
+    3.返回指向刚刚创建出来的对象的指针
+    */
+
+   Person *p1 = [Person new];
+
+   p1-&gt;_age = 10;
+   p1-&gt;_name = &quot;xiaoti&quot;;
+
+   NSLog(@&quot;%p,%d&quot;,p1,p1-&gt;_age);
+
+   [p1 show]; //方法调用
+
+   //NSLog(@&quot;%p,%d&quot;,p1,(*p1)._age);
+
+   return 0;
+}
+</code></pre>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://blog.xmqbeast.com/2018/06/13/rabbitMQ中的几个概念/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="∮小煤球メ">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="∮小煤球メ">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2018/06/13/rabbitMQ中的几个概念/" itemprop="url">
+                  rabbitMQ中的几个概念
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-13T13:27:10+08:00">
+                2018-06-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <pre><code> producer：消息生产者
+
+consumer：消息消费者
+
+virtual host：虚拟主机，在RabbitMQ中，用户只能在虚拟主机的层面上进行一些权限设置，比如我可以访问哪些队列，我可以处理哪些请求等等；
+
+broker：消息转发者，也就是我们RabbitMQ服务端充当的功能了，那么消息是按照什么规则进行转发的呢？需要用到下面几个概念；
+
+exchange：交换机，他是和producer直接进行打交道的，有点类似于路由器的功能，主要就是进行转发操作的呗，那么producer到底用哪个exchange进行路由呢？这个取决于routing key(路由键)，每个消息都有这个键，我们也可以自己设定，其实就是一字符串；
+
+queue：消息队列，用于存放消息，他接收exchange路由过来的消息，我们可以对队列内容进行持久化操作，那么queue到底接收那个exchange路由的消息呢？这个时候就要用到binding key(绑定键)了，绑定键会将队列和exchange进行绑定
+</code></pre>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://blog.xmqbeast.com/2018/06/12/windows下安装rabbitMQ/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="∮小煤球メ">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="∮小煤球メ">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2018/06/12/windows下安装rabbitMQ/" itemprop="url">
+                  windows下安装rabbitMQ
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-12T16:36:48+08:00">
+                2018-06-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>1.Windows下安装RabbitMQ需要以下几个步骤</p>
+<p> (1)：下载erlang，原因在于RabbitMQ服务端代码是使用并发式语言erlang编写的，下载地址：<a href="http://www.erlang.org/downloads，双击.exe文件进行安装就好，安装完成之后创建一个名为ERLANG_HOME的环境变量，其值指向erlang的安装目录，同时将%ERLANG_HOME%\bin加入到Path中，最后打开命令行，输入erl，如果出现erlang的版本信息就表示erlang语言环境安装成功；" target="_blank" rel="noopener">http://www.erlang.org/downloads，双击.exe文件进行安装就好，安装完成之后创建一个名为ERLANG_HOME的环境变量，其值指向erlang的安装目录，同时将%ERLANG_HOME%\bin加入到Path中，最后打开命令行，输入erl，如果出现erlang的版本信息就表示erlang语言环境安装成功；</a></p>
+<p>(2)：下载RabbitMQ，下载地址：<a href="http://www.rabbitmq.com/，同样双击.exe进行安装就好" target="_blank" rel="noopener">http://www.rabbitmq.com/，同样双击.exe进行安装就好</a>(这里需要注意一点，默认的安装目录是C:/Program Files/….，这个目录中是存在空格符的，我们需要改变安装目录，貌似RabbitMQ安装目录中是不允许有空格的，我之前踩过这个大坑)；</p>
+<p> (3)：安装RabbitMQ-Plugins，这个相当于是一个管理界面，方便我们在浏览器界面查看RabbitMQ各个消息队列以及exchange的工作情况，安装方法是：打开命令行cd进入rabbitmq的sbin目录(我的目录是：E:\software\rabbitmq\rabbitmq_server-3.6.5\sbin)，输入：rabbitmq-plugins enable rabbitmq_management命令，稍等会会发现出现plugins安装成功的提示，默认是安装6个插件,这样，就安装好插件了，是不是能使用了呢？别急，需要重启服务才行，使用命令：</p>
+<pre><code>net stop RabbitMQ &amp;&amp; net start RabbitMQ
+</code></pre><p>这时候的，也许会出现这种结果：</p>
+<p>“发生错误：发生系统错误 5。  拒绝访问。”</p>
+<p>这是什么鬼？查了下，原来，5代表的是：不是系统管理员权限。</p>
+<p>问题解决方案：使用管理员打开cmd再执行此命令：</p>
+<p> (4)：插件安装完之后，在浏览器输入<a href="http://localhost:15672进行验证，你会看到下面界面，输入用户名：guest，密码：guest你就可以进入管理界面，当然用户名密码你都可以变的；" target="_blank" rel="noopener">http://localhost:15672进行验证，你会看到下面界面，输入用户名：guest，密码：guest你就可以进入管理界面，当然用户名密码你都可以变的；</a></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://blog.xmqbeast.com/2018/06/06/git-add-git-commit-填加错文件撤销/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="∮小煤球メ">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="∮小煤球メ">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2018/06/06/git-add-git-commit-填加错文件撤销/" itemprop="url">
+                  git add,git commit 填加错文件撤销
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-06T11:51:37+08:00">
+                2018-06-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <pre><code>1. git add 添加 多余文件 
+</code></pre><p>这样的错误是由于， 有的时候 可能</p>
+<p>git add . （空格+ 点） 表示当前目录所有文件，不小心就会提交其他文件</p>
+<p>git add 如果添加了错误的文件的话</p>
+<p>撤销操作</p>
+<p>git status 先看一下add 中的文件 </p>
+<p>git reset HEAD 如果后面什么都不跟的话 就是上一次add 里面的全部撤销了 </p>
+<p>git reset HEAD XXX/XXX/XXX.java 就是对某个文件进行撤销了</p>
+<pre><code>2. git commit 错误
+</code></pre><p>如果不小心 弄错了 git add后 ， 又 git commit 了。</p>
+<p>先使用 </p>
+<p>git log 查看节点 </p>
+<pre><code>commit xxxxxxxxxxxxxxxxxxxxxxxxxx 
+Merge: 
+Author: 
+Date:
+</code></pre><p>然后 </p>
+<pre><code>git reset commit_id
+</code></pre><p>over</p>
+<p>PS：还没有 push 也就是 repo upload 的时候</p>
+<p>git reset commit_id （回退到上一个 提交的节点 代码还是原来你修改的） </p>
+<p>git reset –hard commit_id （回退到上一个commit节点， 代码也发生了改变，变成上一次的）</p>
+<pre><code>3.如果要是 提交了以后，可以使用 git revert
+</code></pre><p>还原已经提交的修改 </p>
+<p>此次操作之前和之后的commit和history都会保留，并且把这次撤销作为一次最新的提交 </p>
+<p>git revert HEAD 撤销前一次 commit </p>
+<p>git revert HEAD^ 撤销前前一次 commit</p>
+<p>git revert commit-id (撤销指定的版本，撤销也会作为一次提交进行保存） </p>
+<p>git revert是提交一个新的版本，将需要revert的版本的内容再反向修改回去，版本会递增，不影响之前提交的内容。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://blog.xmqbeast.com/2018/06/06/git关联本地分支与远程分支/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="∮小煤球メ">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="∮小煤球メ">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2018/06/06/git关联本地分支与远程分支/" itemprop="url">
+                  git关联本地分支与远程分支
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-06T11:35:10+08:00">
+                2018-06-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://blog.xmqbeast.com/2018/06/06/git分支管理推送本地分支到远程分支/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="∮小煤球メ">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="∮小煤球メ">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2018/06/06/git分支管理推送本地分支到远程分支/" itemprop="url">
+                  git分支管理推送本地分支到远程分支
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-06T09:14:05+08:00">
+                2018-06-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>git 分支管理 推送本地分支到远程分支</p>
+<p>1、创建本地分支 local_branch</p>
+<pre><code>git branch local_branch
+</code></pre><p>2、创建本地分支local_branch 并切换到local_branch分支</p>
+<pre><code>git checkout -b local_branch
+</code></pre><p>3、切换到分支local_branch</p>
+<pre><code>git checkout local_branch
+</code></pre><p>4、推送本地分支local_branch到远程分支 remote_branch并建立关联关系</p>
+<pre><code> a.远程已有remote_branch分支并且已经关联本地分支local_branch且本地已经切换到local_branch
+
+     git push
+
+b.远程已有remote_branch分支但未关联本地分支local_branch且本地已经切换到local_branch
+
+    git push -u origin/remote_branch
+
+c.远程没有remote_branch分支并本地已经切换到local_branch
+
+   git push origin local_branch:remote_branch
+</code></pre><p>5、删除本地分支local_branch</p>
+<pre><code>git branch -d local_branch
+</code></pre><p>6、删除远程分支remote_branch</p>
+<pre><code>git push origin  :remote_branch
+
+git branch -m | -M oldbranch newbranch 重命名分支，如果newbranch名字分支已经存在，则需要使用-M强制重命名，否则，使用-m进行重命名。
+
+git branch -d | -D branchname 删除branchname分支
+
+git branch -d -r branchname 删除远程branchname分支
+</code></pre><p>7、查看本地分支</p>
+<pre><code>git branch
+</code></pre><p>8、查看远程和本地分支</p>
+<pre><code>git branch -a
+</code></pre>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://blog.xmqbeast.com/2018/06/05/git-创建分支/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="∮小煤球メ">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="∮小煤球メ">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2018/06/05/git-创建分支/" itemprop="url">
+                  git 创建分支
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-05T19:24:07+08:00">
+                2018-06-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <pre><code>$ git checkout -b iss53
+Switched to a new branch &apos;iss53&apos;
+</code></pre><p>这相当于执行下面这两条命令：</p>
+<pre><code>$ git branch iss53
+$ git checkout iss53
+</code></pre><p>1.git branch</p>
+<p>不带参数：列出本地已经存在的分支，并且在当前分支的前面用”*”标记</p>
+<p>2.git branch -r</p>
+<p>查看远程版本库分支列表</p>
+<p>3.git branch -a</p>
+<p>查看所有分支列表，包括本地和远程</p>
+<p>4.git branch dev</p>
+<p>创建名为dev的分支，创建分支时需要是最新的环境，创建分支但依然停留在当前分支</p>
+<p>5.git branch -d dev</p>
+<p>删除dev分支，如果在分支中有一些未merge的提交，那么会删除分支失败，此时可以使用 git branch -D dev：强制删除dev分支，</p>
+<p>6.git branch -vv </p>
+<p>可以查看本地分支对应的远程分支</p>
+<ol>
+<li>git branch -m oldName newName</li>
+</ol>
+<p>给分支重命名</p>
+<p>Git checkout</p>
+<ol>
+<li><p>操作文件  2. 操作分支</p>
+<pre><code>git checkout filename 放弃单个文件的修改
+
+git checkout . 放弃当前目录下的修改
+</code></pre></li>
+</ol>
+<p>git checkout master 将分支切换到master</p>
+<p>git checkout -b master 如果分支存在则只切换分支，若不存在则创建并切换到master分支，repo start是对git checkout -b这个命令的封装，将所有仓库的分支都切换到master，master是分支名，</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://blog.xmqbeast.com/2018/06/05/git-tag的用法/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -734,1091 +1738,11 @@ redis&gt; GET job                   # 没有被覆盖
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://blog.xmqbeast.com/2018/05/28/git-push命令/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="∮小煤球メ">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="∮小煤球メ">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2018/05/28/git-push命令/" itemprop="url">
-                  git push命令
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-28T10:56:27+08:00">
-                2018-05-28
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>git push命令用于将本地分支的更新，推送到远程主机。它的格式与git pull命令相似。</p>
-<pre><code>$ git push &lt;远程主机名&gt; &lt;本地分支名&gt;:&lt;远程分支名&gt;
-</code></pre><p>示例</p>
-<pre><code>$ git push origin master
-</code></pre><p>上面命令表示，将本地的master分支推送到origin主机的master分支。如果master不存在，则会被新建。</p>
-<p>如果省略本地分支名，则表示删除指定的远程分支，因为这等同于推送一个空的本地分支到远程分支。</p>
-<pre><code>$ git push origin :master
-# 等同于
-$ git push origin --delete master
-</code></pre><p>上面命令表示删除origin主机的master分支。如果当前分支与远程分支之间存在追踪关系，则本地分支和远程分支都可以省略。</p>
-<pre><code>$ git push origin
-</code></pre><p>上面命令表示，将当前分支推送到origin主机的对应分支。如果当前分支只有一个追踪分支，那么主机名都可以省略。</p>
-<pre><code>$ git push
-</code></pre><p>如果当前分支与多个主机存在追踪关系，则可以使用-u选项指定一个默认主机，这样后面就可以不加任何参数使用git push。</p>
-<pre><code>$ git push -u origin master    
-</code></pre><p>上面命令将本地的master分支推送到origin主机，同时指定origin为默认主机，后面就可以不加任何参数使用git push了。</p>
-<pre><code>$ git push --all origin
-</code></pre><p>上面命令表示，将所有本地分支都推送到origin主机。<br>如果远程主机的版本比本地版本更新，推送时Git会报错，要求先在本地做git pull合并差异，然后再推送到远程主机。这时，如果你一定要推送，可以使用–force选项。</p>
-<pre><code>$ git push --force origin
-</code></pre><p>上面命令使用-–force选项，结果导致在远程主机产生一个”非直进式”的合并(non-fast-forward merge)。除非你很确定要这样做，否则应该尽量避免使用–-force选项。</p>
-<p>最后，git push不会推送标签(tag)，除非使用–tags选项。</p>
-<pre><code>$ git push origin --tags
-</code></pre>
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://blog.xmqbeast.com/2018/05/28/linux-git-clone-ssl-connect-error/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="∮小煤球メ">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="∮小煤球メ">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2018/05/28/linux-git-clone-ssl-connect-error/" itemprop="url">
-                  linux git clone ssl connect error
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-28T02:03:17+08:00">
-                2018-05-28
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>linux下 git clone 出现</p>
-<pre><code>fatal: unable to access &apos;https://github.com/angular/bower-angular.git/&apos;: SSL connect error 
-</code></pre><p>升级 nss curl libcurl 就好了</p>
-<p>   分别执行 </p>
-<pre><code>yum update nss
-yum update curl
-yum update libcurl
-</code></pre>
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://blog.xmqbeast.com/2018/05/28/linux下安装git/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="∮小煤球メ">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="∮小煤球メ">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2018/05/28/linux下安装git/" itemprop="url">
-                  linux下安装git
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-28T01:41:13+08:00">
-                2018-05-28
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Git是一个开源的分布式版本控制系统，可以有效、高速的处理从很小到非常大的项目版本管理。而国外的GitHub和国内的Coding都是项目的托管平台。但是在使用Git工具的时候，第一步要学会如何安装git，本教程就手把手教大家如何手动编译安装git。</p>
-<p>1、介绍</p>
-<p>　　使用Coding管理项目，上面要求使用的git版本为1.8.0以上，而很多yum源上自动安装的git版本为1.7，所以需要掌握手动编译安装git方法。</p>
-<p>2、安装git依赖包</p>
-<pre><code>yum install curl-devel expat-devel gettext-devel openssl-devel zlib-devel gcc perl-ExtUtils-MakeMaker
-</code></pre><p>3、删除已有的git</p>
-<pre><code>yum remove git
-</code></pre><p>4、下载git源码</p>
-<p>　　切换到你的包文件存放目录下
-　　            </p>
-<pre><code>cd /usr/src
-</code></pre><p>下载git安装包</p>
-<pre><code>wget https://www.kernel.org/pub/software/scm/git/git-2.8.3.tar.gz
-</code></pre><p>　　解压git安装包                </p>
-<pre><code>tar -zxvf git-2.8.3.tar.gz　　
-cd git-2.8.3
-</code></pre><p>　　配置git安装路径　</p>
-<pre><code>./configure prefix=/usr/local/git/
-</code></pre><p>　　编译并且安装　　　　</p>
-<pre><code>make &amp;&amp; make install
-</code></pre><p>　　查看git版本号　　    </p>
-<pre><code>cd /usr/local/git/bin
-
-git --version
-</code></pre><p>　　git已经安装完毕</p>
-<p>5、将git指令添加到bash中
-　</p>
-<pre><code>vi /etc/profile
-</code></pre><p>　　在最后一行加入</p>
-<pre><code>export PATH=$PATH:/usr/local/git/bin
-</code></pre><p>　　让该配置文件立即生效</p>
-<pre><code>source /etc/profile
-</code></pre>
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://blog.xmqbeast.com/2018/05/27/linux下搭建go环境/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="∮小煤球メ">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="∮小煤球メ">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2018/05/27/linux下搭建go环境/" itemprop="url">
-                  linux下搭建go环境
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-27T01:01:37+08:00">
-                2018-05-27
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>安装go工具</p>
-<p>在 <a href="http://golang.org/dl/下载最新的linux版本，并把它提取到/usr/local目录，在此目录下进行解压缩" target="_blank" rel="noopener">http://golang.org/dl/下载最新的linux版本，并把它提取到/usr/local目录，在此目录下进行解压缩</a></p>
-<pre><code>$ tar -xvf xxx.tar.gz 
-</code></pre><p>然后将/usr/local/go/bin添加到PATH环境变量中，执行</p>
-<pre><code>$ vim /etc/profile
-$ export PATH=$PATH:/usr/local/go/bin
-$ source /etc/profile
-</code></pre><p>实际上go会默认假定它被安装到/usr/local/go目录下，但也可以将go安装到其他位置，此时必须设置GOROOT环境变量来指出它所安装的位置。</p>
-<p>执行go version，看到go的安装版本即安装成功</p>
-<p>第一个hello world 程序</p>
-<p>GOPATH环境变量指定了你的工作空间位置</p>
-<p>首先创建一个工作目录，并设置相应的GOPATH，工作目录可以放在任何地方，但不能和go的安装目录相同，在这我们使用$HOME/work</p>
-<pre><code>$ mkdir $HOME/work 
-$ vim /etc/profile 
-$ export GOPATH=$HOME/work  
-</code></pre><p>注意：go的代码必须放在工作空间内，也就是我们这里的work目录下，其中包含了三个子目录</p>
-<pre><code>bin目录包含可执行命令
-
-pkg目录包含包对象
-
-src目录包含go的源文件，它们被组织成包（每个目录都对应一个包）
-</code></pre><p>接下来将工作空间的bin子目录添加到PATH中：</p>
-<pre><code>$ vim /etc/profile
-$ export PATH=$PATH:$GOPATH/bin
-$ source /etc/profile
-</code></pre><p>包路径：<br>标准库中的包有给定的短路径比如”fmt”，对于你自己的包，也必须选择一个基本路径，来保证它不会与将来添加到标准库或其他标准库中的包相冲突。</p>
-<p>使用packs作为基本路径，在你的工作空间里创建一个目录，我们将源码放在其中：</p>
-<pre><code>mkdir $GOPATH/src/packs 
-</code></pre><p>要编译运行简单的程序，首先要选择包路径，在这里我们使用packs/hello，并在你的工作空间内创建相应的包目录：</p>
-<pre><code>$ mkdir $GOPATH/src/packs/hello  
-</code></pre><p>接着在该目录中创建名为hello.go的文件，其内容如下</p>
-<pre><code>package main  
-
-import &quot;fmt&quot;  
-
-func main() {  
-    fmt.Printf(&quot;Hello, world.\n&quot;)  
-} 
-</code></pre><p>现在可以使用go工具构建并安装此程序了</p>
-<pre><code>$ go install packs/hello 
-</code></pre><p>注意，你可以在系统的任何地方运行此命令。go工具会根据GOPATH指定的工作空间，在packs/hello包内查找源码。<br>如果从包目录中运行go install，也可以省略包路径：</p>
-<pre><code>$ cd $GOPATH/src/packs/hello  
-$ go install
-</code></pre><p>此命令会构建hello命令，产生一个可执行的二进制文件。并存放在工作空间的bin目录下，在这里就是$GOPATH/bin目录下<br>因为已经将$GOPATH/bin添加到PATH中，只需要输入该二进制文件名执行即可</p>
-<pre><code>$ hello  
-Hello, world. 
-</code></pre>
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://blog.xmqbeast.com/2018/05/15/什么是MVVM/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="∮小煤球メ">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="∮小煤球メ">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2018/05/15/什么是MVVM/" itemprop="url">
-                  什么是MVVM
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-15T17:57:17+08:00">
-                2018-05-15
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>什么是MVVM？MVVM是Model-View-ViewModel的缩写。</p>
-<p>要编写可维护的前端代码绝非易事。我们已经用MVC模式通过koa实现了后端数据、模板页面和控制器的分离，但是，对于前端来说，还不够。</p>
-<p>这里有童鞋会问，不是讲Node后端开发吗？怎么又回到前端开发了？</p>
-<p>对于一个全栈开发工程师来说，懂前端才会开发出更好的后端程序（不懂前端的后端工程师会设计出非常难用的API），懂后端才会开发出更好的前端程序。程序设计的基本思想在前后端都是通用的，两者并无本质的区别。这和“不想当厨子的裁缝不是好司机”是一个道理。</p>
-<p>当我们用Node.js有了一整套后端开发模型后，我们对前端开发也会有新的认识。由于前端开发混合了HTML、CSS和JavaScript，而且页面众多，所以，代码的组织和维护难度其实更加复杂，这就是MVVM出现的原因。</p>
-<p>在了解MVVM之前，我们先回顾一下前端发展的历史。</p>
-<p>在上个世纪的1989年，欧洲核子研究中心的物理学家Tim Berners-Lee发明了超文本标记语言（HyperText Markup Language），简称HTML，并在1993年成为互联网草案。从此，互联网开始迅速商业化，诞生了一大批商业网站。</p>
-<p>最早的HTML页面是完全静态的网页，它们是预先编写好的存放在Web服务器上的html文件。浏览器请求某个URL时，Web服务器把对应的html文件扔给浏览器，就可以显示html文件的内容了。</p>
-<p>如果要针对不同的用户显示不同的页面，显然不可能给成千上万的用户准备好成千上万的不同的html文件，所以，服务器就需要针对不同的用户，动态生成不同的html文件。一个最直接的想法就是利用C、C++这些编程语言，直接向浏览器输出拼接后的字符串。这种技术被称为CGI：Common Gateway Interface。</p>
-<p>很显然，像新浪首页这样的复杂的HTML是不可能通过拼字符串得到的。于是，人们又发现，其实拼字符串的时候，大多数字符串都是HTML片段，是不变的，变化的只有少数和用户相关的数据，所以，又出现了新的创建动态HTML的方式：ASP、JSP和PHP——分别由微软、SUN和开源社区开发。</p>
-<p>在ASP中，一个asp文件就是一个HTML，但是，需要替换的变量用特殊的&lt;%=var%&gt;标记出来了，再配合循环、条件判断，创建动态HTML就比CGI要容易得多。</p>
-<p>但是，一旦浏览器显示了一个HTML页面，要更新页面内容，唯一的方法就是重新向服务器获取一份新的HTML内容。如果浏览器想要自己修改HTML页面的内容，就需要等到1995年年底，JavaScript被引入到浏览器。</p>
-<p>有了JavaScript后，浏览器就可以运行JavaScript，然后，对页面进行一些修改。JavaScript还可以通过修改HTML的DOM结构和CSS来实现一些动画效果，而这些功能没法通过服务器完成，必须在浏览器实现。</p>
-<p>用JavaScript在浏览器中操作HTML，经历了若干发展阶段：</p>
-<p>第一阶段，直接用JavaScript操作DOM节点，使用浏览器提供的原生API：</p>
-<pre><code>var dom = document.getElementById(&apos;name&apos;);
-dom.innerHTML = &apos;Homer&apos;;
-dom.style.color = &apos;red&apos;;
-</code></pre><p>第二阶段，由于原生API不好用，还要考虑浏览器兼容性，jQuery横空出世，以简洁的API迅速俘获了前端开发者的芳心：</p>
-<pre><code>$(&apos;#name&apos;).text(&apos;Homer&apos;).css(&apos;color&apos;, &apos;red&apos;);
-</code></pre><p>第三阶段，MVC模式，需要服务器端配合，JavaScript可以在前端修改服务器渲染后的数据。</p>
-<p>现在，随着前端页面越来越复杂，用户对于交互性要求也越来越高，想要写出Gmail这样的页面，仅仅用jQuery是远远不够的。MVVM模型应运而生。</p>
-<p>MVVM最早由微软提出来，它借鉴了桌面应用程序的MVC思想，在前端页面中，把Model用纯JavaScript对象表示，View负责显示，两者做到了最大限度的分离。</p>
-<p>把Model和View关联起来的就是ViewModel。ViewModel负责把Model的数据同步到View显示出来，还负责把View的修改同步回Model。</p>
-<p>ViewModel如何编写？需要用JavaScript编写一个通用的ViewModel，这样，就可以复用整个MVVM模型了。</p>
-<p>一个MVVM框架和jQuery操作DOM相比有什么区别？</p>
-<p>我们先看用jQuery实现的修改两个DOM节点的例子：</p>
-<pre><code>&lt;!-- HTML --&gt;
-&lt;p&gt;Hello, &lt;span id=&quot;name&quot;&gt;Bart&lt;/span&gt;!&lt;/p&gt;
-&lt;p&gt;You are &lt;span id=&quot;age&quot;&gt;12&lt;/span&gt;.&lt;/p&gt;
-</code></pre><p>Hello, Homer!</p>
-<p>You are 52.</p>
-<p>用jQuery修改name和age节点的内容：</p>
-<pre><code>&apos;use strict&apos;;
-
-var name = &apos;Homer&apos;;
-var age = 52;
-
-$(&apos;#name&apos;).text(name);
-$(&apos;#age&apos;).text(age);
-</code></pre><p>如果我们使用MVVM框架来实现同样的功能，我们首先并不关心DOM的结构，而是关心数据如何存储。最简单的数据存储方式是使用JavaScript对象：</p>
-<p>var person = {<br>    name: ‘Bart’,<br>    age: 12<br>};</p>
-<p>我们把变量person看作Model，把HTML某些DOM节点看作View，并假定它们之间被关联起来了。</p>
-<p>要把显示的name从Bart改为Homer，把显示的age从12改为51，我们并不操作DOM，而是直接修改JavaScript对象：</p>
-<p>Hello, Homer!</p>
-<p>You are 51</p>
-<pre><code>&apos;use strict&apos;;
-person.name = &apos;Homer&apos;;
-person.age = 51;
-</code></pre><p>执行上面的代码，我们惊讶地发现，改变JavaScript对象的状态，会导致DOM结构作出对应的变化！这让我们的关注点从如何操作DOM变成了如何更新JavaScript对象的状态，而操作JavaScript对象比DOM简单多了！</p>
-<p>这就是MVVM的设计思想：关注Model的变化，让MVVM框架去自动更新DOM的状态，从而把开发者从操作DOM的繁琐步骤中解脱出来！</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://blog.xmqbeast.com/2018/05/15/netty5简介/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="∮小煤球メ">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="∮小煤球メ">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2018/05/15/netty5简介/" itemprop="url">
-                  netty5简介
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-15T11:35:32+08:00">
-                2018-05-15
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Netty是一个非web的java应用，Java序列化的作用有以下两方面：</p>
-<p>1） 把对象的字节序列永久地保存到硬盘上（通常存放在一个文件中）；</p>
-<p>2） 在网络上传送对象的字节序列。</p>
-<p>NIO和IO最大的区别是数据打包和传输方式。IO是以流的方式处理数据，而NIO是以块的方式处理数据。</p>
-<p>面向流的IO一次一个字节的处理数据，一个输入流产生一个字节，一个输出流就消费一个字节。为流式数据创建过滤器就变得非常容易，链接几个过滤器，以便对数据进行处理非常方便而简单，但是面向流的IO通常处理的很慢。</p>
-<p>面向块的IO系统以块的形式处理数据。每一个操作都在一步中产生或消费一个数据块。按块要比按流快的多，但面向块的IO缺少了面向流IO所具有的有雅兴和简单性。</p>
-<p>Channel是一个对象，可以通过它读取和写入数据。可以把它看做IO中的流。但是它和流相比还有一些不同：Channel是双向的，既可以读又可以写，而流是单向的，Channel可以进行异步的读写，对Channel的读写必须通过buffer对象</p>
-<p>在Java NIO中Channel主要有如下几种类型：</p>
-<p>FileChannel：从文件读取数据的</p>
-<p>DatagramChannel：读写UDP网络协议数据</p>
-<p>SocketChannel：读写TCP网络协议数据</p>
-<p>ServerSocketChannel：可以监听TCP连接</p>
-<p>Netty5与其他版本的区别：</p>
-<p>ChannelInboundHandler和ChannelOutboundHandler整合为ChannelHandler。ChannelHandler现在包含输入和输出的处理方法。</p>
-<p>ChannelInboundHandlerAdapter，ChannelOutboundHandlerAdapter和ChannelDuplexHandlerAdapter已被废弃，由 ChannelHandlerAdapter代替。</p>
-<p>由于现在无法区分处理器(handler) 是输入还是输出的处理器，CombinedChannelDuplexHandler现在由 ChannelHandlerAppender代替。</p>
-<p>更多相关变化，可参考<a href="https://github.com/netty/netty/pull/1999" target="_blank" rel="noopener">https://github.com/netty/netty/pull/1999</a></p>
-<p>channelRead0() → messageReceived()</p>
-<p>我知道。这是一个愚蠢的错误。如果你使用了SimpleChannelInboundHandler，你需要把channelRead0()重命名为messageReceived()。</p>
-<p>ChannelInitializer，当一个链接建立时，我们需要知道怎么来接收或者发送数据，当然，我们有各种各样的Handler实现来处理它，那么ChannelInitializer便是用来配置这些Handler，它会提供一个ChannelPipeline，并把Handler加入到ChannelPipeline。 </p>
-<p>ChannelPipeline，ChannelPipeline实际上应该叫做ChannelHandlerPipeline，可以把ChannelPipeline看成是一个ChandlerHandler的链表，当需要对Channel进行某种处理的时候，Pipeline负责依次调用每一个Handler进行处理。每个Channel都有一个属于自己的Pipeline，调用Channel#pipeline()方法可以获得Channel的Pipeline，调用Pipeline#channel()方法可以获得Pipeline的Channel。一个Netty应用基于ChannelPipeline机制，这种机制需要依赖于EventLoop和EventLoopGroup，因为它们三个都和事件或者事件处理相关。 EventLoops的目的是为Channel处理IO操作，一个EventLoop可以为多个Channel服务。 EventLoopGroup会包含多个EventLoop。 Channel代表了一个Socket链接，或者其它和IO操作相关的组件，它和EventLoop一起用来参与IO处理。</p>
-<p> Future，在Netty中所有的IO操作都是异步的，因此，你不能立刻得知消息是否被正确处理，但是我们可以过一会等它执行完成或者直接注册一个监听，具体的实现就是通过Future和ChannelFutures,他们可以注册一个监听，当操作执行成功或失败时监听会自动触发。总之，所有的操作都会返回一个ChannelFuture。</p>
-<pre><code>Netty是一个非阻塞的、事件驱动的、网络编程框架。当然，我们很容易理解Netty会用线程来处理IO事件，对于熟悉多线程编程的人来说，你或许会想到如何同步你的代码，但是Netty不需要我们考虑这些，具体是这样：
-</code></pre><p>一个Channel会对应一个EventLoop，而一个EventLoop会对应着一个线程，也就是说，仅有一个线程在负责一个Channel的IO操作。</p>
-<pre><code>当一个ChannelHandler被加入到ChannelPipeline中时，它便会获得一个ChannelHandlerContext的引用，而ChannelHandlerContext可以用来读写Netty中的数据流。因此，现在可以有两种方式来发送数据，一种是把数据直接写入Channel，一种是把数据写入ChannelHandlerContext，它们的区别是写入Channel的话，数据流会从Channel的头开始传递，而如果写入ChannelHandlerContext的话，数据流会流入管道中的下一个Handler。
-</code></pre><p>我们最关心的部分，如何处理我们的业务逻辑？ 通常继承基类ChannelHandlerAdapter</p>
-<p>Netty中会有很多Handler，具体是哪种Handler还要看它们继承的是InboundAdapter还是OutboundAdapter。当然，Netty中还提供了一些列的Adapter来帮助我们简化开发，我们知道在Channelpipeline中每一个Handler都负责把Event传递给下一个Handler，如果有了这些辅助Adapter，这些额外的工作都可自动完成，我们只需覆盖实现我们真正关心的部分即可。此外，还有一些Adapter会提供一些额外的功能，比如编码和解码。那么下面我们就来看一下其中的三种常用的ChannelHandler：</p>
-<p>Encoders和Decoders</p>
-<p>因为我们在网络传输时只能传输字节流，因此，才发送数据之前，我们必须把我们的message型转换为bytes，与之对应，我们在接收数据后，必须把接收到的bytes再转换成message。我们把bytes to message这个过程称作Decode(解码成我们可以理解的)，把message to bytes这个过程成为Encode。</p>
-<p>Netty中提供了很多现成的编码/解码器，我们一般从他们的名字中便可知道他们的用途，如ByteToMessageDecoder、MessageToByteEncoder，如专门用来处理Google Protobuf协议的ProtobufEncoder、 ProtobufDecoder。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://blog.xmqbeast.com/2018/05/15/java中BIO、NIO、AIO的区别/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="∮小煤球メ">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="∮小煤球メ">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2018/05/15/java中BIO、NIO、AIO的区别/" itemprop="url">
-                  java中BIO、NIO、AIO的区别
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-15T11:31:13+08:00">
-                2018-05-15
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>java中的IO主要源自于网络和本地文件</p>
-<p>  IO的方式通常分为几种，同步阻塞的BIO、同步非阻塞的NIO、异步非阻塞的AIO</p>
-<p> 在JDK1.4出来之前，我们建立网络连接的时候采用BIO模式，需要先在服务端启动一个ServerSocket，然后在客户端启动Socket来对服务端进行通信，默认情况下服务端需要对每个请求建立一堆线程等待请求，而客户端发送请求后，先咨询服务端是否有线程相应，如果没有则会一直等待或者遭到拒绝请求，如果有的话，客户端会线程会等待请求结束后才继续执行。</p>
-<p>BIO与NIO一个比较重要的不同，是我们使用BIO的时候往往会引入多线程，每个连接一个单独的线程；而NIO则是使用单线程或者只使用少量的多线程，每个连接共用一个线程。</p>
-<p>  NIO的最重要的地方是当一个连接创建后，不需要对应一个线程，这个连接会被注册到多路复用器上面，所以所有的连接只需要一个线程就可以搞定，当这个线程中的多路复用器进行轮询的时候，发现连接上有请求的话，才开启一个线程进行处理，也就是一个请求一个线程模式。</p>
-<p>在NIO的处理方式中，当一个请求来的话，开启线程进行处理，可能会等待后端应用的资源(JDBC连接等)，其实这个线程就被阻塞了，当并发上来的话，还是会有BIO一样的问题。<br>　　<br>HTTP/1.1出现后，有了Http长连接，这样除了超时和指明特定关闭的http header外，这个链接是一直打开的状态的，这样在NIO处理中可以进一步的进化，在后端资源中可以实现资源池或者队列，当请求来的话，开启的线程把请求和请求数据传送给后端资源池或者队列里面就返回，并且在全局的地方保持住这个现场(哪个连接的哪个请求等)，这样前面的线程还是可以去接受其他的请求，而后端的应用的处理只需要执行队列里面的就可以了，这样请求处理和后端应用是异步的.当后端处理完，到全局地方得到现场，产生响应，这个就实现了异步处理。</p>
-<p>BIO是一个连接一个线程。<br>　<br>NIO是一个请求一个线程。<br>　<br>AIO是一个有效请求一个线程。</p>
-<p>先来个例子理解一下概念，以银行取款为例：<br>同步 ： 自己亲自出马持银行卡到银行取钱（使用同步IO时，Java自己处理IO读写）。<br>异步 ： 委托一小弟拿银行卡到银行取钱，然后给你（使用异步IO时，Java将IO读写委托给OS处理，需要将数据缓冲区地址和大小传给OS(银行卡和密码)，OS需要支持异步IO操作API）。<br>阻塞 ： ATM排队取款，你只能等待（使用阻塞IO时，Java调用会一直阻塞到读写完成才返回）。<br>非阻塞 ： 柜台取款，取个号，然后坐在椅子上做其它事，等号广播会通知你办理，没到号你就不能去，你可以不断问大堂经理排到了没有，大堂经理如果说还没到你就不能去（使用非阻塞IO时，如果不能读写Java调用会马上返回，当IO事件分发器会通知可读写时再继续进行读写，不断循环直到读写完成）</p>
-<p>Java对BIO、NIO、AIO的支持：</p>
-<p>Java BIO ： 同步并阻塞，服务器实现模式为一个连接一个线程，即客户端有连接请求时服务器端就需要启动一个线程进行处理，如果这个连接不做任何事情会造成不必要的线程开销，当然可以通过线程池机制改善。<br>Java NIO ： 同步非阻塞，服务器实现模式为一个请求一个线程，即客户端发送的连接请求都会注册到多路复用器上，多路复用器轮询到连接有I/O请求时才启动一个线程进行处理。<br>Java AIO(NIO.2) ： 异步非阻塞，服务器实现模式为一个有效请求一个线程，客户端的I/O请求都是由OS先完成了再通知服务器应用去启动线程进行处理，</p>
-<p>BIO、NIO、AIO适用场景分析:</p>
-<p>BIO方式适用于连接数目比较小且固定的架构，这种方式对服务器资源要求比较高，并发局限于应用中，JDK1.4以前的唯一选择，但程序直观简单易理解。<br>NIO方式适用于连接数目多且连接比较短（轻操作）的架构，比如聊天服务器，并发局限于应用中，编程比较复杂，JDK1.4开始支持。<br>AIO方式使用于连接数目多且连接比较长（重操作）的架构，比如相册服务器，充分调用OS参与并发操作，编程比较复杂，JDK7开始支持。<br>另外，I/O属于底层操作，需要操作系统支持，并发也需要操作系统的支持，所以性能方面不同操作系统差异会比较明显。</p>
-<p> 在高性能的I/O设计中，有两个比较著名的模式Reactor和Proactor模式，其中Reactor模式用于同步I/O，而Proactor运用于异步I/O操作。</p>
-<p>在比较这两个模式之前，我们首先的搞明白几个概念，什么是阻塞和非阻塞，什么是同步和异步,同步和异步是针对应用程序和内核的交互而言的，同步指的是用户进程触发IO操作并等待或者轮询的去查看IO操作是否就绪，而异步是指用户进程触发IO操作以后便开始做自己的事情，而当IO操作已经完成的时候会得到IO完成的通知。而阻塞和非阻塞是针对于进程在访问数据的时候，根据IO操作的就绪状态来采取的不同方式，说白了是一种读取或者写入操作函数的实现方式，阻塞方式下读取或者写入函数将一直等待，而非阻塞方式下，读取或者写入函数会立即返回一个状态值。</p>
-<p>  一般来说I/O模型可以分为：同步阻塞，同步非阻塞，异步阻塞，异步非阻塞IO</p>
-<p>同步阻塞IO：</p>
-<p>   在此种方式下，用户进程在发起一个IO操作以后，必须等待IO操作的完成，只有当真正完成了IO操作以后，用户进程才能运行。JAVA传统的IO模型属于此种方式！</p>
-<p>同步非阻塞IO:</p>
-<p>在此种方式下，用户进程发起一个IO操作以后边可返回做其它事情，但是用户进程需要时不时的询问IO操作是否就绪，这就要求用户进程不停的去询问，从而引入不必要的CPU资源浪费。其中目前JAVA的NIO就属于同步非阻塞IO。</p>
-<p>异步阻塞IO：</p>
-<p>   此种方式下是指应用发起一个IO操作以后，不等待内核IO操作的完成，等内核完成IO操作以后会通知应用程序，这其实就是同步和异步最关键的区别，同步必须等待或者主动的去询问IO是否完成，那么为什么说是阻塞的呢？因为此时是通过select系统调用来完成的，而select函数本身的实现方式是阻塞的，而采用select函数有个好处就是它可以同时监听多个文件句柄，从而提高系统的并发性！</p>
-<p>异步非阻塞IO:</p>
-<p>   在此种模式下，用户进程只需要发起一个IO操作然后立即返回，等IO操作真正的完成以后，应用程序会得到IO操作完成的通知，此时用户进程只需要对数据进行处理就好了，不需要进行实际的IO读写操作，因为真正的IO读取或者写入操作已经由内核完成了。目前Java中还没有支持此种IO模型。   </p>
-<p>搞清楚了以上概念以后，我们再回过头来看看，Reactor模式和Proactor模式。</p>
-<p>首先来看看Reactor模式，Reactor模式应用于同步I/O的场景。我们分别以读操作和写操作为例来看看Reactor中的具体步骤：</p>
-<p>读取操作：</p>
-<ol>
-<li><p>应用程序注册读就需事件和相关联的事件处理器</p>
-</li>
-<li><p>事件分离器等待事件的发生</p>
-</li>
-<li><p>当发生读就需事件的时候，事件分离器调用第一步注册的事件处理器</p>
-</li>
-<li><p>事件处理器首先执行实际的读取操作，然后根据读取到的内容进行进一步的处理</p>
-</li>
-</ol>
-<p>写入操作类似于读取操作，只不过第一步注册的是写就绪事件。</p>
-<p>下面我们来看看Proactor模式中读取操作和写入操作的过程：</p>
-<p>读取操作：</p>
-<ol>
-<li><p>应用程序初始化一个异步读取操作，然后注册相应的事件处理器，此时事件处理器不关注读取就绪事件，而是关注读取完成事件，这是区别于Reactor的关键。</p>
-</li>
-<li><p>事件分离器等待读取操作完成事件</p>
-</li>
-<li><p>在事件分离器等待读取操作完成的时候，操作系统调用内核线程完成读取操作，并将读取的内容放入用户传递过来的缓存区中。这也是区别于Reactor的一点，Proactor中，应用程序需要传递缓存区。</p>
-</li>
-<li><p>事件分离器捕获到读取完成事件后，激活应用程序注册的事件处理器，事件处理器直接从缓存区读取数据，而不需要进行实际的读取操作。</p>
-</li>
-</ol>
-<p>Proactor中写入操作和读取操作，只不过感兴趣的事件是写入完成事件。</p>
-<p>从上面可以看出，Reactor和Proactor模式的主要区别就是真正的读取和写入操作是有谁来完成的，Reactor中需要应用程序自己读取或者写入数据，而Proactor模式中，应用程序不需要进行实际的读写过程，它只需要从缓存区读取或者写入即可，操作系统会读取缓存区或者写入缓存区到真正的IO设备.</p>
-<p>   综上所述，同步和异步是相对于应用和内核的交互方式而言的，同步 需要主动去询问，而异步的时候内核在IO事件发生的时候通知应用程序，而阻塞和非阻塞仅仅是系统在调用系统调用的时候函数的实现方式而已。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1863,7 +1787,7 @@ person.age = 51;
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">74</span>
+                <span class="site-state-item-count">81</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -1876,7 +1800,7 @@ person.age = 51;
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">21</span>
+                <span class="site-state-item-count">24</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

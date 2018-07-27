@@ -300,6 +300,944 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://blog.xmqbeast.com/2018/05/14/Redis-Rpush命令/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="∮小煤球メ">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="∮小煤球メ">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2018/05/14/Redis-Rpush命令/" itemprop="url">
+                  Redis Rpush命令
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-14T02:30:50+08:00">
+                2018-05-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>Redis Rpush 命令</p>
+<p>Redis Rpush 命令用于将一个或多个值插入到列表的尾部(最右边)。<br>如果列表不存在，一个空列表会被创建并执行 RPUSH 操作。 当列表存在但不是列表类型时，返回一个错误。</p>
+<p>注意：在 Redis 2.4 版本以前的 RPUSH 命令，都只接受单个 value 值。</p>
+<p>语法<br>redis Rpush 命令基本语法如下：</p>
+<pre><code>redis 127.0.0.1:6379&gt; RPUSH KEY_NAME VALUE1..VALUEN
+</code></pre><p>返回值<br>执行 RPUSH 操作后，列表的长度。</p>
+<p>实例</p>
+<pre><code>redis 127.0.0.1:6379&gt; RPUSH mylist &quot;hello&quot;
+(integer) 1
+redis 127.0.0.1:6379&gt; RPUSH mylist &quot;foo&quot;
+(integer) 2
+redis 127.0.0.1:6379&gt; RPUSH mylist &quot;bar&quot;
+(integer) 3
+redis 127.0.0.1:6379&gt; LRANGE mylist 0 -1
+1) &quot;hello&quot;
+2) &quot;foo&quot;
+3) &quot;bar&quot;
+</code></pre>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://blog.xmqbeast.com/2018/05/14/Redis-Lpush命令/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="∮小煤球メ">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="∮小煤球メ">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2018/05/14/Redis-Lpush命令/" itemprop="url">
+                  Redis Lpush命令
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-14T02:28:28+08:00">
+                2018-05-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>Redis Lpush 命令</p>
+<p>Redis Lpush 命令将一个或多个值插入到列表头部。 如果 key 不存在，一个空列表会被创建并执行 LPUSH 操作。 当 key 存在但不是列表类型时，返回一个错误。</p>
+<p>注意：在Redis 2.4版本以前的 LPUSH 命令，都只接受单个 value 值。</p>
+<p>语法<br>redis Lpush 命令基本语法如下：</p>
+<pre><code>redis 127.0.0.1:6379&gt; LPUSH KEY_NAME VALUE1.. VALUEN
+</code></pre><p>返回值<br>执行 LPUSH 命令后，列表的长度。</p>
+<p>实例</p>
+<pre><code>127.0.0.1:6379&gt; LPUSH list1 &quot;foo&quot;
+(integer) 1
+127.0.0.1:6379&gt; LPUSH list1 &quot;bar&quot;
+(integer) 2
+127.0.0.1:6379&gt; LRANGE list1 0 -1
+1) &quot;bar&quot;
+2) &quot;foo&quot;
+</code></pre>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://blog.xmqbeast.com/2018/05/14/Redis-Rpoplpush命令/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="∮小煤球メ">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="∮小煤球メ">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2018/05/14/Redis-Rpoplpush命令/" itemprop="url">
+                  Redis Rpoplpush命令
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-14T02:24:57+08:00">
+                2018-05-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>Redis Rpoplpush 命令<br>Redis Rpoplpush 命令用于移除列表的最后一个元素，并将该元素添加到另一个列表并返回。</p>
+<p>语法<br>redis Rpoplpush 命令基本语法如下：</p>
+<pre><code>redis 127.0.0.1:6379&gt; RPOPLPUSH SOURCE_KEY_NAME DESTINATION_KEY_NAME
+</code></pre><p>返回值<br>被弹出的元素。</p>
+<p>实例</p>
+<pre><code>redis 127.0.0.1:6379&gt; RPUSH mylist &quot;hello&quot;
+(integer) 1
+redis 127.0.0.1:6379&gt; RPUSH mylist &quot;foo&quot;
+(integer) 2
+redis 127.0.0.1:6379&gt; RPUSH mylist &quot;bar&quot;
+(integer) 3
+redis 127.0.0.1:6379&gt; RPOPLPUSH mylist myotherlist
+&quot;bar&quot;
+redis 127.0.0.1:6379&gt; LRANGE mylist 0 -1
+1) &quot;hello&quot;
+2) &quot;foo&quot;
+</code></pre>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://blog.xmqbeast.com/2018/05/14/Redis-Lpop命令/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="∮小煤球メ">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="∮小煤球メ">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2018/05/14/Redis-Lpop命令/" itemprop="url">
+                  Redis Lpop命令
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-14T02:15:07+08:00">
+                2018-05-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>Redis Lpop 命令</p>
+<p>Redis Lpop 命令用于移除并返回列表的第一个元素。</p>
+<p>语法<br>redis Lpop 命令基本语法如下：</p>
+<pre><code>redis 127.0.0.1:6379&gt; Lpop KEY_NAME
+</code></pre><p>返回值<br>列表的第一个元素。 当列表 key 不存在时，返回 nil 。</p>
+<p>实例</p>
+<pre><code>redis 127.0.0.1:6379&gt; RPUSH list1 &quot;foo&quot;
+(integer) 1
+redis 127.0.0.1:6379&gt; RPUSH list1 &quot;bar&quot;
+(integer) 2
+redis 127.0.0.1:6379&gt; LPOP list1
+&quot;foo&quot;
+</code></pre><p>PS:Redis Rpop 命令用于移除并返回列表的最后一个元素。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://blog.xmqbeast.com/2018/05/14/Redis-Llen命令/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="∮小煤球メ">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="∮小煤球メ">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2018/05/14/Redis-Llen命令/" itemprop="url">
+                  Redis Llen命令
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-14T02:06:56+08:00">
+                2018-05-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>Redis Llen 命令</p>
+<p>Redis Llen 命令用于返回列表的长度。 如果列表 key 不存在，则 key 被解释为一个空列表，返回 0 。 如果 key 不是列表类型，返回一个错误。</p>
+<p>语法<br>redis Llen 命令基本语法如下：</p>
+<pre><code>redis 127.0.0.1:6379&gt; LLEN KEY_NAME
+</code></pre><p>返回值<br>列表的长度。</p>
+<p>实例</p>
+<pre><code>redis 127.0.0.1:6379&gt; RPUSH list1 &quot;foo&quot;
+(integer) 1
+redis 127.0.0.1:6379&gt; RPUSH list1 &quot;bar&quot;
+(integer) 2
+redis 127.0.0.1:6379&gt; LLEN list1
+(integer) 2
+</code></pre>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://blog.xmqbeast.com/2018/05/14/Redis-Ltrim命令/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="∮小煤球メ">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="∮小煤球メ">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2018/05/14/Redis-Ltrim命令/" itemprop="url">
+                  Redis Ltrim命令
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-14T02:01:57+08:00">
+                2018-05-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>Redis Ltrim 命令</p>
+<p>Redis Ltrim 对一个列表进行修剪(trim)，就是说，让列表只保留指定区间内的元素，不在指定区间之内的元素都将被删除。<br>下标 0 表示列表的第一个元素，以 1 表示列表的第二个元素，以此类推。 你也可以使用负数下标，以 -1 表示列表的最后一个元素， -2 表示列表的倒数第二个元素，以此类推。</p>
+<p>语法<br>redis Ltrim 命令基本语法如下：</p>
+<pre><code>redis 127.0.0.1:6379&gt; LTRIM KEY_NAME START STOP
+</code></pre><p>返回值<br>命令执行成功时，返回 ok 。</p>
+<p>实例</p>
+<pre><code>redis 127.0.0.1:6379&gt; RPUSH mylist &quot;hello&quot;
+(integer) 1
+redis 127.0.0.1:6379&gt; RPUSH mylist &quot;hello&quot;
+(integer) 2
+redis 127.0.0.1:6379&gt; RPUSH mylist &quot;foo&quot;
+(integer) 3
+redis 127.0.0.1:6379&gt; RPUSH mylist &quot;bar&quot;
+(integer) 4
+redis 127.0.0.1:6379&gt; LTRIM mylist 1 -1
+OK
+redis 127.0.0.1:6379&gt; LRANGE mylist 0 -1
+1) &quot;hello&quot;
+2) &quot;foo&quot;
+3) &quot;bar&quot;
+</code></pre>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://blog.xmqbeast.com/2018/05/14/redis-Lrange命令/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="∮小煤球メ">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="∮小煤球メ">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2018/05/14/redis-Lrange命令/" itemprop="url">
+                  redis Lrange命令
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-14T01:49:53+08:00">
+                2018-05-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>Redis Lrange 命令</p>
+<p>Redis Lrange 返回列表中指定区间内的元素，区间以偏移量 START 和 END 指定。 其中 0 表示列表的第一个元素， 1 表示列表的第二个元素，以此类推。 你也可以使用负数下标，以 -1 表示列表的最后一个元素， -2 表示列表的倒数第二个元素，以此类推。</p>
+<p>语法<br>redis Lrange 命令基本语法如下：</p>
+<pre><code>redis 127.0.0.1:6379&gt; LRANGE KEY_NAME START END
+</code></pre><p>返回值<br>一个列表，包含指定区间内的元素。</p>
+<p>实例<br>    redis&gt; RPUSH mylist “one”<br>    (integer) 1<br>    redis&gt; RPUSH mylist “two”<br>    (integer) 2<br>    redis&gt; RPUSH mylist “three”<br>    (integer) 3<br>    redis&gt; LRANGE mylist 0 0<br>    1) “one”<br>    redis&gt; LRANGE mylist -3 2<br>    1) “one”<br>    2) “two”<br>    3) “three”<br>    redis&gt; LRANGE mylist -100 100<br>    1) “one”<br>    2) “two”<br>    3) “three”<br>    redis&gt; LRANGE mylist 5 10<br>    (empty list or set)<br>    redis&gt; </p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://blog.xmqbeast.com/2018/05/14/redis-Rpop命令/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -757,897 +1695,11 @@ public Long lpush(final String key, final String... strings)
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://blog.xmqbeast.com/2018/03/18/凡是你排斥的，就是你所要学习的/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="∮小煤球メ">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="∮小煤球メ">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2018/03/18/凡是你排斥的，就是你所要学习的/" itemprop="url">
-                  凡是你排斥的，就是你所要学习的
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-18T17:55:57+08:00">
-                2018-03-18
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>&emsp;&emsp;&emsp; 最近有点迷上了心理学，也许是因为自己本身心理方面有些问题，也希望借此改善自己，所以会去看一些心理学方面的内容。“意识”、“潜意识”，对这些还不是有一个很清晰的了解，从小就一直很羡慕别人的家庭，可能是自己一直得不到家庭的温暖吧，现在老大不小了，并不是很想找个女朋友组个家庭，可能是那个阴影一直在脑海里吧。说这些并不是要怪家人什么，只是希望如果有人跟我有同样的经历，希望能或多或少帮助他们一些。我也一直很想改变自己“潜意识”里面那些不好的东西，所以自己也一直在努力在寻找自己“潜意识”里的那个“我”，希望可以改变“潜意识”里面的那个“我”</p>
-<p>&emsp;&emsp;&emsp; 法则一：【从外在看内在，从别人看自己】透过别人，你才能认识真正的自己，你从别人身上看到的其实是自己。我们对别人的意见，主要是取决于他们使我们看清自己什么，而不是我们如何看他们。你所有的人际关系都是一面镜子，透过它们，你才能认识真正的自己。你在发觉对方的过程中，不知不觉你也等于是在发掘自己。去了解他的感觉、想法，你也会更了解自己，你们相互成为对方的镜子。如果你觉得伴侣对你失去热情，可能是因为你也对他失去热情；就像一位婚姻专家说的：「如果我们的婚姻变得乏味，可能是因为我觉得乏味，或更糟的是我这个人很乏味。」 事实上，那些令你厌恶的人是在帮助你，他帮助你了解自己，让你发觉你的阴暗面。这也就是为什么当我们跟一个人越亲密，就越容易产生厌恶，因为他让你看到了自己 的真面目。别人最惹你讨厌的地方，通常也是你自己最受不了的地方。</p>
-<p>&emsp;&emsp;&emsp; 法则二：【你是什么样的人，就会认为别人是什么样】 你不能容忍他人的部分，就是不能容忍自己的部分。一个品德不好的人，就会怀疑别人的品德；一个对别人不忠诚的人，也会怀疑别人对他的忠诚；一个不正直、不正经的人，就会把别人的任何举动都「想歪」，因为他就是那样的人。一个对的女人有非分之想的人，自然而然地，也会猜疑自己的女人。老遇到讨厌的事的，往往是令人讨厌的人。喜欢挑人毛病的人，其实自己才是最有毛病；喜欢说三道四的人，其实自己才是最不三不四。如果你很爱发脾气，你就会认为别人经常惹你生气，每一件事都可能变成你愤怒的理由。并不是说每一样东西都是错的，而是你会投射，你会把隐藏在自己内在的东西投射到别人身上。你会谴责每一个人、每一件事，因为你有太多的怒气，所以即使是一点小事也能引燃怒火。同样，别人对你说什么，也反映了他们是谁及他们的内心世界。他们批评你很可能是因为他们对自己的不满，甚至他们自己就是他们所批评的「那种人」。当你的内心走向良善时，你将停止批评别人和对别人的批评产生反弹。如果你对一颗长满苹果的树丢石头，掉下来的就只会是苹果，不管谁丢都一样。一个真正良善的人，不管你对他怎么样，他显现出来的就只会是平和、良善，因为他就是那样的人。</p>
-<p>&emsp;&emsp;&emsp; 法则三：【你内在是什么，就会被什么样的吸引】你对外排斥什么，对内就排斥什么。一般而言，那些我们相处愉快的人，正是反映了我们喜欢且接受的内在自我；而那些我们不喜欢的人，也反映我们不愉快且不接受内在的自我。教双方和谐相处，不如教他们让自己内心和谐，那样双方自然会和谐；教他们如何增进彼此感情，还不如教他们增进自我成长，那样彼此关系自然会成长。当有人问我要如何改善关系，我总会告诉他们：「首先你要深入内在，除非你内在的问题先解决，否则你不但无法改善，而且会制造更多问题。」 一个有控制欲的人，除非内在的空虚得到填补，否则就不可能停止怨怼；一个爱嫉妒的人，除非内在能找到自信，不再跟人比较，否则就不可能嫉妒。每个人外在的言行举止都是内在思想的呈现。你如果无法信任自己，就很难信任别人；你如果无法尊重自己，就很难尊重别人；你如果无法肯定自己，就很难肯定别人；你如果不能照亮自己，就不可能照亮别人。当伴侣们没有了爱而彼此伤害，我不会告诉他们要如何努力爱对方，而是要求他们先学会爱自己，因为伤害对方其实就是在伤害自己。你与每个人的关系，都反映出你与自己的关系。如果你不断与自己的内在冲突，那么你也会不断地与别人冲突；如果你自己内在的情感挣扎，那么你也会与别人在情感上发生挣扎。我们在感情中所遭遇的问题，就是我们内在的问题。我们吸引的关系，都反映出我们拥有的特质，以及呈现我们的内在自我。所以，关系出问题的人，不仅要检讨你跟别人的关系，也要反省你跟自己的关系。</p>
-<p>以下是一些可以自我检视的问题：「当我观察你所反映的我，我感到ˍˍˍˍˍ。」（诸如愤怒、恐惧、失控、困惑之类的感受。）「你反映了我的哪个自我？」 「外在」困扰我们的问题，正是我们「内在」无法整合的部分。 如果你想改善外在的一切，就必须从改变内在开始。 </p>
-<p>&emsp;&emsp;&emsp; 法则四：【你约束别人，自己也会被约束】 你越恨就越束缚，你越爱就越自由。当你掌控别人时，你同时也被掌控；如果你绑住别人，别人也会绑住你。你想想看，当你控制别人，不准他们做这做那个，那如果他们不按照你说的话去做呢？你会怎么样？你就会不高兴，对吗？你的喜怒哀乐是由别人来决定，你认为他们是被你掌控的吗？不，其实你才是被掌控的。以眼还眼，结果是大家都瞎了。如果你不断在记忆中反刍旧伤痛，你就是给了最初导致伤痛的人、事一再伤害你的力量。当你怨恨别人时，表示某种程度上，你也怨恨自己。要怎么彻底消灭敌人？把敌人变成朋友！你就会发现，那些最难得到原谅的人，正是你最需要原谅的人；最难放手的人，正是你最需要放手的人。</p>
-<p>&emsp;&emsp;&emsp; 法则五：【如果你很排斥，它就是你必须学习的课题】 如果你很欣赏，它就可以蜕变成爱。我们的主要的人际关系，不断地反映该学习的课题是什么。无论是你的老板、同事、朋友、情人、配偶或小孩皆然，这些人所拥有的你所不喜欢的个性、想法和行为，往往都是你需要学习的部分。他们会显露你的阴影，会一再地重复你所厌恶的言行来让你学习。当有人指出你的错误，你很气那个，但这是他的错吗？不，他只是帮你把「发霉的阴影」拿出来晒晒太阳。你不会因为别人说你想偷窃海洋馆的一只鲸鲨而冒火，因为那是你连想都不会想做的事。但是，如果你太太说你旅游出差是想借机去「偷腥」，你可能就会辩驳，甚至发火。为什么？因为这种事有可能发生，或曾经甚至已经发生了。没错，一般而言，越接近事实的指控，你越有可能起而辩护和发火。 所以，以后当别人指责你的时候，不要再像以前一样，立刻去攻击或反击，你要开始反问自己，因为他们说的很可能是真的。 如果不是真的，你又何必那么「当真」，对吗？ 他们之所以会安排在你身边，都是「有原因」的。 因此，不要说不喜欢就排斥或试图逃避他们，因为他们都是「天赐的良缘」，你应该好好利用这个机缘来蜕变自己。 去爱一个喜欢你的人，没什么了不起。 去爱一个爱你的人，你什么分数也得不到。 去爱一个你不喜欢的人，你一定会在生命中学到一些东西。 去爱一个无缘无故责备你的人，你就学到了生命的艺术。 ——印度大师古儒吉 爱是什么？ 爱就是欣赏你不喜欢和不爱的。 如果在你生活周遭有太多你讨厌或不爱的人事物，那是因为你一直在排斥，所以他们才会一再出现，你必须学会​​生活的艺术——将它们蜕变成爱。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://blog.xmqbeast.com/2018/03/12/关于融资/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="∮小煤球メ">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="∮小煤球メ">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2018/03/12/关于融资/" itemprop="url">
-                  关于融资
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-12T00:23:16+08:00">
-                2018-03-12
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>&ensp;&ensp;&emsp;  一直在想一些关于创业的事情，最近炒的很火的比特币、区块链技术、去中心化等等，也许现在的社会是有点浮躁了，每个人都想快速增加自己的财富，所以造成一大堆人的赌博、跟风心理。可能过了30岁这个槛，我现在也有点这种心理，可能是技术出身，所以也不太会去赌博，还是希望在新的一年里能静下心来好好专研技术。最近在面试，跟面试官聊了一些创业的东西，感觉还是不错的，淘宝、支付宝能成功，是因为他们解决了买家跟卖家的信任问题，淘宝网购确实给社会带来了很大便利，也解决了很多社会问题，就业、商品的销售渠道等等。我觉得，如果能解决信任问题，就可以做成很多买卖，就跟滴滴的私家车一样，解决了车主跟乘客的信任问题，同时也给社会创造了价值，让跑私家车的司机可以多赚点家用补贴，还是非常了不起的。但是话说回来，做平台也并不是那么容易的，需要大众的信任，因为很多平台也是做到一半就跑路，所以让人信任也不是一件容易的事儿。</p>
-<p>   &ensp;&ensp;&emsp;  刚看到一篇融资的文章，写的还不错，如果有一天，能自己创业，拿到投资或者融资的钱，一定会尽心尽力去做，当前应该做一些比较实际的东西，比如说做好技术、锻炼身体、好好爱自己等等。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://blog.xmqbeast.com/2018/03/11/七秒钟的记忆/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="∮小煤球メ">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="∮小煤球メ">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2018/03/11/七秒钟的记忆/" itemprop="url">
-                  七秒钟的记忆
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-11T14:36:48+08:00">
-                2018-03-11
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>  &ensp;&ensp;&emsp; 一直在思考一些心理、行为，可能自己有一些心理或精神上的缺失，所以有时候会比较想去研究这些东西。活了30多年，也许之前自己是一直处于比较迷茫的，但是也一直在很努力寻找努力的方向。这些话看起来很老套，有点像心灵鸡汤的东西，但人确确实实是需要目标或者理想的。慢慢发现，自己对那些美好的文字、音乐、电影等艺术算是比较感兴趣，假如自己的职业不是一个程序员，可能会去搞艺术或者当一名运动员，因为自己也算是比较喜欢运动的，然而这艺术跟运动的门槛比当一名程序员高得多，所以暂时也没有想换行业的想法，还是会花大部分精力在写代码上面。</p>
-<p>  &ensp;&ensp;&emsp; 写这些东西可能是因为做一个总结吧，刚过完农历的新年，算是一个新的开始吧。最近在看一本叫《心流》的心理学相关方面的书，里面有说到，我们接收到的每一条资讯，都要经过自我的批判。它对我们的目标是威胁、支持，还是完全中立？股市下跌的消息往往令银行家担忧，但对政治异议分子却可能是振奋人心的好消息。一条新资讯可能会使我们付出所有心力应付威胁，造成意识的失序；但它也可能强化我们的目标，激发出更多的精神能量。</p>
-<p>  &ensp;&ensp;&emsp; 当我们发觉收到的资讯与目标亲和，精神能量就会源源不断，没有担心的必要，也无须猜疑自己的能力。我们不再怀疑自己，只因为我们得到了明确的鼓励：“你做得很好！”积极的反馈强化了自我，使我们能投入更多的注意力，照顾内心与外在环境的平衡。最优体验出现时，一个人可以投入全部的注意力，以求实现目标；没有失序现象需要整顿，自我也没有受到任何威胁，因此不需要分心防卫。我们称它为“心流体验”，处于最优状态时的感觉：“好像漂浮起来”，“一股洪流带领着我”。它正好是精神熵的反面————实际上，有时候我们称它为“精神负熵”。拥有它的人就能培养一股更坚强、更自信的自我，能够用更多的精神力量，专注于自己选择的目标。</p>
-<p>  &ensp;&ensp;&emsp; 一个人若能充分掌控意识，尽可能创造心流体验，生活品质势必会提高。即使是平凡无奇地例行公事，经过自我转换，也变得有方向、有乐趣。在心流中，我们是精神力量的主宰，无论做什么事都能使意识更有秩序。以下是一名知名攀岩专家的心流体验：</p>
-<pre><code>越来越完美的自我控制，产生一种痛快的感觉
-你不断逼身体发挥所有的极限，直到全身隐隐作痛
-然后你会满怀敬畏地回顾自我，回顾你所做的一切，那种佩服的感觉简直无法形容
-它带给你一种狂喜，一种自我满足
-只要在这种战役中战胜过自己，人生其他战场的挑战，也就变得容易多了
-</code></pre><p>&ensp;&ensp;&emsp; 其实战斗中对抗的不是自己，而是使意识失序的精神熵。我们是为保卫自我而战，这同时也是一场控制注意力的斗争，虽然它不一定像攀岩那样涉及到体能的挑战。体验过心流的人都知道，那份深沉的快乐是严格的自律、集中注意力换来的。</p>
-<p>&ensp;&ensp;&emsp; 在心流状态下，意识全神贯注、秩序井然，有助于自我的整合。思想、企图、感觉和所有的感官都集中于同一个目标上，自我体验也臻于和谐。当心流结束时，一个人会觉得，内心和人际关系都比以前更“完整”。前面提到的那位攀岩专家还说：“爬山是激发一个人全部能力的最佳活动。没有人会逼迫你，能否爬上巅峰对身心不构成压力，你有很多志同道合的同伴在旁边，大家都齐心协力。还有谁比这些人更值得信赖呢？他们跟你同样追求自律，全心全意投入，跟这些人建立这样的关系，本身就是最大的喜悦”</p>
-<p>&ensp;&ensp;&emsp; 我们只有在不掺杂其他动机，只为行动而行动时，才能学会做一个比原来的自己更复杂的人。选定一个目标，投入全部的注意力，不论做什么事都会觉得乐趣无穷。一旦尝到这种快乐，我们就会加倍努力，重温它的滋味————自我就这样开始成长了。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://blog.xmqbeast.com/2018/03/10/在关系中遇见自己/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="∮小煤球メ">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="∮小煤球メ">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2018/03/10/在关系中遇见自己/" itemprop="url">
-                  在关系中遇见自己
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-10T21:43:39+08:00">
-                2018-03-10
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>  &emsp; &emsp; 人的一生中，我们会遇到很多人，建立多种不同的人际关系：亲子关系、夫妻关系、婆媳关系、同事关系、朋友关系等，在这种种关系中，你会有不同的角色和感受，激情、亲密、压抑、苦恼、愤怒等等，每一种情绪背后都藏着你的渴求。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://blog.xmqbeast.com/2018/03/10/做一个拥有好习惯的人/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="∮小煤球メ">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="∮小煤球メ">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2018/03/10/做一个拥有好习惯的人/" itemprop="url">
-                  做一个拥有好习惯的人
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-10T21:17:29+08:00">
-                2018-03-10
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <pre><code>思想决定行为，行为决定习惯，习惯决定性格，性格决定命运。
-</code></pre><p>  如果你想问习惯是什么？大卫-休谟会告诉你：“习惯是人生的伟大指导”。习惯的力量有多大？既不能被经验证明，也不能被经验证伪，能够说明的只有概率，做得多了，时间长了，习惯了也就成自然了。</p>
-<p>习惯是一种长期的思维方式、处世态度，习惯是由一而再、再而三的思想行为形成的，习惯具有很强的惯性，跟转动的车轮一样。</p>
-<p>人们往往会不由自主地启用自己的习惯，不论是好习惯还是不好的习惯，都是如此，可见习惯在不经意间会影响一个人的一生。但是坚持一个好的习惯却很难，比如坚持每天跑5公里，坚持每天背20个单词，坚持每个月看1本书等。这些习惯一旦养成，你会收获一个健康的身体、记住7300个单词，看12本书等等，也许你的生活也会就此改变。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://blog.xmqbeast.com/2018/03/09/在-Markdown-语言中，如何实现段首空格的显示/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="∮小煤球メ">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="∮小煤球メ">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2018/03/09/在-Markdown-语言中，如何实现段首空格的显示/" itemprop="url">
-                  在 Markdown 语言中，如何实现段首空格的显示 
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-09T23:47:36+08:00">
-                2018-03-09
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>直接写</p>
-<ul>
-<li>半方大的空白‘&amp;ensp’;或‘&amp;#8194’;</li>
-<li>全方大的空白‘&amp;emsp’;或‘&amp;#8195’;</li>
-<li>不断行的空白格‘&amp;nbsp’;或‘&amp;#160’;</li>
-<li>两个‘&amp;emsp’;即可</li>
-<li>‘&amp;nbsp’;//半角空格（英文）</li>
-<li>‘&amp;emsp’;//全角空格（中文）</li>
-</ul>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://blog.xmqbeast.com/2018/03/09/hexo-d-g-后出现验证报错verification-failed/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="∮小煤球メ">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="∮小煤球メ">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2018/03/09/hexo-d-g-后出现验证报错verification-failed/" itemprop="url">
-                  hexo d -g 后出现验证报错verification failed
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-09T23:41:07+08:00">
-                2018-03-09
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>验证报错报错verification failed：<br>Error: Host key verification failed.<br>fatal: Could not read from remote repository.<br>Please make sure you have the correct access rights and the repository exists.</p>
-<ul>
-<li><p>解决方法：条件SSHkey<br>$ ssh-keygen -t rsa -C “<a href="mailto:imsofter@163.com" target="_blank" rel="noopener">imsofter@163.com</a>“<br>三次回车，即可设置密码为空</p>
-</li>
-<li><p>将生成的C:\Users\Administrator.ssh目录下的id_rsa.pub添加到github上</p>
-</li>
-<li><p>再ssh <a href="mailto:git@github.com" target="_blank" rel="noopener">git@github.com</a></p>
-</li>
-<li>Hi imsofter! You’ve successfully authenticated, but GitHub does not provide shell access.<br>Connection to github.com closed.</li>
-</ul>
-<p>再可以将代码推上github上了。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1692,7 +1744,7 @@ public Long lpush(final String key, final String... strings)
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">74</span>
+                <span class="site-state-item-count">81</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -1705,7 +1757,7 @@ public Long lpush(final String key, final String... strings)
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">21</span>
+                <span class="site-state-item-count">24</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

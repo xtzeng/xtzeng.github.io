@@ -300,6 +300,1039 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://blog.xmqbeast.com/2017/10/08/linux下安装配置nexus/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="∮小煤球メ">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="∮小煤球メ">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/10/08/linux下安装配置nexus/" itemprop="url">
+                  linux下安装配置nexus
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-08T02:43:55+08:00">
+                2017-10-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>为什么要搭建maven私服？</p>
+<p>在开发过程中，有时候会使用到公司内部的一些开发包，显然把这些包放在外部是不合适的。另外，由于项目一直在开发中，这些内部的依赖可能也在不断的更新。可以通过搭建公司内部的Maven服务器，将第三方和内部的依赖统一管理，同时也可以节省网络带宽，当然前提是项目所需要的构件在私服中已经存在。</p>
+<p>Nexus下载及安装配置</p>
+<p>我们可以在nexus的官网上找到它的相关介绍，下载地址是：<a href="http://www.sonatype.org/nexus/go" target="_blank" rel="noopener">http://www.sonatype.org/nexus/go</a></p>
+<p> 下载</p>
+<pre><code># wget https://sonatype-download.global.ssl.fastly.net/nexus/oss/nexus-2.11.2-03-bundle.tar.gz
+</code></pre><p> 解压</p>
+<pre><code># cd /usr/local
+ # mkdir nexus
+ # tar -zxvf /opt/java/nexus-2.14.5-02-bundle.tar.gz -C /usr/local/nexus
+ # cd nexus
+ # ls (显示如下两个文件夹)
+ nexus-2.11.2-03   sonatype-work
+</code></pre><p>修改配置文件</p>
+<pre><code># cd nexus-2.11.2-03/conf
+# vi nexus.properties
+#Jetty section
+application-port=8081      ##修改Jetty端口号
+# nexus section
+nexus-work=${bundleBasedir}/../sonatype-work/nexus　
+</code></pre><p>保存以上修改</p>
+<p>配置用户</p>
+<pre><code># vi /usr/local/nexus/nexus-2.11.2-03/bin/nexus
+
+#RUN_AS_USER=
+
+RUN_AS_USER=root
+</code></pre><p>保存以上修改</p>
+<p>若有设置防火墙，需前往修改防火墙配置并重启防火墙，此处略过……</p>
+<p>启动nexus</p>
+<pre><code># /usr/local/nexus/nexus-2.11.2-03/bin/nexus start
+
+****************************************
+
+WARNING - NOT RECOMMENDED TO RUN AS ROOT
+
+****************************************
+
+Starting Nexus OSS...
+
+Started Nexus OSS.
+</code></pre><p>在浏览器打开:<a href="http://ip:8081/nexus,登录：用户名admin" target="_blank" rel="noopener">http://ip:8081/nexus,登录：用户名admin</a>  默认密码：admin123<br><img src="http://oncykm32h.bkt.clouddn.com/nexus.png" alt="nexus"><br>在项目中修改maven仓库地址<br><img src="http://oncykm32h.bkt.clouddn.com/pom-nexus.png" alt="pom-nexus"><br>这样就配置完成了。在构建maven项目时，如果在私服中存在需要的构件，则会直接从私服中下载；如果私服中没有所需构件，则会先从网络上下载到私服，之后才会下载到本地。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://blog.xmqbeast.com/2017/10/08/hexo常用命令/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="∮小煤球メ">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="∮小煤球メ">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/10/08/hexo常用命令/" itemprop="url">
+                  hexo常用命令
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-08T02:01:54+08:00">
+                2017-10-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>常见命令</p>
+<pre><code>hexo new &quot;postName&quot; #新建文章
+hexo new page &quot;pageName&quot; #新建页面
+hexo generate #生成静态页面至public目录
+hexo server #开启预览访问端口（默认端口4000，&apos;ctrl + c&apos;关闭server）
+hexo deploy #部署到GitHub
+hexo help  # 查看帮助
+hexo version  #查看Hexo的版本
+</code></pre><p>缩写：</p>
+<pre><code>hexo n == hexo new
+hexo g == hexo generate
+hexo s == hexo server
+hexo d == hexo deploy
+</code></pre><p>组合命令：</p>
+<pre><code>hexo s -g #生成并本地预览
+hexo d -g #生成并上传
+</code></pre>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://blog.xmqbeast.com/2017/10/07/linux下安装pm2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="∮小煤球メ">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="∮小煤球メ">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/10/07/linux下安装pm2/" itemprop="url">
+                  linux下安装pm2
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-07T14:15:55+08:00">
+                2017-10-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>如果可以联网</p>
+<pre><code>直接执行：npm install -g pm2
+</code></pre><p>登录部署服务器</p>
+<p>执行 npm config get prefix 看一下这台服务器的npm默认安装目录， 例如目录为 ：</p>
+<pre><code>/opt/java/node-v6.11.4-linux-x64
+</code></pre><p>到这一步，你已经可以使用 /opt/java/node-v6.11.4-linux-x64/lib/node_modules/pm2/bin/pm2 执行pm2的命令了， 下面就是把这个命令加到系统环境中</p>
+<pre><code>ln -s /opt/java/node-v6.11.4-linux-x64/lib/node_modules/pm2/bin/pm2 /usr/local/bin/pm2
+</code></pre><p>下面就是把这个命令加到系统环境中</p>
+<p>这样，就可以直接使用pm2命令来各种操作了</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://blog.xmqbeast.com/2017/10/07/linux下安装node环境/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="∮小煤球メ">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="∮小煤球メ">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/10/07/linux下安装node环境/" itemprop="url">
+                  linux下安装node环境
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-07T13:46:43+08:00">
+                2017-10-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>首先去官网下载代码，这里一定要注意安装分两种，一种是Source Code源码，一种是编译后的文件。</p>
+<p><img src="http://oncykm32h.bkt.clouddn.com/nodejs-download.png" alt="nodejs-download"></p>
+<p>（一） 编译好的文件</p>
+<p>  简单说就是解压后，在bin文件夹中已经存在node以及npm，如果你进入到对应文件的中执行命令行一点问题都没有，不过不是全局的，所以将这个设置为全局就好了。</p>
+<pre><code>cd node-v0.10.28-linux-x64/bin
+ls
+./node -v
+</code></pre><p>然后设置全局：</p>
+<pre><code>ln -s /opt/java/node-v6.11.4-linux-x64/bin/node /usr/local/bin/node
+ln -s /opt/java/node-v6.11.4-linux-x64/bin/npm /usr/local/bin/npm
+</code></pre><p>这里/home/kun/mysofltware/这个路径是你自己放的，你将node文件解压到哪里就是哪里。</p>
+<p>（二）通过源码编译</p>
+<p>这种方式你下载的文件是Source code，</p>
+<pre><code>#  tar xvf node-v0.10.28.tar.gz 
+#  cd node-v0.10.28 
+#  ./configure 
+# make 
+# make install 
+# cp /usr/local/bin/node /usr/sbin/ 
+</code></pre><p>查看当前安装的Node的版本</p>
+<pre><code># node -v 
+v6.11.4
+</code></pre><p>（三）apt-get</p>
+<p>还有一种就是shell提示的apt-get方式</p>
+<pre><code>sudo apt-get install nodejs
+sudo apt-get install npm
+</code></pre><p>这么装完你会发现,node命令好使，nodejs命令可以用</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://blog.xmqbeast.com/2017/10/07/linux下解压tar-xz文件/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="∮小煤球メ">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="∮小煤球メ">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/10/07/linux下解压tar-xz文件/" itemprop="url">
+                  linux下解压tar.xz文件
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-07T13:39:09+08:00">
+                2017-10-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>这个压缩包也是打包后再压缩，外面是xz压缩方式，里层是tar打包方式。</p>
+<p>使用如下命令：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">$xz -d ***.tar.xz</span><br><span class="line"></span><br><span class="line">$tar -xvf  ***.tar</span><br></pre></td></tr></table></figure>
+<p>   补充：目前也可以直接使用 tar xvJf  ***.tar.xz来解压</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://blog.xmqbeast.com/2017/10/07/DOClever介绍/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="∮小煤球メ">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="∮小煤球メ">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/10/07/DOClever介绍/" itemprop="url">
+                  DOClever介绍
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-07T13:30:13+08:00">
+                2017-10-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="什么是DOClever？"><a href="#什么是DOClever？" class="headerlink" title="什么是DOClever？"></a>什么是DOClever？</h2><h4 id="DOClever是一个商业化开源产品，完全免费。无论你是前端工程师，还是后端工程师，接口永远都是两者交互的桥梁，所以DOClever专为中小型团队量身打造，旨在解决接口的管理，测试与数据生成，实现真正的一体化解决方案。"><a href="#DOClever是一个商业化开源产品，完全免费。无论你是前端工程师，还是后端工程师，接口永远都是两者交互的桥梁，所以DOClever专为中小型团队量身打造，旨在解决接口的管理，测试与数据生成，实现真正的一体化解决方案。" class="headerlink" title="DOClever是一个商业化开源产品，完全免费。无论你是前端工程师，还是后端工程师，接口永远都是两者交互的桥梁，所以DOClever专为中小型团队量身打造，旨在解决接口的管理，测试与数据生成，实现真正的一体化解决方案。"></a>DOClever是一个商业化开源产品，完全免费。无论你是前端工程师，还是后端工程师，接口永远都是两者交互的桥梁，所以DOClever专为中小型团队量身打造，旨在解决接口的管理，测试与数据生成，实现真正的一体化解决方案。</h4><h2 id="DOClever有哪些功能"><a href="#DOClever有哪些功能" class="headerlink" title="DOClever有哪些功能"></a>DOClever有哪些功能</h2><h4 id="1-可以对接口信息进行编辑管理，支持get-post-put-delete-patch五种方法，支持https和https协议，并且支持query，body，json，raw，rest，formdata的参数可视化编辑。同时对json可以进行无限层次可视化编辑。并且，状态码，代码注入，markdown文档等附加功能应有尽有。"><a href="#1-可以对接口信息进行编辑管理，支持get-post-put-delete-patch五种方法，支持https和https协议，并且支持query，body，json，raw，rest，formdata的参数可视化编辑。同时对json可以进行无限层次可视化编辑。并且，状态码，代码注入，markdown文档等附加功能应有尽有。" class="headerlink" title="1.可以对接口信息进行编辑管理，支持get,post,put,delete,patch五种方法，支持https和https协议，并且支持query，body，json，raw，rest，formdata的参数可视化编辑。同时对json可以进行无限层次可视化编辑。并且，状态码，代码注入，markdown文档等附加功能应有尽有。"></a>1.可以对接口信息进行编辑管理，支持get,post,put,delete,patch五种方法，支持https和https协议，并且支持query，body，json，raw，rest，formdata的参数可视化编辑。同时对json可以进行无限层次可视化编辑。并且，状态码，代码注入，markdown文档等附加功能应有尽有。</h4><h4 id="2-接口调试运行，一个都不能少，可以对参数进行加密，从md5到aes一应俱全，返回参数与模型实时分析对比，给出不一致的地方，找出接口可能出现的问题。如果你不想手写文档，那么试试接口的数据生成功能，可以对接口运行的数据一键生成文档信息。"><a href="#2-接口调试运行，一个都不能少，可以对参数进行加密，从md5到aes一应俱全，返回参数与模型实时分析对比，给出不一致的地方，找出接口可能出现的问题。如果你不想手写文档，那么试试接口的数据生成功能，可以对接口运行的数据一键生成文档信息。" class="headerlink" title="2.接口调试运行，一个都不能少，可以对参数进行加密，从md5到aes一应俱全，返回参数与模型实时分析对比，给出不一致的地方，找出接口可能出现的问题。如果你不想手写文档，那么试试接口的数据生成功能，可以对接口运行的数据一键生成文档信息。"></a>2.接口调试运行，一个都不能少，可以对参数进行加密，从md5到aes一应俱全，返回参数与模型实时分析对比，给出不一致的地方，找出接口可能出现的问题。如果你不想手写文档，那么试试接口的数据生成功能，可以对接口运行的数据一键生成文档信息。</h4><h4 id="3-mock的无缝整合，DOClever自己就是一个mock服务器，当你把接口的开发状态设置成已完成，本地mock便会自动请求真实接口数据，否则返回事先定义好的mock数据。"><a href="#3-mock的无缝整合，DOClever自己就是一个mock服务器，当你把接口的开发状态设置成已完成，本地mock便会自动请求真实接口数据，否则返回事先定义好的mock数据。" class="headerlink" title="3.mock的无缝整合，DOClever自己就是一个mock服务器，当你把接口的开发状态设置成已完成，本地mock便会自动请求真实接口数据，否则返回事先定义好的mock数据。"></a>3.mock的无缝整合，DOClever自己就是一个mock服务器，当你把接口的开发状态设置成已完成，本地mock便会自动请求真实接口数据，否则返回事先定义好的mock数据。</h4><h4 id="4-支持postman，rap，swagger的导入，方便你做无缝迁移，同时也支持html文件的导出，方便你离线浏览！"><a href="#4-支持postman，rap，swagger的导入，方便你做无缝迁移，同时也支持html文件的导出，方便你离线浏览！" class="headerlink" title="4.支持postman，rap，swagger的导入，方便你做无缝迁移，同时也支持html文件的导出，方便你离线浏览！"></a>4.支持postman，rap，swagger的导入，方便你做无缝迁移，同时也支持html文件的导出，方便你离线浏览！</h4><h4 id="5-项目版本和接口快照功能并行，你可以为一个项目定义1-0，1-1，1-2版本，并且可以自由的在不同版本间切换回滚，再也不怕接口信息的遗失，同时接口也有快照功能，当你接口开发到一半或者接口需求变更的时候，可以随时查看之前编辑的接口信息。"><a href="#5-项目版本和接口快照功能并行，你可以为一个项目定义1-0，1-1，1-2版本，并且可以自由的在不同版本间切换回滚，再也不怕接口信息的遗失，同时接口也有快照功能，当你接口开发到一半或者接口需求变更的时候，可以随时查看之前编辑的接口信息。" class="headerlink" title="5.项目版本和接口快照功能并行，你可以为一个项目定义1.0，1.1，1.2版本，并且可以自由的在不同版本间切换回滚，再也不怕接口信息的遗失，同时接口也有快照功能，当你接口开发到一半或者接口需求变更的时候，可以随时查看之前编辑的接口信息。"></a>5.项目版本和接口快照功能并行，你可以为一个项目定义1.0，1.1，1.2版本，并且可以自由的在不同版本间切换回滚，再也不怕接口信息的遗失，同时接口也有快照功能，当你接口开发到一半或者接口需求变更的时候，可以随时查看之前编辑的接口信息。</h4><h4 id="6-自动化测试功能，目前市面上类似平台的接口自动化测试大部分都是伪自动化，对于一个复杂的场景，比如获取验证码，登陆，获取订单列表，获取某个特定订单详情这样一个上下文关联的一系列操作无能为力。而DOClever独创的自动化测试功能，只需要你编写极少量的javascript代码便可以在网页里完成这样一系列操作，同时，DOClever还提供了后台定时批量执行测试用例并把结果发送到团队成员邮箱的功能，你可以及时获取接口的运行状态。"><a href="#6-自动化测试功能，目前市面上类似平台的接口自动化测试大部分都是伪自动化，对于一个复杂的场景，比如获取验证码，登陆，获取订单列表，获取某个特定订单详情这样一个上下文关联的一系列操作无能为力。而DOClever独创的自动化测试功能，只需要你编写极少量的javascript代码便可以在网页里完成这样一系列操作，同时，DOClever还提供了后台定时批量执行测试用例并把结果发送到团队成员邮箱的功能，你可以及时获取接口的运行状态。" class="headerlink" title="6.自动化测试功能，目前市面上类似平台的接口自动化测试大部分都是伪自动化，对于一个复杂的场景，比如获取验证码，登陆，获取订单列表，获取某个特定订单详情这样一个上下文关联的一系列操作无能为力。而DOClever独创的自动化测试功能，只需要你编写极少量的javascript代码便可以在网页里完成这样一系列操作，同时，DOClever还提供了后台定时批量执行测试用例并把结果发送到团队成员邮箱的功能，你可以及时获取接口的运行状态。"></a>6.自动化测试功能，目前市面上类似平台的接口自动化测试大部分都是伪自动化，对于一个复杂的场景，比如获取验证码，登陆，获取订单列表，获取某个特定订单详情这样一个上下文关联的一系列操作无能为力。而DOClever独创的自动化测试功能，只需要你编写极少量的javascript代码便可以在网页里完成这样一系列操作，同时，DOClever还提供了后台定时批量执行测试用例并把结果发送到团队成员邮箱的功能，你可以及时获取接口的运行状态。</h4><h4 id="7-团队协作功能，很多类似的平台这样的功能是收费的，但是DOClever觉得好东西需要共享出来，你可以新建一个团队，并且把团队内的成员都拉进来，给他们分组，给他们分配相关的项目以及权限，发布团队公告等等。"><a href="#7-团队协作功能，很多类似的平台这样的功能是收费的，但是DOClever觉得好东西需要共享出来，你可以新建一个团队，并且把团队内的成员都拉进来，给他们分组，给他们分配相关的项目以及权限，发布团队公告等等。" class="headerlink" title="7.团队协作功能，很多类似的平台这样的功能是收费的，但是DOClever觉得好东西需要共享出来，你可以新建一个团队，并且把团队内的成员都拉进来，给他们分组，给他们分配相关的项目以及权限，发布团队公告等等。"></a>7.团队协作功能，很多类似的平台这样的功能是收费的，但是DOClever觉得好东西需要共享出来，你可以新建一个团队，并且把团队内的成员都拉进来，给他们分组，给他们分配相关的项目以及权限，发布团队公告等等。</h4><h4 id="8-DOClever开源免费，支持内网部署，很多公司考虑到数据的安全性，不愿意把接口放到公网上，没有关系，DOClever给出一个方便快捷的解决方案，你可以把平台放到自己的内网上，完全不需要连接外网，同时功能一样也不少，即便是对于产品的升级，DOClever也提供了很便捷的升级方案！"><a href="#8-DOClever开源免费，支持内网部署，很多公司考虑到数据的安全性，不愿意把接口放到公网上，没有关系，DOClever给出一个方便快捷的解决方案，你可以把平台放到自己的内网上，完全不需要连接外网，同时功能一样也不少，即便是对于产品的升级，DOClever也提供了很便捷的升级方案！" class="headerlink" title="8.DOClever开源免费，支持内网部署，很多公司考虑到数据的安全性，不愿意把接口放到公网上，没有关系，DOClever给出一个方便快捷的解决方案，你可以把平台放到自己的内网上，完全不需要连接外网，同时功能一样也不少，即便是对于产品的升级，DOClever也提供了很便捷的升级方案！"></a>8.DOClever开源免费，支持内网部署，很多公司考虑到数据的安全性，不愿意把接口放到公网上，没有关系，DOClever给出一个方便快捷的解决方案，你可以把平台放到自己的内网上，完全不需要连接外网，同时功能一样也不少，即便是对于产品的升级，DOClever也提供了很便捷的升级方案！</h4><h2 id="产品文档"><a href="#产品文档" class="headerlink" title="产品文档"></a>产品文档</h2><h4 id="http-doclever-cn"><a href="#http-doclever-cn" class="headerlink" title="http://doclever.cn"></a><a href="http://doclever.cn" target="_blank" rel="noopener">http://doclever.cn</a></h4><h2 id="DOClever开源"><a href="#DOClever开源" class="headerlink" title="DOClever开源"></a>DOClever开源</h2><h4 id="本次开源的是DOClever的内网版本，可以直接部署到内网中，和线上版本在功能上是完全一样的，区别在于："><a href="#本次开源的是DOClever的内网版本，可以直接部署到内网中，和线上版本在功能上是完全一样的，区别在于：" class="headerlink" title="本次开源的是DOClever的内网版本，可以直接部署到内网中，和线上版本在功能上是完全一样的，区别在于："></a>本次开源的是DOClever的内网版本，可以直接部署到内网中，和线上版本在功能上是完全一样的，区别在于：</h4><h4 id="1-线上的系统用了前端和后端两套工程，并且用nginx做了负载均衡，redis做缓存，而内网版本合并为一个工程，直接用node做静态服务器，取消了缓存，这样对于很多中小型团队来说很轻便而且也够用了。"><a href="#1-线上的系统用了前端和后端两套工程，并且用nginx做了负载均衡，redis做缓存，而内网版本合并为一个工程，直接用node做静态服务器，取消了缓存，这样对于很多中小型团队来说很轻便而且也够用了。" class="headerlink" title="1.线上的系统用了前端和后端两套工程，并且用nginx做了负载均衡，redis做缓存，而内网版本合并为一个工程，直接用node做静态服务器，取消了缓存，这样对于很多中小型团队来说很轻便而且也够用了。"></a>1.线上的系统用了前端和后端两套工程，并且用nginx做了负载均衡，redis做缓存，而内网版本合并为一个工程，直接用node做静态服务器，取消了缓存，这样对于很多中小型团队来说很轻便而且也够用了。</h4><h4 id="2-线上系统在安全性方面做了不少加固处理，而内网版本默认内网是安全的，也为了提高node作为服务器的效率，取消了很多加固处理，如果用户有需要可以自行添加。"><a href="#2-线上系统在安全性方面做了不少加固处理，而内网版本默认内网是安全的，也为了提高node作为服务器的效率，取消了很多加固处理，如果用户有需要可以自行添加。" class="headerlink" title="2.线上系统在安全性方面做了不少加固处理，而内网版本默认内网是安全的，也为了提高node作为服务器的效率，取消了很多加固处理，如果用户有需要可以自行添加。"></a>2.线上系统在安全性方面做了不少加固处理，而内网版本默认内网是安全的，也为了提高node作为服务器的效率，取消了很多加固处理，如果用户有需要可以自行添加。</h4><h2 id="如何部署"><a href="#如何部署" class="headerlink" title="如何部署"></a>如何部署</h2><h4 id="1-首先本地要安装node环境，推荐6-10-0版本-下载页面"><a href="#1-首先本地要安装node环境，推荐6-10-0版本-下载页面" class="headerlink" title="1.首先本地要安装node环境，推荐6.10.0版本(下载页面)"></a>1.首先本地要安装node环境，推荐6.10.0版本(<a href="https://nodejs.org/en/" target="_blank" rel="noopener">下载页面</a>)</h4><h4 id="2-安装mongodb-下载页面-，可使用robomongo来作为mongodb的客户端工具-下载页面-，启动mongodb后（如何启动），用robomongo来连接，新建一个database作为DOClever的数据库（名称随意）"><a href="#2-安装mongodb-下载页面-，可使用robomongo来作为mongodb的客户端工具-下载页面-，启动mongodb后（如何启动），用robomongo来连接，新建一个database作为DOClever的数据库（名称随意）" class="headerlink" title="2.安装mongodb(下载页面)，可使用robomongo来作为mongodb的客户端工具(下载页面)，启动mongodb后（如何启动），用robomongo来连接，新建一个database作为DOClever的数据库（名称随意）"></a>2.安装mongodb(<a href="https://www.mongodb.com/" target="_blank" rel="noopener">下载页面</a>)，可使用robomongo来作为mongodb的客户端工具(<a href="https://robomongo.org/" target="_blank" rel="noopener">下载页面</a>)，启动mongodb后（<a href="http://www.open-open.com/lib/view/open1435117403544.html" target="_blank" rel="noopener">如何启动</a>），用robomongo来连接，新建一个database作为DOClever的数据库（名称随意）</h4><h4 id="3-将DOClever的源码down到本地，在命令行下运行node-DOClever的根目录-Server-bin-www（如果是windows环境下，请修改目录分隔符-，第一次启动，会出现命令行提示符，按照提示符输入即可完成相关的配置，等到DOClever启动成功后，-在浏览器里输入localhost-DOClever启动的端口号-出现首页表示部署成功。"><a href="#3-将DOClever的源码down到本地，在命令行下运行node-DOClever的根目录-Server-bin-www（如果是windows环境下，请修改目录分隔符-，第一次启动，会出现命令行提示符，按照提示符输入即可完成相关的配置，等到DOClever启动成功后，-在浏览器里输入localhost-DOClever启动的端口号-出现首页表示部署成功。" class="headerlink" title="3.将DOClever的源码down到本地，在命令行下运行node DOClever的根目录/Server/bin/www（如果是windows环境下，请修改目录分隔符)，第一次启动，会出现命令行提示符，按照提示符输入即可完成相关的配置，等到DOClever启动成功后， 在浏览器里输入localhost:DOClever启动的端口号,出现首页表示部署成功。"></a>3.将DOClever的源码down到本地，在命令行下运行node DOClever的根目录/Server/bin/www（如果是windows环境下，请修改目录分隔符)，第一次启动，会出现命令行提示符，按照提示符输入即可完成相关的配置，等到DOClever启动成功后， 在浏览器里输入localhost:DOClever启动的端口号,出现首页表示部署成功。</h4><p><img src="http://oncykm32h.bkt.clouddn.com/node-DOClever-Server-bin-www.png" alt="node-DOClever-Server-bin-www"></p>
+<h2 id="github地址"><a href="#github地址" class="headerlink" title="github地址"></a>github地址</h2><h4 id="https-github-com-sx1989827-DOClever"><a href="#https-github-com-sx1989827-DOClever" class="headerlink" title="https://github.com/sx1989827/DOClever"></a><a href="https://github.com/sx1989827/DOClever" target="_blank" rel="noopener">https://github.com/sx1989827/DOClever</a></h4>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://blog.xmqbeast.com/2017/10/07/linux下安装jsvnadmin/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="∮小煤球メ">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="∮小煤球メ">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/10/07/linux下安装jsvnadmin/" itemprop="url">
+                  linux下安装jsvnadmin
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-07T00:17:40+08:00">
+                2017-10-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>jsvnadmin-Subversion Web Admin</p>
+<p>Introduction</p>
+<p>Web Client for Subversion Configuration:</p>
+<blockquote>
+<ul>
+<li>Repositories management</li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li>Users management</li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li>Groups management</li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li>Access rights management</li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li>Supports svn or http(Apache) protocol</li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li>Supports password encryption</li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li>Supports multiple databases</li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li>Supports multiple operating system</li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li>Supports browse repositories online(since 3.0.2)</li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li>Supports multiple languages (since 3.0.2)</li>
+</ul>
+</blockquote>
+<p>什么是Svn Admin</p>
+<p>【svnadmin介绍】Svn Admin是一个Java开发的管理Svn服务器的项目用户的web应用。安装好Svn服务器端好，把Svn Admin部署好，就可以通过web浏览器管理Svn的项目，管理项目的用户，管理项目的权限。使得管理配置Svn简便，再也不需要每次都到服务器手工修改配置文件。</p>
+<p>【有什么优点】</p>
+<blockquote>
+<p>*多数据库：Svn项目配置数据保存在数据库，支持所有数据库（默认MySQL/Oracle/SQL Server）。</p>
+</blockquote>
+<blockquote>
+<p>*多操作系统：支持Window,Linux等操作系统。</p>
+</blockquote>
+<blockquote>
+<p>*权限控制：管理员可以随意分配权限、项目管理员可以管理项目成员、成员只能查看和修改自己的密码。</p>
+</blockquote>
+<blockquote>
+<p>*支持多项目、多用户、多用户组Group（默认带有“项目管理组”、“项目开发组”、“项目测试组”）。</p>
+</blockquote>
+<blockquote>
+<p>*安全：密码加密保存。</p>
+</blockquote>
+<blockquote>
+<p>*多协议：支持svn协议和http协议(从2.0开始支持Apache服务器单库方式，从3.0开始支持Apache多库方式)</p>
+</blockquote>
+<blockquote>
+<p>*仓库浏览(从3.0.2开始)</p>
+</blockquote>
+<blockquote>
+<p>*多语言(从3.0.2开始)</p>
+</blockquote>
+<p>【是否适合你】</p>
+<p>Svnadmin在Java 1.6、Tomcat 6、Subversion 1.6、MySQL 5.1、Apache 2.2、Windows 7上开发测试通过，同时支持其他操作系统和数据库。</p>
+<blockquote>
+<p>*支持svn协议</p>
+</blockquote>
+<p>Svn的配置信息都在仓库目录的conf下的authz,passwd,svnserve.conf三个文件中，配置用户和权限都是通过修改passwd和authz，立刻就生效。Svn Admin的本质是对这3个文件进行管理，所有成员、权限的数据都保存在数据库中，一旦在Svn Admin的页面上修改，就会把配置信息输出到conf下的那3个配置文件中。</p>
+<blockquote>
+<p>*支持http协议</p>
+</blockquote>
+<p>Apache+SVN配置成功后可以有两种方式：</p>
+<p>1.多库方式：SVNParentPath 指定一个父目录，所有仓库在这个父目录下，使用一个密码文件和一个权限配置文件。优点是增加删除仓库不需要改apache的httpd.conf，不需要重启Apache。缺点是项目多会很混乱</p>
+<p>2单库方式：SVNPath 每个仓库单独配置各自的密码和权限文件。优点是各自分开，互相不影响，维护方便。缺点是增加或删除仓库需要修改apache的httpd.conf后重启。</p>
+<p>下载地址：<a href="https://code.google.com/p/jsvnadmin/" target="_blank" rel="noopener">https://code.google.com/p/jsvnadmin/</a></p>
+<p><a href="https://jsvnadmin.googlecode.com/files/svnadmin-3.0.5.zip" target="_blank" rel="noopener">https://jsvnadmin.googlecode.com/files/svnadmin-3.0.5.zip</a></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://blog.xmqbeast.com/2017/10/06/linux下安装Subversion-Apache/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -723,1214 +1756,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://blog.xmqbeast.com/2017/10/05/使用hexo，如果更换了电脑如何更新博客/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="∮小煤球メ">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="∮小煤球メ">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/10/05/使用hexo，如果更换了电脑如何更新博客/" itemprop="url">
-                  使用hexo，如果更换了电脑如何更新博客
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-05T09:46:26+08:00">
-                2017-10-05
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>一、关于搭建的流程</p>
-<p>1.创建仓库:xtzeng.github.io;</p>
-<p>2.创建两个分支：master和hexo;</p>
-<p>3.设置hexo为默认分支（因为我们只需要手动管理这个分支上的hexo网站文件）;</p>
-<p>4.git clone <a href="https://github.com/xtzeng/xtzeng.github.io.git拷贝仓库（hexo分支-默认）" target="_blank" rel="noopener">https://github.com/xtzeng/xtzeng.github.io.git拷贝仓库（hexo分支-默认）</a>;</p>
-<p>5.在本地xtzeng.github.io文件夹下通过git bash依次执行npm install hexo、hexo init、npm install和npm install hexo-deployer-git(此时当前分支应显示为hexo);</p>
-<p>6.修改_config.yml中的deploy参数，分支应为master;</p>
-<p>7.依次执行git add .、git commit -m “…”、git push origin hexo提交网站相关的文件；</p>
-<p>8.执行hexo g -d 生成网站并部署到github上；</p>
-<p>这样一来，在github上的xtzeng.github.io仓库就有两个分支，一个hexo分支用来存放网站的文件，一个master分支用来存放生成的静态文件。</p>
-<p>二、关于日常的流程改动</p>
-<p>在本地对博客进行修改（添加新博客、修改样式等等）后，通过下面的流程进行管理。</p>
-<p>1.依次执行git add .、git commit -m “…”、git push origin hexo指令将改动推送到github(此时当前分支应为hexo);</p>
-<p>2.然后才执行hexo g -d 发布到master分支上。</p>
-<p>虽然两个过程顺序调转一般不会有问题，不过逻辑上这样的顺序是绝对没有问题的（例如突然死机要重装了，悲催…的情况，调转顺序就有问题了）。</p>
-<p>三、本地资料丢失后的流程</p>
-<p>当重装电脑之后，或者想在其他电脑上修改博客，可以使用以下步骤：</p>
-<p>1.使用git clone <a href="https://github.com/xtzeng/xtzeng.github.io.git" target="_blank" rel="noopener">https://github.com/xtzeng/xtzeng.github.io.git</a> 拷贝仓库（默认分支为hexo）;</p>
-<p>2.在本地新拷贝的xtzeng.github.io文件夹下通过git bash依次执行以下指令：npm install hexo、npm install、npm install hexo-deployer-git(记得，不需要hexo init 这条指令)</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://blog.xmqbeast.com/2017/08/10/spring cloud（一）服务注册与发现--eureka-server/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="∮小煤球メ">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="∮小煤球メ">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/08/10/spring cloud（一）服务注册与发现--eureka-server/" itemprop="url">
-                  spring cloud（一）服务注册与发现--eureka-server
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-10T21:19:57+08:00">
-                2017-08-10
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>1、在默认设置下，Eureka服务注册中心也会将自己作为客户端来尝试注册它自己，所以我们需要禁用它的客户端注册行为。</p>
-<p>禁止方式如下：</p>
-<p>eureka.client.register-with-eureka=false<br>eureka.client.fetch-registry=false</p>
-<p>2.微服务架构</p>
-<p>微服务架构是将一个完整的应用从数据存储垂直拆分成多个不同的服务，每个服务都能独立部署、独立维护、独立扩展，服务与服务之间通过诸如RESTful API的方式相互调用</p>
-<p>3.服务注册与发现</p>
-<p>如何使用Spring Cloud搭建服务注册与发现模块</p>
-<p>我们会用到Spring Cloud Netflix,该项目是Spring Cloud的子项目之一，主要内容是对Netflix公司一系列开源产品的包装，它为Spring Boot应用提供了自配置的Netflix OSS整合。通过一些简单的注解，开发者就可以快速的在应用中配置一下常用模块并构建庞大的分布式系统。主要提供的模块包括：服务发现(Eureka),断路器(Hystrix),智能路由(Zuul),客户端负载均衡(Ribbon)等。</p>
-<p>4.创建“服务注册中心”</p>
-<p>创建一个基本的Spring Boot工程，并在pom.xml中引入如下内容：</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"> <span class="tag">&lt;<span class="name">parent</span>&gt;</span></span><br><span class="line">  		<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">  		<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-parent<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">  		<span class="tag">&lt;<span class="name">version</span>&gt;</span>1.3.7.RELEASE<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">  		<span class="tag">&lt;<span class="name">relativePath</span>&gt;</span><span class="tag">&lt;/<span class="name">relativePath</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">parent</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-test<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">scope</span>&gt;</span>test<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">   </span><br><span class="line">    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.cloud<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-cloud-starter-eureka-server<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line">	<span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">	    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.cloud<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">	    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-cloud-dependencies<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">	    <span class="tag">&lt;<span class="name">version</span>&gt;</span>Brixton.RELEASE<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">	    <span class="tag">&lt;<span class="name">type</span>&gt;</span>pom<span class="tag">&lt;/<span class="name">type</span>&gt;</span></span><br><span class="line">	    <span class="tag">&lt;<span class="name">scope</span>&gt;</span>import<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span>，</span><br></pre></td></tr></table></figure>
-<p>5.通过@EnableEurekaServer注解启动一个服务注册中心提供给其他应用进行对话。这一步非常简单，只需要在一个普通的Spring Boot项目中添加这个注解就能开启此功能，如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">@EnableEurekaServer</span></span><br><span class="line"><span class="meta">@SpringBootApplication</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MiaoMiaoApplicationEurekaServer</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">new</span> SpringApplicationBuilder(MiaoMiaoApplicationEurekaServer.class).web(<span class="keyword">true</span>).run(args);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>6.在默认的设置下，该服务注册中心也会将自己作为客户端来尝试注册它自己，所以我们需要禁用它的客户端注册行为，只需要在application.properties中增加如下配置：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">server.port=<span class="number">1111</span></span><br><span class="line">eureka.client.register-<span class="keyword">with</span>-eureka=<span class="literal">false</span></span><br><span class="line">eureka.client.fetch-registry=<span class="literal">false</span></span><br><span class="line">eureka.client.serviceUrl.defaultZone=http:<span class="comment">//$&#123;eureka.instance.hostname&#125;:$&#123;server.port&#125;/eureka/</span></span><br></pre></td></tr></table></figure>
-<p>7.为了和后续要进行注册的服务区别，这里将服务注册中心的端口通过server.port属性设置为1111.</p>
-<p>启动工程后，访问：<a href="http://localhost:1111/" target="_blank" rel="noopener">http://localhost:1111/</a></p>
-<p>8.创建“服务提供方”</p>
-<p>下面我们创建提供服务的客户端，并向服务注册中心注册自己。</p>
-<p>首先，我们再创建一个Spring Boot 应用，并在pom.xml中加入以下配置：</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">  		<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">  		<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-test<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">  		<span class="tag">&lt;<span class="name">scope</span>&gt;</span>test<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line">  	<span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">  		<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.cloud<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">  		<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-cloud-starter-eureka<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">  	<span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>其次，我们实行/hello请求处理接口，通过DiscoveryClient对象，在日志中打印出服务实例的相关内容。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">	<span class="meta">@RestController</span></span><br><span class="line">	<span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HelloWorldController</span> </span>&#123;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">final</span> Logger logger = Logger.getLogger(getClass());</span><br><span class="line">	</span><br><span class="line">	<span class="meta">@Autowired</span></span><br><span class="line">	<span class="keyword">private</span> DiscoveryClient discoveryClient;</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">	<span class="meta">@RequestMapping</span>(value = <span class="string">"/hello"</span>,method = RequestMethod.GET)</span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">hello</span><span class="params">()</span> <span class="keyword">throws</span> Exception</span>&#123;</span><br><span class="line">		</span><br><span class="line">		ServiceInstance instance = discoveryClient.getLocalServiceInstance();</span><br><span class="line">		</span><br><span class="line">		<span class="comment">//测试超时触发断路器</span></span><br><span class="line">		<span class="keyword">int</span> sleepTime = <span class="keyword">new</span> Random().nextInt(<span class="number">3000</span>);</span><br><span class="line">		logger.info(<span class="string">"sleepTime:---------&gt;&gt;&gt;&gt;"</span>+sleepTime);</span><br><span class="line">		Thread.sleep(sleepTime);</span><br><span class="line">		</span><br><span class="line">		logger.info(<span class="string">"/hello,host:---&gt;&gt;&gt;"</span>+instance.getHost()+<span class="string">",service_id:---&gt;&gt;&gt;"</span>+instance.getServiceId());</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">return</span> <span class="string">"Hello World"</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>最后在主类中通过加上@EnableDicoveryClient注解，该注解能激活Eureka中的DicoveryClient实现，才能实现Controller中对服务信息的输出。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line">	<span class="meta">@EnableDiscoveryClient</span></span><br><span class="line">	<span class="meta">@SpringBootApplication</span></span><br><span class="line">	<span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MiaoMiaoServiceApplication</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		SpringApplication.run(MiaoMiaoServiceApplication.class,args);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>在完成了服务内容的实现之后，再继续对application.properties做一些配置工作，具体如下：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line">spring.application.name=miaomiao-spring-cloud-eureka-service</span><br><span class="line">server.port=<span class="number">8082</span></span><br><span class="line">eureka.client.serviceUrl.defaultZone=http:<span class="comment">//localhost:1111/eureka/</span></span><br></pre></td></tr></table></figure>
-<p>通过spring.application.name属性，我们可以指定微服务的名称后续在调用的时候只需要使用该名称就可以进行服务的访问。</p>
-<p>eureka.client.serviceUrl.defaultZone属性对应服务注册中心的配置内容，指定服务注册中心的位置。</p>
-<p>为了在本机上测试区分服务提供方跟服务注册中心，使用server.port属性设置不同的端口。</p>
-<p>启动该工程后，再次访问：<a href="http://localhost:1111/" target="_blank" rel="noopener">http://localhost:1111/</a></p>
-<p>可以看到，我们定义的服务被注册了。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://blog.xmqbeast.com/2017/06/01/如何高效的完成不喜欢的工作-学习任务/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="∮小煤球メ">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="∮小煤球メ">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/06/01/如何高效的完成不喜欢的工作-学习任务/" itemprop="url">
-                  如何高效的完成不喜欢的工作/学习任务
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-01T17:24:45+08:00">
-                2017-06-01
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>进化心理学认为：人天生就是理性的动物，据说这种理性的能力把我们跟其他动物分开。而古希腊的柏拉图和亚里士多德也发现了这一现象，并提出了“意志薄弱”这一哲学问题，即：我们明知道学习对我们有利，但总不喜欢做，或是即使勉强学习，也是拖拖拉拉，效率低下。而这种拖延的低效学习，往往又会对人产生负罪感，从而恶性循环。</p>
-<p>   但事实上，掌握合适自己的学习方法，将它变成一种生活中的习惯，保持高效率的学习，并不是一件不可能完成的事。以下推荐的几种方法，或许能让你一点点改变拖延的毛病</p>
-<p>1.帕累托定律与时间管理的“三只青蛙” </p>
-<p> 1897年，意大利经济学者帕累托偶然注意到19世纪英国人的财富和收益模式。他从大量具体的事实中发现：社会上20%的人占有80%的社会财富。这个现象在工作和学习中也是通用的，把二分法则运用得熟练，可以将那些影响最小，价值最低的工作和最重要，价值最高的任务区分开来。</p>
-<p>而在时间管理中，也有“三只青蛙”的说法。“三只青蛙”，即一天中最重要的三件任务。我们可以将这二者结合起来，确定属于自己的一天中，最重要和紧急的三件事（“三只青蛙”），运用早晨块状的时间，把他们一个个“吃掉”。而最优先“吃掉”的青蛙，自然是最丑最大（最重要）的那只。</p>
-<p>在《超效率理论》这本书里，同样提到了“让你的时间头重脚轻”的观点：一个高效的工作日程，往往是把一天中最难做，最费头脑的事情做完。如果相反，人们总是还没有做到最重要的工作，就已经疲惫不堪了。头重脚轻的工作安排，容易产生许多好处。当你在早上完成了最难啃的任务之后，就算累了，也有信心来处理其他杂事。</p>
-<p>2.番茄工作法与任务清单</p>
-<p>无论是学习还是工作，最大的阻碍就是拖延。曾国藩曾经说过，一勤天下无难事，这句话虽然有鸡汤的成分，但也从侧面说明了人们普遍懒惰的劣性。而在限定的时间内，规定自己必须完成一些任务，既是保障高效工作的前提，也是面对拖延这个小恶魔“残酷”的考验   </p>
-<p>番茄工作法是一种简易的时间管理方法。具体的内容是将番茄时间设为25分钟，专注工作，中途不允许做任何与该任务无关的事，直到番茄时钟响起，然后进行短暂的5分钟休息。每4个番茄时段多休息一会儿。</p>
-<p>番茄工作法的优点在于，一则时间短，半个小时的工作总是比连续几个小时更容易让人在心理上接受。另一个则在于营造的紧迫感和压力感，它会促使你不知不觉的加快工作的速度和效率。</p>
-<p>而想要保障高效率的工作，一份目标明确的任务清单也是必不可少，不明确的任务清单是滋生拖延症的温床。如果我在自己的任务清单里第一条写着：完成毕业论文。那么最有可能出现的场景是：我深情的望着这六个大字发呆，然后拿起手机，百度了半个小时，之后选择放弃，去玩斗地主去了。</p>
-<p>所以，正确的任务清单应该是清晰而准确的。写毕业论文这几个字，我可以把它理解为：选题，找研究材料，作注释，写论点，甚至可以更加细化。再比如说打扫房间卫生，这件事的时间限定是模糊的，我可以在20分钟内将它搞定，也可以拖上一个礼拜。如果没有番茄钟的监督，许多事可能就会永远耽搁下去。当然，番茄钟也只是一种方法，你需要的，只是一个能够监督你有效利用时间的工具而已。</p>
-<p>3.结构拖延法与动力催化</p>
-<p>约翰·佩里在他的《拖拉一点也无妨》这本书里，介绍了一种用逆向思维战胜拖延症的方法–结构化拖延法。结构化拖延法正是利用了拖延者的这种心态，为某人必须完成的那些任务梳理出一个结构。譬如说我明天打算完成五件事：</p>
-<p>完成一篇文案稿件</p>
-<p>背诵100个单词</p>
-<p>写一篇知乎回答</p>
-<p>看完一部电影并写下观后感</p>
-<p>跑完5公里</p>
-<p>在这五件事里，前三件排列在先的任务，对我来说是当天最重要。但是当我早上醒来，准备写文案稿件的时候，我发现自己毫无头绪，那么为了避免一事无成的焦虑感，我就会选择先完成第四项和第五项，从心理上告诉自己：我今天可不是什么也没有做。</p>
-<p>这样虽然我的稿子今天还是没有写，但至少比玩了一天的手机强。</p>
-<p>这种结构拖延法与上述的帕累托定律看似矛盾，但是在不同的学习任务中仍然可供作不同的选择。不论是哪种方法，只要从这些很小的习惯中坚持，变成一个良性循环，就能获得源源不断的力量。</p>
-<p>此外，《心理暗示力》中提到了一条重复定律：<br>任何的行为和思维，只要你不但的重复就会得到不断的加强。在你的潜意识当中，只要你能够不断地重复一些人、事、物，它们都会在潜意识里变成事实。</p>
-<p>把你的目标列成一个表，放在电脑桌面上。把能刺激你的事写成便签，放在工作中显眼的位置，把你的公开承诺告诉你身边的人，因担心自己做不到产生的压力会让你保持动力。类似这些小方法，都可以成为你前进的动力催化。</p>
-<p>4.日程校对与避免刺激</p>
-<p>如果你将你想要做的事写在任务清单上，却没有完成，就会产生拖延。如果你将任务清单上的事完成了，还想要加上一些的时候，就是在破坏信任。任务清单必须要保障它的权威性。</p>
-<p>有时候过度勤奋并不是一件好事，你把预计三天的任务清单在一天内做完，看似高效，但实际上却破坏了这份清单的权威。下一次，你可能就会不太重视它了，因为在你的潜意识里，它是可以变更的，这并不是一个好的信号，它或许会打破你的自律。</p>
-<p>日程校对是你对你的任务清单有着明确的认知，当你没做完的时候，坚持把他们做完。如果完成了，你就停下。</p>
-<p>在这个碎片化信息充斥着我们生活的时代，有太多的事容易让我们分心了。微信上闪烁不停的群消息是刺激，收件箱里的广告也是刺激。所以，当我们要开始工作的时候，请关闭掉这一些能够打扰你的信息刺激。否则，你是无法做到专注的。</p>
-<p>5.保持活力与监督反馈</p>
-<p>高效率的工作是一件很费精力的事，所以这就更需要我们保持自身的活力。在你疲惫的时候，两个小时完成的任务，可能在清醒的时候，40分钟就能够做完。</p>
-<p>想要维持高效率的工作，除了日常的运动以外，为体能进食也尤为重要，血糖高低的水平对体能有着极大的影响。你吃的每种食物都有着对应的血糖值，血糖值高，对你短跑和短暂的运动是有利的，但是在一天的学习中，却未必是好事。所以，多吃低血糖值的全谷物食物吧，它们释放的热量的速度较慢，可以让你不会经历含糖食物快速消耗的冲击。如果条件允许的话，少食多餐也对你的精力保持很有帮助。</p>
-<p>再来谈谈监督和反馈。如果你决定每天打卡一百个单词，坚持一百天。你独自完成成败的概率肯定远远大于一群人监督你完成失败的概率。因为什么？因为你怕丢脸呀。如果你告诉了身边的好友，甚至发了朋友圈，下次坚持不住想要放弃的时候，想想那些给你点赞的人，那些等着你失败嘲笑你的人，是不是又重新有了勇气？</p>
-<p>很多时候你优柔寡断下不定决心去学习工作，其实只是缺少一个破釜沉舟的勇气而已。如果别人的嘲讽对你来说都没有用，那就用金钱吧。给自己设定一个有些难度，但是又能够完成的目标，给朋友支付一笔你能够承受的“巨款”，然后让他来监督你。在预计的时间内，你做到了，钱就还给你，做不到，钱就归他。相信这种简单粗暴的方法，能够让很多人振作起来。</p>
-<p>既然有了惩罚，那么必然就要有奖励。比如：每天坚持练习半小时吉他，一个月后就奖励自己一双跑鞋。每天看完一小时的书，一个月就奖励自己一部kindle，这些增加目标收益，及时反馈，给予自我奖励的方式，都是不错的方法。</p>
-<p>6.养成早起的习惯和独特的仪式感</p>
-<p>早起并不是因为鸡汤书上说的，早起就能够成功，而是因为早起能够训练意志力和自控力，形成习惯化的规律生活。我曾经试过一段时间每天睡到中午自然醒，结果就是，精力变得越来越差，十二点半起床洗漱吃完外卖后，打开电脑工作，到下午三四点又忽忽犯困了，这时候如果不睡，做事效率会变得越来越低，如果睡去，到了晚上，没有一两点又是睡不着的。一整天下来，诧异的法信，真正有效率的工作时间竟然只有两三个小时。</p>
-<p>作为一个熬夜多年的夜猫子，我也尝试过多种方法督促自己早睡，但是不论是听纯音乐，还是深呼吸数绵羊，统统都没用。无数个辗转反侧的夜里，我总是忍不住睁开通红的双眼，缓缓摁亮手机。</p>
-<p>后来我发现真正有用的，只有早起，不曾在清晨的阳光里睁开疲惫双眼的夜猫，不足以人生。只有当你忍受了多次睡眠不足还要坚持起床的苦痛，你才能真正明白早睡的幸福。</p>
-<p>早起需要准备什么？</p>
-<p>一个准时响起的闹钟以及一个属于自己的仪式习惯就够了。闹钟这点不必多说，如果你打算6点起床，6点半开始一天的工作，我的建议是5：57分的闹钟，一首歌的时间让自己从混沌走向清醒。</p>
-<p>而需要仪式感，是因为我们的主动性和自律性比我们想象的更加稀缺。阿里纳斯在罚球之前，喜欢在接球之后把球在腰部绕上三个圈。网球运动员发球时，有的喜欢摸一下自己的鼻子。这些有意无意的信号，都是在心里给予自己暗示。</p>
-<p>需要什么样的仪式感呢？其实很简单，按照自己喜欢的来吧，早上听完一首歌曲再去刷牙洗脸，锻炼完10分钟keep以后喝一杯温水，怎么样都好，你只是需要给予自己一个满血复活的一天现在开始了的信号。</p>
-<p>其实最重要的还是自己能明白高效率工作和学习给自己带来的乐趣。它不仅仅在于当你完成了任务清单能够放心的领到奖金或是不会挂科，更在于有智慧和效率的学习与工作，能够提升自己的生活质量。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://blog.xmqbeast.com/2017/04/28/linux命令-系统管理/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="∮小煤球メ">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="∮小煤球メ">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/04/28/linux命令-系统管理/" itemprop="url">
-                  linux命令-系统管理
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-28T16:47:59+08:00">
-                2017-04-28
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>1.查看当前日历：cal<br>  cal 用于查看当前日历，-y显示整年日历：</p>
-<p>2.显示或设置时间：date</p>
-<p>3.查看进程信息：ps</p>
-<p>  小知识（以ps为例）：<br>  查看命令路径，which ps (显示-/bin/ps)<br>  命令帮助：ps –help<br>  命令完全手册：man ps</p>
-<p>  说明：ps全称是:process status(进程)，他是提供进程信息的<br>  ps命令用于报告当前系统的进程状态，可以搭配kill命令使用随时中断、删除没用的进程。<br>  进程是一个具有独立功能的程序，它是操作系统动态执行的基本单元。<br>  ps命令可以查看进程的详细状况，常用选项如下：</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">选项</th>
-<th style="text-align:right">含义</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">-a</td>
-<td style="text-align:right">显示终端上的所有进程，包括其他用户的进程</td>
-</tr>
-<tr>
-<td style="text-align:left">-u</td>
-<td style="text-align:right">显示进程的详细状态</td>
-</tr>
-<tr>
-<td style="text-align:left">-x</td>
-<td style="text-align:right">显示没有控制终端的进程</td>
-</tr>
-<tr>
-<td style="text-align:left">-W</td>
-<td style="text-align:right">显示加宽，以便显示更多的信息</td>
-</tr>
-<tr>
-<td style="text-align:left">-r</td>
-<td style="text-align:right">只显示正在运行的进程</td>
-</tr>
-</tbody>
-</table>
-<p>方法一：使用ps命令查看程序端口占用情况<br>ps -aus | grep tomcat</p>
-<p>使用命令查看所有进程和端口使用情况：<br>netstat -apn</p>
-<p>进一步使用命令：ps -aux | grep java 或者直接：ps -aux |grep pid<br>方法二：直接使用netstat -anp | grep portno<br>即:netstat -apn | grep 8080</p>
-<p> 4.动态显示进程：top<br>   top命令用来动态显示运行中的进程。top命令能够在运行后，在指定的时间间隔更新显示信息。可以在top命令时加上-d来指定显示信息更新的时间间隔。</p>
-<p>   在top命令执行后，可以按下按键得到对显示的结果进行排序：</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">按键</th>
-<th style="text-align:right">含义</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">M</td>
-<td style="text-align:right">根据内存使用量来排序</td>
-</tr>
-<tr>
-<td style="text-align:left">P</td>
-<td style="text-align:right">根据CPU占有率来排序</td>
-</tr>
-<tr>
-<td style="text-align:left">T</td>
-<td style="text-align:right">根据进程运行时间的长短来排序</td>
-</tr>
-<tr>
-<td style="text-align:left">U</td>
-<td style="text-align:right">可以根据后面输入的用户名来筛选进程</td>
-</tr>
-<tr>
-<td style="text-align:left">K</td>
-<td style="text-align:right">可以根据后面输入的PID来杀死进程</td>
-</tr>
-<tr>
-<td style="text-align:left">q</td>
-<td style="text-align:right">退出</td>
-</tr>
-<tr>
-<td style="text-align:left">h</td>
-<td style="text-align:right">获得帮助</td>
-</tr>
-</tbody>
-</table>
-<p>5.终止进程：kill<br>  kill命令指定进程号的进程，需要配合ps使用<br>  使用格式：<br>   kill [-signal] pid<br>  信号值从0到15，其中9为绝对终止，可以处理一般信号无法终止的进程。<br>  kill 9133 : 杀死进程号为9133所对应的应用程序</p>
-<p>6.关机重启：reboot/shutdown/init</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">命令</th>
-<th style="text-align:right">含义</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">reboot</td>
-<td style="text-align:right">重新启动操作系统</td>
-</tr>
-<tr>
-<td style="text-align:left">shutdown -r now</td>
-<td style="text-align:right">重新启动操作系统，shutdown会给别的用户提示</td>
-</tr>
-<tr>
-<td style="text-align:left">shutdown -h now</td>
-<td style="text-align:right">立刻关机，其中now相当于时间为0的状态</td>
-</tr>
-<tr>
-<td style="text-align:left">shutdown -h 20:25</td>
-<td style="text-align:right">系统在今天的20:25关机</td>
-</tr>
-<tr>
-<td style="text-align:left">shutdown -h +10</td>
-<td style="text-align:right">系统再过十分钟后自动关机</td>
-</tr>
-<tr>
-<td style="text-align:left">init 0</td>
-<td style="text-align:right">关机</td>
-</tr>
-<tr>
-<td style="text-align:left">init 6</td>
-<td style="text-align:right">重启</td>
-</tr>
-</tbody>
-</table>
-<p>7.检测磁盘空间：df<br> df命令用于检测文件系统的磁盘空间占用和空余情况，可以显示所有文件系统对节点和磁盘块的使用情况。</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">选项</th>
-<th style="text-align:right">含义</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">-a</td>
-<td style="text-align:right">显示所有文件系统的磁盘使用情况</td>
-</tr>
-<tr>
-<td style="text-align:left">-m</td>
-<td style="text-align:right">以1024字节单位显示</td>
-</tr>
-<tr>
-<td style="text-align:left">-t</td>
-<td style="text-align:right">显示各指定文件系统的磁盘空间使用情况</td>
-</tr>
-<tr>
-<td style="text-align:left">-T</td>
-<td style="text-align:right">显示文件系统</td>
-</tr>
-</tbody>
-</table>
-<p>8.检测目录所占磁盘空间：du<br>  du命令用于统计目录或文件所占磁盘空间的大小，该命令的执行结果与df类似，du更侧重于磁盘的使用状况。<br>  du命令的使用格式如下：du [选项] 目录或文件名</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">选项</th>
-<th style="text-align:right">含义</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">-a</td>
-<td style="text-align:right">递归显示指定目录中各文件和子目录中文件占用的数据库</td>
-</tr>
-<tr>
-<td style="text-align:left">-s</td>
-<td style="text-align:right">显示指定文件或目录占用的数据块</td>
-</tr>
-<tr>
-<td style="text-align:left">-b</td>
-<td style="text-align:right">以字节为单位显示磁盘占用情况</td>
-</tr>
-<tr>
-<td style="text-align:left">-l</td>
-<td style="text-align:right">计算所有文件大小，对硬链接文件计算多次</td>
-</tr>
-</tbody>
-</table>
-<p>9.查看或配置网卡信息：ifconfig<br>10.测试远程主机连通性：ping<br>   ping 192.168.0.1 -c 4</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://blog.xmqbeast.com/2017/04/26/MarkDown一些常用语法/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="∮小煤球メ">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="∮小煤球メ">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/04/26/MarkDown一些常用语法/" itemprop="url">
-                  MarkDown一些常用语法
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-26T10:51:45+08:00">
-                2017-04-26
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>1.引入代码</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"Hello World"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> s = <span class="string">"Javascript syntax hightlighting"</span>;</span><br><span class="line">alert(s);</span><br></pre></td></tr></table></figure>
-<p>2.链接(Links)<br>Markdown中有两种方式，实现链接，一种是内联方式，另一种是引用方式</p>
-<p>内联方式：This is an <a href="http://www.baidu.com" target="_blank" rel="noopener">baidu link</a></p>
-<p>引用方式：I get 10 times more traffic from <a href="http://google.com/" title="Google" target="_blank" rel="noopener">Google</a> than from <a href="http://search.yahoo.com/" title="Yahoo Search" target="_blank" rel="noopener">Yahoo</a> or <a href="http://search.msn.com/" title="MSN Search" target="_blank" rel="noopener">MSN</a>.  </p>
-<p>3.分割线</p>
-<p>“一个空行”加上“连续3个以上的减号符号(即—)”的组合，使得得到一个分割线。 快捷键：Ctrl+R</p>
-<hr>
-<p>4.表格</p>
-<p>使用“|”符号隔开不同列，第一行作为列名行，第二行必须为一个格式控制行，表明整个内容以表格形式展示。格式控制行最简单的样式如“|-|-|-|”所示，这表示以3列的形式展示表格。在“-”的左边加“:”（即“:-”），表示单元格的内容左对齐;在“-”的右边加“:”（即“-:”），表示单元格的内容右对齐;在“-”的两边加“:”（即“:-:”），表示单元格的内容居中对齐。<br>比如现在有如下内容：</p>
-<h3 id="表格"><a href="#表格" class="headerlink" title="表格"></a>表格</h3><table>
-<thead>
-<tr>
-<th style="text-align:left">Item</th>
-<th style="text-align:right">Value</th>
-<th style="text-align:center">Qty</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">Computer</td>
-<td style="text-align:right">1600 USD</td>
-<td style="text-align:center">5</td>
-</tr>
-<tr>
-<td style="text-align:left">Phone</td>
-<td style="text-align:right">12 USD</td>
-<td style="text-align:center">12</td>
-</tr>
-<tr>
-<td style="text-align:left">Pipe</td>
-<td style="text-align:right">1 USD</td>
-<td style="text-align:center">234</td>
-</tr>
-</tbody>
-</table>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://blog.xmqbeast.com/2017/04/25/linux-常用命令/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="∮小煤球メ">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="∮小煤球メ">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/04/25/linux-常用命令/" itemprop="url">
-                  linux 常用命令
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-25T20:12:52+08:00">
-                2017-04-25
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>1.linux 命令格式</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">command</span> [-options] [parameter1] ···</span><br></pre></td></tr></table></figure>
-<p>说明：<br>·command:命令名，相应功能的英文单词或单词的缩写[-option]:选项，可用来对命令进行控制，也可以省略，[]代表可选 parameter1…:传递给命令的参数：可以是零个或多个</p>
-<p>例：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ls -a /home/xiaoti</span><br></pre></td></tr></table></figure>
-<p>2.查看帮助文档</p>
-<p> <1>–help<br>一般是linux命令自带的帮助信息<br>如：ls –help<br> <2>man(有问题找男人，manual)<br>man是linux提供的一个手册,包含了绝大部分的命令，函数使用说明<br>该手册分成很多章节(section)，使用man时可以指定不同的章节来浏览<br>例：man ls; man 2 printf</2></1></p>
-<p>man中各个section意义如下：<br>1.Standard commands(标准命令)<br>2.System calls(系统调用,如open,write)<br>3.Library functions(库函数，如printf,fopen)<br>4.Special devices(设备文件的说明,/dev下各种设备)<br>5.File formats(文件格式，如passwd)<br>6.Games and toys(游戏和娱乐)<br>7.Miscellaneous(杂项、惯例和协定等，例如Linux档案系统、网络协定、ASCII码、environ全局变量)<br>8.Administrative Commands(管理员命令，如ifconfig)</p>
-<p>man是按照手册的章节号的顺序进行搜索的。 </p>
-<p>man设置了如下的功能键</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">功能键</th>
-<th style="text-align:right">功能</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">空格键</td>
-<td style="text-align:right">显示手册页的下一屏</td>
-</tr>
-<tr>
-<td style="text-align:left">Enter键</td>
-<td style="text-align:right">一次滚动手册页的一行</td>
-</tr>
-<tr>
-<td style="text-align:left">b</td>
-<td style="text-align:right">回滚一屏</td>
-</tr>
-<tr>
-<td style="text-align:left">f</td>
-<td style="text-align:right">前滚一屏</td>
-</tr>
-<tr>
-<td style="text-align:left">q</td>
-<td style="text-align:right">退出man命令</td>
-</tr>
-<tr>
-<td style="text-align:left">h</td>
-<td style="text-align:right">列出所有功能键</td>
-</tr>
-<tr>
-<td style="text-align:left">/word</td>
-<td style="text-align:right">搜索word字符串</td>
-</tr>
-</tbody>
-</table>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://blog.xmqbeast.com/2017/04/14/Introduction-of-Elasticsearch/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="∮小煤球メ">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="∮小煤球メ">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/04/14/Introduction-of-Elasticsearch/" itemprop="url">
-                  Introduction of Elasticsearch
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-14T11:51:47+08:00">
-                2017-04-14
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <blockquote>
-<p>Elasticsearch is a highly scalable open-source full-text search and analytics engine. It allows you to store, search, and analyze big volumes of data quickly and in near real time. It is generally used as the underlying engine/technology that powers applications that have complex search features and requirements.</p>
-</blockquote>
-<p>Here are a few sample use-cases that Elasticsearch could be used for:</p>
-<ul>
-<li>You run an online web store where you allow your customers to search for products that you sell. In this case, you can use Elasticsearch to store your entire product catalog and inventory and provide search and autocomplete suggestions for them.</li>
-<li>You want to collect log or transaction data and you want to analyze and mine this data to look for trends, statistics, summarizations, or anomalies. In this case, you can use Logstash (part of the Elasticsearch/Logstash/Kibana stack) to collect, aggregate, and parse your data, and then have Logstash feed this data into Elasticsearch. Once the data is in Elasticsearch, you can run searches and aggregations to mine any information that is of interest to you.</li>
-<li>You run a price alerting platform which allows price-savvy customers to specify a rule like “I am interested in buying a specific electronic gadget and I want to be notified if the price of gadget falls below $X from any vendor within the next month”. In this case you can scrape vendor prices, push them into Elasticsearch and use its reverse-search (Percolator) capability to match price movements against customer queries and eventually push the alerts out to the customer once matches are found.<br>You have analytics/business-intelligence needs and want to quickly investigate, analyze, visualize, and ask ad-hoc questions on a lot of data (think millions or billions of records). In this case, you can use Elasticsearch to store your data and then use Kibana (part of the Elasticsearch/Logstash/Kibana stack) to build custom dashboards that can visualize aspects of your data that are important to you. Additionally, you can use the Elasticsearch aggregations functionality to perform complex business intelligence queries against your data.</li>
-<li>For the rest of this tutorial, I will guide you through the process of getting Elasticsearch up and running, taking a peek inside it, and performing basic operations like indexing, searching, and modifying your data. At the end of this tutorial, you should have a good idea of what Elasticsearch is, how it works, and hopefully be inspired to see how you can use it to either build sophisticated search applications or to mine intelligence from your data.</li>
-</ul>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/6/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/8/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/6/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/8/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1975,7 +1805,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">74</span>
+                <span class="site-state-item-count">81</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -1988,7 +1818,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">21</span>
+                <span class="site-state-item-count">24</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
